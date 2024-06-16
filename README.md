@@ -1,4 +1,4 @@
-[![roadmap.sh](https://roadmap.sh/card/wide/666e79e65a1e5ea6c266ab88?variant=dark&roadmaps=full-stack)](https://roadmap.sh)
+## Hello There
 
 <!--
 **devokrann/devokrann** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
