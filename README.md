@@ -1,16 +1,21 @@
-## Hello There
+This is a [Next.js](https://nextjs.org/) and [Mantine](https://mantine.dev/) template bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-<!--
-**devokrann/devokrann** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+## Getting Started
 
-Here are some ideas to get you started:
+First, install dependencies:
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+```bash
+npm install
+# or
+yarn install
+```
+
+Second, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
