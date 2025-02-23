@@ -6,18 +6,15 @@ import {
   AccordionItem,
   AccordionPanel,
 } from '@mantine/core';
-
-import sample from '@/data/sample';
-
 import classes from './faq.module.scss';
 import { isFirstItem } from '@/utilities/helpers/array';
 
-export default function Faq() {
-  const items = faqs.map((item) => (
+export default function Faq({ list }: { list: { q: string; a: string }[] }) {
+  const items = list.map((item) => (
     <AccordionItem
       key={item.q}
       value={item.q}
-      mt={isFirstItem(faqs, item) ? undefined : 'md'}
+      mt={isFirstItem(list, item) ? undefined : 'md'}
     >
       <AccordionControl>{item.q}</AccordionControl>
       <AccordionPanel>{item.a}</AccordionPanel>
@@ -26,7 +23,7 @@ export default function Faq() {
 
   return (
     <Accordion
-      defaultValue={faqs[0].q}
+      defaultValue={list[0].q}
       variant="separated"
       classNames={classes}
     >
@@ -34,22 +31,3 @@ export default function Faq() {
     </Accordion>
   );
 }
-
-const faqs = [
-  {
-    q: 'How long does a web design project take?',
-    a: sample.text.prose,
-  },
-  {
-    q: 'What factors affect the cost of web design?',
-    a: sample.text.prose,
-  },
-  {
-    q: 'Do you provide ongoing support?',
-    a: sample.text.prose,
-  },
-  {
-    q: 'What is your web design process?',
-    a: sample.text.prose,
-  },
-];
