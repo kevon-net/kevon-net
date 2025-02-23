@@ -1,4 +1,4 @@
-import appData from '@/data/app';
+import appData, { emails } from '@/data/app';
 import resend from '@/libraries/resend';
 
 import EmailOnboardWelcome from '@/components/email/onboard/welcome';
@@ -12,14 +12,12 @@ export const sendEmailTransactionalOnboard = async (params: {
 }) => {
   const { data, error } = await resend.emails.send({
     from: `${appData.name.app} <${
-      isProduction()
-        ? process.env.NEXT_PUBLIC_EMAIL_NOREPLY!
-        : process.env.NEXT_RESEND_EMAIL!
+      isProduction() ? emails.noreply! : process.env.NEXT_RESEND_EMAIL!
     }>`,
-    to: [isProduction() ? params.to : process.env.NEXT_PUBLIC_EMAIL_INFO!],
+    to: [isProduction() ? params.to : emails.info!],
     subject: `Welcome To ${appData.name.app}`,
     html: await render(EmailOnboardWelcome({ userName: params.userName })),
-    replyTo: process.env.NEXT_PUBLIC_EMAIL_NOREPLY!,
+    replyTo: emails.noreply!,
   });
   if (!error) {
     return data;
