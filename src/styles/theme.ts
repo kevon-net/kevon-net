@@ -2,13 +2,10 @@
 
 import {
   Anchor,
-  Card,
+  Button,
   Container,
   createTheme,
   Notification,
-  PasswordInput,
-  Textarea,
-  TextInput,
   virtualColor,
 } from '@mantine/core';
 
@@ -16,6 +13,7 @@ import cx from 'clsx';
 
 import classesNotification from './mantine/notification.module.scss';
 import classesContainer from './mantine/container.module.scss';
+import classesButton from './mantine/button.module.scss';
 import classesAnchor from './mantine/anchor.module.scss';
 
 const appTheme = createTheme({
@@ -24,43 +22,43 @@ const appTheme = createTheme({
 
   colors: {
     priWhite: [
-      '#000000', // Black
-      '#1a1a1a',
-      '#333333',
-      '#666666',
-      '#808080', // Medium Gray
-      '#999999',
-      '#b3b3b3',
-      '#cccccc',
-      '#f2f2f2',
-      '#ffffff', // White
+      '#1f1f1f', // 0
+      '#242424', // 1
+      '#2e2e2e', // 2
+      '#3b3b3b', // 3
+      '#424242', // 4
+      '#696969', // 5
+      '#828282', // 6
+      '#b8b8b8', // 7
+      '#C9C9C9', // 8
+      '#ffffff', // 9
     ],
 
     priBlack: [
-      '#ffffff', // White
-      '#f2f2f2',
-      '#cccccc',
-      '#b3b3b3',
-      '#999999', // Medium Gray
-      '#808080',
-      '#666666',
-      '#333333',
-      '#1a1a1a',
-      '#000000', // Black
+      '#C9C9C9', // 0
+      '#b8b8b8', // 1
+      '#828282', // 2
+      '#696969', // 3
+      '#424242', // 4
+      '#3b3b3b', // 5
+      '#2e2e2e', // 6
+      '#242424', // 7
+      '#1f1f1f', // 8
+      '#141414', // 9
     ],
 
     pri: virtualColor({
       name: 'pri',
-      light: 'blue',
-      dark: 'yellow',
+      light: 'priBlack',
+      dark: 'priWhite',
     }),
   },
 
   primaryColor: 'pri',
 
-  defaultRadius: 'sm',
+  defaultRadius: 0,
 
-  primaryShade: { light: 6, dark: 6 },
+  primaryShade: { light: 9, dark: 9 },
 
   defaultGradient: {
     from: 'red',
@@ -71,16 +69,16 @@ const appTheme = createTheme({
   cursorType: 'pointer',
 
   components: {
-    Anchor: Anchor.extend({
-      defaultProps: { underline: 'never' },
-      classNames: classesAnchor,
+    Button: Button.extend({
+      defaultProps: { variant: 'filled' },
+      classNames: classesButton,
     }),
 
-    Card: Card.extend({
+    Anchor: Anchor.extend({
       defaultProps: {
-        bg: 'var(--mantine-color-pri-light)',
-        c: 'var(--mantine-color-text)',
+        underline: 'always',
       },
+      classNames: classesAnchor,
     }),
 
     Container: Container.extend({
@@ -91,18 +89,6 @@ const appTheme = createTheme({
       classNames: (_: any, { size }: { size?: any }) => ({
         root: cx({ [classesContainer.root]: size === 'responsive' }),
       }),
-    }),
-
-    TextInput: TextInput.extend({
-      defaultProps: { variant: 'filled' },
-    }),
-
-    Textarea: Textarea.extend({
-      defaultProps: { variant: 'filled' },
-    }),
-
-    PasswordInput: PasswordInput.extend({
-      defaultProps: { variant: 'filled' },
     }),
 
     Notification: Notification.extend({ classNames: classesNotification }),
