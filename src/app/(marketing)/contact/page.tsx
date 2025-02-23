@@ -21,7 +21,6 @@ import {
   IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandX,
-  IconClockHour8,
   IconMapPin,
   IconPhone,
 } from '@tabler/icons-react';
@@ -166,33 +165,27 @@ export const dataContact = [
     link: appData.locations.main.pin,
     label: appData.locations.main.location,
   },
-  {
-    title: 'Working Hours',
-    icon: IconClockHour8,
-    link: '#working-hours',
-    label: `${appData.hours.times} (${appData.hours.days})`,
-  },
 ];
 
 export const dataSocials = [
   {
     icon: IconBrandFacebook,
-    link: appData.socials.facebook.link,
-    label: appData.socials.facebook.platform,
+    link: 'appData.socials.facebook.link',
+    label: 'appData.socials.facebook.platform',
   },
   {
     icon: IconBrandX,
-    link: appData.socials.twitter.link,
-    label: appData.socials.twitter.platform,
+    link: 'appData.socials.twitter.link',
+    label: 'appData.socials.twitter.platform',
   },
   {
     icon: IconBrandInstagram,
-    link: appData.socials.instagram.link,
-    label: appData.socials.instagram.platform,
+    link: 'appData.socials.instagram.link',
+    label: 'appData.socials.instagram.platform',
   },
   {
     icon: IconBrandLinkedin,
-    link: appData.socials.linkedin.link,
-    label: appData.socials.linkedin.platform,
+    link: 'appData.socials.linkedin.link',
+    label: 'appData.socials.linkedin.platform',
   },
 ];
