@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { DM_Sans } from 'next/font/google';
+import { Tomorrow } from 'next/font/google';
 
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
@@ -40,7 +40,7 @@ import { cookies } from 'next/headers';
 import AffixiCookies from '@/components/common/affixi/cookies';
 // import GoogleAnalytics from '@/components/seo/analytics';
 
-const noto = DM_Sans({ subsets: ['latin'] });
+const noto = Tomorrow({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
   title: {
