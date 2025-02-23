@@ -15,17 +15,9 @@ export const emails = {
 };
 
 export const socials = {
-  twitter: {
-    platform: `X`,
-    link: '#twitter',
-  },
-  facebook: {
-    platform: `Facebook`,
-    link: '#facebook',
-  },
-  instagram: {
-    platform: `Instagram`,
-    link: '#instagram',
+  github: {
+    platform: `Github`,
+    link: '#gh',
   },
   linkedin: {
     platform: `LinkedIn`,
