@@ -1,8 +1,9 @@
 .root {
-  color: light-dark(var(--mantine-color-pri-6), var(--mantine-color-pri-6));
-  transition: 0.25s all ease;
+  transition: 0.15s all ease-in-out;
+
+  color: var(--mantine-color-pri-9);
 
   @include hover {
-    color: light-dark(var(--mantine-color-pri-9), var(--mantine-color-pri-6));
+    color: var(--mantine-color-text);
   }
 }
