@@ -1,12 +1,8 @@
-import sample from './sample';
-
-const companyName = 'Brix';
+const companyName = 'Devokrann';
 const appName = companyName;
-const companyOneLiner = sample.text.sentence;
-const companyDescription = sample.text.prose;
 
 export const phones = {
-  main: '(254) 123 456-789',
+  main: '(254) 703 510-701',
 };
 
 export const emails = {
@@ -25,27 +21,18 @@ export const socials = {
   },
 };
 
-export const hours = {
-  days: 'Mon - Fri',
-  times: '8 AM - 5 PM',
-};
-
 export const locations = {
   main: {
-    location: '410 Terry Ave. North, Seattle, WA 98109',
+    location: '73 Westlands Road, Nairobi, KE 00100',
     pin: '#pin',
   },
 };
 
 const appData = {
-  companyOneLiner,
-  companyDescription,
-
   name: { company: companyName, app: appName },
   phones,
   emails,
   socials,
-  hours,
   locations,
 };
 
