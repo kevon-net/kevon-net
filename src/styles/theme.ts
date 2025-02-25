@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  ActionIcon,
   Anchor,
   Button,
   Container,
@@ -15,6 +16,7 @@ import classesNotification from './mantine/notification.module.scss';
 import classesContainer from './mantine/container.module.scss';
 import classesButton from './mantine/button.module.scss';
 import classesAnchor from './mantine/anchor.module.scss';
+import classesActionIcon from './mantine/action-icon.module.scss';
 
 const appTheme = createTheme({
   focusClassName: 'focus',
@@ -72,6 +74,11 @@ const appTheme = createTheme({
     Button: Button.extend({
       defaultProps: { variant: 'filled' },
       classNames: classesButton,
+    }),
+
+    ActionIcon: ActionIcon.extend({
+      defaultProps: { variant: 'filled' },
+      classNames: classesActionIcon,
     }),
 
     Anchor: Anchor.extend({
