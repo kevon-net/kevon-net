@@ -33,57 +33,15 @@ enum Status {
 
 // models
 
-model Profile {
-  id        String  @id
-  userName  String? @map("user_name")
-  firstName String? @map("first_name")
-  lastName  String? @map("last_name")
-  bio       String?
-  avatar    String?
-  phone     String?
-  role      Role    @default(USER)
-
-  createdAt DateTime @default(now()) @map(name: "created_at")
-  updatedAt DateTime @updatedAt @map(name: "updated_at")
-
-  addresses Address[]
-  posts     Post[]
-  comments  Comment[]
-  replies   Reply[]
-
-  @@map("profiles")
-}
-
-model Address {
-  id       String  @id @default(uuid())
-  title    String?
-  phone    String?
-  province String?
-  state    String?
-  city     String
-  country  String
-
-  profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  profileId String  @map("profile_id")
-
-  createdAt DateTime @default(now()) @map(name: "created_at")
-  updatedAt DateTime @updatedAt @map(name: "updated_at")
-  status    Status   @default(ACTIVE)
-
-  @@map("addresses")
-}
-
 model Post {
   id            String  @id @default(uuid())
   image         String
-  title         String
+  title         String  @unique
   excerpt       String
   content       String
   allowComments Boolean @default(true) @map(name: "allow_comments")
   viewCount     Int     @default(0) @map(name: "view_count")
 
-  profile    Profile?  @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  profileId  String?   @map("profile_id")
   category   Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
   categoryId String?   @map("category_id")
   tags       Tag[]
@@ -93,7 +51,6 @@ model Post {
   updatedAt DateTime @updatedAt @map(name: "updated_at")
   status    Status   @default(DRAFT)
 
-  @@unique([profileId, title])
   @@map(name: "posts")
 }
 
@@ -130,17 +87,15 @@ model Comment {
   name    String?
   content String
 
-  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
-  postId    String   @map("post_id")
-  profile   Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  profileId String?  @map("profile_id")
-  replies   Reply[]
+  post    Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId  String  @map("post_id")
+  replies Reply[]
 
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @updatedAt @map(name: "updated_at")
   status    Status   @default(ACTIVE)
 
-  @@unique([name, content, postId, profileId])
+  @@unique([name, content, postId])
   @@map(name: "comments")
 }
 
@@ -152,13 +107,11 @@ model Reply {
   replyId   String?  @map("reply_id")
   comment   Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
   commentId String?  @map("comment_id")
-  profile   Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  profileId String?  @map("profile_id")
 
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @updatedAt @map(name: "updated_at")
   status    Status   @default(ACTIVE)
 
-  @@unique([name, content, replyId, commentId, profileId])
+  @@unique([name, content, replyId, commentId])
   @@map(name: "replies")
 }
