@@ -1,0 +1,51 @@
+.center {
+  height: 4px;
+  width: 4px;
+  border-radius: 4px;
+  background-color: var(--mantine-color-gray-light);
+}
+
+.spinner {
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--mantine-color-gray-light);
+  border-radius: 50%;
+}
+
+.spinnerOuter {
+  position: absolute;
+
+  width: 36px;
+  height: 36px;
+  border-top-color: var(--mantine-color-pri-6);
+  border-right-color: var(--mantine-color-pri-6);
+  animation: spinRight 1s linear infinite;
+}
+
+.spinnerInner {
+  position: absolute;
+
+  width: 28px;
+  height: 28px;
+  border-bottom-color: var(--mantine-color-pink-6);
+  border-left-color: var(--mantine-color-pink-6);
+  animation: spinLeft 1s linear infinite;
+}
+
+@keyframes spinRight {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinLeft {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}

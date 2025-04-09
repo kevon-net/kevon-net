@@ -1,0 +1,15 @@
+.control {
+  border-radius: var(--mantine-radius-xl);
+  border: 2px solid transparent;
+  background-color: var(--mantine-color-gray-light);
+
+  @include mantine.hover {
+    border: 2px solid var(--mantine-color-pri-6);
+    background-color: var(--mantine-color-gray-light);
+  }
+
+  &[data-active] {
+    border: 2px solid transparent;
+    background-color: var(--mantine-color-pri-6);
+  }
+}

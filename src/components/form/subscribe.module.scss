@@ -1,0 +1,8 @@
+.textInput {
+  background-color: transparent;
+  border: 2px solid var(--mantine-color-gray-light);
+
+  &:focus {
+    border: 2px solid var(--mantine-color-pri-6);
+  }
+}
