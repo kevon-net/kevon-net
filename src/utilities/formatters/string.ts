@@ -12,7 +12,7 @@ export const initialize = (words: string) =>
     .join('');
 
 export const crumbify = (url: string) => {
-  const crumbs = [{ link: '/', label: 'Home' }];
+  const crumbs = [{ link: '/', label: 'Homepage' }];
 
   let currentLink = '';
 
