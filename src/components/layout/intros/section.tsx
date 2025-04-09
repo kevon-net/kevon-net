@@ -11,7 +11,7 @@ export default function Section({
   props,
   options,
 }: {
-  props: { subTitle?: string; title: string; desc?: string };
+  props: { subTitle?: string; title: string | React.ReactNode; desc?: string };
   options?: { alignment?: 'start' | 'end'; spacing?: boolean };
 }) {
   return (
@@ -24,6 +24,7 @@ export default function Section({
             c={'pri.6'}
             tt={'uppercase'}
             fz={'sm'}
+            lts={2}
           >
             {props.subTitle}
           </Text>
@@ -32,13 +33,17 @@ export default function Section({
         <LayoutSection
           id="layout-intro-section-desc"
           px={0}
-          containerized={options?.alignment ? false : 'sm'}
+          containerized={options?.alignment ? false : 'md'}
           mb={options?.spacing ? SECTION_SPACING : undefined}
         >
           <Stack>
-            <Title order={2} ta={options?.alignment || 'center'}>
-              {props.title}
-            </Title>
+            {typeof props.title == 'string' ? (
+              <Title order={2} ta={options?.alignment || 'center'}>
+                {props.title}
+              </Title>
+            ) : (
+              props.title
+            )}
 
             {props.desc && (
               <Text ta={options?.alignment || 'center'}>{props.desc}</Text>
