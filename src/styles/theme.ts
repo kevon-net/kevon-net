@@ -2,8 +2,11 @@
 
 import {
   Anchor,
+  Button,
   Container,
   createTheme,
+  Divider,
+  Modal,
   Notification,
   virtualColor,
 } from '@mantine/core';
@@ -33,6 +36,10 @@ const appTheme = createTheme({
   // autoContrast: true,
   // luminanceThreshold: 0.3,
 
+  headings: {
+    fontFamily: 'var(--font-outfit-sans)',
+  },
+
   defaultGradient: {
     from: 'red',
     to: 'blue',
@@ -42,6 +49,21 @@ const appTheme = createTheme({
   cursorType: 'pointer',
 
   components: {
+    Button: Button.extend({
+      defaultProps: { tt: 'uppercase', fz: 'xs', lts: 2, fw: '500' },
+    }),
+
+    Divider: Divider.extend({
+      defaultProps: { color: 'var(--mantine-color-gray-light)' },
+    }),
+
+    Modal: Modal.extend({
+      defaultProps: {
+        transitionProps: { transition: 'fade' },
+        overlayProps: { backgroundOpacity: 0.5, blur: 4 },
+      },
+    }),
+
     Anchor: Anchor.extend({
       defaultProps: { underline: 'never' },
       classNames: classesAnchor,
