@@ -29,7 +29,7 @@ export default function Section({
       }
       style={{
         borderBottom: bordered
-          ? '1px solid var(--mantine-color-default-border)'
+          ? '1px solid var(--mantine-color-gray-light)'
           : undefined,
         boxShadow: shadowed ? 'var(--mantine-shadow-xs)' : undefined,
       }}
