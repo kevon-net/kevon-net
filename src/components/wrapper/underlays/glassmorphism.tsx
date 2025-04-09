@@ -16,9 +16,7 @@ export default function Glassmorphism({
         backgroundImage: `url(${props?.image || bg[0]})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        // backgroundAttachment: 'fixed',
         backgroundRepeat: 'no-repeat',
-        position: 'relative',
       }}
     >
       <div

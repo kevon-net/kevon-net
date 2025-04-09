@@ -1,20 +1,23 @@
 .noise {
-  position: 'absolute';
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-size: 80;
-  background-position: 'center';
-  background-repeat: 'repeat';
+  background-position: center;
+  background-repeat: repeat;
+
+  background-size: 20px;
+
+  @include mantine.larger-than(mantine.$mantine-breakpoint-xs) {
+    background-size: 40px;
+  }
+
+  @include mantine.larger-than(mantine.$mantine-breakpoint-sm) {
+    background-size: 60px;
+  }
+
+  @include mantine.larger-than(mantine.$mantine-breakpoint-md) {
+    background-size: 80px;
+  }
 }
 
 .glass {
-  position: 'absolute';
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   backdrop-filter: blur(64px) saturate(200%);
   -webkit-backdrop-filter: blur(64px) saturate(200%);
 }
