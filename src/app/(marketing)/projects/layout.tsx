@@ -7,16 +7,16 @@ import LayoutBody from '@/components/layout/body';
 import appData from '@/data/app';
 
 export type typeParams = Promise<{
-  'postTitle-postId': string;
+  'projectTitle-projectId': string;
   categoryId: string;
   tagId: string;
 }>;
 
 export const metadata: Metadata = {
-  title: { default: 'Blog', template: `%s - Blog - ${appData.name.app}` },
+  title: { default: 'Project', template: `%s - Project - ${appData.name.app}` },
 };
 
-export default function LayoutBlog({
+export default function LayoutProject({
   children, // will be a page or nested layout
 }: {
   children: React.ReactNode;
