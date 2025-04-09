@@ -1,98 +1,115 @@
-# Next.js Static Site Template
+# Kevon Kibochi
 
-A lightweight and optimized Next.js template for building fast, SEO-friendly static websites.
+## Software Developer | Problem Solver | Tech Enthusiast
 
-## Features
+![Profile Views](https://img.shields.io/github/followers/devokrann?label=Followers&style=social)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/kevon-kibochi/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-brightgreen)](https://devokrann.vercel.app)
 
-- **Next.js 14 (App Router)** – Modern, efficient, and optimized for static site generation.
-- **TypeScript Support** – Ensures type safety and better development experience.
-- **CSS Modules** – Scoped styling for better maintainability.
-- **ESLint & Prettier** – Enforced code quality and formatting.
-- **Fast & SEO-Friendly** – Optimized for performance and search engine indexing.
-- **Minimal Dependencies** – No unnecessary bloat; easy to customize.
+## 👋 About Me
 
-## Getting Started
+Brief introduction about yourself, your passion for technology, and what drives you as a developer. This is your chance to let your personality shine through! Mention your experience level, what you're currently focused on learning, and what kinds of projects excite you.
 
-### 1. Clone the Repository
+## 🛠️ Skills & Technologies
 
-```sh
-git clone https://github.com/devokrann/next-static.git
-cd next-static
-```
+### Languages
 
-### 2. Install Dependencies
+- JavaScript
+- TypeScript
+- Kotlin
+- HTML/CSS
+- SQL
 
-```sh
-npm install
-# or
-yarn install
-```
+### Frameworks & Libraries
 
-### 3. Run the Development Server
+- React.js
+- Node.js
+- Express
+- Next.js
 
-```sh
-npm run dev
-# or
-yarn dev
-```
+### Tools & Platforms
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the template in action.
+- Git/GitHub
+- Prisma
+- Resend
+- React Email
+- Mantine UI
+- CI/CD
+- Docker
+- AWS/Azure/GCP
+- MongoDB/PostgreSQL
 
-### 4. Build for Production
+## 🚀 Featured Projects
 
-```sh
-npm run build
-# or
-yarn build
-```
+### Project Name 1
 
-### 5. Export Static Files
+[![Project Badge](https://img.shields.io/badge/Demo-Live-success)](https://project1demo.com)
+[![Code](https://img.shields.io/badge/Code-GitHub-blue)](https://github.com/devokrann/project1)
 
-```sh
-npm run export
-# or
-yarn export
-```
+Brief description of your project highlighting the problem it solves and its key features. Mention the technologies used and your specific contributions.
 
-This generates a fully static version of the site inside the `out` directory.
+![Project Screenshot](./images/project1.png)
 
-## Folder Structure
+### Project Name 2
 
-```
-nextjs-static-template/
-├── public/             # Static assets (images, favicon, etc.)
-├── src/
-│   ├── components/     # Reusable UI components
-│   ├── app/            # Page routes
-│   ├── styles/         # Global and module-based styles
-│   ├── utils/          # Utility functions
-├── .eslintrc.js        # ESLint configuration
-├── .prettierrc         # Prettier configuration
-├── next.config.js      # Next.js configuration
-├── package.json        # Project metadata and scripts
-└── README.md           # Project documentation
-```
+[![Project Badge](https://img.shields.io/badge/Demo-Live-success)](https://project2demo.com)
+[![Code](https://img.shields.io/badge/Code-GitHub-blue)](https://github.com/devokrann/project2)
 
-## Deployment
+Brief description of your project highlighting the problem it solves and its key features. Mention the technologies used and your specific contributions.
 
-This template is optimized for deployment on platforms like:
+![Project Screenshot](./images/project2.png)
 
-- **Vercel** (recommended)
-- **Netlify**
-- **GitHub Pages (via static export)**
+### Project Name 3
 
-### Deploying to Vercel
+[![Project Badge](https://img.shields.io/badge/Demo-Live-success)](https://project3demo.com)
+[![Code](https://img.shields.io/badge/Code-GitHub-blue)](https://github.com/devokrann/project3)
 
-```sh
-npx vercel
-```
+Brief description of your project highlighting the problem it solves and its key features. Mention the technologies used and your specific contributions.
 
-Follow the on-screen instructions to complete the deployment.
+![Project Screenshot](./images/project3.png)
 
-## Contributing
+## 📊 GitHub Stats
 
-Feel free to submit issues or pull requests to improve this template.
+![Your GitHub stats](https://github-readme-stats.vercel.app/api?username=devokrann&show_icons=true&theme=radical)
 
-## License
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=devokrann&layout=compact&theme=radical)
 
-This project is licensed under the [MIT License](LICENSE).
+## 🎓 Education & Certifications
+
+- **Degree** - University Name (Year)
+- **Certification 1** - Issuing Organization (Year)
+- **Certification 2** - Issuing Organization (Year)
+
+## 💼 Professional Experience
+
+### Company Name (Year - Present)
+
+**Job Title**
+
+- Key responsibility or achievement 1
+- Key responsibility or achievement 2
+- Key responsibility or achievement 3
+
+### Previous Company (Year - Year)
+
+**Job Title**
+
+- Key responsibility or achievement 1
+- Key responsibility or achievement 2
+- Key responsibility or achievement 3
+
+## 📫 Let's Connect!
+
+- Email: kevon.kibochi@outlook.com
+- LinkedIn: [Kevon Kibochi](https://www.linkedin.com/in/kevon-kibochi/)
+- Portfolio: [devokrann.vercel.app](https://devokrann.vercel.app)
+
+## ⚡ Fun Facts
+
+- Share something interesting about yourself
+- Maybe a hobby or passion outside of coding
+- An unexpected skill you have
+
+---
+
+⭐️ From [devokrann](https://github.com/devokrann)
