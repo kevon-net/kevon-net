@@ -12,7 +12,7 @@ export const HOSTED_BASE_URL = {
   EXAMPLE: `https://example.com`,
 };
 
-export const DEFAULT_COLOR_SCHEME: 'light' | 'dark' = 'light';
+export const DEFAULT_COLOR_SCHEME: 'light' | 'dark' = 'dark';
 
 export const API_URL = `${BASE_URL}/api`;
 
@@ -43,4 +43,16 @@ export const COOKIE_NAME = {
 export const LOCAL_STORAGE_NAME = {
   COUNTRY: 'country',
   COUNTRIES: 'countries',
+};
+
+export const SCROLL_BAR = {
+  SHELL: 8,
+};
+
+export const FONT_SIZE = {
+  TITLE_PAGE: {
+    base: 'var(--mantine-h1-font-size)',
+    md: '3rem',
+    lg: '4rem',
+  },
 };
