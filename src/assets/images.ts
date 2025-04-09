@@ -13,26 +13,26 @@ export const images = {
 
   card: {
     dark: {
-      landscape: `${baseUrl}/card/dark.png`,
-      potrait: `${baseUrl}/card/dark2.png`,
+      landscape: `${baseUrl}/card/dark.webp`,
+      potrait: `${baseUrl}/card/dark2.webp`,
     },
     light: {
-      landscape: `${baseUrl}/card/light.png`,
-      potrait: `${baseUrl}/card/light2.png`,
+      landscape: `${baseUrl}/card/light.webp`,
+      potrait: `${baseUrl}/card/light2.webp`,
     },
   },
 
   cv: {
-    dark: `${baseUrl}/cv/dark.png`,
-    light: `${baseUrl}/cv/light.png`,
+    dark: `${baseUrl}/cv/dark.webp`,
+    light: `${baseUrl}/cv/light.webp`,
   },
 
   background: {
-    image3lv7ey: `${baseUrl}/background/3lv7ey.jpg`,
-    image9dvkw8: `${baseUrl}/background/9dvkw8.jpg`,
-    imagegprzyd: `${baseUrl}/background/gprzyd.jpg`,
-    imagejx29gq: `${baseUrl}/background/jx29gq.jpg`,
-    imageyx17dk: `${baseUrl}/background/yx17dk.jpg`,
+    image3lv7ey: `${baseUrl}/background/3lv7ey.webp`,
+    image9dvkw8: `${baseUrl}/background/9dvkw8.webp`,
+    imagegprzyd: `${baseUrl}/background/gprzyd.webp`,
+    imagejx29gq: `${baseUrl}/background/jx29gq.webp`,
+    imageyx17dk: `${baseUrl}/background/yx17dk.webp`,
     noise: `${baseUrl}/background/noise.png`,
   },
 
