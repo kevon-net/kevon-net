@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
-import { Stack, Button, Group } from '@mantine/core';
+import { Stack, Button, Group, ThemeIcon } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
 import LayoutSection from '@/components/layout/section';
 import {
   ICON_SIZE,
   ICON_STROKE_WIDTH,
+  ICON_WRAPPER_SIZE,
   SECTION_SPACING,
 } from '@/data/constants';
 import IntroPage from '@/components/layout/intros/page';
@@ -17,20 +18,29 @@ export default function NotFound() {
         <IntroPage
           props={{
             path: `404`,
-            title: "Something's not right...",
-            desc: `The page you are trying to open does not exist. You may have
-                    mistyped the address, or the page has been moved to another
-                    URL. If you think this is an error contact support.`,
+            title: 'Page Not Found',
+            desc: `The page you are trying to open does not exist.`,
           }}
+          options={{ glitch: true }}
         />
 
         <Group justify="center">
           <Button
             leftSection={
-              <IconArrowLeft size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
+              <ThemeIcon
+                size={ICON_WRAPPER_SIZE}
+                variant="light"
+                color="gray"
+                radius={'xl'}
+              >
+                <IconArrowLeft size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
+              </ThemeIcon>
             }
+            radius={'xl'}
+            size="lg"
             component={Link}
             href={'/'}
+            color="gray"
             variant="light"
           >
             Go To Home Page

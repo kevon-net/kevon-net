@@ -2,13 +2,8 @@
 
 import React from 'react';
 import { Stack, Button, Flex, Group } from '@mantine/core';
-import { IconRefresh } from '@tabler/icons-react';
 import LayoutSection from '@/components/layout/section';
-import {
-  ICON_SIZE,
-  ICON_STROKE_WIDTH,
-  SECTION_SPACING,
-} from '@/data/constants';
+import { SECTION_SPACING } from '@/data/constants';
 import IntroPage from '@/components/layout/intros/page';
 
 export default function GlobalError({
@@ -37,13 +32,7 @@ export default function GlobalError({
                 align={'center'}
                 gap={'md'}
               >
-                <Button
-                  leftSection={
-                    <IconRefresh size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
-                  }
-                  variant="light"
-                  onClick={() => reset()}
-                >
+                <Button variant="light" onClick={() => reset()}>
                   Try Again
                 </Button>
               </Flex>
