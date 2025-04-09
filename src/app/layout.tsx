@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Outfit, Tomorrow } from 'next/font/google';
 import {
   ColorSchemeScript,
   MantineColorScheme,
@@ -11,6 +11,7 @@ import appResolver from '@/styles/resolver';
 import { Notifications } from '@mantine/notifications';
 import { linkify } from '@/utilities/formatters/string';
 import appData from '@/data/app';
+import WrapperShellMain from '@/components/wrapper/shell/main';
 
 // core styles are required for all packages
 import '@mantine/core/styles.css';
@@ -22,14 +23,15 @@ import '../styles/globals.scss';
 import { getCookieServer } from '@/utilities/helpers/cookie-server';
 
 // fonts
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const outfitSans = Outfit({
+  variable: '--font-outfit-sans',
   subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const tomorrowSans = Tomorrow({
+  variable: '--font-tomorrow-sans',
   subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
 // metadata
@@ -60,16 +62,18 @@ export default async function RootLayout({
         />
       </head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${outfitSans.variable} ${tomorrowSans.variable}`}>
         <MantineProvider
           theme={appTheme}
           cssVariablesResolver={appResolver}
           defaultColorScheme={colorScheme as MantineColorScheme}
           classNamesPrefix={linkify(appData.name.app)}
         >
-          {children}
+          <WrapperShellMain>
+            {children}
 
-          <Notifications limit={3} />
+            <Notifications limit={3} />
+          </WrapperShellMain>
         </MantineProvider>
       </body>
     </html>
