@@ -1,12 +1,8 @@
 import type { Metadata } from 'next';
 import { Outfit, Tomorrow } from 'next/font/google';
-import {
-  ColorSchemeScript,
-  MantineColorScheme,
-  MantineProvider,
-} from '@mantine/core';
+import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import appTheme from '@/styles/theme';
-import { COOKIE_NAME, DEFAULT_COLOR_SCHEME } from '@/data/constants';
+import { DEFAULT_COLOR_SCHEME } from '@/data/constants';
 import appResolver from '@/styles/resolver';
 import { Notifications } from '@mantine/notifications';
 import { linkify } from '@/utilities/formatters/string';
@@ -20,7 +16,6 @@ import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 
 import '../styles/globals.scss';
-import { getCookieServer } from '@/utilities/helpers/cookie-server';
 
 // fonts
 const outfitSans = Outfit({
@@ -45,11 +40,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const coScCo = await getCookieServer(COOKIE_NAME.COLOR_SCHEME_STATE);
-  const colorScheme = coScCo || DEFAULT_COLOR_SCHEME;
-
   return (
-    <html lang="en" data-mantine-color-scheme={colorScheme}>
+    <html lang="en" data-mantine-color-scheme={DEFAULT_COLOR_SCHEME}>
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -57,16 +49,14 @@ export default async function RootLayout({
 
         <title>{appData.name.app}</title>
 
-        <ColorSchemeScript
-          defaultColorScheme={colorScheme as MantineColorScheme}
-        />
+        <ColorSchemeScript defaultColorScheme={DEFAULT_COLOR_SCHEME} />
       </head>
 
       <body className={`${outfitSans.variable} ${tomorrowSans.variable}`}>
         <MantineProvider
           theme={appTheme}
           cssVariablesResolver={appResolver}
-          defaultColorScheme={colorScheme as MantineColorScheme}
+          defaultColorScheme={DEFAULT_COLOR_SCHEME}
           classNamesPrefix={linkify(appData.name.app)}
         >
           <WrapperShellMain>

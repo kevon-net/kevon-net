@@ -1,3 +1,4 @@
+import { BASE_URL } from '@/data/constants';
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
@@ -12,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
         // Add more private routes here
       ],
     },
-    sitemap: 'https://example.com/sitemap.xml',
+    sitemap: `${BASE_URL}/sitemap.xml`,
   };
 }

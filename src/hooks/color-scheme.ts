@@ -55,6 +55,7 @@ export const useColorScheme = () => {
 
   useEffect(() => {
     handleChange();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorScheme]);
 
   return { colorScheme, setColorScheme };
