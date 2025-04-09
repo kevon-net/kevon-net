@@ -12,10 +12,16 @@ export const generateSeededPrime = (seed: string, index: number): number => {
   return primes[(hash + index) % primes.length];
 };
 
-export const getRandomIntInRange = (min: number, max: number): number => {
+export const getRandomIntInRange = (
+  min: number,
+  max: number,
+  lowerBoundary: number = 1
+): number => {
   // Ensure min and max are valid integers
-  if (min < 1 || max < 1) {
-    throw new Error('Both min and max must be greater than or equal to 1.');
+  if (min < lowerBoundary || max < lowerBoundary) {
+    throw new Error(
+      `Both min and max must be greater than or equal to ${lowerBoundary}.`
+    );
   }
 
   if (!Number.isInteger(min) || !Number.isInteger(max)) {
