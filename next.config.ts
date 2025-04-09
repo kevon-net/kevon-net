@@ -21,6 +21,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: '**.wallhaven.cc',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: '**.githubusercontent.com',
         port: '',
         pathname: '/**',
