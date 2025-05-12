@@ -2,9 +2,9 @@
 
 ## Software Developer | Problem Solver | Tech Enthusiast
 
-![Profile Views](https://img.shields.io/github/followers/devokrann?label=Followers&style=social)
+![Profile Views](https://img.shields.io/github/followers/kevon-net?label=Followers&style=social)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/kevon-kibochi/)
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-brightgreen)](https://devokrann.vercel.app)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-brightgreen)](https://kevon-net.vercel.app)
 
 ## 👋 About Me
 
@@ -44,7 +44,7 @@ Brief introduction about yourself, your passion for technology, and what drives 
 ### Project Name 1
 
 [![Project Badge](https://img.shields.io/badge/Demo-Live-success)](https://project1demo.com)
-[![Code](https://img.shields.io/badge/Code-GitHub-blue)](https://github.com/devokrann/project1)
+[![Code](https://img.shields.io/badge/Code-GitHub-blue)](https://github.com/kevon-net/project1)
 
 Brief description of your project highlighting the problem it solves and its key features. Mention the technologies used and your specific contributions.
 
@@ -53,7 +53,7 @@ Brief description of your project highlighting the problem it solves and its key
 ### Project Name 2
 
 [![Project Badge](https://img.shields.io/badge/Demo-Live-success)](https://project2demo.com)
-[![Code](https://img.shields.io/badge/Code-GitHub-blue)](https://github.com/devokrann/project2)
+[![Code](https://img.shields.io/badge/Code-GitHub-blue)](https://github.com/kevon-net/project2)
 
 Brief description of your project highlighting the problem it solves and its key features. Mention the technologies used and your specific contributions.
 
@@ -62,7 +62,7 @@ Brief description of your project highlighting the problem it solves and its key
 ### Project Name 3
 
 [![Project Badge](https://img.shields.io/badge/Demo-Live-success)](https://project3demo.com)
-[![Code](https://img.shields.io/badge/Code-GitHub-blue)](https://github.com/devokrann/project3)
+[![Code](https://img.shields.io/badge/Code-GitHub-blue)](https://github.com/kevon-net/project3)
 
 Brief description of your project highlighting the problem it solves and its key features. Mention the technologies used and your specific contributions.
 
@@ -70,9 +70,9 @@ Brief description of your project highlighting the problem it solves and its key
 
 ## 📊 GitHub Stats
 
-![Your GitHub stats](https://github-readme-stats.vercel.app/api?username=devokrann&show_icons=true&theme=radical)
+![Your GitHub stats](https://github-readme-stats.vercel.app/api?username=kevon-net&show_icons=true&theme=radical)
 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=devokrann&layout=compact&theme=radical)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=kevon-net&layout=compact&theme=radical)
 
 ## 🎓 Education & Certifications
 
@@ -102,7 +102,7 @@ Brief description of your project highlighting the problem it solves and its key
 
 - Email: kevon.kibochi@outlook.com
 - LinkedIn: [Kevon Kibochi](https://www.linkedin.com/in/kevon-kibochi/)
-- Portfolio: [devokrann.vercel.app](https://devokrann.vercel.app)
+- Portfolio: [kevon.net](https://kevon.net)
 
 ## ⚡ Fun Facts
 
@@ -112,4 +112,4 @@ Brief description of your project highlighting the problem it solves and its key
 
 ---
 
-⭐️ From [devokrann](https://github.com/devokrann)
+⭐️ From [kevon](https://github.com/kevon-net)
