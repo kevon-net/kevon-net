@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Outfit, Tomorrow } from 'next/font/google';
+import { Kanit, Tomorrow } from 'next/font/google';
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import appTheme from '@/styles/theme';
 import { DEFAULT_COLOR_SCHEME } from '@/data/constants';
@@ -18,9 +18,10 @@ import '@mantine/dates/styles.css';
 import '../styles/globals.scss';
 
 // fonts
-const outfitSans = Outfit({
-  variable: '--font-outfit-sans',
+const kanitSans = Kanit({
+  variable: '--font-kanit-sans',
   subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
 const tomorrowSans = Tomorrow({
@@ -52,7 +53,7 @@ export default async function RootLayout({
         <ColorSchemeScript defaultColorScheme={DEFAULT_COLOR_SCHEME} />
       </head>
 
-      <body className={`${outfitSans.variable} ${tomorrowSans.variable}`}>
+      <body className={`${kanitSans.variable} ${tomorrowSans.variable}`}>
         <MantineProvider
           theme={appTheme}
           cssVariablesResolver={appResolver}
