@@ -18,7 +18,7 @@ export const phones = {
 };
 
 export const emails = {
-  info: process.env.NEXT_PUBLIC_EMAIL_INFO,
+  contact: process.env.NEXT_PUBLIC_EMAIL_CONTACT,
   noreply: process.env.NEXT_PUBLIC_EMAIL_NOREPLY,
 };
 
