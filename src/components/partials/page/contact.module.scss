@@ -1,0 +1,10 @@
+.linkLight {
+  position: relative;
+  color: var(--mantine-color-text) !important;
+  transition: 0.25s all ease;
+  opacity: 0.66;
+
+  @include mantine.hover {
+    opacity: 1;
+  }
+}

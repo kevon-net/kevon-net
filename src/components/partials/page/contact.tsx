@@ -2,14 +2,16 @@ import React from 'react';
 import LayoutSection from '@/components/layout/section';
 import IntroSection from '@/components/layout/intros/section';
 import { SECTION_SPACING } from '@/data/constants';
-import { Grid, GridCol, Text, Title } from '@mantine/core';
+import { Anchor, Grid, GridCol, Text, Title } from '@mantine/core';
 import FormContact from '@/components/form/contact';
 import IframeContact from '@/components/common/iframes/contact';
+import { contact } from '@/data/links';
+import classes from './contact.module.scss';
 
 export default function Contact() {
   return (
     <>
-      <LayoutSection id={'contact'} margined={SECTION_SPACING}>
+      <LayoutSection id={'contact'} padded={SECTION_SPACING}>
         <IntroSection
           options={{ alignment: 'start', spacing: true }}
           props={{
@@ -27,9 +29,13 @@ export default function Contact() {
         />
 
         <Grid>
-          <GridCol span={{ base: 12, md: 4 }}>card 1</GridCol>
-          <GridCol span={{ base: 12, md: 4 }}>card 2</GridCol>
-          <GridCol span={{ base: 12, md: 4 }}>card 2</GridCol>
+          {contact.map((c, i) => (
+            <GridCol key={i} span={{ base: 12, md: 4 }}>
+              <Anchor href={c.link} fz={'xs'} className={classes.linkLight}>
+                {c.label}
+              </Anchor>
+            </GridCol>
+          ))}
         </Grid>
       </LayoutSection>
 
@@ -37,7 +43,7 @@ export default function Contact() {
         <IframeContact />
       </LayoutSection>
 
-      <LayoutSection id={'contact-form'} margined={SECTION_SPACING}>
+      <LayoutSection id={'contact-form'} padded={SECTION_SPACING}>
         <FormContact />
       </LayoutSection>
     </>
