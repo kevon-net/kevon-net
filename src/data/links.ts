@@ -1,36 +1,48 @@
 import appData from './app';
 
 export const navbar = [
+  // {
+  //   link: '#',
+  //   label: 'Home',
+  // },
   {
-    link: '/',
-    label: 'Home',
+    link: '#about',
+    label: 'About',
   },
   {
-    link: '/services',
+    link: '#services',
     label: 'Services',
   },
   {
-    link: '/projects',
-    label: 'Projects',
+    link: '#skills',
+    label: 'Skills',
   },
   {
-    link: '/about',
-    label: 'About',
+    link: '#experience',
+    label: 'Experience',
+  },
+  {
+    link: '#portfolio',
+    label: 'Portfolio',
   },
   // {
-  //   link: '/blog',
-  //   label: 'Blog',
+  //   link: '#testimonials',
+  //   label: 'Testimonials',
   // },
   {
-    link: '/contact',
+    link: '#blog',
+    label: 'Blog',
+  },
+  {
+    link: '#contact',
     label: 'Contact',
   },
 ];
 
 export const contact = [
   {
-    link: `mailto:${appData.emails.info}`,
-    label: appData.emails.info,
+    link: `mailto:${appData.emails.contact}`,
+    label: appData.emails.contact,
   },
   {
     link: `tel:${appData.phones.main}`,

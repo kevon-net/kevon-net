@@ -46,7 +46,7 @@ export const LOCAL_STORAGE_NAME = {
 };
 
 export const SCROLL_BAR = {
-  SHELL: 8,
+  SHELL: 6,
 };
 
 export const FONT_SIZE = {
