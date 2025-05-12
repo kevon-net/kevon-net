@@ -37,7 +37,7 @@ const appTheme = createTheme({
   // luminanceThreshold: 0.3,
 
   headings: {
-    fontFamily: 'var(--font-outfit-sans)',
+    fontFamily: 'var(--font-kanit-sans)',
   },
 
   defaultGradient: {
