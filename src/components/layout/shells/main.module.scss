@@ -1,0 +1,22 @@
+.link {
+  transition: 0.25s all ease;
+  color: var(--mantine-color-text) !important;
+  font-weight: 500;
+  padding-left: 0px;
+
+  @include mantine.hover {
+    padding-left: 4px;
+    color: var(--mantine-color-pri-6) !important;
+  }
+}
+
+.linkLight {
+  position: relative;
+  color: var(--mantine-color-text) !important;
+  transition: 0.25s all ease;
+  opacity: 0.66;
+
+  @include mantine.hover {
+    opacity: 1;
+  }
+}
