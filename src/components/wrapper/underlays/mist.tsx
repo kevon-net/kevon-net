@@ -1,9 +1,10 @@
 import React from 'react';
-import { alpha } from '@mantine/core';
-import classes from './glassmorphism.module.scss';
 import { images } from '@/assets/images';
 
-export default function Glassmorphism({
+import UnderlayGlass from './glass';
+import UnderlayNoise from './noise';
+
+export default function Mist({
   props,
   children,
 }: {
@@ -17,26 +18,16 @@ export default function Glassmorphism({
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+
+        position: 'relative',
+        zIndex: 0,
       }}
     >
-      <div
-        className={classes.glass}
-        style={{
-          backgroundColor: alpha(
-            'var(--mantine-color-dark-9)',
-            props?.opacity || 0.66
-          ),
-        }}
-      >
-        <div
-          className={classes.noise}
-          style={{
-            backgroundImage: `url(${images.background.noise})`,
-          }}
-        >
-          {children}
-        </div>
-      </div>
+      <UnderlayGlass opacity={props?.opacity}>
+        <UnderlayNoise>
+          <div>{children}</div>
+        </UnderlayNoise>
+      </UnderlayGlass>
     </div>
   );
 }
