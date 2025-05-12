@@ -4,7 +4,7 @@ import React from 'react';
 import { Affix } from '@mantine/core';
 import { useHeadroom, useWindowScroll } from '@mantine/hooks';
 import WrapperTransition from '@/components/wrapper/transition';
-import WrapperUnderlayGlassmorphism from '@/components/wrapper/underlays/glassmorphism';
+import UnderlayGlass from '@/components/wrapper/underlays/glass';
 
 export default function Navbar({ children }: { children: React.ReactNode }) {
   const [scroll] = useWindowScroll();
@@ -16,7 +16,7 @@ export default function Navbar({ children }: { children: React.ReactNode }) {
         transition={'slide-down'}
         mounted={scroll.y > 120 && pinned}
       >
-        <WrapperUnderlayGlassmorphism>{children}</WrapperUnderlayGlassmorphism>
+        <UnderlayGlass>{children}</UnderlayGlass>
       </WrapperTransition>
     </Affix>
   );
