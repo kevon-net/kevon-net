@@ -45,7 +45,7 @@ export default function Home() {
         options={{ alignment: 'start' }}
       />
 
-      <LayoutSection id={'cta-1'} pb={SECTION_SPACING * 2} bordered>
+      <LayoutSection id={'cta-1'} pb={SECTION_SPACING * 2}>
         <Group gap={'xs'}>
           <Button
             size="lg"
