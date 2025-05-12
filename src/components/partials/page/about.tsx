@@ -31,7 +31,7 @@ import IntroSection from '@/components/layout/intros/section';
 export default function About() {
   return (
     <>
-      <LayoutSection id={'about'} margined={SECTION_SPACING}>
+      <LayoutSection id={'about'} padded={SECTION_SPACING}>
         <IntroSection
           options={{ alignment: 'start', spacing: true }}
           props={{
@@ -137,10 +137,9 @@ export default function About() {
             </Flex>
           </GridCol>
         </Grid>
-      </LayoutSection>
 
-      <LayoutSection id={'cv'} margined={SECTION_SPACING}>
         <Flex
+          mt={SECTION_SPACING}
           direction={{ base: 'column', xs: 'row' }}
           align={{ base: 'stretch', xs: 'center' }}
           justify={{ xs: 'space-between' }}

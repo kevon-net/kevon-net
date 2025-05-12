@@ -11,7 +11,7 @@ export default function Portfolio() {
   const projects = chunkArray(portfolioProjects, 2);
 
   return (
-    <LayoutSection id={'portfolio'} margined={SECTION_SPACING}>
+    <LayoutSection id={'portfolio'} padded={SECTION_SPACING}>
       <IntroSection
         options={{ alignment: 'start', spacing: true }}
         props={{

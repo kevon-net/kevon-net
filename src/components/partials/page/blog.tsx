@@ -9,7 +9,7 @@ import IntroSection from '@/components/layout/intros/section';
 
 export default function Blog() {
   return (
-    <LayoutSection id={'blog'} margined={SECTION_SPACING}>
+    <LayoutSection id={'blog'} padded={SECTION_SPACING}>
       <IntroSection
         options={{ alignment: 'start', spacing: true }}
         props={{
