@@ -17,7 +17,7 @@ import IntroSection from '@/components/layout/intros/section';
 
 export default function Services() {
   return (
-    <LayoutSection id={'services'} margined={SECTION_SPACING}>
+    <LayoutSection id={'services'} padded={SECTION_SPACING}>
       <IntroSection
         options={{ alignment: 'start', spacing: true }}
         props={{

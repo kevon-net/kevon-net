@@ -9,7 +9,7 @@ export default function Quotes() {
   return (
     <LayoutSection
       id={'testimonials'}
-      margined={SECTION_SPACING}
+      padded={SECTION_SPACING}
       // visibleFrom="md"
     >
       <IntroSection

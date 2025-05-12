@@ -11,166 +11,98 @@ import {
   Text,
   Title,
 } from '@mantine/core';
-import TimelineCv from '@/components/common/timelines/cv';
 import IntroSection from '@/components/layout/intros/section';
-import ImageDefault from '@/components/common/images/default';
-import { timeline } from '@/data/timeline';
-import { images } from '@/assets/images';
 
 export default function Skills() {
   return (
-    <>
-      <LayoutSection id={'experience'} margined={SECTION_SPACING}>
-        <IntroSection
-          options={{ alignment: 'start', spacing: true }}
-          props={{
-            title: (
-              <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
-                Experience
-                {/* <Text component="span" inherit fw={'100'}>
-                    Kevon&apos;s
-                  </Text>{' '}
-                  History */}
-              </Title>
-            ),
-          }}
-        />
-
-        <Grid gutter={'xl'}>
-          <GridCol span={{ base: 12, md: 5 }} visibleFrom="md">
-            <Group
-              pos={'sticky'}
-              top={SECTION_SPACING}
-              style={{ overflow: 'hidden' }}
-            >
-              <ImageDefault
-                src={images.cv.light}
-                height={{ md: 360, lg: 480 }}
-                width={'100%'}
-                alt={'business card'}
-                mode="wide"
-                style={{ transform: 'scale(1.25)' }}
-              />
-            </Group>
-          </GridCol>
-
-          <GridCol span={{ base: 12, md: 7 }} pl={{ lg: 'xl' }}>
-            <Grid>
-              <GridCol span={{ base: 12, md: 12 }}>
-                <TimelineCv
-                  props={{
-                    list: timeline.education,
-                    active: timeline.education.length - 3,
-                  }}
-                />
-              </GridCol>
-
-              <GridCol span={{ base: 12, md: 12 }}>
-                <Divider my={SECTION_SPACING / 1.5} />
-              </GridCol>
-
-              <GridCol span={{ base: 12, md: 12 }}>
-                <TimelineCv
-                  props={{
-                    list: timeline.work,
-                    active: timeline.work.length - 3,
-                  }}
-                />
-              </GridCol>
-            </Grid>
-          </GridCol>
-        </Grid>
-      </LayoutSection>
-
-      <LayoutSection id={'skills'} margined={SECTION_SPACING}>
-        <IntroSection
-          options={{ alignment: 'start', spacing: true }}
-          props={{
-            title: (
-              <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
-                Skills
-                {/* <Text component="span" inherit fw={'100'}>
+    <LayoutSection id={'skills'} padded={SECTION_SPACING}>
+      <IntroSection
+        options={{ alignment: 'start', spacing: true }}
+        props={{
+          title: (
+            <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
+              Skills
+              {/* <Text component="span" inherit fw={'100'}>
                     Kevon&apos;s
                   </Text>{' '}
                   Tech Stack */}
-              </Title>
-            ),
-          }}
-        />
+            </Title>
+          ),
+        }}
+      />
 
-        <Grid gutter={'xl'}>
-          {skills.design.map((d, i) => (
-            <GridCol key={i} span={{ base: 12, xs: 6, md: 4, lg: 3 }}>
-              <Stack gap={'xs'}>
-                <Group justify="space-between">
-                  <Text>{d.title}</Text>
-                  <Text>{d.value}%</Text>
-                </Group>
+      <Grid gutter={'xl'}>
+        {skills.design.map((d, i) => (
+          <GridCol key={i} span={{ base: 12, xs: 6, md: 4, lg: 3 }}>
+            <Stack gap={'xs'}>
+              <Group justify="space-between">
+                <Text>{d.title}</Text>
+                <Text>{d.value}%</Text>
+              </Group>
 
-                <Progress
-                  radius={0}
-                  size={'xs'}
-                  value={d.value}
-                  styles={{
-                    root: {
-                      backgroundColor: 'var(--mantine-color-gray-light)',
-                    },
-                  }}
-                />
-              </Stack>
-            </GridCol>
-          ))}
-
-          <GridCol span={12}>
-            <Divider my={'xl'} variant="dashed" />
+              <Progress
+                radius={0}
+                size={'xs'}
+                value={d.value}
+                styles={{
+                  root: {
+                    backgroundColor: 'var(--mantine-color-gray-light)',
+                  },
+                }}
+              />
+            </Stack>
           </GridCol>
+        ))}
 
-          {skills.languages.map((s, i) => (
-            <GridCol key={i} span={{ base: 12, xs: 6, md: 4, lg: 3 }}>
-              <Stack gap={'xs'}>
-                <Group justify="space-between">
-                  <Text>{s.title}</Text>
-                  <Text>{s.value}%</Text>
-                </Group>
+        <GridCol span={12}>
+          <Divider my={'xl'} variant="dashed" />
+        </GridCol>
 
-                <Progress
-                  radius={0}
-                  size={'xs'}
-                  value={s.value}
-                  styles={{
-                    root: {
-                      backgroundColor: 'var(--mantine-color-gray-light)',
-                    },
-                  }}
-                />
-              </Stack>
-            </GridCol>
-          ))}
+        {skills.languages.map((s, i) => (
+          <GridCol key={i} span={{ base: 12, xs: 6, md: 4, lg: 3 }}>
+            <Stack gap={'xs'}>
+              <Group justify="space-between">
+                <Text>{s.title}</Text>
+                <Text>{s.value}%</Text>
+              </Group>
 
-          {skills.technologies.map((s, i) => (
-            <GridCol key={i} span={{ base: 12, xs: 6, md: 4, lg: 3 }}>
-              <Stack gap={'xs'}>
-                <Group justify="space-between">
-                  <Text>{s.title}</Text>
-                  <Text>{s.value}%</Text>
-                </Group>
+              <Progress
+                radius={0}
+                size={'xs'}
+                value={s.value}
+                styles={{
+                  root: {
+                    backgroundColor: 'var(--mantine-color-gray-light)',
+                  },
+                }}
+              />
+            </Stack>
+          </GridCol>
+        ))}
 
-                <Progress
-                  radius={0}
-                  size={'xs'}
-                  value={s.value}
-                  styles={{
-                    root: {
-                      backgroundColor: 'var(--mantine-color-gray-light)',
-                    },
-                  }}
-                />
-              </Stack>
-            </GridCol>
-          ))}
-        </Grid>
-      </LayoutSection>
-    </>
+        {skills.technologies.map((s, i) => (
+          <GridCol key={i} span={{ base: 12, xs: 6, md: 4, lg: 3 }}>
+            <Stack gap={'xs'}>
+              <Group justify="space-between">
+                <Text>{s.title}</Text>
+                <Text>{s.value}%</Text>
+              </Group>
+
+              <Progress
+                radius={0}
+                size={'xs'}
+                value={s.value}
+                styles={{
+                  root: {
+                    backgroundColor: 'var(--mantine-color-gray-light)',
+                  },
+                }}
+              />
+            </Stack>
+          </GridCol>
+        ))}
+      </Grid>
+    </LayoutSection>
   );
 }
 
