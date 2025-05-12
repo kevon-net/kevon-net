@@ -7,7 +7,9 @@ import appResolver from '@/styles/resolver';
 import { Notifications } from '@mantine/notifications';
 import { linkify } from '@/utilities/formatters/string';
 import appData from '@/data/app';
-import WrapperShellMain from '@/components/wrapper/shell/main';
+import LayoutShellMain from '@/components/layout/shells/main';
+import NavbarMain from '@/components/layout/navbars/main';
+import UnderlayMist from '@/components/wrapper/underlays/mist';
 
 // core styles are required for all packages
 import '@mantine/core/styles.css';
@@ -60,11 +62,13 @@ export default async function RootLayout({
           defaultColorScheme={DEFAULT_COLOR_SCHEME}
           classNamesPrefix={linkify(appData.name.app)}
         >
-          <WrapperShellMain>
-            {children}
+          <UnderlayMist>
+            <LayoutShellMain header={<NavbarMain />}>
+              {children}
+            </LayoutShellMain>
+          </UnderlayMist>
 
-            <Notifications limit={3} />
-          </WrapperShellMain>
+          <Notifications limit={3} />
         </MantineProvider>
       </body>
     </html>
