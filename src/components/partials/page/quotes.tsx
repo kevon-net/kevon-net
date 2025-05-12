@@ -1,7 +1,7 @@
 import React from 'react';
 import LayoutSection from '@/components/layout/section';
 import { SECTION_SPACING } from '@/data/constants';
-import { Text, Title } from '@mantine/core';
+import { Title } from '@mantine/core';
 import CarouselClients from '@/components/common/carousel/clients';
 import IntroSection from '@/components/layout/intros/section';
 

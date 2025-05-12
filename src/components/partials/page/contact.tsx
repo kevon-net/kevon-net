@@ -2,7 +2,7 @@ import React from 'react';
 import LayoutSection from '@/components/layout/section';
 import IntroSection from '@/components/layout/intros/section';
 import { SECTION_SPACING } from '@/data/constants';
-import { Anchor, Grid, GridCol, Text, Title } from '@mantine/core';
+import { Anchor, Grid, GridCol, Title } from '@mantine/core';
 import FormContact from '@/components/form/contact';
 import IframeContact from '@/components/common/iframes/contact';
 import { contact } from '@/data/links';
