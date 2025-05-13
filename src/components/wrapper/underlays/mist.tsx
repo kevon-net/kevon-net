@@ -18,6 +18,7 @@ export default function Mist({
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
 
         position: 'relative',
         zIndex: 0,
