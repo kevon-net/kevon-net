@@ -1,11 +1,12 @@
 import React from 'react';
 import LayoutSection from '@/components/layout/section';
 import { SECTION_SPACING } from '@/data/constants';
-import { Divider, Grid, GridCol, Stack, Text, Title } from '@mantine/core';
+import { Divider, Stack, Text, Title } from '@mantine/core';
 import ImageDefault from '@/components/common/images/default';
 import { images } from '@/assets/images';
 import { services } from '@/data/services';
 import IntroSection from '@/components/layout/intros/section';
+import CardService from '@/components/common/cards/service';
 
 export default function Services() {
   return (
@@ -62,64 +63,15 @@ export default function Services() {
       </LayoutSection>
 
       <LayoutSection id={'skills-title'}>
-        <Grid gutter={'xl'}>
-          <GridCol span={{ base: 12 }} pl={{ lg: 'xl' }}>
-            <Grid gutter={'xl'}>
-              <GridCol span={{ base: 12, sm: 6 }}>
-                <Stack gap={SECTION_SPACING} pt={{ sm: SECTION_SPACING }}>
-                  {services.map(
-                    (s, i) =>
-                      i % 2 == 0 && (
-                        <Stack key={i}>
-                          <Stack w={{ lg: '80%' }}>
-                            <Title order={2}>{s.title}</Title>
-                            <Text>{s.desc}</Text>
-                          </Stack>
+        <Stack gap={SECTION_SPACING}>
+          {services.map((s, i) => (
+            <React.Fragment key={i}>
+              {i > 0 && <Divider variant="dashed" />}
 
-                          <Stack mt={'md'}>
-                            {s.subServices.map((ss, j) => (
-                              <React.Fragment key={j}>
-                                {s.subServices.indexOf(ss) > 0 && <Divider />}
-                                <Text>{ss.title}</Text>
-                              </React.Fragment>
-                            ))}
-                          </Stack>
-                        </Stack>
-                      )
-                  )}
-                </Stack>
-              </GridCol>
-
-              <GridCol span={{ base: 12, sm: 6 }}>
-                <Stack
-                  gap={SECTION_SPACING}
-                  mt={{ base: SECTION_SPACING, sm: 0 }}
-                >
-                  {services.map(
-                    (s, i) =>
-                      i % 2 != 0 && (
-                        <Stack key={i}>
-                          <Stack w={{ lg: '80%' }}>
-                            <Title order={2}>{s.title}</Title>
-                            <Text>{s.desc}</Text>
-                          </Stack>
-
-                          <Stack mt={'md'}>
-                            {s.subServices.map((ss, j) => (
-                              <React.Fragment key={j}>
-                                {s.subServices.indexOf(ss) > 0 && <Divider />}
-                                <Text>{ss.title}</Text>
-                              </React.Fragment>
-                            ))}
-                          </Stack>
-                        </Stack>
-                      )
-                  )}
-                </Stack>
-              </GridCol>
-            </Grid>
-          </GridCol>
-        </Grid>
+              <CardService props={s} />
+            </React.Fragment>
+          ))}
+        </Stack>
       </LayoutSection>
     </LayoutSection>
   );
