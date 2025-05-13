@@ -1,6 +1,7 @@
 import React from 'react';
 import { images } from '@/assets/images';
 import { Box, BoxProps } from '@mantine/core';
+import classes from './noise.module.scss';
 
 export default function Noise({
   children,
@@ -12,6 +13,7 @@ export default function Noise({
   return (
     <div style={{ position: 'relative' }}>
       <Box
+        className={classes.noise}
         style={{
           backgroundImage: `url(${images.background.noise})`,
           position: 'absolute',
@@ -20,9 +22,6 @@ export default function Noise({
           bottom: 0,
           left: 0,
           zIndex: 3,
-          backgroundPosition: 'center',
-          backgroundRepeat: 'repeat',
-          backgroundSize: '5%',
           ...underlayStyles,
         }}
       ></Box>
