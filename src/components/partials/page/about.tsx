@@ -44,6 +44,17 @@ export default function About() {
                           History */}
               </Title>
             ),
+            desc: (
+              <Text
+                maw={{ xs: '66%', sm: '50%', md: '66%', lg: '50%', xl: '33%' }}
+              >
+                A quick look at who I am and{' '}
+                <Text component="span" inherit c={'pri'}>
+                  what drives my work
+                </Text>{' '}
+                in web development.
+              </Text>
+            ),
           }}
         />
 

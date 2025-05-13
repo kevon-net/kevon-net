@@ -12,96 +12,123 @@ import {
   Title,
 } from '@mantine/core';
 import IntroSection from '@/components/layout/intros/section';
+// import ImageDefault from '@/components/common/images/default';
+// import { images } from '@/assets/images';
 
 export default function Skills() {
   return (
-    <LayoutSection id={'skills'} padded={SECTION_SPACING}>
-      <IntroSection
-        options={{ alignment: 'start', spacing: true }}
-        props={{
-          title: (
-            <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
-              Skills
-              {/* <Text component="span" inherit fw={'100'}>
+    <LayoutSection id={'skills'} padded={SECTION_SPACING} containerized={false}>
+      <LayoutSection id={'skills-title'}>
+        <IntroSection
+          options={{ alignment: 'start', spacing: true }}
+          props={{
+            title: (
+              <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
+                Skills
+                {/* <Text component="span" inherit fw={'100'}>
                     Kevon&apos;s
                   </Text>{' '}
                   Tech Stack */}
-            </Title>
-          ),
-        }}
-      />
+              </Title>
+            ),
+            desc: (
+              <Text
+                maw={{ xs: '66%', sm: '50%', md: '66%', lg: '50%', xl: '33%' }}
+              >
+                A snapshot of the{' '}
+                <Text component="span" inherit c={'pri'}>
+                  tools, technologies, and techniques
+                </Text>{' '}
+                I work with daily.
+              </Text>
+            ),
+          }}
+        />
+      </LayoutSection>
 
-      <Grid gutter={'xl'}>
-        {skills.design.map((d, i) => (
-          <GridCol key={i} span={{ base: 12, xs: 6, xl: 4 }}>
-            <Stack gap={'xs'}>
-              <Group justify="space-between">
-                <Text>{d.title}</Text>
-                <Text>{d.value}%</Text>
-              </Group>
+      {/* <LayoutSection id={'skills-image'} containerized={false} padded>
+        <ImageDefault
+          src={images.cv.light}
+          height={{ base: 360, xs: 400, sm: 520, md: 480, lg: 560, xl: 600 }}
+          width={'100%'}
+          alt={'business card'}
+          mode="wide"
+        />
+      </LayoutSection> */}
 
-              <Progress
-                radius={0}
-                size={'xs'}
-                value={d.value}
-                styles={{
-                  root: {
-                    backgroundColor: 'var(--mantine-color-gray-light)',
-                  },
-                }}
-              />
-            </Stack>
+      <LayoutSection id={'skills-content'}>
+        <Grid gutter={'xl'}>
+          {skills.design.map((d, i) => (
+            <GridCol key={i} span={{ base: 12, xs: 6, xl: 4 }}>
+              <Stack gap={'xs'}>
+                <Group justify="space-between">
+                  <Text>{d.title}</Text>
+                  <Text>{d.value}%</Text>
+                </Group>
+
+                <Progress
+                  radius={0}
+                  size={'xs'}
+                  value={d.value}
+                  styles={{
+                    root: {
+                      backgroundColor: 'var(--mantine-color-gray-light)',
+                    },
+                  }}
+                />
+              </Stack>
+            </GridCol>
+          ))}
+
+          <GridCol span={12}>
+            <Divider my={'xl'} variant="dashed" />
           </GridCol>
-        ))}
 
-        <GridCol span={12}>
-          <Divider my={'xl'} variant="dashed" />
-        </GridCol>
+          {skills.languages.map((s, i) => (
+            <GridCol key={i} span={{ base: 12, xs: 6, xl: 4 }}>
+              <Stack gap={'xs'}>
+                <Group justify="space-between">
+                  <Text>{s.title}</Text>
+                  <Text>{s.value}%</Text>
+                </Group>
 
-        {skills.languages.map((s, i) => (
-          <GridCol key={i} span={{ base: 12, xs: 6, xl: 4 }}>
-            <Stack gap={'xs'}>
-              <Group justify="space-between">
-                <Text>{s.title}</Text>
-                <Text>{s.value}%</Text>
-              </Group>
+                <Progress
+                  radius={0}
+                  size={'xs'}
+                  value={s.value}
+                  styles={{
+                    root: {
+                      backgroundColor: 'var(--mantine-color-gray-light)',
+                    },
+                  }}
+                />
+              </Stack>
+            </GridCol>
+          ))}
 
-              <Progress
-                radius={0}
-                size={'xs'}
-                value={s.value}
-                styles={{
-                  root: {
-                    backgroundColor: 'var(--mantine-color-gray-light)',
-                  },
-                }}
-              />
-            </Stack>
-          </GridCol>
-        ))}
+          {skills.technologies.map((s, i) => (
+            <GridCol key={i} span={{ base: 12, xs: 6, xl: 4 }}>
+              <Stack gap={'xs'}>
+                <Group justify="space-between">
+                  <Text>{s.title}</Text>
+                  <Text>{s.value}%</Text>
+                </Group>
 
-        {skills.technologies.map((s, i) => (
-          <GridCol key={i} span={{ base: 12, xs: 6, xl: 4 }}>
-            <Stack gap={'xs'}>
-              <Group justify="space-between">
-                <Text>{s.title}</Text>
-                <Text>{s.value}%</Text>
-              </Group>
-
-              <Progress
-                radius={0}
-                size={'xs'}
-                value={s.value}
-                styles={{
-                  root: {
-                    backgroundColor: 'var(--mantine-color-gray-light)',
-                  },
-                }}
-              />
-            </Stack>
-          </GridCol>
-        ))}
-      </Grid>
+                <Progress
+                  radius={0}
+                  size={'xs'}
+                  value={s.value}
+                  styles={{
+                    root: {
+                      backgroundColor: 'var(--mantine-color-gray-light)',
+                    },
+                  }}
+                />
+              </Stack>
+            </GridCol>
+          ))}
+        </Grid>
+      </LayoutSection>
     </LayoutSection>
   );
 }
