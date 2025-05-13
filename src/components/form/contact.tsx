@@ -26,7 +26,7 @@ export default function Contact() {
   return (
     <form onSubmit={submit}>
       <Grid>
-        <GridCol span={{ base: 12, sm: 6 }}>
+        <GridCol span={{ base: 12, xs: 6 }}>
           <TextInput
             withAsterisk
             aria-label="Name"
@@ -38,7 +38,7 @@ export default function Contact() {
           />
         </GridCol>
 
-        <GridCol span={{ base: 12, sm: 6 }}>
+        <GridCol span={{ base: 12, xs: 6 }}>
           <TextInput
             withAsterisk
             aria-label="Email"
@@ -66,37 +66,44 @@ export default function Contact() {
         </GridCol>
 
         <GridCol span={12}>
-          <Group justify="space-between" mt={'md'}>
-            <Text>
-              <Text component="span" inherit c={'pri'}>
-                *
-              </Text>{' '}
-              Your personal information will not be disclosed to third parties.
-            </Text>
+          <Grid align="center" mt={'md'}>
+            <GridCol span={{ base: 12, xs: 9 }}>
+              <Text maw={{ xs: '80%', sm: '100%', md: '80%', lg: '100%' }}>
+                <Text component="span" inherit c={'pri'}>
+                  *
+                </Text>{' '}
+                Your personal information will not be disclosed to third
+                parties.
+              </Text>
+            </GridCol>
 
-            <Button
-              type="submit"
-              color="gray"
-              variant="light"
-              size="md"
-              radius={'xl'}
-              rightSection={
-                <ThemeIcon
-                  size={ICON_WRAPPER_SIZE / 1.25}
-                  radius={'xl'}
+            <GridCol span={{ base: 12, xs: 3 }}>
+              <Group justify="end">
+                <Button
+                  type="submit"
                   color="gray"
                   variant="light"
+                  size="md"
+                  radius={'xl'}
+                  rightSection={
+                    <ThemeIcon
+                      size={ICON_WRAPPER_SIZE / 1.25}
+                      radius={'xl'}
+                      color="gray"
+                      variant="light"
+                    >
+                      <IconArrowRight
+                        size={ICON_SIZE / 1.25}
+                        stroke={ICON_STROKE_WIDTH}
+                      />
+                    </ThemeIcon>
+                  }
                 >
-                  <IconArrowRight
-                    size={ICON_SIZE / 1.25}
-                    stroke={ICON_STROKE_WIDTH}
-                  />
-                </ThemeIcon>
-              }
-            >
-              Submit
-            </Button>
-          </Group>
+                  Submit
+                </Button>
+              </Group>
+            </GridCol>
+          </Grid>
         </GridCol>
       </Grid>
     </form>
