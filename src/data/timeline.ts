@@ -1,4 +1,5 @@
 import {
+  IconBriefcase,
   IconCertificate,
   IconCode,
   IconCodeDots,
@@ -56,7 +57,7 @@ export const timeline = {
   ],
   work: [
     {
-      icon: IconSchool,
+      icon: IconBriefcase,
       title: 'IT Intern',
       where: 'PanAfrica Media',
       when: 'Jan, 2024 - April, 2024',
@@ -80,7 +81,7 @@ export const timeline = {
       ],
     },
     {
-      icon: IconCodeDots,
+      icon: IconBriefcase,
       title: 'Freelance Developer',
       where: 'Fiverr, Upwork',
       when: 'Oct, 2024 - Current',
