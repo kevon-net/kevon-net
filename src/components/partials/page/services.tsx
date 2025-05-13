@@ -1,7 +1,7 @@
 import React from 'react';
 import LayoutSection from '@/components/layout/section';
 import { SECTION_SPACING } from '@/data/constants';
-import { Box, Divider, Grid, GridCol, Stack, Text, Title } from '@mantine/core';
+import { Divider, Grid, GridCol, Stack, Text, Title } from '@mantine/core';
 import ImageDefault from '@/components/common/images/default';
 import { images } from '@/assets/images';
 import { services } from '@/data/services';
@@ -42,16 +42,23 @@ export default function Services() {
         />
       </LayoutSection>
 
-      <LayoutSection id={'skills-image'} containerized={false} padded>
-        <Box style={{ overflow: 'hidden' }}>
-          <ImageDefault
-            src={images.card.light.potrait}
-            height={{ base: 360, xs: 400, sm: 520, md: 480, lg: 560, xl: 600 }}
-            width={'100%'}
-            alt={'business card'}
-            mode="wide"
-          />
-        </Box>
+      <LayoutSection
+        id={'skills-image'}
+        containerized={false}
+        padded
+        pr={'0.5rem'}
+      >
+        <ImageDefault
+          src={images.card.light.potrait}
+          height={{ base: 360, xs: 400, sm: 520, md: 480, lg: 560, xl: 600 }}
+          width={'100%'}
+          alt={'business card'}
+          mode="wide"
+          style={{
+            borderTopRightRadius: 'var(--mantine-radius-sm)',
+            borderBottomRightRadius: 'var(--mantine-radius-sm)',
+          }}
+        />
       </LayoutSection>
 
       <LayoutSection id={'skills-title'}>

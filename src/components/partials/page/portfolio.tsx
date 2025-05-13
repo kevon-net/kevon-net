@@ -1,10 +1,9 @@
 import React from 'react';
 import LayoutSection from '@/components/layout/section';
 import { SECTION_SPACING } from '@/data/constants';
-import { Grid, GridCol, Text, Title } from '@mantine/core';
-import CardProject from '@/components/common/cards/project';
-import { portfolioProjects } from '@/data/projects';
+import { Text, Title } from '@mantine/core';
 import IntroSection from '@/components/layout/intros/section';
+import CarouselPortfolio from '@/components/common/carousel/portfolio';
 
 export default function Portfolio() {
   return (
@@ -35,16 +34,7 @@ export default function Portfolio() {
         }}
       />
 
-      <Grid gutter={'xl'}>
-        {portfolioProjects.map(
-          (p, i) =>
-            i < 1 && (
-              <GridCol key={i} span={{ base: 12, xl: 6 }}>
-                <CardProject props={p} />
-              </GridCol>
-            )
-        )}
-      </Grid>
+      <CarouselPortfolio />
     </LayoutSection>
   );
 }
