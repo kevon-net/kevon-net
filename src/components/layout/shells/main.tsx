@@ -12,6 +12,7 @@ import {
   Flex,
   Group,
   Paper,
+  ScrollArea,
   Stack,
   Text,
   Title,
@@ -23,7 +24,7 @@ import classes from './main.module.scss';
 import { usePathname } from 'next/navigation';
 import UnderlayGlass from '@/components/wrapper/underlays/glass';
 import appData from '@/data/app';
-import { SECTION_SPACING } from '@/data/constants';
+import { SCROLL_BAR, SECTION_SPACING } from '@/data/constants';
 
 export default function Main({
   header,
@@ -77,12 +78,19 @@ export default function Main({
       </AppShellHeader>
 
       <AppShellMain>
-        <Box visibleFrom="md">{header}</Box>
+        <ScrollArea
+          h={'100vh'}
+          type={'auto'}
+          scrollbarSize={SCROLL_BAR.SHELL}
+          // scrollbars={'y'}
+        >
+          <Box visibleFrom="md">{header}</Box>
 
-        {children}
+          {children}
+        </ScrollArea>
       </AppShellMain>
 
-      <AppShellAside p={'0.5rem'} bg={'transparent'}>
+      <AppShellAside p={'0.5rem'} pl={0} bg={'transparent'}>
         <Paper
           bg={{
             base: 'var(--mantine-color-body)',
