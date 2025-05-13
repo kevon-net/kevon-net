@@ -32,7 +32,7 @@ export default function Main({
   header: React.ReactNode;
   children: React.ReactNode;
 }) {
-  const [opened, { toggle }] = useDisclosure();
+  const [opened, { toggle, close }] = useDisclosure();
   const pathname = usePathname();
 
   const burgerComponent = (
@@ -103,7 +103,7 @@ export default function Main({
               pos={'sticky'}
               top={{ base: '1.5rem', md: '1rem' }}
             >
-              {header}
+              <Box onClick={opened ? close : undefined}>{header}</Box>
 
               {burgerComponent}
             </Group>
@@ -136,6 +136,7 @@ export default function Main({
                   href={nl.link}
                   fz={{ xs: 'lg' }}
                   className={classes.link}
+                  onClick={opened ? close : undefined}
                   style={{
                     color:
                       pathname == nl.link
