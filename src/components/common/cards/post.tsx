@@ -32,7 +32,7 @@ export default function Post({ props }: { props: (typeof blog)[0] }) {
         <Anchor component={Link} href={link} className={classes.imageWrapper}>
           <ImageDefault
             src={props.cover}
-            height={{ base: 240 }}
+            height={{ base: 240, xs: 320, sm: 400, lg: 480, xl: 280 }}
             alt={props.title}
             className={classes.image}
           />

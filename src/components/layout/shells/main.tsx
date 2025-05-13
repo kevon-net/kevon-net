@@ -46,7 +46,7 @@ export default function Main({
     <AppShell
       header={{ height: { base: headerHeight, md: 0 } }}
       aside={{
-        width: { md: 440 },
+        width: { md: 360, lg: 400, xl: 440 },
         breakpoint: 'md',
         collapsed: { mobile: !opened, desktop: false },
       }}
@@ -82,7 +82,7 @@ export default function Main({
           h={'100vh'}
           type={'auto'}
           scrollbarSize={SCROLL_BAR.SHELL}
-          // scrollbars={'y'}
+          scrollbars={'y'}
         >
           <Box visibleFrom="md">{header}</Box>
 

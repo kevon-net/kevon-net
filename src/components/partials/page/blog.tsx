@@ -29,7 +29,7 @@ export default function Blog() {
         {blog.concat(blog).map(
           (p, i) =>
             i < 6 && (
-              <GridCol key={i} span={{ base: 12, md: 4 }}>
+              <GridCol key={i} span={{ base: 12, xl: 6 }}>
                 <CardPost props={p} />
               </GridCol>
             )

@@ -48,7 +48,7 @@ export default function About() {
         />
 
         <Grid gutter={'xl'}>
-          <GridCol span={{ base: 12, sm: 5, lg: 4 }}>
+          <GridCol span={{ base: 12 }}>
             <Group>
               <ImageDefault
                 src={images.me}
@@ -63,7 +63,7 @@ export default function About() {
             </Group>
           </GridCol>
 
-          <GridCol span={{ base: 12, sm: 7, lg: 8 }} pl={{ lg: 'xl' }}>
+          <GridCol span={{ base: 12 }} pl={{ lg: 'xl' }}>
             <Flex
               direction={'column'}
               gap={{ base: 'xl', lg: SECTION_SPACING / 1.5 }}
@@ -171,7 +171,7 @@ export default function About() {
                   {s.value}
                 </Text>
 
-                <Text inherit fz={{ base: 'md', sm: 'xl' }}>
+                <Text inherit fz={{ base: 'md', sm: 'xl' }} maw={{ md: '80%' }}>
                   {s.label}
                 </Text>
               </Stack>

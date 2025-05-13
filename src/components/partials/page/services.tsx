@@ -34,7 +34,7 @@ export default function Services() {
       />
 
       <Grid gutter={'xl'}>
-        <GridCol span={{ base: 12, md: 5 }} visibleFrom="md">
+        <GridCol span={{ base: 12 }} visibleFrom="md">
           <Group
             pos={'sticky'}
             top={SECTION_SPACING}
@@ -51,7 +51,7 @@ export default function Services() {
           </Group>
         </GridCol>
 
-        <GridCol span={{ base: 12, md: 7 }} pl={{ lg: 'xl' }}>
+        <GridCol span={{ base: 12 }} pl={{ lg: 'xl' }}>
           <Grid gutter={'xl'}>
             <GridCol span={{ base: 12, sm: 6 }}>
               <Stack gap={SECTION_SPACING} pt={{ sm: SECTION_SPACING }}>
