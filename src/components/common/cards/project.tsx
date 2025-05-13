@@ -85,11 +85,7 @@ export default function Project({
           <Text inherit>{getRegionalDate(props.date).date}</Text>
         </Group>
 
-        <Title
-          w={{ base: 40, xs: 80, sm: 140, md: 80, lg: 140, xl: 160 }}
-          style={{ overflowWrap: 'normal' }}
-          order={3}
-        >
+        <Title w={{ lg: '80%' }} style={{ overflowWrap: 'normal' }} order={3}>
           {props.name}
         </Title>
       </Stack>
