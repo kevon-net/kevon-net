@@ -27,7 +27,7 @@ export default function Experience() {
       />
 
       <Grid gutter={'xl'}>
-        <GridCol span={{ base: 12, md: 5 }} visibleFrom="md">
+        <GridCol span={{ base: 12 }} visibleFrom="md">
           <Group
             pos={'sticky'}
             top={SECTION_SPACING}
@@ -44,7 +44,7 @@ export default function Experience() {
           </Group>
         </GridCol>
 
-        <GridCol span={{ base: 12, md: 7 }} pl={{ lg: 'xl' }}>
+        <GridCol span={{ base: 12 }} pl={{ lg: 'xl' }}>
           <TimelineCv
             props={{
               list: timeline.work,
