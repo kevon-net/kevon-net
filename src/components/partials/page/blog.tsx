@@ -1,10 +1,9 @@
 import React from 'react';
 import LayoutSection from '@/components/layout/section';
 import { SECTION_SPACING } from '@/data/constants';
-import { Grid, GridCol, Text, Title } from '@mantine/core';
-import { blog } from '@/data/blog';
-import CardPost from '@/components/common/cards/post';
+import { Text, Title } from '@mantine/core';
 import IntroSection from '@/components/layout/intros/section';
+import CarouselBlog from '@/components/common/carousel/blog';
 
 export default function Blog() {
   return (
@@ -34,16 +33,7 @@ export default function Blog() {
         }}
       />
 
-      <Grid gutter={'xl'}>
-        {blog.concat(blog).map(
-          (p, i) =>
-            i < 1 && (
-              <GridCol key={i} span={{ base: 12, xl: 6 }}>
-                <CardPost props={p} />
-              </GridCol>
-            )
-        )}
-      </Grid>
+      <CarouselBlog />
     </LayoutSection>
   );
 }

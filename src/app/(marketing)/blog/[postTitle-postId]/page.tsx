@@ -67,7 +67,7 @@ export default async function Post({ params }: { params: typeParams }) {
           </Group>
 
           <Grid gutter={'xl'}>
-            {blog.concat(blog).map(
+            {blog.map(
               (p, i) =>
                 i < 3 && (
                   <GridCol key={i} span={{ base: 12, md: 4 }}>

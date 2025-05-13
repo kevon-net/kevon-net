@@ -42,7 +42,7 @@ export default function Project({
           <ImageDefault
             src={props.cover}
             alt={props.name}
-            height={{ base: 240, xs: 320, sm: 400, lg: 480, xl: 280 }}
+            height={{ base: 240, xs: 320, sm: 400, lg: 480 }}
             width={'100%'}
             mode="wide"
             className={classes.image}
@@ -85,7 +85,13 @@ export default function Project({
           <Text inherit>{getRegionalDate(props.date).date}</Text>
         </Group>
 
-        <Title order={3}>{props.name}</Title>
+        <Title
+          w={{ base: 40, xs: 80, sm: 140, md: 80, lg: 140, xl: 160 }}
+          style={{ overflowWrap: 'normal' }}
+          order={3}
+        >
+          {props.name}
+        </Title>
       </Stack>
     </Card>
   );
