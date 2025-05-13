@@ -40,7 +40,7 @@ export default function Cv({
             {t.when}
           </Text>
 
-          <Stack mt={'sm'} gap={3}>
+          <Stack mt={'sm'} gap={'xs'}>
             {t.accomplishments.map((a, i) => (
               <Group key={i} gap={'xs'} wrap={'nowrap'} align={'start'}>
                 <IconCircleFilled

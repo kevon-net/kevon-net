@@ -11,7 +11,11 @@ export default function Section({
   props,
   options,
 }: {
-  props: { subTitle?: string; title: string | React.ReactNode; desc?: string };
+  props: {
+    subTitle?: string;
+    title: string | React.ReactNode;
+    desc?: string | React.ReactNode;
+  };
   options?: { alignment?: 'start' | 'end'; spacing?: boolean };
 }) {
   return (
@@ -45,9 +49,12 @@ export default function Section({
               props.title
             )}
 
-            {props.desc && (
-              <Text ta={options?.alignment || 'center'}>{props.desc}</Text>
-            )}
+            {props.desc &&
+              (typeof props.desc == 'string' ? (
+                <Text ta={options?.alignment || 'center'}>{props.desc}</Text>
+              ) : (
+                props.desc
+              ))}
           </Stack>
         </LayoutSection>
       </Stack>
