@@ -8,6 +8,7 @@ import {
   Divider,
   Modal,
   Notification,
+  Text,
   virtualColor,
 } from '@mantine/core';
 import cx from 'clsx';
@@ -67,6 +68,10 @@ const appTheme = createTheme({
     Anchor: Anchor.extend({
       defaultProps: { underline: 'never' },
       classNames: classesAnchor,
+    }),
+
+    Text: Text.extend({
+      defaultProps: { fw: '300' },
     }),
 
     Container: Container.extend({
