@@ -35,7 +35,7 @@ export default function Service({ props }: { props: (typeof services)[0] }) {
             <Stack gap={0}>
               {props.list.map((li, i) => (
                 <Group wrap="nowrap" key={i}>
-                  <span>--</span>
+                  <span>-</span>
                   <Text>{li}</Text>
                 </Group>
               ))}
