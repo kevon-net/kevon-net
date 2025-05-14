@@ -33,8 +33,7 @@ export default function Home() {
           desc: (
             <Text
               w={{ base: '90%', xs: '75%', sm: '50%', lg: '33%' }}
-              fz={'md'}
-              c={'dimmed'}
+              c={'var(--mantine-color-dark-0)'}
               mt={'md'}
             >
               Welcome to my world of imagination and creativity. Let&apos;s turn

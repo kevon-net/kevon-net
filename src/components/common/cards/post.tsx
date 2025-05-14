@@ -48,7 +48,9 @@ export default function Post({ props }: { props: (typeof blog)[0] }) {
               {category?.title}
             </Anchor>
 
-            <Text inherit>{getRegionalDate(props.date).date}</Text>
+            <Text inherit fw={'normal'}>
+              {getRegionalDate(props.date).date}
+            </Text>
           </Group>
 
           <Title order={3} w={{ lg: '80%' }}>
