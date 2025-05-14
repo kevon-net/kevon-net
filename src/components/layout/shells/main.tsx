@@ -116,13 +116,7 @@ export default function Main({
             <Stack visibleFrom="md">
               <Group mt={{ base: 'xl', md: 0 }}>
                 {social.map((s, i) => (
-                  <Anchor
-                    key={i}
-                    component={Link}
-                    href={s.link}
-                    fz={'xs'}
-                    className={classes.linkLight}
-                  >
+                  <Anchor key={i} component={Link} href={s.link} fz={'xs'}>
                     {s.label}.
                   </Anchor>
                 ))}
