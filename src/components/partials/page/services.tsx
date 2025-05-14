@@ -12,7 +12,7 @@ export default function Services() {
   return (
     <LayoutSection
       id={'services'}
-      padded={SECTION_SPACING}
+      py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}
       containerized={false}
     >
       <LayoutSection id={'skills-title'}>

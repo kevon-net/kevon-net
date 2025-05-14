@@ -12,12 +12,14 @@ import {
   Title,
 } from '@mantine/core';
 import IntroSection from '@/components/layout/intros/section';
-// import ImageDefault from '@/components/common/images/default';
-// import { images } from '@/assets/images';
 
 export default function Skills() {
   return (
-    <LayoutSection id={'skills'} padded={SECTION_SPACING} containerized={false}>
+    <LayoutSection
+      id={'skills'}
+      py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}
+      containerized={false}
+    >
       <LayoutSection id={'skills-title'}>
         <IntroSection
           options={{ alignment: 'start', spacing: true }}
@@ -45,16 +47,6 @@ export default function Skills() {
           }}
         />
       </LayoutSection>
-
-      {/* <LayoutSection id={'skills-image'} containerized={false} padded>
-        <ImageDefault
-          src={images.cv.light}
-          height={{ base: 360, xs: 400, sm: 520, md: 480, lg: 560, xl: 600 }}
-          width={'100%'}
-          alt={'business card'}
-          mode="wide"
-        />
-      </LayoutSection> */}
 
       <LayoutSection id={'skills-content'}>
         <Grid gutter={'xl'}>

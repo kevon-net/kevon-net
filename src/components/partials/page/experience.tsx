@@ -12,7 +12,7 @@ export default function Experience() {
   return (
     <LayoutSection
       id={'experience'}
-      padded={SECTION_SPACING}
+      py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}
       containerized={false}
     >
       <LayoutSection id={'experience-title'}>
