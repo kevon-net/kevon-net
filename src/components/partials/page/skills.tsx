@@ -51,7 +51,7 @@ export default function Skills() {
       <LayoutSection id={'skills-content'}>
         <Grid gutter={'xl'}>
           {skills.design.map((d, i) => (
-            <GridCol key={i} span={{ base: 12, xs: 6, xl: 4 }}>
+            <GridCol key={i} span={{ base: 12, xs: 6, lg: 4 }}>
               <Stack gap={'xs'}>
                 <Group justify="space-between">
                   <Text>{d.title}</Text>
@@ -77,7 +77,7 @@ export default function Skills() {
           </GridCol>
 
           {skills.languages.map((s, i) => (
-            <GridCol key={i} span={{ base: 12, xs: 6, xl: 4 }}>
+            <GridCol key={i} span={{ base: 12, xs: 6, lg: 4 }}>
               <Stack gap={'xs'}>
                 <Group justify="space-between">
                   <Text>{s.title}</Text>
@@ -99,7 +99,7 @@ export default function Skills() {
           ))}
 
           {skills.technologies.map((s, i) => (
-            <GridCol key={i} span={{ base: 12, xs: 6, xl: 4 }}>
+            <GridCol key={i} span={{ base: 12, xs: 6, lg: 4 }}>
               <Stack gap={'xs'}>
                 <Group justify="space-between">
                   <Text>{s.title}</Text>

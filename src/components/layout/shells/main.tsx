@@ -116,7 +116,7 @@ export default function Main({
             <Stack visibleFrom="md">
               <Group mt={{ base: 'xl', md: 0 }}>
                 {social.map((s, i) => (
-                  <Anchor key={i} component={Link} href={s.link} fz={'xs'}>
+                  <Anchor key={i} component={Link} href={s.link} fz={'sm'}>
                     {s.label}.
                   </Anchor>
                 ))}
@@ -133,7 +133,7 @@ export default function Main({
                   key={i}
                   component={Link}
                   href={nl.link}
-                  fz={{ xs: 'lg' }}
+                  fz={{ xs: 'lg', md: 'xl' }}
                   className={classes.link}
                   onClick={opened ? close : undefined}
                   style={{

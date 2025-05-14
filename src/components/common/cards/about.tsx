@@ -5,7 +5,10 @@ import React from 'react';
 export default function About() {
   return (
     <Card
-      bg={'var(--mantine-color-black)'}
+      bg={{
+        base: 'var(--mantine-color-gray-light)',
+        xs: 'var(--mantine-color-black)',
+      }}
       p={{ lg: 'xl' }}
       style={{ borderTop: '4px solid var(--mantine-color-pri-6)' }}
     >

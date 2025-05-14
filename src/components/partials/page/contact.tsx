@@ -12,7 +12,8 @@ export default function Contact() {
     <>
       <LayoutSection
         id={'contact'}
-        py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}
+        pt={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}
+        pb={SECTION_SPACING}
         containerized={false}
       >
         <LayoutSection id={'contact-title'}>
@@ -60,25 +61,22 @@ export default function Contact() {
               ta={{ xs: 'center', sm: 'start', md: 'center', lg: 'start' }}
             >
               <GridCol span={{ base: 12, xs: 6, sm: 4, md: 6, lg: 4 }}>
-                <Stack align="start">
+                <Stack>
                   <Title order={3}>Email</Title>
-
                   <Anchor href={contact[0].link}>{contact[0].label}</Anchor>
                 </Stack>
               </GridCol>
 
               <GridCol span={{ base: 12, xs: 6, sm: 4, md: 6, lg: 4 }}>
-                <Stack align="start">
+                <Stack>
                   <Title order={3}>Phone</Title>
-
                   <Anchor href={contact[1].link}>{contact[1].label}</Anchor>
                 </Stack>
               </GridCol>
 
               <GridCol span={{ base: 12, xs: 6, sm: 4, md: 6, lg: 4 }}>
-                <Stack align="start">
+                <Stack>
                   <Title order={3}>Address</Title>
-
                   <Anchor href={contact[2].link}>{contact[2].label}</Anchor>
                 </Stack>
               </GridCol>
