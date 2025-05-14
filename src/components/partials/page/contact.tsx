@@ -13,7 +13,7 @@ export default function Contact() {
     <>
       <LayoutSection
         id={'contact'}
-        padded={SECTION_SPACING}
+        py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}
         containerized={false}
       >
         <LayoutSection id={'contact-title'}>
@@ -50,7 +50,7 @@ export default function Contact() {
           />
         </LayoutSection>
 
-        <LayoutSection id={'map'} containerized={false} padded>
+        <LayoutSection id={'map'} containerized={false} pr={'0.5rem'} padded>
           <IframeContact />
         </LayoutSection>
 
