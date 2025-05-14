@@ -10,7 +10,10 @@ import { images } from '@/assets/images';
 
 export default function Education() {
   return (
-    <LayoutSection id={'experience'} py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}>
+    <LayoutSection
+      id={'experience'}
+      py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}
+    >
       <IntroSection
         options={{ alignment: 'start', spacing: true }}
         props={{
@@ -34,7 +37,7 @@ export default function Education() {
             style={{ overflow: 'hidden' }}
           >
             <ImageDefault
-              src={images.cv.light}
+              src={images.cv.light.landscape}
               height={{ md: 360, lg: 480 }}
               width={'100%'}
               alt={'business card'}

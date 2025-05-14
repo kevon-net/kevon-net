@@ -1,30 +1,21 @@
 import React from 'react';
 import LayoutSection from '@/components/layout/section';
+import { SECTION_SPACING } from '@/data/constants';
 import {
-  ICON_SIZE,
-  ICON_STROKE_WIDTH,
-  ICON_WRAPPER_SIZE,
-  SECTION_SPACING,
-} from '@/data/constants';
-import {
-  IconArrowDown,
-  IconBrandGithub,
-  IconBrandLinkedin,
-} from '@tabler/icons-react';
-import {
-  ActionIcon,
-  Button,
+  Box,
   Divider,
   Flex,
+  Grid,
+  GridCol,
   Group,
   Stack,
   Text,
-  ThemeIcon,
   Title,
 } from '@mantine/core';
 import ImageDefault from '@/components/common/images/default';
 import { images } from '@/assets/images';
 import IntroSection from '@/components/layout/intros/section';
+import CardAbout from '@/components/common/cards/about';
 
 export default function About() {
   return (
@@ -93,7 +84,8 @@ export default function About() {
             bottom={{ base: -90, xs: -100 }}
             left={{
               base: '25%',
-              xs: 'var(--mantine-spacing-xl)',
+              xs: '2.5vw',
+              lg: '4vw',
             }}
           >
             <ImageDefault
@@ -116,72 +108,64 @@ export default function About() {
         </LayoutSection>
 
         <LayoutSection id={'about-content'}>
-          <Flex
-            direction={'column'}
-            gap={{ base: 'xl', lg: SECTION_SPACING / 1.5 }}
-          >
-            <Text>
-              Kevon Kibochi is a seasoned UX designer with over 8 years of
-              experience in crafting intuitive and engaging digital experiences.
-              His journey began with a background in graphic design, where he
-              discovered his passion for understanding user behavior and
-              translating it into seamless interactions.
-            </Text>
+          <Grid gutter={{ base: 'md', xs: 'xl' }}>
+            <GridCol span={{ base: 12, xs: 6 }} order={{ base: 2, xs: 2 }}>
+              <Text>
+                Hi there! I&apos;m Kevon Kibochi, a native Kenyan driven by
+                innovation and a passion for technical and creative expression.
+                My journey into the digital realm began with a deep interest in
+                the intersection of design and technology, and over the years, I
+                developed a keen interest in harnessing technology to improve
+                our digital lives.
+              </Text>
+            </GridCol>
 
-            <Flex gap={'md'} align={'center'}>
-              <Button
-                size="lg"
-                color="gray"
-                variant="light"
-                radius={'xl'}
-                rightSection={
-                  <ThemeIcon
-                    size={ICON_WRAPPER_SIZE}
-                    color="gray"
-                    variant="light"
-                    radius={'xl'}
-                  >
-                    <IconArrowDown
-                      size={ICON_SIZE}
-                      stroke={ICON_STROKE_WIDTH}
-                    />
-                  </ThemeIcon>
-                }
-              >
-                <Text component="span" inherit visibleFrom="xs">
-                  Download CV
-                </Text>
+            <GridCol span={{ base: 12, xs: 6 }} order={{ base: 1, xs: 2 }}>
+              <Box pos={{ xs: 'relative' }} h={'100%'}>
+                <Box
+                  pos={{ xs: 'absolute' }}
+                  bottom={0}
+                  w={'100%'}
+                  px={{ sm: 'md', md: 0, lg: 'xl' }}
+                >
+                  <CardAbout />
+                </Box>
+              </Box>
+            </GridCol>
 
-                <Text component="span" inherit hiddenFrom="xs">
-                  CV
-                </Text>
-              </Button>
+            <GridCol span={{ base: 12, xs: 6 }} order={3}>
+              <Text>
+                What sets me apart is not just my technical expertise but also
+                my commitment to sharing great ideas that elevate the digital
+                presence of my clients. I believe that collaboration and
+                creativity are the cornerstones of progress, and I am dedicated
+                to bringing a fresh perspective to every project I undertake.
+              </Text>
+            </GridCol>
 
-              <ActionIcon
-                size={ICON_WRAPPER_SIZE * 1.5}
-                radius={'xl'}
-                color="gray"
-                variant="light"
-              >
-                <IconBrandGithub
-                  size={ICON_SIZE * 1.25}
-                  stroke={ICON_STROKE_WIDTH}
-                />
-              </ActionIcon>
+            <GridCol span={{ base: 12, xs: 6 }} order={4}>
+              <Text>
+                My academic pursuit led me to Chuka University, where I delved
+                into the world of code and digital art. It was here that my
+                creative instincts flourished, and I discovered the power of
+                merging artistic concepts with the limitless possibilities of
+                the digital landscape.
+              </Text>
+            </GridCol>
 
-              <ActionIcon
-                size={ICON_WRAPPER_SIZE * 1.5}
-                radius={'xl'}
-                color="gray"
-                variant="light"
-              >
-                <IconBrandLinkedin
-                  size={ICON_SIZE * 1.25}
-                  stroke={ICON_STROKE_WIDTH}
-                />
-              </ActionIcon>
-            </Flex>
-          </Flex>
+            <GridCol span={12} order={5}>
+              <Text>
+                Fuelled by appreciation for both art and technology, I embarked
+                on a career path that seamlessly blends these two worlds.
+                Currently, I offer Web Design and Development and Digital
+                Marketing services to ambitious companies and individuals
+                brimming with incredible potential for success. Whether
+                it&apos;s crafting visually captivating websites or devising
+                innovative digital marketing strategies, I thrive on
+                transforming ideas into impactful digital experiences.
+              </Text>
+            </GridCol>
+          </Grid>
 
           <Flex
             mt={SECTION_SPACING}
@@ -218,7 +202,7 @@ export default function About() {
 
                   <Text
                     inherit
-                    fz={{ base: 'md', sm: 'xl' }}
+                    fz={{ base: 'md', sm: 'xl', md: 'md', lg: 'xl' }}
                     maw={{ md: '80%' }}
                   >
                     {s.label}
