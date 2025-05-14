@@ -89,8 +89,7 @@ export default function Contact() {
                     <ThemeIcon
                       size={ICON_WRAPPER_SIZE / 1.25}
                       radius={'xl'}
-                      color="gray"
-                      variant="light"
+                      color="pri"
                     >
                       <IconArrowRight
                         size={ICON_SIZE / 1.25}

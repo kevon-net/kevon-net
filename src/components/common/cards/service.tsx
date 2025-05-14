@@ -30,7 +30,7 @@ export default function Service({ props }: { props: (typeof services)[0] }) {
 
         <GridCol span={{ base: 12, sm: 7, lg: 8 }}>
           <Stack>
-            <Text>{props.desc}</Text>
+            <Text c={'var(--mantine-color-dark-0)'}>{props.desc}</Text>
 
             <Stack gap={0}>
               {props.list.map((li, i) => (

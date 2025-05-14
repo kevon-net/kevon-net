@@ -6,7 +6,6 @@ import { Anchor, Grid, GridCol, Stack, Text, Title } from '@mantine/core';
 import FormContact from '@/components/form/contact';
 import IframeContact from '@/components/common/iframes/contact';
 import { contact } from '@/data/links';
-import classes from './contact.module.scss';
 
 export default function Contact() {
   return (
@@ -61,32 +60,26 @@ export default function Contact() {
               ta={{ xs: 'center', sm: 'start', md: 'center', lg: 'start' }}
             >
               <GridCol span={{ base: 12, xs: 6, sm: 4, md: 6, lg: 4 }}>
-                <Stack>
+                <Stack align="start">
                   <Title order={3}>Email</Title>
 
-                  <Anchor href={contact[0].link} className={classes.linkLight}>
-                    {contact[0].label}
-                  </Anchor>
+                  <Anchor href={contact[0].link}>{contact[0].label}</Anchor>
                 </Stack>
               </GridCol>
 
               <GridCol span={{ base: 12, xs: 6, sm: 4, md: 6, lg: 4 }}>
-                <Stack>
+                <Stack align="start">
                   <Title order={3}>Address</Title>
 
-                  <Anchor href={contact[1].link} className={classes.linkLight}>
-                    {contact[1].label}
-                  </Anchor>
+                  <Anchor href={contact[1].link}>{contact[1].label}</Anchor>
                 </Stack>
               </GridCol>
 
               <GridCol span={{ base: 12, xs: 6, sm: 4, md: 6, lg: 4 }}>
-                <Stack>
+                <Stack align="start">
                   <Title order={3}>Phone</Title>
 
-                  <Anchor href={contact[2].link} className={classes.linkLight}>
-                    {contact[2].label}
-                  </Anchor>
+                  <Anchor href={contact[2].link}>{contact[2].label}</Anchor>
                 </Stack>
               </GridCol>
             </Grid>
