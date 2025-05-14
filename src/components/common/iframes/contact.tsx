@@ -8,7 +8,12 @@ export default function Contact({ props }: { props?: { src?: string } }) {
       component="iframe"
       src={props?.src || appData.locations.main.pin}
       title={appData.locations.main.location}
-      style={{ border: 0, minHeight: 400 }}
+      style={{
+        border: 0,
+        minHeight: 400,
+        borderTopRightRadius: 'var(--mantine-radius-sm)',
+        borderBottomRightRadius: 'var(--mantine-radius-sm)',
+      }}
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
       allowFullScreen={true}
