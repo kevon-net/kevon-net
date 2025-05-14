@@ -69,7 +69,7 @@ export default function Contact() {
 
               <GridCol span={{ base: 12, xs: 6, sm: 4, md: 6, lg: 4 }}>
                 <Stack align="start">
-                  <Title order={3}>Address</Title>
+                  <Title order={3}>Phone</Title>
 
                   <Anchor href={contact[1].link}>{contact[1].label}</Anchor>
                 </Stack>
@@ -77,7 +77,7 @@ export default function Contact() {
 
               <GridCol span={{ base: 12, xs: 6, sm: 4, md: 6, lg: 4 }}>
                 <Stack align="start">
-                  <Title order={3}>Phone</Title>
+                  <Title order={3}>Address</Title>
 
                   <Anchor href={contact[2].link}>{contact[2].label}</Anchor>
                 </Stack>
