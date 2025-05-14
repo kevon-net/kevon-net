@@ -31,7 +31,10 @@ import IntroSection from '@/components/layout/intros/section';
 export default function About() {
   return (
     <>
-      <LayoutSection id={'about'} padded={SECTION_SPACING}>
+      <LayoutSection
+        id={'about'}
+        py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}
+      >
         <IntroSection
           options={{ alignment: 'start', spacing: true }}
           props={{

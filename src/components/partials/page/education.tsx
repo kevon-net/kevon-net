@@ -10,7 +10,7 @@ import { images } from '@/assets/images';
 
 export default function Education() {
   return (
-    <LayoutSection id={'experience'} padded={SECTION_SPACING}>
+    <LayoutSection id={'experience'} py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}>
       <IntroSection
         options={{ alignment: 'start', spacing: true }}
         props={{

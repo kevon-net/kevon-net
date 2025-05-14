@@ -7,7 +7,7 @@ import CarouselBlog from '@/components/common/carousel/blog';
 
 export default function Blog() {
   return (
-    <LayoutSection id={'blog'} padded={SECTION_SPACING}>
+    <LayoutSection id={'blog'} py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}>
       <IntroSection
         options={{ alignment: 'start', spacing: true }}
         props={{
