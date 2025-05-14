@@ -4,7 +4,7 @@ import React from 'react';
 import ImageDefault from '@/components/common/images/default';
 import { images } from '@/assets/images';
 import appData from '@/data/app';
-import { Anchor, Box } from '@mantine/core';
+import { Box } from '@mantine/core';
 import LayoutSection from '../section';
 import Link from 'next/link';
 import { SECTION_SPACING } from '@/data/constants';
@@ -16,8 +16,7 @@ export default function Main() {
   const [scroll, scrollTo] = useWindowScroll();
 
   const contents = (
-    <Anchor
-      component={Link}
+    <Link
       href={'/'}
       onClick={(e) => {
         if (pathname != '/') return;
@@ -32,7 +31,7 @@ export default function Main() {
         width={24}
         fit="contain"
       />
-    </Anchor>
+    </Link>
   );
 
   return (

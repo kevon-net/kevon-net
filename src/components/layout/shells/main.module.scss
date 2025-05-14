@@ -7,14 +7,3 @@
     padding-left: 4px;
   }
 }
-
-.linkLight {
-  position: relative;
-  transition: 0.25s all ease;
-  opacity: 0.66;
-
-  @include mantine.hover {
-    opacity: 1;
-    color: var(--mantine-color-text) !important;
-  }
-}
