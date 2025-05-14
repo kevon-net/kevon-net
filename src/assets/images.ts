@@ -14,17 +14,23 @@ export const images = {
   card: {
     dark: {
       landscape: `${baseUrl}/card/dark.webp`,
-      potrait: `${baseUrl}/card/dark2.webp`,
+      potrait: `${baseUrl}/card/dark-potrait.webp`,
     },
     light: {
       landscape: `${baseUrl}/card/light.webp`,
-      potrait: `${baseUrl}/card/light2.webp`,
+      potrait: `${baseUrl}/card/light-potrait.webp`,
     },
   },
 
   cv: {
-    dark: `${baseUrl}/cv/dark.webp`,
-    light: `${baseUrl}/cv/light.webp`,
+    dark: {
+      landscape: `${baseUrl}/cv/dark.webp`,
+      potrait: `${baseUrl}/cv/dark-potrait.webp`,
+    },
+    light: {
+      landscape: `${baseUrl}/cv/light.webp`,
+      potrait: `${baseUrl}/cv/light-potrait.webp`,
+    },
   },
 
   background: {

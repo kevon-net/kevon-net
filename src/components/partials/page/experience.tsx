@@ -56,7 +56,7 @@ export default function Experience() {
         pr={'0.5rem'}
       >
         <ImageDefault
-          src={images.cv.light}
+          src={images.cv.light.landscape}
           height={{ base: 360, xs: 400, sm: 520, md: 480, lg: 560, xl: 600 }}
           width={'100%'}
           alt={'business card'}
