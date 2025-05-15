@@ -42,7 +42,7 @@ export default function Project({
           <ImageDefault
             src={props.cover}
             alt={props.name}
-            height={{ base: 240, xs: 320, sm: 400, lg: 480 }}
+            height={{ base: 280, xs: 360, sm: 480, md: 400, lg: 480, xl: 520 }}
             width={'100%'}
             mode="wide"
             className={classes.image}

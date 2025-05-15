@@ -3,7 +3,6 @@ import LayoutPage from '@/components/layout/page';
 import { typeParams } from '../layout';
 import { extractUuidFromParam } from '@/utilities/helpers/string';
 import { redirect } from 'next/navigation';
-import { blog } from '@/data/blog';
 import IntroPage from '@/components/layout/intros/page';
 import LayoutSection from '@/components/layout/section';
 import {
@@ -12,22 +11,22 @@ import {
   ICON_WRAPPER_SIZE,
   SECTION_SPACING,
 } from '@/data/constants';
-import {
-  Button,
-  Grid,
-  GridCol,
-  Group,
-  Stack,
-  ThemeIcon,
-  Title,
-} from '@mantine/core';
-import CardPost from '@/components/common/cards/post';
+import { Button, Group, Stack, ThemeIcon, Title } from '@mantine/core';
 import { IconArrowRight } from '@tabler/icons-react';
+import { PostGet } from '@/types/models/post';
+import CarouselBlog from '@/components/common/carousel/blog';
+import Link from 'next/link';
+import ImageDefault from '@/components/common/images/default';
+import { createClient } from '@/libraries/supabase/server';
 
 export default async function Post({ params }: { params: typeParams }) {
   const paramValues = (await params)['postTitle-postId'];
   const postId = extractUuidFromParam(paramValues);
-  const post = blog.find((p) => p.id == postId);
+  const supabase = await createClient();
+  const { data: posts, error } = await supabase.from('posts').select();
+  if (error) throw new Error('Could not fetch posts');
+
+  const post: PostGet | undefined = posts.find((p) => p.id == postId);
 
   if (!post) redirect('/404');
 
@@ -35,11 +34,27 @@ export default async function Post({ params }: { params: typeParams }) {
     <LayoutPage>
       <IntroPage props={{ title: post?.title }} />
 
-      <LayoutSection id="content" margined={SECTION_SPACING * 1.5}>
-        {post.content}
+      <LayoutSection id="media" containerized={false} pr={'0.5rem'}>
+        <ImageDefault
+          src={post.cover}
+          alt={post.title}
+          height={{ base: 280, xs: 360, sm: 480, md: 400, lg: 480, xl: 520 }}
+          width={'100%'}
+          mode="wide"
+          style={{
+            borderTopRightRadius: 'var(--mantine-radius-sm)',
+            borderBottomRightRadius: 'var(--mantine-radius-sm)',
+          }}
+        />
       </LayoutSection>
 
-      <LayoutSection id="similar" margined={SECTION_SPACING * 1.5}>
+      <LayoutSection id="content">
+        <Stack>
+          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        </Stack>
+      </LayoutSection>
+
+      <LayoutSection id="similar" padded={SECTION_SPACING * 1.5}>
         <Stack gap={SECTION_SPACING}>
           <Group justify="space-between">
             <Title order={2} fz={'var(--mantine-h1-font-size)'} lh={1}>
@@ -51,6 +66,8 @@ export default async function Post({ params }: { params: typeParams }) {
               color="gray"
               variant="light"
               radius={'xl'}
+              component={Link}
+              href={'/blog'}
               rightSection={
                 <ThemeIcon
                   size={ICON_WRAPPER_SIZE}
@@ -66,16 +83,11 @@ export default async function Post({ params }: { params: typeParams }) {
             </Button>
           </Group>
 
-          <Grid gutter={'xl'}>
-            {blog.map(
-              (p, i) =>
-                i < 3 && (
-                  <GridCol key={i} span={{ base: 12, md: 4 }}>
-                    <CardPost props={p} />
-                  </GridCol>
-                )
-            )}
-          </Grid>
+          {posts != null && (
+            <CarouselBlog
+              posts={posts.filter((p) => p.id != postId) as PostGet[]}
+            />
+          )}
         </Stack>
       </LayoutSection>
     </LayoutPage>

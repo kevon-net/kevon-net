@@ -74,3 +74,25 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--mantine-color-pri-9);
 }
+
+// post styles
+.post-article p {
+  margin-top: var(--mantine-spacing-md);
+  font-weight: 300;
+}
+
+.post-article ul {
+  padding-left: 3rem;
+  margin-top: var(--mantine-spacing-md);
+}
+
+.post-article li {
+  margin-top: var(--mantine-spacing-xs);
+}
+
+.post-article pre {
+  margin: var(--mantine-spacing-lg) 0;
+  background-color: var(--mantine-color-gray-light);
+  border: 1.5px solod var(--mantine-color-gray-light);
+  border-radius: var(--mantine-radius-sm);
+}

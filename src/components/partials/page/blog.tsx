@@ -1,13 +1,27 @@
+'use client';
+
 import React from 'react';
 import LayoutSection from '@/components/layout/section';
 import { SECTION_SPACING } from '@/data/constants';
-import { Text, Title } from '@mantine/core';
+import { Loader, Text, Title } from '@mantine/core';
 import IntroSection from '@/components/layout/intros/section';
 import CarouselBlog from '@/components/common/carousel/blog';
+import { useSupabaseQuery } from '@/hooks/fetch';
+import { PostGet } from '@/types/models/post';
 
 export default function Blog() {
+  const { data: posts, loading, error } = useSupabaseQuery('posts');
+
+  if (error) {
+    console.error(error);
+    return <Text>Failed to load posts.</Text>;
+  }
+
   return (
-    <LayoutSection id={'blog'} py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}>
+    <LayoutSection
+      id={'blog'}
+      py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}
+    >
       <IntroSection
         options={{ alignment: 'start', spacing: true }}
         props={{
@@ -33,7 +47,11 @@ export default function Blog() {
         }}
       />
 
-      <CarouselBlog />
+      {loading ? (
+        <Loader color="var(--mantine-color-gray-light)" type="dots" />
+      ) : (
+        posts != null && <CarouselBlog posts={posts as PostGet[]} />
+      )}
     </LayoutSection>
   );
 }

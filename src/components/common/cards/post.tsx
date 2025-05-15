@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Anchor,
   Button,
@@ -10,7 +12,6 @@ import {
 } from '@mantine/core';
 import React from 'react';
 import ImageDefault from '../images/default';
-import { blog, categories } from '@/data/blog';
 import { getRegionalDate } from '@/utilities/formatters/date';
 import classes from './post.module.scss';
 import {
@@ -21,9 +22,20 @@ import {
 import { IconArrowRight } from '@tabler/icons-react';
 import Link from 'next/link';
 import { linkify } from '@/utilities/formatters/string';
+import { PostGet } from '@/types/models/post';
+import { useSupabaseQuery } from '@/hooks/fetch';
+import { CategoryGet } from '@/types/models/category';
 
-export default function Post({ props }: { props: (typeof blog)[0] }) {
-  const category = categories.find((c) => c.id == props.categoryId);
+export default function Post({ props }: { props: PostGet }) {
+  const { data: categories, error } = useSupabaseQuery('categories');
+
+  if (error) throw new Error('Could not fetch categories');
+  if (categories == null) return;
+
+  const category = (categories as CategoryGet[]).find(
+    (c) => c.id == props.category_id
+  );
+
   const link = `/blog/${linkify(props.title)}-${props.id}`;
 
   return (
@@ -32,7 +44,7 @@ export default function Post({ props }: { props: (typeof blog)[0] }) {
         <Anchor component={Link} href={link} className={classes.imageWrapper}>
           <ImageDefault
             src={props.cover}
-            height={{ base: 240, xs: 320, sm: 400, lg: 480 }}
+            height={{ base: 280, xs: 360, sm: 480, md: 400, lg: 480, xl: 520 }}
             alt={props.title}
             className={classes.image}
           />
@@ -49,13 +61,11 @@ export default function Post({ props }: { props: (typeof blog)[0] }) {
             </Anchor>
 
             <Text inherit fw={'normal'}>
-              {getRegionalDate(props.date).date}
+              {getRegionalDate(props.created_at).date}
             </Text>
           </Group>
 
-          <Title order={3} w={{ lg: '80%' }}>
-            {props.title}
-          </Title>
+          <Title order={3}>{props.title}</Title>
 
           <Text lineClamp={3}>{props.excerpt}</Text>
         </Stack>
