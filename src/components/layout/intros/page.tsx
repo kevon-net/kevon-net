@@ -88,15 +88,15 @@ export default function Page({
             options?.glitch ? (
               <GlitchMain
                 props={{ text: props.title }}
-                ta={options?.alignment == 'start' ? 'start' : 'center'}
+                ta={options?.alignment || 'start'}
                 fw={'bold'}
-                fz={options?.titleFontSize || '4rem'}
+                fz={{ base: '1.5rem', xs: '2rem' }}
               />
             ) : (
               <Title
                 order={1}
-                ta={options?.alignment == 'start' ? 'start' : 'center'}
-                fz={options?.titleFontSize || '4rem'}
+                ta={options?.alignment || 'start'}
+                fz={{ base: '1.5rem', xs: '2rem' }}
               >
                 {props.title}
               </Title>
@@ -106,10 +106,11 @@ export default function Page({
           )}
 
           {props.desc &&
-            (typeof props.title == 'string' ? (
+            (typeof props.desc == 'string' ? (
               <Text
-                ta={options?.alignment == 'start' ? 'start' : 'center'}
-                fz={options?.titleFontSize || 'xl'}
+                ta={options?.alignment || 'start'}
+                fz={options?.titleFontSize || 'md'}
+                w={{ md: '75%', lg: '60%', xl: '50%' }}
               >
                 {props.desc}
               </Text>
