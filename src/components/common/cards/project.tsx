@@ -18,10 +18,8 @@ import { linkify } from '@/utilities/formatters/string';
 
 export default function Project({
   props,
-  options,
 }: {
   props: (typeof portfolioProjects)[0];
-  options?: { orientation?: 'vertical' | 'horizontal' };
 }) {
   const category =
     categories.find((c) => c.id == props.categoryId) || categories[0];
@@ -44,11 +42,7 @@ export default function Project({
           <ImageDefault
             src={props.cover}
             alt={props.name}
-            height={{
-              base: 240,
-              md: options?.orientation == 'vertical' ? 480 : 380,
-              lg: options?.orientation == 'vertical' ? 640 : 380,
-            }}
+            height={{ base: 240, xs: 320, sm: 400, lg: 480 }}
             width={'100%'}
             mode="wide"
             className={classes.image}
@@ -57,10 +51,7 @@ export default function Project({
           <Box className={classes.overlay} p={'md'}>
             <Flex
               gap={'xs'}
-              direction={{
-                base: 'column',
-                md: options?.orientation == 'vertical' ? 'column' : 'row',
-              }}
+              direction={{ base: 'column', xs: 'row', xl: 'column' }}
               align={'end'}
               justify={'end'}
               h={'100%'}
@@ -94,7 +85,9 @@ export default function Project({
           <Text inherit>{getRegionalDate(props.date).date}</Text>
         </Group>
 
-        <Title order={3}>{props.name}</Title>
+        <Title w={{ lg: '80%' }} style={{ overflowWrap: 'normal' }} order={3}>
+          {props.name}
+        </Title>
       </Stack>
     </Card>
   );

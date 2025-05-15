@@ -46,7 +46,7 @@ export default function Main({
     <AppShell
       header={{ height: { base: headerHeight, md: 0 } }}
       aside={{
-        width: { md: 440 },
+        width: { md: 360, lg: 400, xl: 440 },
         breakpoint: 'md',
         collapsed: { mobile: !opened, desktop: false },
       }}
@@ -90,7 +90,12 @@ export default function Main({
         </ScrollArea>
       </AppShellMain>
 
-      <AppShellAside p={'0.5rem'} pl={0} bg={'transparent'}>
+      <AppShellAside
+        py={'0.5rem'}
+        pr={'0.5rem'}
+        pl={{ base: '0.5rem', md: 0 }}
+        bg={'transparent'}
+      >
         <Paper
           bg={{
             base: 'var(--mantine-color-body)',
@@ -119,13 +124,7 @@ export default function Main({
             <Stack visibleFrom="md">
               <Group mt={{ base: 'xl', md: 0 }}>
                 {social.map((s, i) => (
-                  <Anchor
-                    key={i}
-                    component={Link}
-                    href={s.link}
-                    fz={'xs'}
-                    className={classes.linkLight}
-                  >
+                  <Anchor key={i} component={Link} href={s.link} fz={'sm'}>
                     {s.label}.
                   </Anchor>
                 ))}
@@ -142,7 +141,7 @@ export default function Main({
                   key={i}
                   component={Link}
                   href={nl.link}
-                  fz={{ xs: 'lg' }}
+                  fz={{ xs: 'lg', md: 'xl' }}
                   className={classes.link}
                   onClick={opened ? close : undefined}
                   style={{

@@ -9,8 +9,7 @@ export default function Quotes() {
   return (
     <LayoutSection
       id={'testimonials'}
-      padded={SECTION_SPACING}
-      // visibleFrom="md"
+      py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}
     >
       <IntroSection
         options={{ alignment: 'start', spacing: true }}

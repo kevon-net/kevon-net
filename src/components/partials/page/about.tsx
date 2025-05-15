@@ -1,19 +1,8 @@
 import React from 'react';
 import LayoutSection from '@/components/layout/section';
+import { SECTION_SPACING } from '@/data/constants';
 import {
-  ICON_SIZE,
-  ICON_STROKE_WIDTH,
-  ICON_WRAPPER_SIZE,
-  SECTION_SPACING,
-} from '@/data/constants';
-import {
-  IconArrowDown,
-  IconBrandGithub,
-  IconBrandLinkedin,
-} from '@tabler/icons-react';
-import {
-  ActionIcon,
-  Button,
+  Box,
   Divider,
   Flex,
   Grid,
@@ -21,163 +10,208 @@ import {
   Group,
   Stack,
   Text,
-  ThemeIcon,
   Title,
 } from '@mantine/core';
 import ImageDefault from '@/components/common/images/default';
 import { images } from '@/assets/images';
 import IntroSection from '@/components/layout/intros/section';
+import CardAbout from '@/components/common/cards/about';
 
 export default function About() {
   return (
     <>
-      <LayoutSection id={'about'} padded={SECTION_SPACING}>
-        <IntroSection
-          options={{ alignment: 'start', spacing: true }}
-          props={{
-            title: (
-              <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
-                About
-                {/* <Text component="span" inherit fw={'100'}>
+      <LayoutSection
+        id={'about'}
+        py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}
+        containerized={false}
+      >
+        <LayoutSection id={'about-title'}>
+          <IntroSection
+            options={{ alignment: 'start' }}
+            props={{
+              title: (
+                <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
+                  About
+                  {/* <Text component="span" inherit fw={'100'}>
                             Kevon&apos;s
                           </Text>{' '}
                           History */}
-              </Title>
-            ),
-          }}
-        />
-
-        <Grid gutter={'xl'}>
-          <GridCol span={{ base: 12, sm: 5, lg: 4 }}>
-            <Group>
-              <ImageDefault
-                src={images.me}
-                alt={'kevon'}
-                height={{ base: 320, sm: 280, md: 360, lg: 400 }}
-                width={{ base: '100%', xs: 360, sm: '100%' }}
-                mode="wide"
-                style={{
-                  border: '8px solid var(--mantine-color-gray-light)',
-                }}
-              />
-            </Group>
-          </GridCol>
-
-          <GridCol span={{ base: 12, sm: 7, lg: 8 }} pl={{ lg: 'xl' }}>
-            <Flex
-              direction={'column'}
-              gap={{ base: 'xl', lg: SECTION_SPACING / 1.5 }}
-            >
-              <Text
-                fz={{
-                  base: 'md',
-                  md: 'var(--mantine-h3-font-size)',
-                  lg: 'var(--mantine-h2-font-size)',
-                }}
-              >
-                Kevon Kibochi is a seasoned UX designer with over 8 years of
-                experience in crafting intuitive and engaging digital
-                experiences. His journey began with a background in graphic
-                design, where he discovered his passion for understanding user
-                behavior and translating it into seamless interactions.
-              </Text>
-
-              <Flex gap={'md'} align={'center'}>
-                <Button
-                  size="lg"
-                  color="gray"
-                  variant="light"
-                  radius={'xl'}
-                  rightSection={
-                    <ThemeIcon
-                      size={ICON_WRAPPER_SIZE}
-                      color="gray"
-                      variant="light"
-                      radius={'xl'}
-                    >
-                      <IconArrowDown
-                        size={ICON_SIZE}
-                        stroke={ICON_STROKE_WIDTH}
-                      />
-                    </ThemeIcon>
-                  }
-                >
-                  <Text component="span" inherit visibleFrom="xs">
-                    Download CV
-                  </Text>
-                  <Text component="span" inherit hiddenFrom="xs">
-                    CV
-                  </Text>
-                </Button>
-
-                <ActionIcon
-                  size={ICON_WRAPPER_SIZE * 1.5}
-                  radius={'xl'}
-                  color="gray"
-                  variant="light"
-                >
-                  <IconBrandGithub
-                    size={ICON_SIZE * 1.25}
-                    stroke={ICON_STROKE_WIDTH}
-                  />
-                </ActionIcon>
-
-                <ActionIcon
-                  size={ICON_WRAPPER_SIZE * 1.5}
-                  radius={'xl'}
-                  color="gray"
-                  variant="light"
-                >
-                  <IconBrandLinkedin
-                    size={ICON_SIZE * 1.25}
-                    stroke={ICON_STROKE_WIDTH}
-                  />
-                </ActionIcon>
-              </Flex>
-            </Flex>
-          </GridCol>
-        </Grid>
-
-        <Flex
-          mt={SECTION_SPACING}
-          direction={{ base: 'column', xs: 'row' }}
-          align={{ base: 'stretch', xs: 'center' }}
-          justify={{ xs: 'space-between' }}
-          wrap="nowrap"
-        >
-          {stats.map((s, i) => (
-            <React.Fragment key={i}>
-              {stats.indexOf(s) > 0 && (
-                <Divider orientation="vertical" visibleFrom="xs" />
-              )}
-              {stats.indexOf(s) > 0 && (
-                <Divider orientation="horizontal" hiddenFrom="xs" my={'xl'} />
-              )}
-
-              <Stack
-                key={i}
-                ta={'center'}
-                align="center"
-                gap={'xs'}
-                w={{ xs: `${100 / stats.length}%` }}
-              >
+                </Title>
+              ),
+              desc: (
                 <Text
-                  inherit
-                  component="span"
-                  fz={{ base: '2rem', sm: '3rem' }}
-                  fw={'bold'}
-                  lh={1}
+                  maw={{
+                    xs: '66%',
+                    sm: '50%',
+                    md: '66%',
+                    lg: '50%',
+                    xl: '33%',
+                  }}
                 >
-                  {s.value}
+                  A quick look at who I am and{' '}
+                  <Text component="span" inherit c={'pri'}>
+                    what drives my work
+                  </Text>{' '}
+                  in web development.
                 </Text>
+              ),
+            }}
+          />
+        </LayoutSection>
 
-                <Text inherit fz={{ base: 'md', sm: 'xl' }}>
-                  {s.label}
-                </Text>
-              </Stack>
-            </React.Fragment>
-          ))}
-        </Flex>
+        <LayoutSection
+          id={'about-image'}
+          containerized={false}
+          mt={SECTION_SPACING}
+          mb={SECTION_SPACING * 2.5}
+          pr={'0.5rem'}
+          pos={'relative'}
+        >
+          <ImageDefault
+            src={images.background.image3lv7ey}
+            height={{ base: 180, xs: 200, sm: 260, md: 240, lg: 280, xl: 300 }}
+            width={'100%'}
+            alt={'business card'}
+            mode="wide"
+            style={{
+              borderTopRightRadius: 'var(--mantine-radius-sm)',
+              borderBottomRightRadius: 'var(--mantine-radius-sm)',
+            }}
+          />
+
+          <Group
+            pos={'absolute'}
+            bottom={{ base: -90, xs: -100 }}
+            left={{
+              base: '25%',
+              xs: '2.5vw',
+              lg: '4vw',
+            }}
+          >
+            <ImageDefault
+              src={images.me}
+              alt={'kevon'}
+              height={{
+                base: 180,
+                xs: 200,
+                sm: 260,
+                md: 240,
+              }}
+              width={{ base: 180, xs: 200, sm: 260, md: 240 }}
+              mode="wide"
+              radius={'50%'}
+              style={{
+                border: '8px solid var(--mantine-color-gray-light)',
+              }}
+            />
+          </Group>
+        </LayoutSection>
+
+        <LayoutSection id={'about-content'}>
+          <Grid gutter={{ base: 'md', xs: 'xl' }}>
+            <GridCol span={{ base: 12, xs: 6 }} order={{ base: 2, xs: 2 }}>
+              <Text>
+                Hi there! I&apos;m Kevon Kibochi, a native Kenyan driven by
+                innovation and a passion for technical and creative expression.
+                My journey into the digital realm began with a deep interest in
+                the intersection of design and technology, and over the years, I
+                developed a keen interest in harnessing technology to improve
+                our digital lives.
+              </Text>
+            </GridCol>
+
+            <GridCol span={{ base: 12, xs: 6 }} order={{ base: 1, xs: 2 }}>
+              <Box pos={{ xs: 'relative' }} h={'100%'}>
+                <Box
+                  pos={{ xs: 'absolute' }}
+                  bottom={0}
+                  w={'100%'}
+                  px={{ sm: 'md', md: 0, lg: 'xl' }}
+                >
+                  <CardAbout />
+                </Box>
+              </Box>
+            </GridCol>
+
+            <GridCol span={{ base: 12, xs: 6 }} order={3}>
+              <Text>
+                What sets me apart is not just my technical expertise but also
+                my commitment to sharing great ideas that elevate the digital
+                presence of my clients. I believe that collaboration and
+                creativity are the cornerstones of progress, and I am dedicated
+                to bringing a fresh perspective to every project I undertake.
+              </Text>
+            </GridCol>
+
+            <GridCol span={{ base: 12, xs: 6 }} order={4}>
+              <Text>
+                My academic pursuit led me to Chuka University, where I delved
+                into the world of code and digital art. It was here that my
+                creative instincts flourished, and I discovered the power of
+                merging artistic concepts with the limitless possibilities of
+                the digital landscape.
+              </Text>
+            </GridCol>
+
+            <GridCol span={12} order={5}>
+              <Text>
+                Fuelled by appreciation for both art and technology, I embarked
+                on a career path that seamlessly blends these two worlds.
+                Currently, I offer Web Design and Development and Digital
+                Marketing services to ambitious companies and individuals
+                brimming with incredible potential for success. Whether
+                it&apos;s crafting visually captivating websites or devising
+                innovative digital marketing strategies, I thrive on
+                transforming ideas into impactful digital experiences.
+              </Text>
+            </GridCol>
+          </Grid>
+
+          <Flex
+            mt={SECTION_SPACING}
+            direction={{ base: 'column', xs: 'row' }}
+            align={{ base: 'stretch', xs: 'center' }}
+            justify={{ xs: 'space-between' }}
+            wrap="nowrap"
+          >
+            {stats.map((s, i) => (
+              <React.Fragment key={i}>
+                {stats.indexOf(s) > 0 && (
+                  <Divider orientation="vertical" visibleFrom="xs" />
+                )}
+                {stats.indexOf(s) > 0 && (
+                  <Divider orientation="horizontal" hiddenFrom="xs" my={'xl'} />
+                )}
+
+                <Stack
+                  key={i}
+                  ta={'center'}
+                  align="center"
+                  gap={'xs'}
+                  w={{ xs: `${100 / stats.length}%` }}
+                >
+                  <Text
+                    inherit
+                    component="span"
+                    fz={{ base: '2rem', sm: '3rem' }}
+                    fw={'bold'}
+                    lh={1}
+                  >
+                    {s.value}
+                  </Text>
+
+                  <Text
+                    inherit
+                    fz={{ base: 'md', sm: 'xl', md: 'md', lg: 'xl' }}
+                    maw={{ md: '80%' }}
+                  >
+                    {s.label}
+                  </Text>
+                </Stack>
+              </React.Fragment>
+            ))}
+          </Flex>
+        </LayoutSection>
       </LayoutSection>
     </>
   );

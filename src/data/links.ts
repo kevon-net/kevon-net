@@ -48,6 +48,10 @@ export const contact = [
     link: `tel:${appData.phones.main}`,
     label: appData.phones.main,
   },
+  {
+    link: appData.locations.main.pin,
+    label: appData.locations.main.location,
+  },
 ];
 
 export const social = [

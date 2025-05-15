@@ -32,7 +32,7 @@ export default function Post({ props }: { props: (typeof blog)[0] }) {
         <Anchor component={Link} href={link} className={classes.imageWrapper}>
           <ImageDefault
             src={props.cover}
-            height={{ base: 240 }}
+            height={{ base: 240, xs: 320, sm: 400, lg: 480 }}
             alt={props.title}
             className={classes.image}
           />
@@ -48,7 +48,9 @@ export default function Post({ props }: { props: (typeof blog)[0] }) {
               {category?.title}
             </Anchor>
 
-            <Text inherit>{getRegionalDate(props.date).date}</Text>
+            <Text inherit fw={'normal'}>
+              {getRegionalDate(props.date).date}
+            </Text>
           </Group>
 
           <Title order={3} w={{ lg: '80%' }}>

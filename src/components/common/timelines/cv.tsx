@@ -34,13 +34,13 @@ export default function Cv({
               : undefined
           }
         >
-          <Text c="dimmed">{t.where}</Text>
+          <Text c="var(--mantine-color-dark-0)">{t.where}</Text>
 
           <Text fz="sm" mt={4}>
             {t.when}
           </Text>
 
-          <Stack mt={'sm'} gap={3}>
+          <Stack mt={'sm'} gap={'xs'}>
             {t.accomplishments.map((a, i) => (
               <Group key={i} gap={'xs'} wrap={'nowrap'} align={'start'}>
                 <IconCircleFilled

@@ -7,7 +7,7 @@ import PartialPageSkills from '@/components/partials/page/skills';
 import PartialPageExperience from '@/components/partials/page/experience';
 // import PartialPageEducation from '@/components/partials/page/education';
 import PartialPagePortfolio from '@/components/partials/page/portfolio';
-import PartialPageQuotes from '@/components/partials/page/quotes';
+// import PartialPageQuotes from '@/components/partials/page/quotes';
 import PartialPageBlog from '@/components/partials/page/blog';
 import PartialPageContact from '@/components/partials/page/contact';
 import LayoutHeroHome from '@/components/layout/heros/home';
@@ -56,11 +56,11 @@ export default function Home() {
 
       <PartialPagePortfolio />
 
-      <LayoutSection id={'projects-testimonials'}>
+      {/* <LayoutSection id={'projects-testimonials'}>
         <Divider />
-      </LayoutSection>
+      </LayoutSection> */}
 
-      <PartialPageQuotes />
+      {/* <PartialPageQuotes /> */}
 
       <LayoutSection id={'testimonials-blog'}>
         <Divider />
