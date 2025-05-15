@@ -8,9 +8,9 @@ import classes from './blog.module.scss';
 import { Group } from '@mantine/core';
 import { SECTION_SPACING } from '@/data/constants';
 import CardPost from '../cards/post';
-import { blog } from '@/data/blog';
+import { PostGet } from '@/types/models/post';
 
-export default function Blog() {
+export default function Blog({ posts }: { posts: PostGet[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 5000 }),
     Fade(),
@@ -50,7 +50,7 @@ export default function Blog() {
     <div className={classes.embla}>
       <div className={classes.embla__viewport} ref={emblaRef}>
         <div className={classes.embla__container}>
-          {blog.map((p, i) => (
+          {posts.map((p, i) => (
             <div key={i} className={classes.embla__slide}>
               <CardPost props={p} />
             </div>

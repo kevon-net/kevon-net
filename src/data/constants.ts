@@ -8,6 +8,14 @@ export const HOSTNAME = process.env.NEXT_PUBLIC_HOST;
 
 export const BASE_URL = `${URL_PREFIX}${HOSTNAME}`;
 
+export const AUTH_URLS = {
+  SIGN_IN: `${BASE_URL}/auth/sign-in`,
+  SIGN_UP: `${BASE_URL}/auth/sign-up`,
+  VERIFY_REQUEST: `${BASE_URL}/auth/verify-request`,
+  ERROR: `${BASE_URL}/auth/error`,
+  SIGN_OUT: `${BASE_URL}/auth/sign-out`,
+};
+
 export const HOSTED_BASE_URL = {
   EXAMPLE: `https://example.com`,
 };
