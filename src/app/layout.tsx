@@ -7,8 +7,7 @@ import appResolver from '@/styles/resolver';
 import { Notifications } from '@mantine/notifications';
 import { linkify } from '@/utilities/formatters/string';
 import appData from '@/data/app';
-import LayoutShellMain from '@/components/layout/shells/main';
-import NavbarMain from '@/components/layout/navbars/main';
+import ShellMain from '@/components/layout/shells/main';
 import UnderlayMist from '@/components/wrapper/underlays/mist';
 
 // core styles are required for all packages
@@ -63,9 +62,7 @@ export default async function RootLayout({
           classNamesPrefix={linkify(appData.name.app)}
         >
           <UnderlayMist>
-            <LayoutShellMain header={<NavbarMain />}>
-              {children}
-            </LayoutShellMain>
+            <ShellMain>{children}</ShellMain>
           </UnderlayMist>
 
           <Notifications limit={3} />
