@@ -2,48 +2,21 @@
 
 import React from 'react';
 import {
-  Anchor,
   AppShell,
   AppShellAside,
   AppShellHeader,
   AppShellMain,
-  Box,
-  Burger,
-  Flex,
-  Group,
-  Paper,
-  Stack,
-  Text,
-  Title,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import Link from 'next/link';
-import { navbar, social } from '@/data/links';
-import classes from './main.module.scss';
-import { usePathname } from 'next/navigation';
-import UnderlayGlass from '@/components/wrapper/underlays/glass';
-import appData from '@/data/app';
-import { SECTION_SPACING } from '@/data/constants';
+import AsideMain from '../asides/main';
+import HeaderMain from '../headers/main';
 
-export default function Main({
-  header,
-  children,
-}: {
-  header: React.ReactNode;
-  children: React.ReactNode;
-}) {
+export default function Main({ children }: { children: React.ReactNode }) {
   const [opened, { toggle, close }] = useDisclosure();
-  const pathname = usePathname();
-
-  const burgerComponent = (
-    <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="md" />
-  );
-
-  const headerHeight = 105;
 
   return (
     <AppShell
-      header={{ height: { base: headerHeight, md: 0 } }}
+      header={{ height: { base: 105 } }}
       aside={{
         width: { md: 360, lg: 400, xl: 440 },
         breakpoint: 'md',
@@ -51,36 +24,12 @@ export default function Main({
       }}
       layout="alt"
       withBorder={false}
-      // transitionDuration={0}
-      // padding="md"
     >
-      <AppShellHeader p={'0.5rem'} bg={'transparent'} hiddenFrom="md">
-        <UnderlayGlass
-          opacity={0.5}
-          blur={16}
-          underlayStyles={{
-            borderRadius: 'var(--mantine-radius-sm)',
-            overflow: 'hidden',
-          }}
-        >
-          <Paper
-            bg={'var(--mantine-color-gray-light)'}
-            p={{ base: '1.5rem', md: '1rem' }}
-          >
-            <Group h="100%" justify="space-between">
-              {header}
-
-              {burgerComponent}
-            </Group>
-          </Paper>
-        </UnderlayGlass>
+      <AppShellHeader bg={'transparent'} p={'0.5rem'}>
+        <HeaderMain opened={opened} toggle={toggle} />
       </AppShellHeader>
 
-      <AppShellMain>
-        <Box visibleFrom="md">{header}</Box>
-
-        {children}
-      </AppShellMain>
+      <AppShellMain>{children}</AppShellMain>
 
       <AppShellAside
         py={'0.5rem'}
@@ -88,71 +37,7 @@ export default function Main({
         pl={{ base: '0.5rem', md: 0 }}
         bg={'transparent'}
       >
-        <Paper
-          bg={{
-            base: 'var(--mantine-color-body)',
-            md: 'var(--mantine-color-gray-light)',
-          }}
-          p={{ base: '1.5rem', md: '1rem' }}
-          h={'calc(100vh - 1rem)'}
-        >
-          <Flex
-            h={'100%'}
-            direction={'column'}
-            justify={{ md: 'space-between' }}
-            p={{ md: SECTION_SPACING / 2, xl: SECTION_SPACING }}
-          >
-            <Group
-              justify="space-between"
-              hiddenFrom="md"
-              pos={'sticky'}
-              top={{ base: '1.5rem', md: '1rem' }}
-            >
-              <Box onClick={opened ? close : undefined}>{header}</Box>
-
-              {burgerComponent}
-            </Group>
-
-            <Stack visibleFrom="md">
-              <Group mt={{ base: 'xl', md: 0 }}>
-                {social.map((s, i) => (
-                  <Anchor key={i} component={Link} href={s.link} fz={'sm'}>
-                    {s.label}.
-                  </Anchor>
-                ))}
-              </Group>
-
-              <Title order={2} fw={'normal'} fz={'var(--mantine-h1-font-size)'}>
-                Kevon Kibochi
-              </Title>
-            </Stack>
-
-            <Stack align="start" mt={{ base: SECTION_SPACING, md: 0 }}>
-              {navbar.map((nl, i) => (
-                <Anchor
-                  key={i}
-                  component={Link}
-                  href={nl.link}
-                  fz={{ xs: 'lg', md: 'xl' }}
-                  className={classes.link}
-                  onClick={opened ? close : undefined}
-                  style={{
-                    color:
-                      pathname == nl.link
-                        ? 'var(--mantine-color-pri-6) !important'
-                        : undefined,
-                  }}
-                >
-                  {nl.label}
-                </Anchor>
-              ))}
-            </Stack>
-
-            <Stack visibleFrom="md">
-              <Text>&copy; Kevon {appData.year}.</Text>
-            </Stack>
-          </Flex>
-        </Paper>
+        <AsideMain opened={opened} toggle={toggle} close={close} />
       </AppShellAside>
     </AppShell>
   );

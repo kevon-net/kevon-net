@@ -39,6 +39,7 @@ export default function Section({
     >
       {containerized ? (
         <Container
+          h={'100%'}
           size={typeof containerized == 'boolean' ? undefined : containerized}
         >
           <React.Fragment>{children}</React.Fragment>
