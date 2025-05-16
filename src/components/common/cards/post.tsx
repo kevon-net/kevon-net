@@ -5,6 +5,7 @@ import {
   Button,
   Card,
   Group,
+  Skeleton,
   Stack,
   Text,
   ThemeIcon,
@@ -25,17 +26,9 @@ import { linkify } from '@/utilities/formatters/string';
 import { PostGet } from '@/types/models/post';
 import { useSupabaseQuery } from '@/hooks/fetch';
 import { CategoryGet } from '@/types/models/category';
+import ErrorMain from '@/components/partials/errors/main';
 
 export default function Post({ props }: { props: PostGet }) {
-  const { data: categories, error } = useSupabaseQuery('categories');
-
-  if (error) throw new Error('Could not fetch categories');
-  if (categories == null) return;
-
-  const category = (categories as CategoryGet[]).find(
-    (c) => c.id == props.category_id
-  );
-
   const link = `/blog/${linkify(props.title)}-${props.id}`;
 
   return (
@@ -44,7 +37,14 @@ export default function Post({ props }: { props: PostGet }) {
         <Anchor component={Link} href={link} className={classes.imageWrapper}>
           <ImageDefault
             src={props.cover}
-            height={{ base: 280, xs: 360, sm: 480, md: 400, lg: 480, xl: 520 }}
+            height={{
+              base: 280,
+              xs: 360,
+              sm: 480,
+              md: 400,
+              lg: 480,
+              xl: 520,
+            }}
             alt={props.title}
             className={classes.image}
           />
@@ -52,13 +52,7 @@ export default function Post({ props }: { props: PostGet }) {
 
         <Stack mt={'xl'} gap={'lg'}>
           <Group fz={'sm'} fw={500} tt={'uppercase'} lts={2}>
-            <Anchor
-              component={Link}
-              href={`/blog/categories/${category?.id}`}
-              inherit
-            >
-              {category?.title}
-            </Anchor>
+            <CategoryLink props={props} />
 
             <Text inherit fw={'normal'}>
               {getRegionalDate(props.created_at).date}
@@ -95,5 +89,28 @@ export default function Post({ props }: { props: PostGet }) {
         </Group>
       </Stack>
     </Card>
+  );
+}
+
+function CategoryLink({ props }: { props: PostGet }) {
+  const { data: categories, loading, error } = useSupabaseQuery('categories');
+
+  if (error) {
+    console.error(error);
+    return <ErrorMain />;
+  }
+
+  if (categories == null && !loading) return null;
+
+  const category = (categories as CategoryGet[] | undefined)?.find(
+    (c) => c.id == props.category_id
+  );
+
+  return loading ? (
+    <Skeleton h={21.7} w={{ base: 120, xs: 160 }} />
+  ) : (
+    <Anchor component={Link} href={`/blog/categories/${category?.id}`} inherit>
+      {category?.title}
+    </Anchor>
   );
 }
