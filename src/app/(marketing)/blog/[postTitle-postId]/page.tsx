@@ -17,15 +17,39 @@ import { PostGet } from '@/types/models/post';
 import CarouselBlog from '@/components/common/carousel/blog';
 import Link from 'next/link';
 import ImageDefault from '@/components/common/images/default';
-import { createClient } from '@/libraries/supabase/server';
+import { postsGet } from '@/services/database/posts';
+import ErrorMain from '@/components/partials/errors/main';
+import { linkify } from '@/utilities/formatters/string';
+
+export const dynamic = 'force-static';
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const { data: posts, error } = await postsGet();
+
+  if (error) throw error;
+  if (posts == null) return [];
+
+  return posts.map((post) => ({
+    'postTitle-postId': `${linkify(post.title)}-${post.id}`,
+  }));
+}
 
 export default async function Post({ params }: { params: typeParams }) {
+  const { data: posts, error } = await postsGet();
+
+  if (error) {
+    console.error(error);
+    return <ErrorMain />;
+  }
+
+  if (posts == null) {
+    console.error('Posts is null');
+    return <ErrorMain />;
+  }
+
   const paramValues = (await params)['postTitle-postId'];
   const postId = extractUuidFromParam(paramValues);
-  const supabase = await createClient();
-  const { data: posts, error } = await supabase.from('posts').select();
-  if (error) throw new Error('Could not fetch posts');
-
   const post: PostGet | undefined = posts.find((p) => p.id == postId);
 
   if (!post) redirect('/404');
@@ -83,11 +107,9 @@ export default async function Post({ params }: { params: typeParams }) {
             </Button>
           </Group>
 
-          {posts != null && (
-            <CarouselBlog
-              posts={posts.filter((p) => p.id != postId) as PostGet[]}
-            />
-          )}
+          <CarouselBlog
+            posts={posts.filter((p) => p.id != postId) as PostGet[]}
+          />
         </Stack>
       </LayoutSection>
     </LayoutPage>
