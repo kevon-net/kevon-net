@@ -1,5 +1,4 @@
-import { Prisma } from '@/generated/prisma';
-import { Category } from '@/generated/prisma';
+import { Prisma, Category } from '@generated/prisma';
 
 // Type for creating a item (without id and relations)
 export type CategoryCreate = Prisma.CategoryCreateInput;
