@@ -7,7 +7,10 @@ import CarouselPortfolio from '@/components/common/carousel/portfolio';
 
 export default function Portfolio() {
   return (
-    <LayoutSection id={'portfolio'} py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}>
+    <LayoutSection
+      id={'portfolio'}
+      py={{ base: SECTION_SPACING * 2, md: SECTION_SPACING }}
+    >
       <IntroSection
         options={{ alignment: 'start', spacing: true }}
         props={{
