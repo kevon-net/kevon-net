@@ -36,8 +36,8 @@ export default function Page({
       <Stack>
         {props.path == null ? null : !props.path ? (
           <Group
-            justify={options?.alignment == 'start' ? 'start' : 'center'}
-            ta={options?.alignment == 'start' ? 'start' : 'center'}
+            justify={options?.alignment || 'start'}
+            ta={options?.alignment || 'start'}
             fw={'bold'}
             tt={'uppercase'}
             fz={'xs'}
@@ -71,7 +71,7 @@ export default function Page({
           </Group>
         ) : typeof props.path == 'string' ? (
           <Text
-            ta={options?.alignment == 'start' ? 'start' : 'center'}
+            ta={options?.alignment || 'start'}
             fw={'bold'}
             c={'pri.6'}
             tt={'uppercase'}

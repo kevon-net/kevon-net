@@ -11,9 +11,10 @@ import PartialPagePortfolio from '@/components/partials/page/portfolio';
 import PartialPageBlog from '@/components/partials/page/blog';
 import PartialPageContact from '@/components/partials/page/contact';
 import LayoutHeroHome from '@/components/layout/heros/home';
-
 import LayoutSection from '@/components/layout/section';
 import { Divider } from '@mantine/core';
+
+export const revalidate = 3600;
 
 export default function Home() {
   return (
