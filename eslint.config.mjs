@@ -11,12 +11,20 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // 1) never lint your generated prisma client
+  {
+    ignores: ['generated/prisma/**'],
+  },
+
+  // 2) your standard Next + TS + Prettier setup
   ...compat.extends(
     'next/core-web-vitals',
     'next/typescript',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended'
   ),
+
+  // 3) any custom rules you like
   {
     plugins: { prettier: prettierPlugin },
     rules: {

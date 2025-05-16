@@ -1,5 +1,4 @@
-import { Prisma } from '@/generated/prisma';
-import { Post } from '@/generated/prisma';
+import { Prisma, Post } from '@generated/prisma';
 
 // Type for creating a item (without id and relations)
 export type PostCreate = Prisma.PostCreateInput;
