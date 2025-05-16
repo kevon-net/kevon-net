@@ -25,7 +25,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
       layout="alt"
       withBorder={false}
     >
-      <AppShellHeader bg={'transparent'} p={'0.5rem'}>
+      <AppShellHeader bg={'transparent'} p={{ base: '0.5rem', md: 0 }}>
         <HeaderMain opened={opened} toggle={toggle} />
       </AppShellHeader>
 

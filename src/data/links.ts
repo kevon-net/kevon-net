@@ -2,39 +2,39 @@ import appData from './app';
 
 export const navbar = [
   // {
-  //   link: '#',
+  //   link: '/#',
   //   label: 'Home',
   // },
   {
-    link: '#about',
+    link: '/#about',
     label: 'About',
   },
   {
-    link: '#services',
+    link: '/#services',
     label: 'Services',
   },
   {
-    link: '#skills',
+    link: '/#skills',
     label: 'Skills',
   },
   {
-    link: '#experience',
+    link: '/#experience',
     label: 'Experience',
   },
   {
-    link: '#portfolio',
+    link: '/#portfolio',
     label: 'Portfolio',
   },
   // {
-  //   link: '#testimonials',
+  //   link: '/#testimonials',
   //   label: 'Testimonials',
   // },
   {
-    link: '#blog',
+    link: '/#blog',
     label: 'Blog',
   },
   {
-    link: '#contact',
+    link: '/#contact',
     label: 'Contact',
   },
 ];
