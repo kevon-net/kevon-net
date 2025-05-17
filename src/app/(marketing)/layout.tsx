@@ -11,7 +11,9 @@ export default function LayoutMarketing({
   return (
     <ProviderStore>
       <LayoutBody>
-        <main>{children}</main>
+        {/* <main> */}
+        {children}
+        {/* </main> */}
 
         <AffixTop />
       </LayoutBody>
