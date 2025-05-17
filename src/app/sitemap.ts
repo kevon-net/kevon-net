@@ -4,13 +4,15 @@ import { MetadataRoute } from 'next';
 export const dynamic = 'force-dynamic';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const now = new Date();
+
   const staticRoutes = [
     '', // homepage
-    '/about',
-    '/contact',
+    '/projects',
+    '/blog',
   ].map((route) => ({
     url: `${BASE_URL}${route}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: route === '' ? 1 : 0.8,
   }));
