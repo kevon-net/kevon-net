@@ -7,10 +7,10 @@ import Fade from 'embla-carousel-fade';
 import classes from './portfolio.module.scss';
 import { Group } from '@mantine/core';
 import { SECTION_SPACING } from '@/data/constants';
-import { portfolioProjects } from '@/data/projects';
 import CardProject from '../cards/project';
+import { ProjectGet } from '@/types/models/project';
 
-export default function Portfolio() {
+export default function Portfolio({ projects }: { projects: ProjectGet[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 5000 }),
     Fade(),
@@ -50,9 +50,9 @@ export default function Portfolio() {
     <div className={classes.embla}>
       <div className={classes.embla__viewport} ref={emblaRef}>
         <div className={classes.embla__container}>
-          {portfolioProjects.map((p, i) => (
+          {projects.map((p, i) => (
             <div key={i} className={classes.embla__slide}>
-              <CardProject props={p} />
+              <CardProject project={p} />
             </div>
           ))}
         </div>

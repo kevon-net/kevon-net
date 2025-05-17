@@ -1,11 +1,11 @@
+'use client';
+
 import React from 'react';
-import { categories, portfolioProjects } from '@/data/projects';
 import {
   Anchor,
-  Box,
   Card,
-  Flex,
   Group,
+  Skeleton,
   Stack,
   Text,
   Title,
@@ -15,14 +15,13 @@ import Link from 'next/link';
 import { getRegionalDate } from '@/utilities/formatters/date';
 import classes from './project.module.scss';
 import { linkify } from '@/utilities/formatters/string';
+import { ProjectGet } from '@/types/models/project';
+import { useSupabaseQuery } from '@/hooks/fetch';
+import ErrorMain from '@/components/partials/errors/main';
+import { CategoryGet } from '@/types/models/category';
 
-export default function Project({
-  props,
-}: {
-  props: (typeof portfolioProjects)[0];
-}) {
-  const category =
-    categories.find((c) => c.id == props.categoryId) || categories[0];
+export default function Project({ project }: { project: ProjectGet }) {
+  const link = `/projects/${linkify(project.title)}-${project.id}`;
 
   return (
     <Card
@@ -35,20 +34,20 @@ export default function Project({
       <Stack>
         <Anchor
           component={Link}
-          href={`/projects/${linkify(props.name)}-${props.id}`}
+          href={link}
           className={classes.imageWrapper}
           pos="relative"
         >
           <ImageDefault
-            src={props.cover}
-            alt={props.name}
+            src={project.cover}
+            alt={project.title}
             height={{ base: 280, xs: 360, sm: 480, md: 400, lg: 480, xl: 520 }}
-            width={'100%'}
-            mode="wide"
             className={classes.image}
+            width={'100%'}
+            mode="grid"
           />
 
-          <Box className={classes.overlay} p={'md'}>
+          {/* <Box className={classes.overlay} p={'md'}>
             <Flex
               gap={'xs'}
               direction={{ base: 'column', xs: 'row', xl: 'column' }}
@@ -56,7 +55,7 @@ export default function Project({
               justify={'end'}
               h={'100%'}
             >
-              {props.technologies.map((t, i) => (
+              {project.technologies.map((t, i) => (
                 <Text
                   key={i}
                   inherit
@@ -70,25 +69,55 @@ export default function Project({
                 </Text>
               ))}
             </Flex>
-          </Box>
+          </Box> */}
         </Anchor>
 
-        <Group fz={'sm'} fw={500} tt={'uppercase'} lts={2}>
-          <Anchor
-            component={Link}
-            href={`/projects/categories/${category?.id}`}
-            inherit
-          >
-            {category?.title}
+        <Stack mt={'xl'} gap={'lg'} align="start">
+          <Group fz={'sm'} fw={500} tt={'uppercase'} lts={2}>
+            <CategoryLink project={project} />
+            <Text inherit>{getRegionalDate(project.created_at).date}</Text>
+          </Group>
+
+          <Anchor component={Link} href={link} pos="relative">
+            <Title order={3}>{project.title}</Title>
           </Anchor>
 
-          <Text inherit>{getRegionalDate(props.date).date}</Text>
-        </Group>
-
-        <Title w={{ lg: '80%' }} style={{ overflowWrap: 'normal' }} order={3}>
-          {props.name}
-        </Title>
+          <Text lineClamp={3}>{project.desc}</Text>
+        </Stack>
       </Stack>
     </Card>
+  );
+}
+
+export function CategoryLink({
+  project,
+  height,
+}: {
+  project: ProjectGet;
+  height?: number;
+}) {
+  const { data: categories, loading, error } = useSupabaseQuery('categories');
+
+  if (error) {
+    console.error(error);
+    return <ErrorMain />;
+  }
+
+  if (categories == null && !loading) return null;
+
+  const category = (categories as CategoryGet[] | undefined)?.find(
+    (c) => c.id == project.category_id
+  );
+
+  return loading ? (
+    <Skeleton h={height || 21.7} w={{ base: 120, xs: 160 }} />
+  ) : (
+    <Anchor
+      component={Link}
+      href={`/projects/categories/${category?.id}`}
+      inherit
+    >
+      {category?.title}
+    </Anchor>
   );
 }

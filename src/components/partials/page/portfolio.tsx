@@ -4,8 +4,22 @@ import { SECTION_SPACING } from '@/data/constants';
 import { Text, Title } from '@mantine/core';
 import IntroSection from '@/components/layout/intros/section';
 import CarouselPortfolio from '@/components/common/carousel/portfolio';
+import { projectsGet } from '@/services/database/projects';
+import ErrorMain from '../errors/main';
 
-export default function Portfolio() {
+export default async function Portfolio() {
+  const { data: projects, error } = await projectsGet();
+
+  if (error) {
+    console.error(error);
+    return <ErrorMain />;
+  }
+
+  if (projects == null) {
+    console.error('Projects is null');
+    return <ErrorMain />;
+  }
+
   return (
     <LayoutSection
       id={'portfolio'}
@@ -37,7 +51,7 @@ export default function Portfolio() {
         }}
       />
 
-      <CarouselPortfolio />
+      <CarouselPortfolio projects={projects} />
     </LayoutSection>
   );
 }

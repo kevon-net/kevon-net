@@ -37,11 +37,11 @@ model Post {
 
   status Status @default(DRAFT)
 
-  category    Category @relation(fields: [category_id], references: [id], onDelete: Cascade)
-  category_id String   @map("category_id")
-
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+
+  category    Category @relation(fields: [category_id], references: [id], onDelete: Cascade)
+  category_id String   @map("category_id")
 
   @@map(name: "posts")
 }
@@ -50,10 +50,32 @@ model Category {
   id    String @id @default(uuid())
   title String @unique
 
-  post Post[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  post    Post[]
+  project Project[]
+
+  @@map(name: "categories")
+}
+
+model Project {
+  id           String  @id @default(uuid())
+  cover        String
+  title        String  @unique
+  desc         String
+  client       String
+  content      String
+  preview_link String?
+  repo_link    String?
+
+  status Status @default(DRAFT)
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  @@map(name: "categories")
+  category    Category @relation(fields: [category_id], references: [id], onDelete: Cascade)
+  category_id String   @map("category_id")
+
+  @@map(name: "projects")
 }
