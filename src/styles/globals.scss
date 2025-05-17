@@ -75,24 +75,31 @@ a {
   background: var(--mantine-color-pri-9);
 }
 
-// post styles
-.post-article p {
+// article styles
+.article section {
+  margin-top: var(--mantine-spacing-xl);
+}
+
+.article p {
   margin-top: var(--mantine-spacing-md);
   font-weight: 300;
 }
 
-.post-article ul {
+.article ul,
+.article ol {
   padding-left: 3rem;
   margin-top: var(--mantine-spacing-md);
 }
 
-.post-article li {
+.article li {
   margin-top: var(--mantine-spacing-xs);
+  font-weight: 300;
 }
 
-.post-article pre {
-  margin: var(--mantine-spacing-lg) 0;
+.code {
   background-color: var(--mantine-color-gray-light);
-  border: 1.5px solod var(--mantine-color-gray-light);
+  margin-top: var(--mantine-spacing-md);
+  padding: var(--mantine-spacing-lg);
   border-radius: var(--mantine-radius-sm);
+  overflow-x: auto;
 }
