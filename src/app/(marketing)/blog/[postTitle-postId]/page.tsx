@@ -30,8 +30,8 @@ export async function generateStaticParams() {
   if (error) throw error;
   if (posts == null) return [];
 
-  return posts.map((post) => ({
-    'postTitle-postId': `${linkify(post.title)}-${post.id}`,
+  return posts.map((p) => ({
+    'postTitle-postId': `${linkify(p.title)}-${p.id}`,
   }));
 }
 
@@ -72,13 +72,11 @@ export default async function Post({ params }: { params: typeParams }) {
         />
       </LayoutSection>
 
-      <LayoutSection id="content">
-        <Stack>
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
-        </Stack>
+      <LayoutSection id="content" margined={SECTION_SPACING}>
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </LayoutSection>
 
-      <LayoutSection id="similar" padded={SECTION_SPACING * 1.5}>
+      <LayoutSection id="similar" mt={SECTION_SPACING} pb={SECTION_SPACING}>
         <Stack gap={SECTION_SPACING}>
           <Group justify="space-between">
             <Title order={2} fz={'var(--mantine-h1-font-size)'} lh={1}>

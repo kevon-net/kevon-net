@@ -30,8 +30,8 @@ import classes from './main.module.scss';
 import { contact, navbar } from '@/data/links';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { portfolioProjects } from '@/data/projects';
-import { linkify } from '@/utilities/formatters/string';
+// import { portfolioProjects } from '@/data/projects';
+// import { linkify } from '@/utilities/formatters/string';
 
 export default function Main() {
   const pathname = usePathname();
@@ -121,7 +121,7 @@ export default function Main() {
                   Projects
                 </Title>
 
-                <Stack align="start">
+                {/* <Stack align="start">
                   {portfolioProjects.map((p, i) => (
                     <Anchor
                       key={i}
@@ -133,7 +133,7 @@ export default function Main() {
                       {p.name}
                     </Anchor>
                   ))}
-                </Stack>
+                </Stack> */}
               </Stack>
             </GridCol>
 
