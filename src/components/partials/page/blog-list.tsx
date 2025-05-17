@@ -2,12 +2,12 @@
 
 import React from 'react';
 import LayoutSection from '@/components/layout/section';
-import { Divider, Group, Pagination, Stack } from '@mantine/core';
+import { Divider, Group, Stack } from '@mantine/core';
 import CardPost from '@/components/common/cards/post';
 import { PostGet } from '@/types/models/post';
 import { SECTION_SPACING } from '@/data/constants';
 import { usePaginate } from '@/hooks/paginate';
-import classes from './blog-list.module.scss';
+import PaginationMain from '@/components/common/pagination/main';
 
 export default function BlogList({ posts }: { posts: PostGet[] }) {
   const pageSize = 5;
@@ -16,17 +16,16 @@ export default function BlogList({ posts }: { posts: PostGet[] }) {
   return (
     <LayoutSection id={'blog-contact'} pb={SECTION_SPACING}>
       <Stack>
-        {items.map((post, i) => (
+        {items.map((p, i) => (
           <Stack key={i}>
             {i > 0 && <Divider my={SECTION_SPACING} />}
-            <CardPost props={post as PostGet} />
+            <CardPost props={p as PostGet} />
           </Stack>
         ))}
 
         {posts && posts.length > pageSize && (
           <Group justify="center" py={SECTION_SPACING}>
-            <Pagination
-              classNames={classes}
+            <PaginationMain
               total={(posts || []).length}
               value={activePage}
               onChange={setActivePage}
