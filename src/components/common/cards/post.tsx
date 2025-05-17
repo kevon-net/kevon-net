@@ -37,20 +37,15 @@ export default function Post({ props }: { props: PostGet }) {
         <Anchor component={Link} href={link} className={classes.imageWrapper}>
           <ImageDefault
             src={props.cover}
-            height={{
-              base: 280,
-              xs: 360,
-              sm: 480,
-              md: 400,
-              lg: 480,
-              xl: 520,
-            }}
             alt={props.title}
+            height={{ base: 280, xs: 360, sm: 480, md: 400, lg: 480, xl: 520 }}
             className={classes.image}
+            width={'100%'}
+            mode="grid"
           />
         </Anchor>
 
-        <Stack mt={'xl'} gap={'lg'}>
+        <Stack mt={'xl'} gap={'lg'} align="start">
           <Group fz={'sm'} fw={500} tt={'uppercase'} lts={2}>
             <CategoryLink props={props} />
 
@@ -59,7 +54,9 @@ export default function Post({ props }: { props: PostGet }) {
             </Text>
           </Group>
 
-          <Title order={3}>{props.title}</Title>
+          <Anchor component={Link} href={link}>
+            <Title order={3}>{props.title}</Title>
+          </Anchor>
 
           <Text lineClamp={3}>{props.excerpt}</Text>
         </Stack>
@@ -92,7 +89,7 @@ export default function Post({ props }: { props: PostGet }) {
   );
 }
 
-function CategoryLink({ props }: { props: PostGet }) {
+export function CategoryLink({ props }: { props: PostGet }) {
   const { data: categories, loading, error } = useSupabaseQuery('categories');
 
   if (error) {
