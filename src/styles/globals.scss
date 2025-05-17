@@ -93,6 +93,9 @@ a {
 .post-article pre {
   margin: var(--mantine-spacing-lg) 0;
   background-color: var(--mantine-color-gray-light);
-  border: 1.5px solod var(--mantine-color-gray-light);
   border-radius: var(--mantine-radius-sm);
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
