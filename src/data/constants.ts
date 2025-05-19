@@ -25,6 +25,7 @@ export const DEFAULT_COLOR_SCHEME: 'light' | 'dark' = 'dark';
 export const API_URL = {
   API: `${BASE_URL}/api`,
   RESEND: `https://api.resend.com/emails`,
+  MAILERLITE: `https://connect.mailerlite.com/api`,
 };
 
 export const ICON_SIZE = 20;
