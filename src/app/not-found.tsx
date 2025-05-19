@@ -13,7 +13,7 @@ import IntroPage from '@/components/layout/intros/page';
 
 export default function NotFound() {
   return (
-    <LayoutSection id={'page-not-found'}>
+    <LayoutSection id={'page-not-found'} containerized={false}>
       <Stack justify="center" mih={'100vh'} pb={SECTION_SPACING}>
         <IntroPage
           props={{
@@ -24,28 +24,30 @@ export default function NotFound() {
           options={{ glitch: true }}
         />
 
-        <Group justify="center">
-          <Button
-            leftSection={
-              <ThemeIcon
-                size={ICON_WRAPPER_SIZE}
-                variant="light"
-                color="gray"
-                radius={'xl'}
-              >
-                <IconArrowLeft size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
-              </ThemeIcon>
-            }
-            radius={'xl'}
-            size="lg"
-            component={Link}
-            href={'/'}
-            color="gray"
-            variant="light"
-          >
-            Go To Home Page
-          </Button>
-        </Group>
+        <LayoutSection id={'page-not-found'}>
+          <Group>
+            <Button
+              leftSection={
+                <ThemeIcon
+                  size={ICON_WRAPPER_SIZE}
+                  variant="light"
+                  color="gray"
+                  radius={'xl'}
+                >
+                  <IconArrowLeft size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
+                </ThemeIcon>
+              }
+              radius={'xl'}
+              size="lg"
+              component={Link}
+              href={'/'}
+              color="gray"
+              variant="light"
+            >
+              Go To Home Page
+            </Button>
+          </Group>
+        </LayoutSection>
       </Stack>
     </LayoutSection>
   );
