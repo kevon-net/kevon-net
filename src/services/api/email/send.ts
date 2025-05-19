@@ -10,13 +10,10 @@ import EmailInquiry from '@/components/email/inquiry';
 export type SendEmail = {
   from: { name: string; email: string };
   subject: string;
+  message: string;
 };
 
-export const sendEmail = async (params: {
-  from: { name: string; email: string };
-  subject: string;
-  message: string;
-}) => {
+export const sendEmail = async (params: SendEmail) => {
   try {
     const response = await fetch(`${API_URL.RESEND}`, {
       method: 'POST',

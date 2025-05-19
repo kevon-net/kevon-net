@@ -5,6 +5,7 @@ import { useNetwork } from '@mantine/hooks';
 import { useState } from 'react';
 import { sendEmail } from '@/services/api/email/send';
 import { capitalizeWords } from '@/utilities/formatters/string';
+import { subscriberAdd } from '@/services/api/mailerlite';
 
 export const useFormContact = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -46,6 +47,8 @@ export const useFormContact = () => {
         subject: `New Lead (${senderName})`,
         message: values.message.trim(),
       });
+
+      await subscriberAdd({ email: values.email.trim(), name: senderName });
 
       form.reset();
 
