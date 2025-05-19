@@ -50,7 +50,7 @@ export default function Home() {
             size="lg"
             radius={'xl'}
             component={Link}
-            href={'/about'}
+            href={'#about'}
             rightSection={
               <ThemeIcon
                 size={ICON_WRAPPER_SIZE}
@@ -65,7 +65,7 @@ export default function Home() {
             What I Do
           </Button>
 
-          <Button
+          {/* <Button
             size="lg"
             radius={'xl'}
             component={Link}
@@ -84,7 +84,7 @@ export default function Home() {
             }
           >
             View Works
-          </Button>
+          </Button> */}
         </Group>
       </LayoutSection>
     </>

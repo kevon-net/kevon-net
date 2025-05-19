@@ -17,12 +17,16 @@ export const AUTH_URLS = {
 };
 
 export const HOSTED_BASE_URL = {
-  EXAMPLE: `https://example.com`,
+  KEVON: `https://kevon.net`,
 };
 
 export const DEFAULT_COLOR_SCHEME: 'light' | 'dark' = 'dark';
 
-export const API_URL = `${BASE_URL}/api`;
+export const API_URL = {
+  API: `${BASE_URL}/api`,
+  RESEND: `https://api.resend.com/emails`,
+  MAILERLITE: `https://connect.mailerlite.com/api`,
+};
 
 export const ICON_SIZE = 20;
 

@@ -18,6 +18,7 @@
     "@mantine/hooks": "^7.17.2",
     "@mantine/notifications": "^7.17.2",
     "@prisma/client": "^6.7.0",
+    "@react-email/render": "^1.1.2",
     "@reduxjs/toolkit": "^2.6.1",
     "@supabase/ssr": "^0.6.1",
     "@tabler/icons-react": "^3.31.0",
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@react-email/components": "^0.0.41",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
