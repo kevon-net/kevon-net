@@ -21,7 +21,7 @@ import {
 import { IconArrowRight } from '@tabler/icons-react';
 
 export default function Contact() {
-  const { form, submit } = useFormContact();
+  const { form, submit, submitted } = useFormContact();
 
   return (
     <form onSubmit={submit}>
@@ -85,6 +85,7 @@ export default function Contact() {
                   variant="light"
                   size="md"
                   radius={'xl'}
+                  loading={submitted}
                   rightSection={
                     <ThemeIcon
                       size={ICON_WRAPPER_SIZE / 1.25}

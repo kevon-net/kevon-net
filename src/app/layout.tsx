@@ -12,6 +12,7 @@ import UnderlayMist from '@/components/wrapper/underlays/mist';
 
 // core styles are required for all packages
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 
 // other css files are required only if you are using components from the corresponding package
 import '@mantine/dates/styles.css';
@@ -65,7 +66,7 @@ export default async function RootLayout({
             <ShellMain>{children}</ShellMain>
           </UnderlayMist>
 
-          <Notifications limit={3} />
+          <Notifications limit={3} position="top-center" />
         </MantineProvider>
       </body>
     </html>
