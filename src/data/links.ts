@@ -21,10 +21,10 @@ export const navbar = [
     link: '/#experience',
     label: 'Experience',
   },
-  {
-    link: '/#portfolio',
-    label: 'Portfolio',
-  },
+  // {
+  //   link: '/#portfolio',
+  //   label: 'Portfolio',
+  // },
   // {
   //   link: '/#testimonials',
   //   label: 'Testimonials',

@@ -55,7 +55,7 @@ export default function Home() {
         <Divider />
       </LayoutSection>
 
-      <PartialPagePortfolio />
+      {/* <PartialPagePortfolio /> */}
 
       {/* <LayoutSection id={'projects-testimonials'}>
         <Divider />
