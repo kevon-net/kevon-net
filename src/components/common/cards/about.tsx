@@ -1,3 +1,4 @@
+import { documents } from '@/assets/documents';
 import { contact } from '@/data/links';
 import { Anchor, Card, Stack, Text, Title } from '@mantine/core';
 import React from 'react';
@@ -32,7 +33,9 @@ export default function About() {
 
         <Stack align="start" gap={5}>
           <Title order={3}>CV</Title>
-          <Anchor href={'/documents'}>Download CV</Anchor>
+          <Anchor href={documents.cv.light} download={'kevon-cv.pdf'}>
+            Download CV
+          </Anchor>
         </Stack>
       </Stack>
     </Card>
