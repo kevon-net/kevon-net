@@ -9,6 +9,7 @@ import { linkify } from '@/utilities/formatters/string';
 import appData from '@/data/app';
 import ShellMain from '@/components/layout/shells/main';
 import UnderlayMist from '@/components/wrapper/underlays/mist';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 // core styles are required for all packages
 import '@mantine/core/styles.css';
@@ -18,6 +19,7 @@ import '@mantine/notifications/styles.css';
 import '@mantine/dates/styles.css';
 
 import '../styles/globals.scss';
+import { isProduction } from '@/utilities/helpers/environment';
 
 // fonts
 const kanitSans = Kanit({
@@ -43,6 +45,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '';
+
   return (
     <html lang="en" data-mantine-color-scheme={DEFAULT_COLOR_SCHEME}>
       <head>
@@ -68,6 +72,8 @@ export default async function RootLayout({
 
           <Notifications limit={3} position="top-center" />
         </MantineProvider>
+
+        {isProduction() && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
       </body>
     </html>
   );
