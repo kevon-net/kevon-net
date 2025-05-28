@@ -15,7 +15,7 @@ import {
 import appData from '@/data/app';
 import { HOSTED_BASE_URL } from '@/data/constants';
 
-const baseUrl = `${HOSTED_BASE_URL.KEVON}/images`;
+const baseUrl = `${HOSTED_BASE_URL.DEFAULT}/images`;
 
 export const Email = ({
   props,

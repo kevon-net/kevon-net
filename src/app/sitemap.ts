@@ -13,8 +13,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // '/projects',
     '/blog',
   ].map((route) => ({
-    url: `${HOSTED_BASE_URL.KEVON}${route}`,
-    lastModified: now,
+    url: `${HOSTED_BASE_URL.DEFAULT}${route}`,
+    lastModified: now.toISOString().split('T')[0],
     changeFrequency: 'weekly' as const,
     priority: route === '' ? 1 : 0.8,
   }));
@@ -24,8 +24,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { data: posts } = await supabase.from('posts').select();
 
   const blogRoutes = (posts || []).map((p) => ({
-    url: `${HOSTED_BASE_URL.KEVON}/blog/${linkify(p.title)}-${p.id}`,
-    lastModified: p.updated_at,
+    url: `${HOSTED_BASE_URL.DEFAULT}/blog/${linkify(p.title)}-${p.id}`,
+    lastModified: p.updated_at
+      ? new Date(p.updated_at).toISOString().split('T')[0]
+      : now.toISOString().split('T')[0],
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
