@@ -17,7 +17,7 @@ export const AUTH_URLS = {
 };
 
 export const HOSTED_BASE_URL = {
-  KEVON: `https://kevon.net`,
+  DEFAULT: `https://kevon.net`,
 };
 
 export const DEFAULT_COLOR_SCHEME: 'light' | 'dark' = 'dark';

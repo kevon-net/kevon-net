@@ -13,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
         // Add more private routes here
       ],
     },
-    sitemap: `${HOSTED_BASE_URL.KEVON}/sitemap.xml`,
+    sitemap: `${HOSTED_BASE_URL.DEFAULT}/sitemap.xml`,
   };
 }
