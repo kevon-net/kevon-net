@@ -25,7 +25,7 @@ export const emails = {
 export const socials = {
   github: {
     platform: `GitHub`,
-    link: 'https://github.com/devokrann',
+    link: 'https://github.com/kevon-net',
   },
   linkedin: {
     platform: `LinkedIn`,
