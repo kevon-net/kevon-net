@@ -36,7 +36,7 @@ const tomorrowSans = Tomorrow({
 
 // metadata
 export const metadata: Metadata = {
-  title: appData.name.app,
+  title: `${appData.name.app} - Web Development Solutions`,
   description: appData.companyOneLiner,
 };
 
