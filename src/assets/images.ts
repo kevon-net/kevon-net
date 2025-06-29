@@ -10,6 +10,7 @@ export const images = {
   },
 
   me: `${baseUrl}/me.png`,
+  banner: `${baseUrl}/banner.webp`,
 
   card: {
     dark: {

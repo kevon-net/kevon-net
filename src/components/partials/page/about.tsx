@@ -68,8 +68,8 @@ export default function About() {
           pos={'relative'}
         >
           <ImageDefault
-            src={images.background.image3lv7ey}
-            height={{ base: 180, xs: 200, sm: 260, md: 240, lg: 280, xl: 300 }}
+            src={images.banner}
+            height={{ base: 120, xs: 150, sm: 190, md: 165, lg: 200, xl: 250 }}
             width={'100%'}
             alt={'business card'}
             mode="wide"
@@ -81,11 +81,12 @@ export default function About() {
 
           <Group
             pos={'absolute'}
-            bottom={{ base: -90, xs: -100 }}
+            bottom={{ base: -90, xs: -120 }}
             left={{
-              base: '25%',
-              xs: '2.5vw',
-              lg: '4vw',
+              base: '2.5vw',
+              xs: '8vw',
+              md: '6vw',
+              xl: '8vw',
             }}
           >
             <ImageDefault
@@ -94,10 +95,11 @@ export default function About() {
               height={{
                 base: 180,
                 xs: 200,
-                sm: 260,
-                md: 240,
+                sm: 220,
+                md: 200,
+                lg: 220,
               }}
-              width={{ base: 180, xs: 200, sm: 260, md: 240 }}
+              width={{ base: 180, xs: 200, sm: 220, md: 200, lg: 220 }}
               mode="wide"
               radius={'50%'}
               style={{
@@ -121,15 +123,14 @@ export default function About() {
             </GridCol>
 
             <GridCol span={{ base: 12, xs: 6 }} order={{ base: 1, xs: 2 }}>
-              <Box pos={{ xs: 'relative' }} h={'100%'}>
-                <Box
-                  pos={{ xs: 'absolute' }}
-                  bottom={0}
-                  w={'100%'}
-                  px={{ sm: 'md', md: 0, lg: 'xl' }}
-                >
-                  <CardAbout />
-                </Box>
+              <Box
+                pos={{ xs: 'relative' }}
+                bottom={{ sm: 90, lg: 110 }}
+                h={{ sm: 290, lg: 310 }}
+                w={'100%'}
+                px={{ sm: 'md', md: 0, lg: 'xl' }}
+              >
+                <CardAbout />
               </Box>
             </GridCol>
 
