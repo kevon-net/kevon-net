@@ -2,19 +2,24 @@
 
 import React from 'react';
 import {
-  Box,
   Button,
   Grid,
   GridCol,
-  Select,
-  SimpleGrid,
+  Group,
   Text,
   TextInput,
   Textarea,
+  ThemeIcon,
 } from '@mantine/core';
 import { useFormEmailInquiry } from '@/hooks/form/inquiry';
 import TooltipInputInfo from '@repo/components/common/tooltips/input/info';
-import AnchorNextLink from '@repo/components/common/anchor/next-link';
+import classes from './contact.module.scss';
+import {
+  ICON_SIZE,
+  ICON_STROKE_WIDTH,
+  ICON_WRAPPER_SIZE,
+} from '@repo/constants/sizes';
+import { IconArrowRight } from '@tabler/icons-react';
 
 export default function Contact({
   props,
@@ -32,116 +37,95 @@ export default function Contact({
   );
 
   return (
-    <Box component="form" onSubmit={form.onSubmit(handleSubmit)} noValidate>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+      noValidate
+    >
       <Grid>
-        <GridCol span={{ base: 12, md: options?.modal ? 6 : undefined }}>
-          <Grid>
-            <GridCol
-              span={{ base: 12, xs: 6, md: options?.modal ? 12 : undefined }}
-            >
-              <TextInput
-                required
-                label={options?.modal ? undefined : 'Name'}
-                aria-label={options?.modal ? 'Name' : undefined}
-                placeholder={`Your Name${options?.modal ? ' *' : ''}`}
-                {...form.getInputProps('name')}
-              />
-            </GridCol>
-
-            <GridCol
-              span={{ base: 12, xs: 6, md: options?.modal ? 12 : undefined }}
-            >
-              <TextInput
-                label={options?.modal ? undefined : 'Phone'}
-                aria-label={options?.modal ? 'Phone' : undefined}
-                placeholder="Your Phone"
-                {...form.getInputProps('phone')}
-              />
-            </GridCol>
-
-            <GridCol span={12}>
-              <TextInput
-                required
-                label={options?.modal ? undefined : 'Email'}
-                aria-label={options?.modal ? 'Email' : undefined}
-                placeholder={`Your Email${options?.modal ? ' *' : ''}`}
-                {...form.getInputProps('email')}
-                rightSection={<TooltipInputInfo />}
-              />
-            </GridCol>
-          </Grid>
+        <GridCol span={{ base: 12, xs: 6 }}>
+          <TextInput
+            withAsterisk
+            aria-label="Name"
+            placeholder="Your Name"
+            key={form.key('name')}
+            {...form.getInputProps('name')}
+            variant="filled"
+            classNames={{ input: classes.textInput }}
+          />
         </GridCol>
 
-        <GridCol span={{ base: 12, md: options?.modal ? 6 : undefined }}>
-          <Grid>
-            <GridCol span={12}>
-              <Select
-                required
-                label={options?.modal ? undefined : 'Inquiry'}
-                aria-label={options?.modal ? 'Inquiry' : undefined}
-                placeholder={
-                  options?.modal ? 'Inquiry *' : 'What are you inquiring about?'
-                }
-                {...form.getInputProps('subject')}
-                data={[
-                  { label: 'What are you inquiring about?', value: '' },
-                  { label: 'Technical Support', value: 'Technical Support' },
-                  { label: 'Sales Support', value: 'Sales Support' },
-                  { label: 'Bug Report', value: 'Bug Report' },
-                ]}
-                checkIconPosition={'right'}
-                allowDeselect={false}
-              />
-            </GridCol>
-
-            <GridCol span={12}>
-              <Textarea
-                required
-                label={options?.modal ? undefined : 'Message'}
-                aria-label={options?.modal ? 'Message' : undefined}
-                placeholder={
-                  options?.modal ? 'Message *' : 'Write your message here...'
-                }
-                autosize
-                minRows={2}
-                styles={{ input: { height: '100%' } }}
-                maxRows={15}
-                resize="vertical"
-                {...form.getInputProps('message')}
-              />
-            </GridCol>
-
-            <GridCol span={12}>
-              <Text fz={'sm'} c={'dimmed'}>
-                By submitting this form, I agree to the{' '}
-                <AnchorNextLink href="#pp" inherit fw={500}>
-                  privacy policy
-                </AnchorNextLink>
-                .
-              </Text>
-            </GridCol>
-          </Grid>
+        <GridCol span={{ base: 12, xs: 6 }}>
+          <TextInput
+            withAsterisk
+            aria-label="Email"
+            placeholder="your@email.com"
+            rightSection={<TooltipInputInfo />}
+            key={form.key('email')}
+            {...form.getInputProps('email')}
+            variant="filled"
+            classNames={{ input: classes.textInput }}
+          />
         </GridCol>
 
         <GridCol span={12}>
-          <SimpleGrid cols={{ base: 1, xs: 2 }}>
-            <Button
-              variant="light"
-              fullWidth
-              type="reset"
-              onClick={() => form.reset()}
-              disabled={submitted}
-              visibleFrom={options?.modal ? 'xs' : undefined}
-            >
-              Clear
-            </Button>
+          <Textarea
+            withAsterisk
+            aria-label="Message"
+            placeholder="Your Message"
+            key={form.key('message')}
+            {...form.getInputProps('message')}
+            variant="filled"
+            classNames={{ input: classes.textArea }}
+            minRows={5}
+            maxRows={10}
+            autosize
+          />
+        </GridCol>
 
-            <Button fullWidth type="submit" loading={submitted}>
-              {submitted ? 'Sending' : 'Send'}
-            </Button>
-          </SimpleGrid>
+        <GridCol span={12}>
+          <Grid align="center" mt={'md'}>
+            <GridCol span={{ base: 12, xs: 9 }}>
+              <Text maw={{ xs: '80%', sm: '100%', md: '80%', lg: '100%' }}>
+                <Text component="span" inherit c={'pri'}>
+                  *
+                </Text>{' '}
+                Your personal information will not be disclosed to third
+                parties.
+              </Text>
+            </GridCol>
+
+            <GridCol span={{ base: 12, xs: 3 }}>
+              <Group justify="end">
+                <Button
+                  type="submit"
+                  color="gray"
+                  variant="light"
+                  size="md"
+                  radius={'xl'}
+                  loading={submitted}
+                  rightSection={
+                    <ThemeIcon
+                      size={ICON_WRAPPER_SIZE / 1.25}
+                      radius={'xl'}
+                      color="pri"
+                    >
+                      <IconArrowRight
+                        size={ICON_SIZE / 1.25}
+                        stroke={ICON_STROKE_WIDTH}
+                      />
+                    </ThemeIcon>
+                  }
+                >
+                  Submit
+                </Button>
+              </Group>
+            </GridCol>
+          </Grid>
         </GridCol>
       </Grid>
-    </Box>
+    </form>
   );
 }

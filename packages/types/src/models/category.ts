@@ -19,9 +19,7 @@ export type CategoryRelations = Prisma.CategoryGetPayload<{
         _count: { select: { comments: true } };
 
         category: true;
-        tags: true;
         profile: true;
-        comments: true;
       };
     };
   };

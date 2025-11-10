@@ -1,0 +1,24 @@
+import React from 'react';
+import { Box } from '@mantine/core';
+import { locations } from '@repo/constants/app';
+
+export default function Contact({ props }: { props?: { src?: string } }) {
+  return (
+    <Box
+      component="iframe"
+      src={props?.src || locations.main.pin}
+      title={locations.main.location}
+      style={{
+        border: 0,
+        minHeight: 400,
+        borderTopRightRadius: 'var(--mantine-radius-sm)',
+        borderBottomRightRadius: 'var(--mantine-radius-sm)',
+      }}
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      allowFullScreen={true}
+      h={{ base: 360, xs: 400, sm: 520, md: 480, lg: 560, xl: 600 }}
+      w={'100%'}
+    ></Box>
+  );
+}

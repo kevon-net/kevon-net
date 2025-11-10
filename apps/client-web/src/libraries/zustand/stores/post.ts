@@ -1,16 +1,16 @@
 import { create } from 'zustand';
-import type { PostGet } from '@repo/types/models/post';
+import type { PostRelations } from '@repo/types/models/post';
 
-export type PostsValue = PostGet[] | null | undefined;
+export type PostsValue = PostRelations[] | null | undefined;
 
 interface PostState {
   posts: PostsValue;
-  deleted: PostGet[];
+  deleted: PostRelations[];
   setPosts: (data: PostsValue) => void;
   clearPosts: () => void;
-  addPost: (data: PostGet) => void;
-  updatePost: (data: PostGet) => void;
-  deletePost: (data: PostGet) => void;
+  addPost: (data: PostRelations) => void;
+  updatePost: (data: PostRelations) => void;
+  deletePost: (data: PostRelations) => void;
 }
 
 export const useStorePost = create<PostState>((set) => ({

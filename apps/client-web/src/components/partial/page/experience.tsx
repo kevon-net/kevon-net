@@ -1,0 +1,81 @@
+import React from 'react';
+import { Text, Title } from '@mantine/core';
+import TimelineCv from '@/components/common/timelines/cv';
+import LayoutSection from '@repo/components/layout/section';
+import IntroSection from '@repo/components/layout/intros/section';
+import ImageDefault from '@repo/components/common/images/default';
+import { SECTION_SPACING } from '@repo/constants/sizes';
+import { timeline } from '@/data/timeline';
+import { images } from '@/assets/images';
+
+export default function Experience() {
+  return (
+    <LayoutSection
+      id={'experience'}
+      py={{ base: SECTION_SPACING * 2 }}
+      containerized={false}
+    >
+      <LayoutSection id={'experience-title'}>
+        <IntroSection
+          options={{ alignment: 'start' }}
+          props={{
+            title: (
+              <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
+                Experience
+                {/* <Text component="span" inherit fw={'100'}>
+                    Kevon&apos;s
+                  </Text>{' '}
+                  History */}
+              </Title>
+            ),
+            desc: (
+              <Text
+                maw={{
+                  xs: '66%',
+                  sm: '50%',
+                  md: '66%',
+                  lg: '50%',
+                  xl: '33%',
+                }}
+              >
+                Highlights from{' '}
+                <Text component="span" inherit c={'pri'}>
+                  my journey as a developer
+                </Text>{' '}
+                and the roles I&apos;ve taken on.
+              </Text>
+            ),
+          }}
+        />
+      </LayoutSection>
+
+      <LayoutSection
+        id={'experience-image'}
+        containerized={false}
+        padded
+        pr={'0.5rem'}
+      >
+        <ImageDefault
+          src={images.cv.light.landscape}
+          height={{ base: 360, xs: 400, sm: 520, md: 480, lg: 560, xl: 600 }}
+          width={'100%'}
+          alt={'business card'}
+          mode="wide"
+          style={{
+            borderTopRightRadius: 'var(--mantine-radius-sm)',
+            borderBottomRightRadius: 'var(--mantine-radius-sm)',
+          }}
+        />
+      </LayoutSection>
+
+      <LayoutSection id={'experience-content'}>
+        <TimelineCv
+          props={{
+            list: timeline.work,
+            active: timeline.work.length - 3,
+          }}
+        />
+      </LayoutSection>
+    </LayoutSection>
+  );
+}

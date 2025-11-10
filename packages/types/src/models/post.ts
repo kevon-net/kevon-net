@@ -14,8 +14,5 @@ export type PostRelations = Prisma.PostGetPayload<{
   include: {
     _count: { select: { comments: true } };
     category: true;
-    tags: true;
-    profile: true;
-    comments: true;
   };
 }>;

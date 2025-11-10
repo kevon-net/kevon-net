@@ -5,104 +5,72 @@
  * Do not modify unless you intend to backport changes to the template.
  */
 
-import {
-  IconBellRinging,
-  IconHeart,
-  IconHelpCircle,
-  IconInfoCircle,
-  IconLicense,
-  IconLock,
-  IconLogout,
-  IconPackage,
-  IconStar,
-  IconUser,
-} from '@tabler/icons-react';
-import { AUTH_URLS } from '@repo/constants/paths';
-
 export type Link = { link: string; label: string };
-
 export type NavLink = Link & { subLinks: Link[] | null };
 
-export const links: NavLink[] = [
+import { emails, phones, socials, locations } from '@repo/constants/app';
+
+export const navbar: Link[] = [
+  // {
+  //   link: '/#',
+  //   label: 'Home',
+  // },
   {
-    link: '/',
-    label: 'Home',
-    subLinks: null,
+    link: '/#about',
+    label: 'About',
   },
   {
-    link: '/about',
-    label: 'About',
-    subLinks: null,
+    link: '/#services',
+    label: 'Services',
+  },
+  {
+    link: '/#skills',
+    label: 'Skills',
+  },
+  {
+    link: '/#experience',
+    label: 'Experience',
+  },
+  // {
+  //   link: '/#portfolio',
+  //   label: 'Portfolio',
+  // },
+  // {
+  //   link: '/#testimonials',
+  //   label: 'Testimonials',
+  // },
+  {
+    link: '/#blog',
+    label: 'Blog',
+  },
+  {
+    link: '/#contact',
+    label: 'Contact',
   },
 ];
 
-export const navLinkItems = {
-  activity: [
-    {
-      icon: IconHeart,
-      link: `/account/wishlist`,
-      label: 'My Wishlist',
-    },
-    {
-      icon: IconPackage,
-      link: `/account/orders`,
-      label: 'My Orders',
-    },
-    {
-      icon: IconStar,
-      link: `/account/reviews`,
-      label: 'My Reviews',
-    },
-  ],
-  account: [
-    {
-      icon: IconUser,
-      link: `/account/profile`,
-      label: 'Profile Settings',
-    },
-    {
-      icon: IconLock,
-      link: `/account/security`,
-      label: 'Account Security',
-    },
-    // {
-    // 	icon: IconCoins,
-    // 	link: `/account/payment`,
-    // 	label: "Payment Details",
-    // },
-    // {
-    // 	icon: IconMapPin,
-    // 	link: `/account/addresses`,
-    // 	label: "Addresses",
-    // },
-    {
-      icon: IconBellRinging,
-      link: `/account/notifications`,
-      label: 'Notifications',
-    },
-  ],
-  support: [
-    {
-      icon: IconHelpCircle,
-      link: `/help`,
-      label: 'Help Center',
-    },
-    {
-      icon: IconLicense,
-      link: `/legal/terms-and-conditions`,
-      label: 'Terms and Conditions',
-    },
-    {
-      icon: IconInfoCircle,
-      link: `/legal/privacy-policy`,
-      label: 'Privacy Policy',
-    },
-  ],
-  danger: [
-    {
-      icon: IconLogout,
-      link: AUTH_URLS.SIGN_OUT,
-      label: 'Sign Out',
-    },
-  ],
-};
+export const contact: Link[] = [
+  {
+    link: `mailto:${emails.contact}`,
+    label: emails.contact || '',
+  },
+  {
+    link: `tel:${phones.main}`,
+    label: `+${phones.main}`,
+  },
+  {
+    link: locations.main.pin,
+    label: locations.main.location,
+  },
+];
+
+export const social: Link[] = [
+  {
+    link: socials.github.link,
+    label: socials.github.platform,
+  },
+  {
+    link: socials.linkedin.link,
+    label: socials.linkedin.platform,
+  },
+];

@@ -1,16 +1,46 @@
-// const imageUrl = `/images`;
+const baseUrl = `/images`;
 const iconUrl = `https://img.icons8.com`;
 
 export const images = {
   brand: {
-    logo: {
-      light: `${iconUrl}/fluency/48/nextjs.png`,
-      dark: `${iconUrl}/fluency/48/nextjs.png`,
-    },
     icon: {
-      light: `${iconUrl}/fluency/48/nextjs.png`,
-      dark: `${iconUrl}/fluency/48/nextjs.png`,
+      light: `${baseUrl}/brand/icon/light.png`,
+      dark: `${baseUrl}/brand/icon/dark.png`,
     },
+  },
+
+  me: `${baseUrl}/me.png`,
+  banner: `${baseUrl}/banner.webp`,
+
+  card: {
+    dark: {
+      landscape: `${baseUrl}/card/dark.webp`,
+      potrait: `${baseUrl}/card/dark-potrait.webp`,
+    },
+    light: {
+      landscape: `${baseUrl}/card/light.webp`,
+      potrait: `${baseUrl}/card/light-potrait.webp`,
+    },
+  },
+
+  cv: {
+    dark: {
+      landscape: `${baseUrl}/cv/dark.webp`,
+      potrait: `${baseUrl}/cv/dark-potrait.webp`,
+    },
+    light: {
+      landscape: `${baseUrl}/cv/light.webp`,
+      potrait: `${baseUrl}/cv/light-potrait.webp`,
+    },
+  },
+
+  background: {
+    image3lv7ey: `${baseUrl}/background/3lv7ey.webp`,
+    image9dvkw8: `${baseUrl}/background/9dvkw8.webp`,
+    imagegprzyd: `${baseUrl}/background/gprzyd.webp`,
+    imagejx29gq: `${baseUrl}/background/jx29gq.webp`,
+    imageyx17dk: `${baseUrl}/background/yx17dk.webp`,
+    noise: `${baseUrl}/background/noise.png`,
   },
 
   icons: {

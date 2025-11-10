@@ -10,6 +10,7 @@ import {
   ICON_STROKE_WIDTH,
   SECTION_SPACING,
 } from '@repo/constants/sizes';
+import NextLink from '../../common/anchor/next-link';
 
 export default function Error404() {
   return (
@@ -24,15 +25,15 @@ export default function Error404() {
         />
 
         <Group justify="center" mt={'md'}>
-          <Button
-            component={Link}
-            href={'/'}
-            leftSection={
-              <IconArrowLeft size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
-            }
-          >
-            Go To Home Page
-          </Button>
+          <NextLink href={'/'}>
+            <Button
+              leftSection={
+                <IconArrowLeft size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
+              }
+            >
+              Go To Home Page
+            </Button>
+          </NextLink>
         </Group>
       </Stack>
     </LayoutSection>

@@ -5,11 +5,16 @@ import { Anchor, AnchorProps } from '@mantine/core';
 
 export default function NextLink({
   href,
+  onClick,
   children,
   ...restProps
-}: { href: string; children: React.ReactNode } & AnchorProps) {
+}: {
+  href: string;
+  onClick?: (e: any) => void;
+  children: React.ReactNode;
+} & AnchorProps) {
   return (
-    <Anchor component={Link} href={href} {...restProps}>
+    <Anchor component={Link} href={href} onClick={onClick} {...restProps}>
       {children}
     </Anchor>
   );
