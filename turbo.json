@@ -1,0 +1,42 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "env": [
+        "NODE_ENV",
+        "NEXT_PUBLIC_HOST_CLIENT_WEB",
+        "NEXT_PUBLIC_HOST_SERVER",
+        "NEXT_PUBLIC_MAILERLITE_API_URL",
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+        "NEXT_PUBLIC_EMAIL_DEV",
+        "NEXT_PUBLIC_EMAIL_DELIVERY",
+        "NEXT_PUBLIC_EMAIL_INFO",
+        "NEXT_PUBLIC_EMAIL_NOREPLY",
+        "DATABASE_URL",
+        "DIRECT_URL",
+        "NEXT_PUBLIC_REST_COUNTRIES_API_URL",
+        "NEXT_MAILERLITE_GROUP_GENERAL",
+        "NEXT_MAILERLITE_KEY_GENERAL",
+        "NEXT_RESEND_AUDIENCE_ID_GENERAL",
+        "NEXT_RESEND_KEY_GENERAL",
+        "NEXT_RESEND_EMAIL",
+        "NEXT_PUBLIC_GA_MEASUREMENT_ID"
+      ],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

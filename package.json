@@ -1,58 +1,21 @@
 {
-  "name": "kevon-net",
-  "version": "0.1.0",
+  "name": "next-mono",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "npx prisma generate && next build",
-    "start": "next start",
-    "lint": "next lint",
-    "check-types": "tsc --noEmit",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
     "format": "prettier --write .",
-    "check-format": "prettier --check ."
-  },
-  "dependencies": {
-    "@mantine/core": "^7.17.2",
-    "@mantine/dates": "^7.17.2",
-    "@mantine/form": "^7.17.2",
-    "@mantine/hooks": "^7.17.2",
-    "@mantine/notifications": "^7.17.2",
-    "@next/third-parties": "^15.3.2",
-    "@prisma/client": "^6.7.0",
-    "@react-email/render": "^1.1.2",
-    "@reduxjs/toolkit": "^2.6.1",
-    "@supabase/ssr": "^0.6.1",
-    "@tabler/icons-react": "^3.31.0",
-    "clsx": "^2.1.1",
-    "dayjs": "^1.11.13",
-    "embla-carousel-autoplay": "^8.6.0",
-    "embla-carousel-fade": "^8.6.0",
-    "embla-carousel-react": "^8.6.0",
-    "install": "^0.13.0",
-    "jose": "^6.0.10",
-    "next": "15.2.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-redux": "^9.2.0",
-    "uuid": "^11.1.0"
+    "check-format": "prettier --check .",
+    "lint": "turbo run lint",
+    "check-types": "turbo run check-types"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@next/eslint-plugin-next": "^15.5.5",
-    "@react-email/components": "^0.0.41",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.2.4",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-prettier": "^5.2.5",
-    "postcss": "^8.5.3",
-    "postcss-preset-mantine": "^1.17.0",
-    "postcss-simple-vars": "^7.0.1",
-    "prettier": "3.5.3",
-    "prisma": "^6.7.0",
-    "sass-embedded": "^1.86.0",
-    "typescript": "^5"
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.8",
+    "typescript": "5.9.2"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
   }
 }

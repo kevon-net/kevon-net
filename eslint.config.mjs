@@ -1,38 +1,37 @@
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import { FlatCompat } from '@eslint/eslintrc';
-import prettierPlugin from 'eslint-plugin-prettier';
+import js from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import turboPlugin from 'eslint-plugin-turbo';
+import tseslint from 'typescript-eslint';
+import onlyWarn from 'eslint-plugin-only-warn';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  // 1) never lint your generated prisma client
+/**
+ * A shared ESLint configuration for the repository.
+ *
+ * @type {import("eslint").Linter.Config[]}
+ * */
+export default [
+  js.configs.recommended,
+  eslintConfigPrettier,
+  ...tseslint.configs.recommended,
   {
-    ignores: ['generated/prisma/**'],
-  },
-
-  // 2) your standard Next + TS + Prettier setup
-  ...compat.extends(
-    'next/core-web-vitals',
-    'next/typescript',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended'
-  ),
-
-  // 3) any custom rules you like
-  {
-    plugins: { prettier: prettierPlugin },
+    plugins: {
+      turbo: turboPlugin,
+    },
     rules: {
-      '@next/next/no-img-element': 'warn',
+      'turbo/no-undeclared-env-vars': 'warn',
       '@typescript-eslint/no-explicit-any': 'off',
-      'prettier/prettier': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_' },
+      ],
     },
   },
+  {
+    plugins: {
+      onlyWarn,
+    },
+  },
+  {
+    ignores: ['dist/**'],
+  },
 ];
-
-export default eslintConfig;

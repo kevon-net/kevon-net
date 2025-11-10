@@ -1,115 +1,135 @@
-# Kevon Kibochi
+# Turborepo starter
 
-## Software Developer | Problem Solver | Tech Enthusiast
+This Turborepo starter is maintained by the Turborepo core team.
 
-![Profile Views](https://img.shields.io/github/followers/kevon-net?label=Followers&style=social)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/kevon-kibochi/)
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-brightgreen)](https://kevon-net.vercel.app)
+## Using this example
 
-## 👋 About Me
+Run the following command:
 
-Brief introduction about yourself, your passion for technology, and what drives you as a developer. This is your chance to let your personality shine through! Mention your experience level, what you're currently focused on learning, and what kinds of projects excite you.
+```sh
+npx create-turbo@latest
+```
 
-## 🛠️ Skills & Technologies
+## What's inside?
 
-### Languages
+This Turborepo includes the following packages/apps:
 
-- JavaScript
-- TypeScript
-- Kotlin
-- HTML/CSS
-- SQL
+### Apps and Packages
 
-### Frameworks & Libraries
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-- React.js
-- Node.js
-- Express
-- Next.js
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Tools & Platforms
+### Utilities
 
-- Git/GitHub
-- Prisma
-- Resend
-- React Email
-- Mantine UI
-- CI/CD
-- Docker
-- AWS/Azure/GCP
-- MongoDB/PostgreSQL
+This Turborepo has some additional tools already setup for you:
 
-## 🚀 Featured Projects
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-### Project Name 1
+### Build
 
-[![Project Badge](https://img.shields.io/badge/Demo-Live-success)](https://project1demo.com)
-[![Code](https://img.shields.io/badge/Code-GitHub-blue)](https://github.com/kevon-net/project1)
+To build all apps and packages, run the following command:
 
-Brief description of your project highlighting the problem it solves and its key features. Mention the technologies used and your specific contributions.
+```
+cd my-turborepo
 
-![Project Screenshot](./images/project1.png)
+# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+turbo build
 
-### Project Name 2
+# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+npx turbo build
+yarn dlx turbo build
+pnpm exec turbo build
+```
 
-[![Project Badge](https://img.shields.io/badge/Demo-Live-success)](https://project2demo.com)
-[![Code](https://img.shields.io/badge/Code-GitHub-blue)](https://github.com/kevon-net/project2)
+You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
 
-Brief description of your project highlighting the problem it solves and its key features. Mention the technologies used and your specific contributions.
+```
+# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+turbo build --filter=docs
 
-![Project Screenshot](./images/project2.png)
+# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+npx turbo build --filter=docs
+yarn exec turbo build --filter=docs
+pnpm exec turbo build --filter=docs
+```
 
-### Project Name 3
+### Develop
 
-[![Project Badge](https://img.shields.io/badge/Demo-Live-success)](https://project3demo.com)
-[![Code](https://img.shields.io/badge/Code-GitHub-blue)](https://github.com/kevon-net/project3)
+To develop all apps and packages, run the following command:
 
-Brief description of your project highlighting the problem it solves and its key features. Mention the technologies used and your specific contributions.
+```
+cd my-turborepo
 
-![Project Screenshot](./images/project3.png)
+# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+turbo dev
 
-## 📊 GitHub Stats
+# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+npx turbo dev
+yarn exec turbo dev
+pnpm exec turbo dev
+```
 
-![Your GitHub stats](https://github-readme-stats.vercel.app/api?username=kevon-net&show_icons=true&theme=radical)
+You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=kevon-net&layout=compact&theme=radical)
+```
+# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+turbo dev --filter=web
 
-## 🎓 Education & Certifications
+# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+npx turbo dev --filter=web
+yarn exec turbo dev --filter=web
+pnpm exec turbo dev --filter=web
+```
 
-- **Degree** - University Name (Year)
-- **Certification 1** - Issuing Organization (Year)
-- **Certification 2** - Issuing Organization (Year)
+### Remote Caching
 
-## 💼 Professional Experience
+> [!TIP]
+> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
 
-### Company Name (Year - Present)
+Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-**Job Title**
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
 
-- Key responsibility or achievement 1
-- Key responsibility or achievement 2
-- Key responsibility or achievement 3
+```
+cd my-turborepo
 
-### Previous Company (Year - Year)
+# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+turbo login
 
-**Job Title**
+# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+npx turbo login
+yarn exec turbo login
+pnpm exec turbo login
+```
 
-- Key responsibility or achievement 1
-- Key responsibility or achievement 2
-- Key responsibility or achievement 3
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-## 📫 Let's Connect!
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
 
-- Email: kevon.kibochi@outlook.com
-- LinkedIn: [Kevon Kibochi](https://www.linkedin.com/in/kevon-kibochi/)
-- Portfolio: [kevon.net](https://kevon.net)
+```
+# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+turbo link
 
-## ⚡ Fun Facts
+# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+npx turbo link
+yarn exec turbo link
+pnpm exec turbo link
+```
 
-- Share something interesting about yourself
-- Maybe a hobby or passion outside of coding
-- An unexpected skill you have
+## Useful Links
 
----
+Learn more about the power of Turborepo:
 
-⭐️ From [kevon](https://github.com/kevon-net)
+- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
+- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
+- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
+- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
+- [Configuration Options](https://turborepo.com/docs/reference/configuration)
+- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
