@@ -14,8 +14,8 @@ import { SECTION_SPACING } from '@repo/constants/sizes';
 interface SectionHeaderProps {
   props: {
     subTitle?: string;
-    title: string;
-    desc?: string;
+    title: string | React.ReactNode;
+    desc?: string | React.ReactNode;
   };
   options?: {
     alignment?: 'start' | 'end' | 'center';
@@ -42,11 +42,20 @@ export default function Section({ props, options }: SectionHeaderProps) {
           mb={options?.spacing ? SECTION_SPACING : undefined}
         >
           <Stack>
-            <Title order={2} ta={alignment}>
-              {props.title}
-            </Title>
+            {typeof props.title == 'string' ? (
+              <Title order={2} ta={options?.alignment || 'center'}>
+                {props.title}
+              </Title>
+            ) : (
+              props.title
+            )}
 
-            {props.desc && <Text ta={alignment}>{props.desc}</Text>}
+            {props.desc &&
+              (typeof props.desc == 'string' ? (
+                <Text ta={options?.alignment || 'center'}>{props.desc}</Text>
+              ) : (
+                props.desc
+              ))}
           </Stack>
         </LayoutSection>
       </Stack>

@@ -7,7 +7,7 @@
  * Do not modify unless you intend to backport changes to the template.
  */
 
-import { CSSVariablesResolver } from '@mantine/core';
+import { alpha, CSSVariablesResolver } from '@mantine/core';
 
 const appResolver: CSSVariablesResolver = (theme) => ({
   variables: {},
@@ -19,7 +19,11 @@ const appResolver: CSSVariablesResolver = (theme) => ({
 
   dark: {
     '--mantine-color-body': `${theme.black}`,
-    '--mantine-color-text': `var(--mantine-color-dark-0)`,
+    '--mantine-color-text': `var(--mantine-color-white)`,
+    '--mantine-shadow-xs': `0 0.0625rem 0.1875rem ${alpha(theme.black, 0.05)}, 0 0.0625rem 0.125rem ${alpha(
+      theme.black,
+      0.1
+    )}`,
   },
 });
 

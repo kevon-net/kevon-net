@@ -11,12 +11,17 @@ import { DBConfig } from '@repo/types/indexed-db';
 
 export const config: DBConfig = {
   name: appName.toLowerCase(),
-  version: 1,
+  version: 2,
   stores: [
     {
       name: STORE_NAME.POSTS,
       keyPath: 'id',
       indexes: [{ name: 'by_postId', keyPath: 'postId' }],
+    },
+    {
+      name: STORE_NAME.CATEGORIES,
+      keyPath: 'id',
+      indexes: [{ name: 'by_categoryId', keyPath: 'categoryId' }],
     },
   ],
 };

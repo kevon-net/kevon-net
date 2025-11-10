@@ -39,6 +39,8 @@ import {
   useStoreAppShell,
 } from '@/libraries/zustand/stores/shell';
 import { samplePosts } from '@/data/sample/posts';
+import { useStoreCategory } from '@/libraries/zustand/stores/category';
+import { sampleCategories } from '@/data/sample/categories';
 
 export const useSessionStore = () => {
   const { setSession } = useStoreSession();
@@ -165,6 +167,7 @@ export const useStoreData = () => {
   const prevItemsRef = useRef<any[]>([]);
 
   const { setPosts } = useStorePost();
+  const { setCategories } = useStoreCategory();
 
   useEffect(() => {
     if (prevItemsRef.current.length) return;
@@ -183,4 +186,23 @@ export const useStoreData = () => {
 
     loadPosts();
   }, [setPosts]);
+
+  useEffect(() => {
+    if (prevItemsRef.current.length) return;
+
+    const loadCategories = async () => {
+      await loadInitialData({
+        prevItemsRef,
+        dataStore: STORE_NAME.CATEGORIES,
+        dataFetchFunction: async () => {
+          // return await categoriesGet();
+          return { items: sampleCategories };
+        },
+        stateUpdateFunction: (stateUpdateItems) =>
+          setCategories(stateUpdateItems),
+      });
+    };
+
+    loadCategories();
+  }, [setCategories]);
 };

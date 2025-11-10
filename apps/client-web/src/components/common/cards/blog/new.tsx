@@ -39,14 +39,6 @@ export default function New({ post }: { post: PostRelations }) {
               height={400}
               mode="grid"
             />
-
-            <Group gap={'xs'} align="start" className={classes.overlay}>
-              {post.tags.map((t) => (
-                <Badge key={t.id} radius={'sm'} color="white" c={'black'}>
-                  {t.title}
-                </Badge>
-              ))}
-            </Group>
           </AnchorNextLink>
         </GridCol>
 

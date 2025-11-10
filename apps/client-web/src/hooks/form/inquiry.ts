@@ -31,10 +31,10 @@ export const useFormEmailInquiry = (
       {
         name: hasLength({ min: 2, max: 24 }, 'Between 2 and 24 characters'),
         email: (value) => validators.email(value.trim()),
-        subject: hasLength(
-          { min: 2, max: 255 },
-          'Between 2 and 255 characters'
-        ),
+        // subject: hasLength(
+        //   { min: 2, max: 255 },
+        //   'Between 2 and 255 characters'
+        // ),
         phone: hasLength({ min: 7, max: 15 }, 'Between 7 and 15 characters'),
         message: hasLength(
           { min: 3, max: 2048 },
@@ -89,7 +89,7 @@ const normalizeFormValues = (v: FormValuesInquiry): FormValuesInquiry => ({
   ...v,
   name: capitalizeWords(v.name.trim()),
   email: v.email.trim().toLowerCase(),
-  subject: v.subject.trim(),
+  subject: `New Inquiry from  ${capitalizeWords(v.name.trim())}`,
   phone: v.phone.trim(),
   message: v.message.trim(),
 });

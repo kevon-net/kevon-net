@@ -1,0 +1,42 @@
+.root {
+  box-shadow: var(--mantine-shadow-xs);
+
+  background-color: var(--mantine-color-gray-light) !important;
+
+  &[data-variant='success'] {
+    .icon {
+      background-color: var(--mantine-color-green-6);
+      color: var(--mantine-color-white);
+    }
+  }
+
+  &[data-variant='warning'] {
+    .icon {
+      background-color: var(--mantine-color-yellow-6);
+      color: var(--mantine-color-white);
+    }
+  }
+
+  &[data-variant='failed'] {
+    .icon {
+      background-color: var(--mantine-color-red-6);
+      color: var(--mantine-color-white);
+    }
+  }
+}
+
+.title {
+  color: var(--mantine-color-text) !important;
+}
+
+.description {
+  color: var(--mantine-color-text) !important;
+}
+
+.closeButton {
+  color: var(--mantine-color-text) !important;
+
+  @include mantine.hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}

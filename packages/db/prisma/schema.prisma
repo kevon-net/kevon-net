@@ -91,7 +91,8 @@ model Category {
   id    String @id @default(uuid())
   title String
 
-  posts Post[]
+  posts    Post[]
+  projects Project[]
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -118,4 +119,25 @@ model Comment {
 
   @@unique([name, content, post_id, profile_id])
   @@map(name: "comments")
+}
+
+model Project {
+  id           String  @id @default(uuid())
+  cover        String
+  title        String  @unique
+  desc         String
+  client       String
+  content      String
+  preview_link String?
+  repo_link    String?
+
+  status Status @default(DRAFT)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  category    Category? @relation(fields: [category_id], references: [id], onDelete: Cascade)
+  category_id String?   @map("category_id")
+
+  @@map(name: "projects")
 }

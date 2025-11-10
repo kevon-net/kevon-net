@@ -10,6 +10,7 @@ import { FormValidateInput, useForm } from '@mantine/form';
 import { useNetwork } from '@mantine/hooks';
 import { Variant } from '@repo/types/enums';
 import { useNotification } from '@repo/hooks/notification';
+import IconNotification from '@repo/components/common/icons/notification';
 
 type UseFormBaseOptions<TValues> = {
   /** Called with parsed values after validation passes */
@@ -47,6 +48,7 @@ export function useFormBase<TValues extends Record<string, any>>(
         variant: Variant.WARNING,
         title: 'Form Invalid',
         desc: 'The form has one or more missing/incorrect fields.',
+        icon: IconNotification({ variant: Variant.WARNING }),
       });
       return;
     }
@@ -56,6 +58,7 @@ export function useFormBase<TValues extends Record<string, any>>(
         variant: Variant.WARNING,
         title: 'Network Error',
         desc: 'Please check your internet connection.',
+        icon: IconNotification({ variant: Variant.WARNING }),
       });
       return;
     }
@@ -70,7 +73,10 @@ export function useFormBase<TValues extends Record<string, any>>(
 
       if (!options?.hideSuccessNotification) {
         showNotification(
-          { variant: Variant.SUCCESS },
+          {
+            variant: Variant.SUCCESS,
+            icon: IconNotification({ variant: Variant.SUCCESS }),
+          },
           submit?.response,
           submit?.result
         );
@@ -79,7 +85,11 @@ export function useFormBase<TValues extends Record<string, any>>(
       const message =
         err instanceof Error ? err.message : 'Unexpected error occurred';
 
-      showNotification({ variant: Variant.FAILED, desc: message });
+      showNotification({
+        variant: Variant.FAILED,
+        desc: message,
+        icon: IconNotification({ variant: Variant.FAILED }),
+      });
 
       options?.onError?.(err instanceof Error ? err : new Error(message));
     } finally {

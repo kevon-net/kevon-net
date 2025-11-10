@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Badge,
   Card,
   CardSection,
   Group,
@@ -43,14 +42,6 @@ export default function Main({ post }: { post: PostRelations }) {
               height={200}
               mode="grid"
             />
-
-            <Group gap={'xs'} align="start" className={classes.overlay}>
-              {post.tags.map((t) => (
-                <Badge key={t.id} color="white" c={'black'} radius={'sm'}>
-                  {t.title}
-                </Badge>
-              ))}
-            </Group>
           </AnchorNextLink>
         </CardSection>
 

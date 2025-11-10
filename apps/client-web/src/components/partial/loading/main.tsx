@@ -12,7 +12,7 @@ export default function Main() {
       <Center mih={'100vh'} pb={SECTION_SPACING}>
         <Stack align="center">
           <ImageDefault
-            src={images.brand.logo.light}
+            src={images.brand.icon.light}
             alt={appName}
             height={56}
             width={104}

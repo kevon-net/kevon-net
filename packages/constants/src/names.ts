@@ -37,4 +37,5 @@ export const STORE_NAME = {
   COLOR_SCHEME: 'color-scheme',
   SESSION: 'session',
   POSTS: 'posts',
+  CATEGORIES: 'categories',
 };

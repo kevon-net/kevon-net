@@ -52,6 +52,7 @@ export default function Section({
       {containerized ? (
         <Container
           size={typeof containerized === 'boolean' ? undefined : containerized}
+          h={'100%'}
         >
           {children}
         </Container>
