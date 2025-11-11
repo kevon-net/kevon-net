@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Hr, Section, Text } from '@react-email/components';
-import { dimmedText, Email as LayoutEmail, text } from './layout';
-import { companyName } from '@repo/constants/app';
+import { Section, Text } from '@react-email/components';
+import { Email as LayoutEmail, text } from './layout';
 
 export const Inquiry = (props: {
   userName: string;
@@ -14,8 +13,6 @@ export const Inquiry = (props: {
       options={{ withHeader: true, withFooter: false }}
     >
       <Section style={{ marginTop: '2rem' }}>
-        <Text>{companyName},</Text>
-
         <Text style={text}>
           {props.userMessage || 'Sample text'} <br />
           <br />
@@ -27,20 +24,6 @@ export const Inquiry = (props: {
               {props.userPhone}
             </>
           )}
-        </Text>
-      </Section>
-
-      <Section style={{ marginTop: '2rem' }}>
-        <Hr />
-      </Section>
-
-      <Section style={{ marginTop: '2rem' }}>
-        <Text style={{ ...dimmedText, textAlign: 'center', fontSize: 11 }}>
-          Sent from the {companyName} website.
-        </Text>
-
-        <Text style={{ ...dimmedText, textAlign: 'center', fontSize: 11 }}>
-          You can reply to this email directly to respond to the inquiry.
         </Text>
       </Section>
     </LayoutEmail>

@@ -71,8 +71,8 @@ export default async function RootLayout({
           <ProviderStore>
             <UnderlayMist
               props={{
-                image: images.background.image3lv7ey,
-                // noiseImage: images.background.noise,
+                image: images.background.imagejx29gq,
+                noiseImage: images.background.noise,
               }}
             >
               <ShellMain>{children}</ShellMain>

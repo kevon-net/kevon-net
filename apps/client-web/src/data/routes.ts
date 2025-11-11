@@ -6,7 +6,7 @@
  */
 
 import { cleanPaths } from '@repo/utilities/array';
-import { links } from './links';
+import { navbar as linksNavbar } from './links';
 
 export const authRoutes = [
   '/auth/password',
@@ -29,16 +29,16 @@ export const protectedDeadEndRoutes = [
   // Add other protected dead-end routes
 ];
 
-const mainLinks = links.map((l) => l.link);
+const mainLinks = linksNavbar.map((l) => l.link);
 const subLinks: string[] = [];
 
-links.map((l) => {
-  if (l.subLinks) {
-    l.subLinks.map((sl) => {
-      subLinks.push(sl.link);
-    });
-  }
-});
+// linksNavbar.map((l) => {
+//   if (l.subLinks) {
+//     l.subLinks.map((sl) => {
+//       subLinks.push(sl.link);
+//     });
+//   }
+// });
 
 export const unprotectedRoutes = [
   '/',
