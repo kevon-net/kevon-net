@@ -25,7 +25,7 @@ export const emailContactAdd = async (
       {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_MAILERLITE_KEY_GENERAL}`,
+          Authorization: `Bearer ${process.env.NEXT_MAILERLITE_KEY_PORTFOLIO}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({

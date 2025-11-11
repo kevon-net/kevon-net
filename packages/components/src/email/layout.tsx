@@ -34,11 +34,9 @@ export const Email = ({
           <Container style={content}>
             {options.withHeader && (
               <Section style={{ textAlign: 'center' }}>
-                <a href="https://example.com">
+                <a href="https://kevon.net">
                   <img
-                    src={
-                      'https://spewyluxhudgxpuhjjam.supabase.co/storage/v1/object/public/avatars/brand/icon/icon-light.png'
-                    }
+                    src={'https://kevon.net/images/brand/icon/light.png'}
                     width={40}
                     height={'auto'}
                     alt={appName}
@@ -61,7 +59,7 @@ export const Email = ({
                   <Text style={dimmedText}>
                     Copyright © {new Date().getFullYear()},{' '}
                     <Link
-                      href="https://example.com"
+                      href="https://kevon.net"
                       style={{
                         color: 'black',
                         textDecorationLine: 'underline',

@@ -17,6 +17,7 @@ export default function Noise({
         className={classes.noise}
         style={{
           backgroundImage: `url(${image})`,
+          backgroundAttachment: 'fixed', // <-- makes it stick
           position: 'absolute',
           top: 0,
           right: 0,
