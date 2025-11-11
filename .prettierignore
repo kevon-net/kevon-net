@@ -16,6 +16,7 @@ out
 **/next-env.d.ts
 
 # --- Prisma & generated code ---
+**/generated/prisma/
 generated/
 prisma/migrations/
 *.db
