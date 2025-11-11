@@ -7,6 +7,7 @@ import { SECTION_SPACING } from '@repo/constants/sizes';
 import IntroSection from '@repo/components/layout/intros/section';
 import { Text, Title } from '@mantine/core';
 import CarouselBlog from '@/components/common/carousel/blog';
+import PartialLoadingContent from '../loading/content';
 
 export default function Blog() {
   const { posts } = useStorePost();
@@ -19,10 +20,6 @@ export default function Blog() {
           title: (
             <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
               Blog
-              {/* <Text component="span" inherit fw={'100'}>
-                                      Kevon&apos;s
-                                    </Text>{' '}
-                                    History */}
             </Title>
           ),
           desc: (
@@ -39,10 +36,8 @@ export default function Blog() {
       />
 
       {posts === undefined ? (
-        <>loading</>
-      ) : !posts ? (
-        <>no posts found</>
-      ) : (
+        <PartialLoadingContent />
+      ) : !posts ? null : (
         <CarouselBlog posts={posts} />
       )}
     </LayoutSection>

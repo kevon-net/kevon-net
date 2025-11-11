@@ -104,7 +104,7 @@ model Category {
 
 model Comment {
   id         String  @id @default(uuid())
-  name       String?
+  name       String
   content    String
   comment_id String?
 

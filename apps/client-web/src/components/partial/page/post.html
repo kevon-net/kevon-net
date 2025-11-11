@@ -1,0 +1,969 @@
+<article class="article">
+  <p>
+    Working with databases isn’t just about fetching data — it’s about maintaining
+    type safety, schema integrity, and predictable migrations across environments.
+    Prisma ORM nails these fundamentals with a strongly typed client, declarative
+    schema modeling, and a workflow that fits naturally into modern TypeScript
+    development. It abstracts repetitive SQL logic without hiding what’s really
+    happening. Here’s why Prisma has become my default choice for database access
+    — and why it might deserve a spot in your stack too.
+  </p>
+
+  <h2>Why ORM Choice Matters</h2>
+  <p>
+    Your ORM dictates how you interact with data — and by extension, how
+    maintainable your application becomes. Raw SQL gives control but invites
+    verbosity and runtime risk. Traditional ORMs promise abstraction but often
+    create leaky, unpredictable layers that blur what’s happening under the hood.
+    The sweet spot is a tool that gives you productivity without sacrificing
+    transparency. Prisma lands precisely there: opinionated enough to streamline
+    workflow, but explicit enough to stay trustworthy.
+  </p>
+
+  <h2>What Prisma Brings to the Table</h2>
+  <p>
+    Everything in Prisma revolves around the <code>schema.prisma</code> file — a
+    single source of truth describing your models, relationships, and mappings.
+    From this, Prisma generates a fully typed client tailored to your schema,
+    complete with autocompletion and validation at compile time. Its migration
+    engine and introspection tools make it simple to evolve your database as your
+    app grows. You define, migrate, and query from one unified workflow — no
+    fragile glue code or manual sync steps.
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+        <code class="language-prisma">
+# schema.prisma
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  posts     Post[]
+  createdAt DateTime @default(now())
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String?
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  published Boolean  @default(false)
+}
+    </code>
+    </pre>
+    </div>
+  </div>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre><code class="language-ts">
+// Using the generated Prisma Client
+
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+async function main() {
+  const user = await prisma.user.create({
+    data: {
+      email: "dev@example.com",
+      name: "Kevon",
+      posts: {
+        create: { title: "First Post", content: "Hello Prisma!" },
+      },
+    },
+    include: { posts: true },
+  });
+
+  console.log(user);
+}
+
+main();
+    </code></pre>
+    </div>
+  </div>
+
+  <h2>Deep Integration with TypeScript</h2>
+  <p>
+    Prisma feels native to TypeScript because it <em>is</em>. Every model and
+    field in your schema flows directly into your type system. When you run a
+    query, TypeScript knows the exact shape of the returned data — no guessing, no
+    <code>any</code>. If a field is renamed or removed, the compiler breaks before
+    production does. This type-driven feedback loop boosts confidence and speed
+    simultaneously: fewer runtime errors, safer refactors, and code that scales
+    cleanly with your schema.
+  </p>
+
+  <h2>Database-Agnostic but SQL-Honoring</h2>
+  <p>
+    Prisma supports PostgreSQL, MySQL, SQLite, SQL Server, MongoDB, and more — yet
+    it doesn’t hide the underlying database behavior. Its abstraction is
+    declarative, not magical. You can read your schema and know what’s being
+    created and queried. And when you need fine-grained control, Prisma exposes
+    raw SQL capabilities without fighting the ORM. This duality — ergonomic
+    defaults with transparent escape hatches — makes it both beginner-friendly and
+    production-safe.
+  </p>
+
+  <h2>Real-World Developer Experience</h2>
+  <p>
+    In daily use, Prisma feels pragmatic. Spinning up a project is fast: define
+    your schema, run <code>prisma migrate dev</code>, and start querying. Seeding
+    data and managing environments is predictable. It plays well with frameworks
+    like Next.js, Remix, or NestJS, and fits naturally into serverless or
+    containerized workflows. For teams, versioned migrations and shared schemas
+    eliminate drift. The overall experience reduces cognitive load — you spend
+    more time building features, not debugging your ORM.
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre><code class="language-ts">
+// Example Next.js route using Prisma
+
+import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
+
+export async function GET() {
+  const posts = await prisma.post.findMany({
+    where: { published: true },
+    include: { author: true },
+  });
+
+  return NextResponse.json(posts);
+}
+    </code></pre>
+    </div>
+  </div>
+
+  <h2>Performance and Operational Considerations</h2>
+  <p>
+    Prisma’s design doesn’t compromise runtime efficiency. Queries are compiled to
+    optimized SQL, executed via prepared statements, and batched intelligently.
+    For larger deployments, connection pooling through PgBouncer or Prisma
+    Accelerate keeps performance stable under heavy load. Logging and query
+    tracing make optimization straightforward. There’s a small abstraction
+    overhead compared to handwritten SQL, but the trade-off in safety and
+    maintainability pays off many times over.
+  </p>
+
+  <h2>Why It’s My Default</h2>
+  <p>
+    After trying multiple ORMs and query builders, Prisma is the one that
+    consistently gets the balance right — between simplicity and control,
+    abstraction and transparency. Its schema-first approach means my database
+    model, migrations, and client access all stay in sync. The generated types act
+    as living documentation. Whether it’s a side project or a production API,
+    Prisma gives me a clean mental model and a faster development loop.
+  </p>
+
+  <h2>Closing Thoughts</h2>
+  <p>
+    Prisma isn’t perfect. Highly dynamic queries or exotic SQL features might
+    still push you toward raw queries. But for most web applications, it offers a
+    near-ideal blend of developer experience, safety, and scalability. It reflects
+    the modern shift toward typed, declarative backends — where confidence and
+    clarity matter more than magic. Prisma doesn’t just simplify database access;
+    it redefines what good data tooling should feel like.
+  </p>
+
+</article>
+
+<!-- article 2 -->
+
+<article class="article">
+  <p>
+    Deployment shouldn't be an afterthought — it's the bridge between local development and real users.
+    Vercel is the natural fit for Next.js: tight framework knowledge, automatic optimizations, and a deployment
+    workflow that maps directly to modern Git-driven development. This guide walks through preparing your app,
+    connecting it to Vercel, configuring environments and domains, and avoiding common pitfalls so your
+    deploys are predictable and production-ready.
+  </p>
+
+  <h2>Why Vercel Is the Natural Home for Next.js</h2>
+  <p>
+    Vercel understands Next.js conventions (file-based routing, API routes, ISR, middleware) and optimizes
+    accordingly. It auto-detects builds, deploys static pages to the CDN, and compiles dynamic routes into
+    serverless or edge functions. Use Vercel for maximum velocity; consider alternatives (AWS, Fly.io, custom
+    containers) when you need strict data residency, long-running background jobs, or custom network topologies.
+  </p>
+
+  <h2>Preparing Your Next.js App for Deployment</h2>
+  <p>
+    Make your project reproducible and minimal before handing it to the build system.
+    Key steps: isolate secrets, verify production build, remove unused dependencies, and ensure build scripts are
+    correct.
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+        <code class="language-bash">
+# install & build
+
+pnpm install
+pnpm build
+
+# or
+
+npm ci
+npm run build
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <p>Check the production server locally:</p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+        <code class="language-bash">
+pnpm start
+
+# or
+
+NODE_ENV=production node server.js
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <p>Audit large dependencies and assets (images, fonts). Replace heavy runtime libraries with smaller alternatives,
+    and ensure case-sensitive imports match filesystem names (Linux build servers are case-sensitive).</p>
+
+  <h2>Connecting to Vercel</h2>
+  <p>
+    Two common flows: CLI deploys for quick iterations, and Git integration for continuous deployment with previews.
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+        <code class="language-bash">
+# install CLI
+pnpm add -g vercel
+
+# one-off deploy
+vercel
+
+# link local repo to existing project
+vercel link
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <p>Or import the repo in the Vercel dashboard (GitHub/GitLab/Bitbucket). Vercel configures builds, preview URLs,
+    and production rules automatically — you can still override via <code>vercel.json</code>.</p>
+
+  <h2>Understanding Build & Deployment Flow</h2>
+  <p>
+    On deploy Vercel runs <code>next build</code> and classifies output:
+  </p>
+
+  <ul>
+    <li><strong>Static pages</strong> → served from global CDN</li>
+    <li><strong>Dynamic/API routes</strong> → serverless functions</li>
+    <li><strong>Middleware/Edge functions</strong> → deployed to the Edge Network</li>
+  </ul>
+
+  <p>
+    ISR pages are cached on the edge and revalidated per your settings. Each serverless function is isolated; optimize
+    for small cold-starts and minimal cold dependencies.
+  </p>
+
+  <h2>Configuring Environment Variables & Secrets</h2>
+  <p>
+    Vercel scopes environment variables to <em>development</em>, <em>preview</em>, and <em>production</em>.
+    Use the dashboard or CLI to add secrets and env vars. Locally, mirror secrets with <code>vercel env pull</code>.
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+        <code class="language-bash">
+# add a production variable
+vercel env add DATABASE_URL production
+
+# pull secrets to local .env
+vercel env pull .env
+        </code>
+      </pre>
+    </div>
+  </div>
+
+
+  <p>Rules & pitfalls:</p>
+  <ul>
+    <li>Client-exposed variables must be prefixed with <code>NEXT_PUBLIC_</code>.</li>
+    <li>Don't rely on <code>.env.local</code> for production — Vercel ignores local files.</li>
+    <li>Ensure CI and team workflows have the same envs; missing vars are the most common cause of runtime failures.
+    </li>
+  </ul>
+
+  <h2>Handling Custom Domains & HTTPS</h2>
+  <p>
+    Add domains in the Vercel dashboard under Project → Settings → Domains. For external registrars, add the required
+    DNS records (CNAME or A records) Vercel provides. SSL is provisioned automatically via Let's Encrypt. Subdomains
+    map to previews or production based on how you set them up.
+  </p>
+
+  <h2>Preview Deployments and Git Integration</h2>
+  <p>
+    Every branch gets a preview URL (<code>project-branch.vercel.app</code>), which makes QA and PR reviews trivial.
+    PRs get live URLs in comments. Preview builds mirror production behavior aside from production-scoped env vars.
+    Promote previews to production via the dashboard if you need to fast-track a tested change.
+  </p>
+
+  <h2>Optimizing for Performance</h2>
+  <p>
+    Best practices to squeeze maximum performance out of Next.js on Vercel:
+  </p>
+  <ul>
+    <li>Use <code>&lt;Image /&gt;</code> for automatic image optimization and responsive delivery.</li>
+    <li>Prefer ISR for pages that rarely change but need occasional updates:</li>
+  </ul>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+        <code class="language-ts">
+export async function getStaticProps() {
+  const data = await fetchData();
+  return { props: { data }, revalidate: 60 };
+}
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <ul>
+    <li>Leverage edge caching and small API routes to reduce cold starts.</li>
+    <li>Use middleware for personalization at the edge without full server render.</li>
+  </ul>
+
+  <h2>Monitoring, Logs, and Troubleshooting</h2>
+  <p>
+    Use the Vercel dashboard for build logs and real-time request logs. CLI access is handy for quick checks:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+        <code class="language-bash">
+vercel logs <deployment-url> --since 1h
+vercel inspect <deployment-id>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+
+  <p>Common issues: missing env vars, build timeouts from large bundles, case-sensitivity problems, and third-party APIs
+    blocked by CORS or network rules. Use <code>vercel dev</code> to emulate the environment locally.</p>
+
+  <h2>Advanced Configuration</h2>
+  <p>
+    When defaults aren't enough, <code>vercel.json</code> controls build commands, output directories, routes, and
+    headers.
+    Example for a custom build and rewrite rules:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+        <code class="language-json">
+{
+  "buildCommand": "pnpm build",
+  "outputDirectory": ".next",
+  "routes": [
+    { "src": "/old-path", "dest": "/new-path" }
+  ]
+}
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <p>Monorepo note: map each app (e.g., <code>/apps/web</code>, <code>/apps/admin</code>) to separate Vercel projects or
+    use monorepo-aware settings in the dashboard. Cache shared node_modules at the root to speed builds.</p>
+
+  <h2>Wrapping Up</h2>
+  <p>
+    Vercel removes most deployment friction for Next.js: instant previews, automatic builds, and global edge delivery.
+    Treat deployment as part of development — keep branches deployable, use previews for QA, and centralize env
+    management.
+    If you outgrow defaults (background workers, strict networking, or long-lived processes), combine Vercel with
+    dedicated services.
+    For typical web apps, Vercel gets you to production faster and with fewer surprises.
+  </p>
+</article>
+
+<!-- article 3 -->
+
+<article class="article">
+  <p>
+    Consistently clean, readable, and error-free code is crucial for scalable projects, yet manually enforcing style and
+    quality rules slows development.
+    Integrating <strong>ESLint</strong> and <strong>Prettier</strong> into your workflow automates code quality, ensures
+    consistency across teams, and prevents subtle bugs.
+    This guide walks through configuring, integrating, and enforcing these tools in a modern JavaScript/TypeScript
+    project, with practical examples.
+  </p>
+
+  <h2>Why Automating Code Quality Matters</h2>
+  <p>
+    Manual code reviews can catch errors and style issues, but they are inconsistent and time-consuming. Linting and
+    formatting tools enforce rules automatically:
+  </p>
+  <ul>
+    <li>Prevent runtime bugs (e.g., unused variables, type mismatches).</li>
+    <li>Maintain consistent code style across large teams.</li>
+    <li>Reduce cognitive load: developers focus on logic, not formatting.</li>
+  </ul>
+  <p>
+    Combining ESLint and Prettier ensures that both code correctness and stylistic conventions are automated, reducing
+    friction in development.
+  </p>
+
+  <h2>Setting Up ESLint</h2>
+  <p>
+    ESLint is the de-facto linter for JavaScript and TypeScript. Start by installing it:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+      <code class="language-bash">
+pnpm add -D eslint
+
+# or
+
+npm install --save-dev eslint
+      </code>
+    </pre>
+    </div>
+  </div>
+
+  <p>
+    Initialize a basic config:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+      <code class="language-bash">
+npx eslint --init
+      </code>
+    </pre>
+    </div>
+  </div>
+
+  <p>
+    Example <code>.eslintrc.js</code> for a TypeScript + React project:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+      <code class="language-js">
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  parserOptions: { ecmaVersion: 2020, sourceType: 'module' },
+  plugins: ['@typescript-eslint', 'react'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended'
+  ],
+  rules: {
+    'no-console': 'warn',
+    '@typescript-eslint/explicit-function-return-type': 'off'
+  },
+};
+      </code>
+    </pre>
+    </div>
+  </div>
+
+  <h2>Setting Up Prettier</h2>
+  <p>
+    Prettier handles formatting automatically. Install it:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+      <co class="language-bash">
+pnpm add -D prettier
+
+# or
+
+npm install --save-dev prettier
+      </code>
+    </pre>
+    </div>
+  </div>
+
+  <p>
+    Create a basic <code>.prettierrc</code>:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+      <code class="language-json">
+{
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "printWidth": 80
+}
+      </code>
+    </pre>
+    </div>
+  </div>
+
+  <p>
+    To avoid conflicts, integrate Prettier with ESLint using the recommended plugin:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+      <code class="language-bash">
+pnpm add -D eslint-config-prettier eslint-plugin-prettier
+      </code>
+    </pre>
+    </div>
+  </div>
+
+  <p>
+    Update ESLint config:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+      <code class="language-js">
+extends: [
+  'eslint:recommended',
+  'plugin:@typescript-eslint/recommended',
+  'plugin:react/recommended',
+  'plugin:prettier/recommended'
+]
+      </code>
+    </pre>
+    </div>
+  </div>
+
+  <h2>Integrating Into the Dev Workflow</h2>
+  <p>
+    Make linting and formatting part of everyday development:
+  </p>
+  <ul>
+    <li>Add scripts to <code>package.json</code>:</li>
+  </ul>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+      <code class="language-json">
+{
+  "scripts": {
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "format": "prettier --write ."
+  }
+}
+      </code>
+    </pre>
+    </div>
+  </div>
+
+  <ul>
+    <li>Run <code>pnpm lint</code> before commits.</li>
+    <li>Run <code>pnpm format</code> automatically to maintain consistent style.</li>
+  </ul>
+
+  <h2>Enforcing on Commit with Husky and lint-staged</h2>
+  <p>
+    Prevent bad code from reaching the repo by hooking into Git commits:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+      <code class="language-bash">
+pnpm add -D husky lint-staged
+npx husky install
+npx husky add .husky/pre-commit "npx lint-staged"
+      </code>
+    </pre>
+    </div>
+  </div>
+
+  <p>
+    Configure <code>lint-staged</code> in <code>package.json</code>:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+      <code class="language-json">
+"lint-staged": {
+  "*.{js,ts,tsx}": ["eslint --fix", "prettier --write"]
+}
+      </code>
+    </pre>
+    </div>
+  </div>
+
+  <p>
+    Now, every staged file is automatically linted and formatted before commit, catching errors and style violations
+    early.
+  </p>
+
+  <h2>Editor Integration</h2>
+  <p>
+    Most modern editors (VS Code, WebStorm) support ESLint + Prettier:
+  </p>
+  <ul>
+    <li>Enable auto-fix on save.</li>
+    <li>Use editor-specific extensions for inline feedback.</li>
+    <li>Combine with TypeScript type checking for full-stack safety.</li>
+  </ul>
+
+  <h2>CI/CD Integration</h2>
+  <p>
+    Automate quality enforcement in the CI pipeline:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+      <code class="language-yaml">
+# Example GitHub Actions workflow
+
+name: Lint & Format
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - run: pnpm install
+      - run: pnpm lint
+      - run: pnpm format --check
+      </code>
+    </pre>
+    </div>
+  </div>
+
+  <p>
+    CI failures prevent merging code that breaks linting rules or formatting conventions.
+  </p>
+
+  <h2>Benefits of This Workflow</h2>
+  <ul>
+    <li>Automates code quality checks and style enforcement.</li>
+    <li>Reduces review friction; reviewers can focus on logic and architecture.</li>
+    <li>Prevents subtle bugs and maintains consistent code style across teams.</li>
+    <li>Integrates smoothly with Git, editor tooling, and CI pipelines.</li>
+  </ul>
+
+  <h2>Wrapping Up</h2>
+  <p>
+    Combining ESLint and Prettier — along with pre-commit hooks and CI enforcement — turns code quality from a manual
+    chore into an automated process.
+    Developers spend less time formatting and debugging trivial issues, and more time delivering features.
+    For any TypeScript, React, or Node.js project, this setup is a no-brainer to maintain scalable, maintainable, and
+    high-quality code.
+  </p>
+</article>
+
+<!-- article 4 -->
+
+<article class="article">
+  <p>
+    Continuous Integration and Continuous Deployment (CI/CD) have shifted from optional practices to core requirements
+    for modern web development.
+    They ensure that every code change is tested, built, and deployed automatically, reducing human error and
+    accelerating feature delivery.
+    This guide explores CI/CD concepts, practical implementation strategies, and tips for integrating them into modern
+    web apps, from React and Next.js to full-stack TypeScript projects.
+  </p>
+
+  <h2>Understanding CI/CD</h2>
+  <p>
+    CI/CD breaks down into two distinct but connected processes:
+  </p>
+  <ul>
+    <li><strong>Continuous Integration (CI):</strong> Every commit triggers automated builds and tests, ensuring the
+      codebase remains stable.</li>
+    <li><strong>Continuous Deployment (CD):</strong> Verified changes are automatically deployed to staging or
+      production environments.</li>
+  </ul>
+  <p>
+    Together, they reduce manual errors, increase deployment frequency, and make software delivery more predictable.
+  </p>
+
+  <h2>Why CI/CD Matters for Modern Web Apps</h2>
+  <p>
+    Modern web apps often include multiple layers — frontend frameworks, APIs, serverless functions, and microservices.
+    Manual deployment and testing at this scale is error-prone. CI/CD ensures:
+  </p>
+  <ul>
+    <li>Automated testing prevents regressions.</li>
+    <li>Predictable deployments with minimal downtime.</li>
+    <li>Consistent environments across development, staging, and production.</li>
+    <li>Faster feedback loops, enabling agile development practices.</li>
+  </ul>
+
+  <h2>Choosing Your CI/CD Platform</h2>
+  <p>
+    Popular options include GitHub Actions, GitLab CI, CircleCI, and Vercel/Netlify for full-stack web apps. Consider:
+  </p>
+  <ul>
+    <li>Integration with your code repository.</li>
+    <li>Support for containerized builds or serverless environments.</li>
+    <li>Ease of configuring secrets and environment variables.</li>
+    <li>Native support for caching and parallel builds.</li>
+  </ul>
+
+  <h2>Setting Up a Basic CI Workflow</h2>
+  <p>
+    At minimum, a CI workflow should install dependencies, run linters, build the app, and execute tests.
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+        <code class="language-yaml">
+name: CI Workflow
+on: [push, pull_request]
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - run: pnpm install
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm build
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <p>
+    This ensures that code failing lint, tests, or builds is caught before merge, preventing broken deployments.
+  </p>
+
+  <h2>Adding Continuous Deployment</h2>
+  <p>
+    After CI passes, CD can push changes to staging or production automatically. For example, with Vercel or Netlify:
+  </p>
+
+  <div class="code">
+    <div class="code-inner">
+      <pre>
+        <code class="language-yaml">
+deploy:
+needs: build-test
+runs-on: ubuntu-latest
+steps:
+  - uses: actions/checkout@v3
+  - run: pnpm install
+  - run: pnpm build
+  - run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <p>
+    You can configure deployment to trigger only on merges to <code>main</code> or <code>master</code>, while preview
+    environments handle pull requests automatically.
+  </p>
+
+  <h2>Managing Secrets and Environment Variables</h2>
+  <p>
+    CI/CD pipelines must access API keys, database URLs, and service tokens. Best practices:
+  </p>
+  <ul>
+    <li>Store secrets in the platform’s secure vault (e.g., GitHub Actions Secrets, GitLab CI/CD Variables).</li>
+    <li>Use environment-specific variables for staging vs. production.</li>
+    <li>Avoid committing secrets in the repository.</li>
+  </ul>
+
+  <h2>Optimizing Build Times</h2>
+  <p>
+    Large web apps can have slow builds. Techniques to reduce time:
+  </p>
+  <ul>
+    <li>Cache dependencies between runs (e.g., pnpm store, node_modules, Docker layers).</li>
+    <li>Run tests in parallel or split across jobs.</li>
+    <li>Use incremental builds for frameworks like Next.js.</li>
+  </ul>
+
+  <h2>Monitoring and Rollbacks</h2>
+  <p>
+    Even automated deployments can fail. Include monitoring and rollback strategies:
+  </p>
+  <ul>
+    <li>Observe deployment logs and metrics.</li>
+    <li>Set up health checks and alerts.</li>
+    <li>Implement rollbacks on failure (automatic or manual) to prevent downtime.</li>
+  </ul>
+
+  <h2>Scaling CI/CD in Teams</h2>
+  <p>
+    For larger teams:
+  </p>
+  <ul>
+    <li>Define a shared pipeline configuration to enforce consistency.</li>
+    <li>Separate workflows for libraries, microservices, and frontend apps.</li>
+    <li>Encourage pre-commit linting and formatting to reduce CI failures.</li>
+    <li>Use feature branches and preview deployments for QA before production merges.</li>
+  </ul>
+
+  <h2>Wrapping Up</h2>
+  <p>
+    CI/CD transforms web development from manual, error-prone deployments to a streamlined, automated workflow.
+    By integrating linting, testing, builds, and deployment pipelines, developers can ship features faster, reduce bugs,
+    and maintain consistent environments.
+    Whether using GitHub Actions, GitLab CI, or Vercel, a well-implemented CI/CD pipeline is essential for any modern
+    web app.
+  </p>
+</article>
+
+<!-- article 5 -->
+
+<article class="article">
+  <h1>Web Accessibility Best Practices: Building Inclusive Apps from the Start</h1>
+
+  <p>
+    Web accessibility isn’t just a legal requirement — it’s a fundamental principle of inclusive design.
+    Building accessible apps ensures that users with disabilities can interact with your interfaces seamlessly,
+    improving usability for everyone.
+    This guide covers practical accessibility techniques, from semantic HTML and ARIA attributes to keyboard navigation
+    and testing strategies.
+  </p>
+
+  <h2>Why Accessibility Matters</h2>
+  <p>
+    Accessibility improves user experience, expands your audience, and reduces legal risk. It benefits people with
+    visual, auditory, cognitive, or motor impairments, but also enhances usability for all users, such as those on
+    mobile devices, poor network connections, or temporary disabilities.
+    Prioritizing accessibility from the start avoids costly retrofits later and aligns with inclusive design principles.
+  </p>
+
+  <h2>Semantic HTML: The Foundation</h2>
+  <p>
+    Using proper HTML elements is the first step. Semantic tags convey meaning to assistive technologies, enabling
+    screen readers and other tools to interpret content correctly.
+  </p>
+  <ul>
+    <li>Use <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, and
+      <code>&lt;footer&gt;</code> appropriately.
+    </li>
+    <li>Use <code>&lt;button&gt;</code> for interactive elements instead of generic <code>&lt;div&gt;</code> or
+      <code>&lt;span&gt;</code>.
+    </li>
+    <li>Use <code>&lt;label&gt;</code> with form inputs for proper association.</li>
+  </ul>
+
+  <h2>ARIA Roles and Attributes</h2>
+  <p>
+    Accessible Rich Internet Applications (ARIA) attributes provide extra semantic information when HTML alone isn’t
+    sufficient.
+  </p>
+  <ul>
+    <li><code>role="alert"</code> for dynamic notifications.</li>
+    <li><code>aria-expanded</code>, <code>aria-controls</code> for collapsible panels and menus.</li>
+    <li><code>aria-live</code> for content updates that should be announced to screen readers.</li>
+  </ul>
+  <p>
+    Use ARIA only when necessary — native HTML elements are preferred, as they are automatically accessible.
+  </p>
+
+  <h2>Keyboard Navigation and Focus Management</h2>
+  <p>
+    Many users rely on keyboard navigation. Ensure all interactive elements are reachable via <code>Tab</code> and
+    <code>Shift+Tab</code>.
+    Focus management is critical for single-page apps:
+  </p>
+  <ul>
+    <li>Update focus after route changes or modal openings.</li>
+    <li>Use <code>tabindex</code> thoughtfully to avoid breaking natural navigation order.</li>
+    <li>Provide visible focus indicators for accessibility and usability.</li>
+  </ul>
+
+  <h2>Color, Contrast, and Visual Accessibility</h2>
+  <p>
+    Users with visual impairments need sufficient contrast and clear visual cues. Key considerations:
+  </p>
+  <ul>
+    <li>Maintain a contrast ratio of at least 4.5:1 for normal text.</li>
+    <li>Don’t rely solely on color to convey information (use icons, text, or patterns).</li>
+    <li>Test designs for color blindness and grayscale readability.</li>
+  </ul>
+
+  <h2>Accessible Forms and Validation</h2>
+  <p>
+    Forms are a common source of accessibility issues. Best practices:
+  </p>
+  <ul>
+    <li>Label inputs clearly and associate with <code>&lt;label&gt;</code>.</li>
+    <li>Provide descriptive error messages and indicate which fields have errors.</li>
+    <li>Group related inputs with <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>.</li>
+  </ul>
+
+  <h2>Multimedia and Interactive Content</h2>
+  <p>
+    Videos, audio, and interactive widgets must be accessible:
+  </p>
+  <ul>
+    <li>Provide captions or transcripts for video and audio.</li>
+    <li>Ensure custom controls are keyboard-accessible.</li>
+    <li>Use semantic roles and ARIA for complex components like carousels and sliders.</li>
+  </ul>
+
+  <h2>Testing and Validation</h2>
+  <p>
+    Accessibility testing should be integrated throughout development:
+  </p>
+  <ul>
+    <li>Automated tools like <code>axe</code>, Lighthouse, or WAVE for quick scans.</li>
+    <li>Screen reader testing with VoiceOver, NVDA, or JAWS.</li>
+    <li>Keyboard-only navigation to detect focus traps and order issues.</li>
+  </ul>
+
+  <h2>Continuous Accessibility in Development Workflow</h2>
+  <p>
+    Include accessibility checks in CI/CD pipelines, code reviews, and pull requests. Incorporate linters such as
+    <code>eslint-plugin-jsx-a11y</code> for React projects, and provide developer guidelines for accessible patterns.
+    This ensures accessibility is not an afterthought but part of everyday coding practices.
+  </p>
+
+  <h2>Wrapping Up</h2>
+  <p>
+    Accessibility is a foundational aspect of modern web apps. By using semantic HTML, ARIA, keyboard-friendly
+    navigation, high contrast, and proper testing, you can build inclusive experiences that serve all users.
+    Integrating these practices from the start saves time, increases reach, and aligns your product with best practices
+    for inclusive design.
+  </p>
+
+</article>
