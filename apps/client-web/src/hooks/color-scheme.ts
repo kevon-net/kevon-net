@@ -55,7 +55,7 @@ export const useColorSchemeHandler = () => {
       // don't persist mantine scheme in storage
       removeFromLocalStorage(LOCAL_STORAGE_NAME.MANTINE_COLOR_SCHEME_VALUE);
     },
-    [theme, setColorScheme, persistCookies]
+    [theme, setTheme, setColorScheme, persistCookies]
   );
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export const useColorSchemeHandler = () => {
 
     // don't persist mantine scheme in storage
     removeFromLocalStorage(LOCAL_STORAGE_NAME.MANTINE_COLOR_SCHEME_VALUE);
-  }, [setColorScheme, persistCookies]);
+  }, [setTheme, setColorScheme, persistCookies]);
 
   // Auto-detect OS color scheme changes
   useEffect(() => {

@@ -1,6 +1,5 @@
-import { Loader, Stack } from '@mantine/core';
+import { Loader } from '@mantine/core';
 import LayoutSection from '@repo/components/layout/section';
-import { SECTION_SPACING } from '@repo/constants/sizes';
 
 export default function Content() {
   return (

@@ -23,13 +23,13 @@ export const Newsletter = () => {
           ever have questions, feedback, or suggestions for what you&apos;d like
           to see, feel free to contact us at{' '}
           <Link
-            href={`mailto:${emails.info}`}
+            href={`mailto:${emails.contact}`}
             style={{
               color: 'gray',
               textDecorationLine: 'underline',
             }}
           >
-            {emails.info}
+            {emails.contact}
           </Link>
           . Welcome aboard—we&apos;re thrilled to keep you in the loop!
         </Text>

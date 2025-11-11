@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Flex, Group, Paper, Stack, Text, Title } from '@mantine/core';
+import { Box, Flex, Group, Paper, Stack, Text } from '@mantine/core';
 import React from 'react';
 import LayoutSection from '@repo/components/layout/section';
 import { SECTION_SPACING } from '@repo/constants/sizes';
