@@ -72,7 +72,7 @@ export default async function RootLayout({
             <UnderlayMist
               props={{
                 image: images.background.image3lv7ey,
-                noiseImage: images.background.noise,
+                // noiseImage: images.background.noise,
               }}
             >
               <ShellMain>{children}</ShellMain>

@@ -95,10 +95,11 @@ export default function Page({ props, options }: PageHeaderProps) {
           {typeof props.title == 'string' ? (
             options?.glitch ? (
               <GlitchMain
-                props={{ text: props.title }}
+                text={props.title}
                 ta={options?.alignment || 'start'}
                 fw={'bold'}
                 fz={{ base: '1.5rem', xs: '2rem' }}
+                lts={2.5}
               />
             ) : (
               <Title

@@ -4,18 +4,18 @@ import React from 'react';
 import LayoutSection from '../../layout/section';
 import IntroPage from '../../layout/intros/page';
 import { Button, Flex, Group, Stack } from '@mantine/core';
-import { SECTION_SPACING } from '@repo/constants/sizes';
 
 export default function Main({ reset }: { reset?: () => void }) {
   return (
     <LayoutSection id={'page-not-found'} containerized={false}>
-      <Stack justify="center" mih={'100vh'} pb={SECTION_SPACING}>
+      <Stack justify="center" mih={'100vh'}>
         <IntroPage
           props={{
             path: `500`,
             title: 'Something Went Wrong!',
             desc: `The content you are trying to view has triggered an error. Our servers seem to have run into a problem. You can try again later.`,
           }}
+          options={{ alignment: 'center', glitch: true }}
         />
 
         <LayoutSection id={'not-found-content'}>

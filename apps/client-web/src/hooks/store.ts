@@ -38,9 +38,11 @@ import {
   AppShellValue,
   useStoreAppShell,
 } from '@/libraries/zustand/stores/shell';
-import { samplePosts } from '@/data/sample/posts';
 import { useStoreCategory } from '@/libraries/zustand/stores/category';
-import { sampleCategories } from '@/data/sample/categories';
+import { postsGet } from '@repo/handlers/requests/database/posts';
+// import { samplePosts } from '@/data/sample/posts';
+import { categoriesGet } from '@repo/handlers/requests/database/category';
+// import { sampleCategories } from '@/data/sample/categories';
 
 export const useSessionStore = () => {
   const { setSession } = useStoreSession();
@@ -177,8 +179,8 @@ export const useStoreData = () => {
         prevItemsRef,
         dataStore: STORE_NAME.POSTS,
         dataFetchFunction: async () => {
-          // return await postsGet();
-          return { items: samplePosts };
+          return await postsGet();
+          // return { items: samplePosts };
         },
         stateUpdateFunction: (stateUpdateItems) => setPosts(stateUpdateItems),
       });
@@ -195,8 +197,8 @@ export const useStoreData = () => {
         prevItemsRef,
         dataStore: STORE_NAME.CATEGORIES,
         dataFetchFunction: async () => {
-          // return await categoriesGet();
-          return { items: sampleCategories };
+          return await categoriesGet();
+          // return { items: sampleCategories };
         },
         stateUpdateFunction: (stateUpdateItems) =>
           setCategories(stateUpdateItems),
