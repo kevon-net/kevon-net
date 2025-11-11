@@ -1,24 +1,15 @@
 'use client';
 
-import {
-  Anchor,
-  Box,
-  Flex,
-  Group,
-  Paper,
-  Stack,
-  Text,
-  Title,
-} from '@mantine/core';
+import { Box, Flex, Group, Paper, Stack, Text, Title } from '@mantine/core';
 import React from 'react';
 import LayoutSection from '@repo/components/layout/section';
 import { SECTION_SPACING } from '@repo/constants/sizes';
 import NavbarMain from '../navbars/main';
 import { navbar, social } from '@/data/links';
-import Link from 'next/link';
 import classes from './main.module.scss';
 import { usePathname } from 'next/navigation';
 import NextLink from '@repo/components/common/anchor/next-link';
+import GlitchMain from '@repo/components/wrapper/glitch/main';
 
 export default function Main({
   opened,
@@ -64,9 +55,17 @@ export default function Main({
               ))}
             </Group>
 
-            <Title order={2} fw={'normal'} fz={'var(--mantine-h1-font-size)'}>
+            <GlitchMain
+              text={'Kevon Kibochi'}
+              ta={'start'}
+              fw={'bold'}
+              fz={{ base: '1.5rem', xs: '2rem' }}
+              lts={2.5}
+            />
+
+            {/* <Title order={2} fw={'normal'} fz={'var(--mantine-h1-font-size)'}>
               Kevon Kibochi
-            </Title>
+            </Title> */}
           </Stack>
 
           <Stack align="start" mt={{ base: 'md', md: 0 }}>
