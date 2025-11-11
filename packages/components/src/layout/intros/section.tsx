@@ -10,6 +10,7 @@
 import LayoutSection from '../section';
 import { Stack, Text, Title } from '@mantine/core';
 import { SECTION_SPACING } from '@repo/constants/sizes';
+import GlitchMain from '../../wrapper/glitch/main';
 
 interface SectionHeaderProps {
   props: {
@@ -20,6 +21,8 @@ interface SectionHeaderProps {
   options?: {
     alignment?: 'start' | 'end' | 'center';
     spacing?: boolean;
+    glitch?: boolean;
+    titleFontSize?: any;
   };
 }
 
@@ -43,9 +46,19 @@ export default function Section({ props, options }: SectionHeaderProps) {
         >
           <Stack>
             {typeof props.title == 'string' ? (
-              <Title order={2} ta={options?.alignment || 'center'}>
-                {props.title}
-              </Title>
+              options?.glitch ? (
+                <GlitchMain
+                  text={props.title}
+                  ta={options?.alignment || 'start'}
+                  fw={'bold'}
+                  fz={{ base: '1.5rem', xs: '2rem' }}
+                  lts={2.5}
+                />
+              ) : (
+                <Title order={2} ta={options?.alignment || 'center'}>
+                  {props.title}
+                </Title>
+              )
             ) : (
               props.title
             )}

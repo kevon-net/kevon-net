@@ -1,23 +1,20 @@
 import { Stack, Button, Group, Flex } from '@mantine/core';
 import LayoutSection from '../../layout/section';
 import IntroSection from '../../layout/intros/section';
-import {
-  ICON_SIZE,
-  ICON_STROKE_WIDTH,
-  SECTION_SPACING,
-} from '@repo/constants/sizes';
+import { ICON_SIZE, ICON_STROKE_WIDTH } from '@repo/constants/sizes';
 import { IconRefresh } from '@tabler/icons-react';
 
 export default function Error500({ reset }: { reset: () => void }) {
   return (
     <LayoutSection id={'error-500'}>
-      <Stack justify="center" mih={'100vh'} pb={SECTION_SPACING}>
+      <Stack justify="center" mih={'75vh'}>
         <IntroSection
           props={{
             subTitle: `500`,
             title: 'Server Error',
             desc: `The page you are trying to open has triggered an error.`,
           }}
+          options={{ alignment: 'center', glitch: true }}
         />
 
         <Group justify="center" mt={'md'}>
