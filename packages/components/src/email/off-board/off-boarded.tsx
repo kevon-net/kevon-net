@@ -20,13 +20,13 @@ export const Offboarded = (props: { userName: string }) => {
           feedback, or need further assistance, don&apos;t hesitate to reach out
           to us at{' '}
           <Link
-            href={`mailto:${emails.info}`}
+            href={`mailto:${emails.contact}`}
             style={{
               color: 'gray',
               textDecorationLine: 'underline',
             }}
           >
-            {emails.info}
+            {emails.contact}
           </Link>
           . Thank you for being a part of {appName}.
         </Text>

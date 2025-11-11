@@ -49,7 +49,7 @@ export const Confirm = (props: { link: string; userName: string }) => {
           safely ignore this email. If you are concerned about the security of
           your account, please{' '}
           <Link
-            href={`mailto:${emails.info}`}
+            href={`mailto:${emails.contact}`}
             style={{
               color: 'black',
               textDecorationLine: 'underline',

@@ -18,13 +18,13 @@ export const Welcome = (props: { userName: string }) => {
           way. If you have any questions or need assistance, feel free to reach
           out to us at{' '}
           <Link
-            href={`mailto:${emails.info}`}
+            href={`mailto:${emails.contact}`}
             style={{
               color: 'gray',
               textDecorationLine: 'underline',
             }}
           >
-            {emails.info}
+            {emails.contact}
           </Link>
           . Let&apos;s get started on this exciting journey together!
         </Text>

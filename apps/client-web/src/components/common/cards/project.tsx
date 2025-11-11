@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Anchor, Card, Group, Stack, Text, Title } from '@mantine/core';
+import { Card, Group, Stack, Text, Title } from '@mantine/core';
 import ImageDefault from '@repo/components/common/images/default';
-import Link from 'next/link';
 import { getRegionalDate } from '@repo/utilities/date-time';
 import classes from './project.module.scss';
 import { linkify } from '@repo/utilities/url';

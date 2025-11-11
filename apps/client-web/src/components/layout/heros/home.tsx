@@ -10,7 +10,6 @@ import {
   SECTION_SPACING,
 } from '@repo/constants/sizes';
 import { IconArrowRight } from '@tabler/icons-react';
-import Link from 'next/link';
 import NextLink from '@repo/components/common/anchor/next-link';
 
 export default function Home() {
