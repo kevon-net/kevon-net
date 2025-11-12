@@ -9,6 +9,8 @@
       "dependsOn": ["^build", "@repo/db#generate"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "env": [
+        "TURBO_TELEMETRY_DISABLED=1",
+
         "NODE_ENV",
 
         "DATABASE_URL",
