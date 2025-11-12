@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint .",
     "generate:component": "turbo gen react-component",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "build": "tsc"
   },
   "dependencies": {
     "@repo/constants": "workspace:*",
