@@ -12,11 +12,10 @@ import { FormValuesInquiry } from '@repo/types/form';
 
 export async function POST(request: NextRequest) {
   try {
-    const formData: FormValuesInquiry & { recipient: string } =
-      await request.json();
+    const formData: FormValuesInquiry = await request.json();
 
     // send email
-    const sendMail = await emailSendInquiry(formData, formData.recipient);
+    const sendMail = await emailSendInquiry(formData);
 
     // add email contact to subscriber list
     const addContact = await emailContactAdd(formData);

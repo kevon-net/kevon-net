@@ -51,12 +51,11 @@ const emailSendBase = async (options: SendEmailOptions) => {
   return data;
 };
 
-export const emailSendInquiry = async (
-  params: FormValuesInquiry,
-  recipient: string
-) =>
+export const emailSendInquiry = async (params: FormValuesInquiry) => {
+  const recipientEmail = process.env.NEXT_PUBLIC_EMAIL_CONTACT || '';
+
   emailSendBase({
-    to: recipient,
+    to: recipientEmail,
     subject: `${params.subject} (From ${params.name})`,
     replyTo: params.email,
     fromName: params.name,
@@ -69,6 +68,7 @@ export const emailSendInquiry = async (
       })
     ),
   });
+};
 
 export const emailSendOnboardNewsletter = async (params: { to: string }) =>
   emailSendBase({
