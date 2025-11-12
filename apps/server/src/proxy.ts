@@ -3,7 +3,7 @@ import { updateSession } from './libraries/supabase/middleware';
 import { setCorsHeaders } from '@repo/utilities/middeware';
 import { crossOrigins } from '@repo/constants/hosts';
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // Handle preflight
   if (request.method === 'OPTIONS') {
     const response = NextResponse.json({}, { status: 200 });
