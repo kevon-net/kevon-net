@@ -29,8 +29,8 @@ export const BASE_URL_CLIENT = `${getUrlPrefix(HOSTNAME_CLIENT_WEB)}${HOSTNAME_C
 export const BASE_URL_SERVER = `${getUrlPrefix(HOSTNAME_SERVER)}${HOSTNAME_SERVER}`;
 
 export const HOSTED_BASE_URL = {
-  CLIENT_WEB: process.env.NEXT_PUBLIC_HOST_CLIENT_WEB_PROD,
-  SERVER: process.env.NEXT_PUBLIC_HOST_SERVER_PROD,
+  CLIENT_WEB: process.env.NEXT_PUBLIC_HOST_CLIENT_WEB_PROD || '',
+  SERVER: process.env.NEXT_PUBLIC_HOST_SERVER_PROD || '',
 };
 
 export const API_URL = `${BASE_URL_SERVER}/api`;

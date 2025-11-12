@@ -2,20 +2,27 @@
 import { NextResponse } from 'next/server';
 import { HOSTED_BASE_URL } from '@repo/constants/paths';
 import { sitemapRoutes } from '@/data/routes';
+import { PostRelations } from '@repo/types/models/post';
+import { postsGet } from '@repo/handlers/requests/database/posts';
+import { linkify } from '@repo/utilities/url';
 
 export const dynamic = 'force-static';
 
 export async function GET() {
   const now = new Date().toISOString().split('T')[0];
 
+  const { items: posts }: { items: PostRelations[] } = await postsGet();
+  const postRoutes = posts.map((p) => `/blog/${linkify(p.title)}-${p.id}`);
+
   const staticRoutes = [
     '', // homepage
     ...sitemapRoutes,
+    ...postRoutes,
   ]
     .map(
       (route) => `
     <url>
-      <loc>${HOSTED_BASE_URL.CLIENT_WEB}${route}</loc>
+      <loc>https://${HOSTED_BASE_URL.CLIENT_WEB}${route}</loc>
       <lastmod>${now}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>${route === '' ? 1 : 0.8}</priority>

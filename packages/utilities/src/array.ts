@@ -82,6 +82,6 @@ export const shuffleArray = <T>(array: T[]): T[] => {
  * Clean an array of paths: remove fragments (#) and duplicates
  */
 export const cleanPaths = (paths: string[]): string[] => {
-  const filtered = paths.filter((path) => path.includes('#'));
-  return Array.from(new Set(filtered));
+  const cleaned = paths.map((path) => path.split('#')[0]); // remove anything after #
+  return Array.from(new Set(cleaned)); // remove duplicates
 };

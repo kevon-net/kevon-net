@@ -41,12 +41,16 @@ const subLinks: string[] = [];
 // });
 
 export const unprotectedRoutes = [
-  '/',
-
-  ...cleanPaths([...mainLinks, ...subLinks]),
-
-  '/legal/terms',
-  '/legal/policy',
+  ...cleanPaths(
+    [
+      '/',
+      '/blog',
+      ...mainLinks,
+      ...subLinks,
+      // '/legal/terms',
+      // '/legal/policy',
+    ].filter((l) => !l.startsWith('/#'))
+  ),
 ];
 
 export const sitemapRoutes = [...unprotectedRoutes].filter((l) => l != '/');
