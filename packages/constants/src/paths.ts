@@ -6,17 +6,27 @@
  */
 
 const isProduction = process.env.NODE_ENV === 'production';
+const useRemoteServer = process.env.NEXT_PUBLIC_USE_REMOTE_SERVER === 'true';
 
-export const HOSTNAME_CLIENT_WEB = process.env.NEXT_PUBLIC_HOST_CLIENT_WEB;
-export const HOSTNAME_SERVER = process.env.NEXT_PUBLIC_HOST_SERVER;
+// Select client host
+const HOSTNAME_CLIENT_WEB = isProduction
+  ? process.env.NEXT_PUBLIC_HOST_CLIENT_WEB_PROD
+  : process.env.NEXT_PUBLIC_HOST_CLIENT_WEB_DEV;
 
-const getUrlPrefix = (host: string) => {
+// Select server host
+const HOSTNAME_SERVER = isProduction
+  ? process.env.NEXT_PUBLIC_HOST_SERVER_PROD
+  : useRemoteServer
+    ? process.env.NEXT_PUBLIC_HOST_SERVER_PROD
+    : process.env.NEXT_PUBLIC_HOST_SERVER_DEV;
+
+const getUrlPrefix = (host: string | undefined) => {
   if (!host) return 'http://';
-  return isProduction && !host.includes('localhost') ? 'https://' : 'http://';
+  return host.includes('localhost') ? 'http://' : 'https://';
 };
 
-export const BASE_URL_CLIENT = `${getUrlPrefix(HOSTNAME_CLIENT_WEB as string)}${HOSTNAME_CLIENT_WEB}`;
-export const BASE_URL_SERVER = `${getUrlPrefix(HOSTNAME_SERVER as string)}${HOSTNAME_SERVER}`;
+export const BASE_URL_CLIENT = `${getUrlPrefix(HOSTNAME_CLIENT_WEB)}${HOSTNAME_CLIENT_WEB}`;
+export const BASE_URL_SERVER = `${getUrlPrefix(HOSTNAME_SERVER)}${HOSTNAME_SERVER}`;
 
 export const API_URL = `${BASE_URL_SERVER}/api`;
 

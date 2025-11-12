@@ -90,7 +90,12 @@ export function CategoryLink({ props }: { props: PostRelations }) {
   const category = props.category;
 
   return (
-    <NextLink href={`/blog/categories/${category?.id}`} inherit>
+    <NextLink
+      onClick={(e) => e.preventDefault()}
+      href="#"
+      // href={`/blog/categories/${category?.id}`}
+      inherit
+    >
       {category?.title}
     </NextLink>
   );

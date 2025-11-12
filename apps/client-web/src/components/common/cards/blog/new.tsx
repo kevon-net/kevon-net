@@ -86,7 +86,9 @@ export default function New({ post }: { post: PostRelations }) {
                   <IconCircleFilled size={4} />
 
                   <AnchorNextLink
-                    href={`/blog/categories/${post.category?.id}`}
+                    onClick={(e) => e.preventDefault()}
+                    href="#"
+                    // href={`/blog/categories/${post.category?.id}`}
                     underline="never"
                     inherit
                   >
