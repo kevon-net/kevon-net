@@ -4,13 +4,22 @@ import { setCorsHeaders } from '@repo/utilities/middeware';
 import { crossOrigins } from '@repo/constants/hosts';
 
 export async function proxy(request: NextRequest) {
-  const response = NextResponse.next({ request });
+  // Handle preflight
+  if (request.method === 'OPTIONS') {
+    const response = NextResponse.json({}, { status: 204 });
+    setCorsHeaders({ crossOrigins, request, response });
+    return response;
+  }
+
+  let response = NextResponse.next({ request });
 
   // Set CORS headers for the response
   setCorsHeaders({ crossOrigins, request, response });
 
   // Update the session in the response
-  return await updateSession(request, response);
+  response = await updateSession(request, response);
+
+  return response;
 }
 
 export const config = {

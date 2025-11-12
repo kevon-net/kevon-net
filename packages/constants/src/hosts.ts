@@ -8,6 +8,8 @@
 export const crossOrigins = [
   'localhost',
   '127.0.0.1',
-  'devokrann.vercel.app', // vercel deployment
-  'domain.com', // production domain
+  'kevon-web-client-web.vercel.app', // client vercel deployment
+  'kevon-web-server.vercel.app', // server vercel deployment
+  'kevon.net', // production domain
+  'pro.kevon.net', // production domain
 ];
