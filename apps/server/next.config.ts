@@ -4,8 +4,8 @@ import path from 'node:path';
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    // unoptimized: true,
-    // dangerouslyAllowSVG: true,
+    unoptimized: true,
+    dangerouslyAllowSVG: true,
     remotePatterns: [
       {
         protocol: 'https',
