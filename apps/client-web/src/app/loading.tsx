@@ -7,11 +7,12 @@
 
 import React from 'react';
 import LoadingMain from '@/components/partial/loading/main';
-import ProviderMantine from '@/components/provider/mantine';
+import ProviderMantine from '@repo/components/provider/mantine';
+import { mantine } from '@/assets/styles';
 
 export default function Loading() {
   return (
-    <ProviderMantine>
+    <ProviderMantine appThemeProps={{ styleSheets: { ...mantine } }}>
       <LoadingMain />
     </ProviderMantine>
   );

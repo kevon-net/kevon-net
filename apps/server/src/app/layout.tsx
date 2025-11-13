@@ -7,7 +7,6 @@
 
 // All packages except `@mantine/hooks` require styles imports
 import '@mantine/core/styles.css';
-import '@mantine/carousel/styles.css';
 import '@mantine/notifications/styles.css';
 
 // custom styles
@@ -17,14 +16,8 @@ import type { Metadata } from 'next';
 import { Kanit, Tomorrow } from 'next/font/google';
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 import ProviderMantine from '@repo/components/provider/mantine';
-import ProviderStore from '@/components/provider/store';
-import UnderlayMist from '@repo/components/wrapper/underlays/mist';
-import ShellMain from '@/components/layout/shells/main';
 import { appName, companyOneLiner } from '@repo/constants/app';
-import { images } from '@/assets/images';
 import { DEFAULT_COLOR_SCHEME } from '@repo/constants/other';
-import { isProduction } from '@repo/utilities/misc';
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { mantine } from '@/assets/styles';
 
 const kanitSans = Kanit({
@@ -40,7 +33,7 @@ const tomorrowSans = Tomorrow({
 });
 
 export const metadata: Metadata = {
-  title: `${appName} - Web Development Solutions`,
+  title: `${appName} - API Engine`,
   description: companyOneLiner,
 };
 
@@ -49,8 +42,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-
   return (
     <html
       lang="en"
@@ -69,24 +60,11 @@ export default async function RootLayout({
 
       <body className={`${kanitSans.variable} ${tomorrowSans.variable}`}>
         <ProviderMantine
-          options={{ withNotifications: true }}
           appThemeProps={{ styleSheets: { ...mantine } }}
+          options={{ withNotifications: true }}
         >
-          <ProviderStore>
-            <UnderlayMist
-              props={{
-                image: images.background.imagejx29gq,
-                noiseImage: images.background.noise,
-              }}
-            >
-              <ShellMain>{children}</ShellMain>
-            </UnderlayMist>
-          </ProviderStore>
+          {children}
         </ProviderMantine>
-
-        {isProduction() && gaMeasurementId && (
-          <GoogleAnalytics gaId={gaMeasurementId} />
-        )}
       </body>
     </html>
   );
