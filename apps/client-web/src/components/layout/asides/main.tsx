@@ -60,7 +60,6 @@ export default function Main({
               ta={'start'}
               fw={'bold'}
               fz={{ base: '1.5rem', xs: '2rem' }}
-              lts={2.5}
             />
 
             {/* <Title order={2} fw={'normal'} fz={'var(--mantine-h1-font-size)'}>
