@@ -7,8 +7,6 @@
     "dev": "next dev --turbopack --port $PORT",
     "build": "next build",
     "start": "next start --port $PORT",
-    "format": "prettier --write .",
-    "check-format": "prettier --check .",
     "lint": "eslint .",
     "check-types": "tsc --noEmit"
   },
@@ -52,7 +50,6 @@
     "postcss": "^8.5.3",
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",
-    "prettier": "^3.6.2",
     "sass-embedded": "^1.89.0",
     "typescript": "^5"
   }
