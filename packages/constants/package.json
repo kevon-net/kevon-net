@@ -10,12 +10,14 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@repo/types": "workspace:*"
+    "@mantine/core": "^8.3.6",
+    "@repo/types": "workspace:*",
+    "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "typescript": "5.9.2",
-    "@types/node": "^22.15.3"
+    "@types/node": "^22.15.3",
+    "typescript": "5.9.2"
   }
 }

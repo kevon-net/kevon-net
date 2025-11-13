@@ -77,9 +77,6 @@ importers:
       '@tabler/icons-react':
         specifier: ^3.35.0
         version: 3.35.0(react@19.2.0)
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
       embla-carousel-autoplay:
         specifier: 8.5.2
         version: 8.5.2(embla-carousel@8.5.2)
@@ -147,6 +144,12 @@ importers:
 
   apps/server:
     dependencies:
+      '@mantine/core':
+        specifier: ^8.3.6
+        version: 8.3.6(@mantine/hooks@8.3.6(react@19.2.0))(@types/react@19.1.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@mantine/notifications':
+        specifier: ^8.3.6
+        version: 8.3.6(@mantine/core@8.3.6(@mantine/hooks@8.3.6(react@19.2.0))(@types/react@19.1.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@mantine/hooks@8.3.6(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@react-email/render':
         specifier: ^1.1.2
         version: 1.4.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -217,12 +220,24 @@ importers:
       eslint-plugin-prettier:
         specifier: ^5.4.0
         version: 5.5.4(eslint-config-prettier@10.1.8(eslint@9.34.0(jiti@2.6.1)))(eslint@9.34.0(jiti@2.6.1))(prettier@3.6.2)
+      postcss:
+        specifier: ^8.5.3
+        version: 8.5.6
+      postcss-preset-mantine:
+        specifier: ^1.17.0
+        version: 1.18.0(postcss@8.5.6)
+      postcss-simple-vars:
+        specifier: ^7.0.1
+        version: 7.0.1(postcss@8.5.6)
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
       prisma:
         specifier: 6.17.1
         version: 6.17.1(typescript@5.9.2)
+      sass-embedded:
+        specifier: ^1.89.0
+        version: 1.93.2
       typescript:
         specifier: ^5
         version: 5.9.2
@@ -235,6 +250,9 @@ importers:
       '@mantine/hooks':
         specifier: ^8.3.6
         version: 8.3.6(react@19.2.0)
+      '@mantine/notifications':
+        specifier: ^8.3.6
+        version: 8.3.6(@mantine/core@8.3.6(@mantine/hooks@8.3.6(react@19.2.0))(@types/react@19.1.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@mantine/hooks@8.3.6(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@react-email/components':
         specifier: ^0.0.41
         version: 0.0.41(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -287,9 +305,15 @@ importers:
 
   packages/constants:
     dependencies:
+      '@mantine/core':
+        specifier: ^8.3.6
+        version: 8.3.6(@mantine/hooks@8.3.6(react@19.2.0))(@types/react@19.1.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@repo/types':
         specifier: workspace:*
         version: link:../types
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
