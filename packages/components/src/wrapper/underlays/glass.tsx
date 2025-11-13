@@ -26,8 +26,8 @@ export default function Glass({
           bottom: 0,
           left: 0,
           zIndex: 1,
-          backdropFilter: `blur(${blur || 64}px) saturate(200%)`,
-          WebkitBackdropFilter: `blur(${blur || 64}px) saturate(200%)`,
+          backdropFilter: `blur(${blur || 64}px) saturate(200%) !important`,
+          WebkitBackdropFilter: `blur(${blur || 64}px) saturate(200%) !important`,
           ...underlayStyles,
         }}
       ></Box>

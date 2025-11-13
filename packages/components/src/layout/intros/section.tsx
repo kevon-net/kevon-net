@@ -52,7 +52,6 @@ export default function Section({ props, options }: SectionHeaderProps) {
                   ta={options?.alignment || 'start'}
                   fw={'bold'}
                   fz={{ base: '1.5rem', xs: '2rem' }}
-                  lts={2.5}
                 />
               ) : (
                 <Title order={2} ta={options?.alignment || 'center'}>
