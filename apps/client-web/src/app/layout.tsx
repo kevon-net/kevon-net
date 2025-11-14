@@ -18,10 +18,8 @@ import { Kanit, Tomorrow } from 'next/font/google';
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 import ProviderMantine from '@repo/components/provider/mantine';
 import ProviderStore from '@/components/provider/store';
-import UnderlayMist from '@repo/components/wrapper/underlays/mist';
 import ShellMain from '@/components/layout/shells/main';
 import { appName, companyOneLiner } from '@repo/constants/app';
-import { images } from '@/assets/images';
 import { DEFAULT_COLOR_SCHEME } from '@repo/constants/other';
 import { isProduction } from '@repo/utilities/misc';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -73,14 +71,7 @@ export default async function RootLayout({
           appThemeProps={{ styleSheets: { ...mantine } }}
         >
           <ProviderStore>
-            <UnderlayMist
-              props={{
-                image: images.background.imagejx29gq,
-                noiseImage: images.background.noise,
-              }}
-            >
-              <ShellMain>{children}</ShellMain>
-            </UnderlayMist>
+            <ShellMain>{children}</ShellMain>
           </ProviderStore>
         </ProviderMantine>
 

@@ -38,6 +38,7 @@ export const images = {
     image3lv7ey: `${baseUrl}/background/3lv7ey.webp`,
     image9dvkw8: `${baseUrl}/background/9dvkw8.webp`,
     imagegprzyd: `${baseUrl}/background/gprzyd.webp`,
+    imagegprzydBlur: `${baseUrl}/background/gprzyd-blur.png`,
     imagejx29gq: `${baseUrl}/background/jx29gq.webp`,
     imageyx17dk: `${baseUrl}/background/yx17dk.webp`,
     noise: `${baseUrl}/background/noise.png`,

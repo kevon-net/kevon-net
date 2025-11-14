@@ -1,38 +1,63 @@
 import React from 'react';
-import { alpha, Box, BoxProps } from '@mantine/core';
+import { alpha } from '@mantine/core';
+import UnderlayBlur from './blur';
+import classes from './glass.module.scss';
 
 export default function Glass({
-  opacity,
-  blur,
+  props,
   children,
-  underlayStyles,
 }: {
-  opacity?: number;
-  blur?: number;
+  props?: {
+    opacity?: number;
+    blur?: number;
+    saturate?: number;
+    image?: string;
+    noiseImage?: string;
+  };
   children: React.ReactNode;
-  underlayStyles?: BoxProps['style'];
 }) {
   return (
-    <div style={{ position: 'relative' }}>
-      <Box
-        style={{
-          backgroundColor: alpha(
-            'var(--mantine-color-dark-9)',
-            opacity || 0.66
-          ),
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          zIndex: 1,
-          backdropFilter: `blur(${blur || 64}px) saturate(200%) !important`,
-          WebkitBackdropFilter: `blur(${blur || 64}px) saturate(200%) !important`,
-          ...underlayStyles,
-        }}
-      ></Box>
-
-      <div style={{ position: 'relative', zIndex: 2 }}>{children}</div>
+    <div
+      style={
+        !props?.image
+          ? undefined
+          : {
+              backgroundImage: `url(${props.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundAttachment: 'fixed',
+            }
+      }
+    >
+      <div
+        style={
+          !props?.opacity
+            ? undefined
+            : {
+                backgroundColor: alpha(
+                  'var(--mantine-color-dark-9)',
+                  props.opacity
+                ),
+              }
+        }
+      >
+        <UnderlayBlur props={{ ...props }}>
+          <div
+            className={classes.noise}
+            style={
+              !props?.noiseImage || !props.blur
+                ? undefined
+                : {
+                    backgroundImage: `url(${props.noiseImage})`,
+                    backgroundAttachment: 'fixed',
+                  }
+            }
+          >
+            {children}
+          </div>
+        </UnderlayBlur>
+      </div>
     </div>
   );
 }
