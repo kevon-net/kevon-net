@@ -23,6 +23,7 @@ export default function Main({ children }: { children: React.ReactNode }) {
         noiseImage: images.background.noise,
         opacity: 0.5,
         blur: 0,
+        saturate: 200,
       }}
     >
       <AppShell

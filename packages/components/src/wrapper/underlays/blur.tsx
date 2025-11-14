@@ -20,8 +20,8 @@ export default function Blur({
           right: 0,
           bottom: 0,
           zIndex: 0,
-          backdropFilter: `blur(${props?.blur == 0 ? 0 : props?.blur || 64}px) saturate(${props?.blur == 0 ? 100 : props?.saturate || 200}%)`,
-          WebkitBackdropFilter: `blur(${props?.blur == 0 ? 0 : props?.blur || 64}px) saturate(${props?.blur == 0 ? 100 : props?.saturate || 200}%)`,
+          backdropFilter: `blur(${props?.blur == 0 ? 0 : props?.blur || 64}px) saturate(${props?.blur == 0 && !props.saturate ? 100 : props?.saturate || 200}%)`,
+          WebkitBackdropFilter: `blur(${props?.blur == 0 ? 0 : props?.blur || 64}px) saturate(${props?.blur == 0 && !props.saturate ? 100 : props?.saturate || 200}%)`,
         }}
       ></div>
 
