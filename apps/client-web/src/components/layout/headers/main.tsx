@@ -27,7 +27,7 @@ export default function Main({
           : undefined,
       }}
     >
-      <UnderlayGlass opacity={0.5} blur={16}>
+      <UnderlayGlass props={{ opacity: 0.5, blur: 16 }}>
         <NavbarMain opened={opened} toggle={toggle} />
       </UnderlayGlass>
     </Paper>
