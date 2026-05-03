@@ -44,7 +44,7 @@ export default function Post({ props }: { props: PostGet }) {
         </NextLink>
 
         <Stack mt={'xl'} gap={'lg'} align="start">
-          <Group fz={'sm'} fw={500} tt={'uppercase'} lts={2}>
+          <Group fz={'sm'} tt={'uppercase'} lts={2}>
             <CategoryLink props={props} />
 
             <Text inherit fw={'normal'}>
@@ -53,29 +53,22 @@ export default function Post({ props }: { props: PostGet }) {
           </Group>
 
           <NextLink href={link}>
-            <Title order={3}>{props.title}</Title>
+            <Title order={3} lineClamp={1}>
+              {props.title}
+            </Title>
           </NextLink>
 
-          <Text lineClamp={3}>{props.excerpt}</Text>
+          <Text lineClamp={1}>{props.excerpt}</Text>
         </Stack>
 
         <Group>
           <NextLink href={link}>
             <Button
-              size="lg"
               variant="transparent"
               px={0}
-              color="gray"
-              radius={'xl'}
+              c="dimmed"
               rightSection={
-                <ThemeIcon
-                  size={ICON_WRAPPER_SIZE}
-                  variant="light"
-                  color="gray"
-                  radius={'xl'}
-                >
-                  <IconArrowRight size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
-                </ThemeIcon>
+                <IconArrowRight size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
               }
             >
               Read More
@@ -97,6 +90,7 @@ export function CategoryLink({ props }: { props: PostGet }) {
       href="#"
       // href={`/blog/categories/${category?.id}`}
       inherit
+      fw={500}
     >
       {category?.title}
     </NextLink>

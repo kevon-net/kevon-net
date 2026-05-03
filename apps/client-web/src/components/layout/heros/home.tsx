@@ -1,5 +1,19 @@
 import React from 'react';
-import { Button, Group, Text, ThemeIcon, Title } from '@mantine/core';
+import {
+  ActionIcon,
+  Badge,
+  Button,
+  Code,
+  Grid,
+  GridCol,
+  Group,
+  Paper,
+  ScrollArea,
+  Stack,
+  Text,
+  ThemeIcon,
+  Title,
+} from '@mantine/core';
 import IntroPage from '@repo/components/layout/intros/page';
 import LayoutSection from '@repo/components/layout/section';
 import {
@@ -9,85 +23,116 @@ import {
   FONT_SIZE,
   SECTION_SPACING,
 } from '@repo/constants/sizes';
-import { IconArrowRight } from '@tabler/icons-react';
+import { IconArrowDown } from '@tabler/icons-react';
 import NextLink from '@repo/components/common/anchor/next-link';
+import CardCodeSnippet from '@/components/common/cards/code-snippet';
 
 export default function Home() {
   return (
-    <>
-      <IntroPage
-        props={{
-          path: null,
-          title: (
-            <Title order={1} fz={FONT_SIZE.TITLE_PAGE}>
-              Modern{' '}
-              <Text component="span" inherit fw={'100'}>
-                web solutions
-              </Text>
-              <br />
-              one line of code{' '}
-              <Text component="span" inherit fw={'100'}>
-                at a time
-              </Text>
-            </Title>
-          ),
-          desc: (
-            <Text
-              w={{ base: '90%', xs: '75%', sm: '50%', lg: '33%' }}
-              c={'var(--mantine-color-dark-0)'}
-              mt={'md'}
-            >
-              Welcome to my world of imagination and creativity. Let&apos;s turn
-              bold ideas into real-world experiences.
-            </Text>
-          ),
-        }}
-        options={{ alignment: 'start' }}
-      />
+    <LayoutSection id={'hero-home'}>
+      <Grid align="center">
+        <GridCol span={{ base: 12, lg: 6 }}>
+          <Stack
+            justify="center"
+            gap={SECTION_SPACING}
+            mih="100vh"
+            py={SECTION_SPACING}
+          >
+            <Group gap={'xs'}>
+              <Badge variant="outline">Open to opportunities</Badge>
+            </Group>
 
-      <LayoutSection id={'cta-1'} pb={SECTION_SPACING * 2}>
-        <Group gap={'xs'}>
-          <NextLink href={'#about'}>
-            <Button
-              size="lg"
-              radius={'xl'}
-              rightSection={
-                <ThemeIcon
-                  size={ICON_WRAPPER_SIZE}
-                  variant="white"
-                  radius={'xl'}
-                  visibleFrom="xs"
-                >
-                  <IconArrowRight size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
-                </ThemeIcon>
-              }
-            >
-              What I Do
-            </Button>
-          </NextLink>
+            <Stack w={{ base: '100%', md: '80%' }}>
+              <Title order={1} fz={FONT_SIZE.TITLE_PAGE}>
+                Full-Stack Developer Building{' '}
+                <Text component="span" inherit c={'pri'}>
+                  Fast, Scalable Web Applications
+                </Text>
+              </Title>
 
-          {/* <NextLink href={'/projects'}>
-            <Button
-              size="lg"
-              radius={'xl'}
-              color="gray"
-              variant="transparent"
-              rightSection={
-                <ThemeIcon
-                  size={ICON_WRAPPER_SIZE}
-                  color="gray"
-                  variant="light"
-                  radius={'xl'}
+              <Group>
+                <Text>
+                  I design and build high-performance web systems using Next.js,
+                  TypeScript, and modern backend architecture—focused on
+                  performance, scalability, and clean code.
+                </Text>
+              </Group>
+            </Stack>
+
+            <Group gap={'xs'}>
+              <NextLink href={'/projects'}>
+                <Button size="md">View My Work</Button>
+              </NextLink>
+
+              <NextLink href={'/contact'}>
+                <Button size="md" color="dark" variant="subtle">
+                  Get In Touch
+                </Button>
+              </NextLink>
+            </Group>
+
+            <Group gap={'xs'}>
+              <a href={'#technical'}>
+                <Button
+                  variant="transparent"
+                  pl={0}
+                  leftSection={
+                    <ThemeIcon
+                      size={ICON_WRAPPER_SIZE}
+                      variant="light"
+                      color="dark"
+                    >
+                      <IconArrowDown
+                        size={ICON_SIZE}
+                        stroke={ICON_STROKE_WIDTH}
+                      />
+                    </ThemeIcon>
+                  }
                 >
-                  <IconArrowRight size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
-                </ThemeIcon>
-              }
-            >
-              View Works
-            </Button>
-          </NextLink> */}
-        </Group>
-      </LayoutSection>
-    </>
+                  Explore
+                </Button>
+              </a>
+            </Group>
+          </Stack>
+        </GridCol>
+
+        <GridCol span={{ base: 12, lg: 6 }}>
+          <CardCodeSnippet
+            props={{ content: code, options: { height: '60vh' } }}
+          />
+        </GridCol>
+      </Grid>
+    </LayoutSection>
   );
 }
+
+const code = `type StoreKey = string;
+
+type InventoryInput = {
+  quantity: number;
+  updatedAt: Date;
+};
+
+type SyncResult = Record<StoreKey, unknown>;
+
+export async function syncStores(stores: StoreKey[]): Promise<SyncResult> {
+  const orderedStores = [...stores].sort(
+    (a, b) => (SYNC_PRIORITY[a] ?? 99) - (SYNC_PRIORITY[b] ?? 99)
+  );
+
+  return prisma.$transaction(async (tx) => {
+    const results: SyncResult = {};
+
+    for (const store of orderedStores) {
+      const data: InventoryInput = await fetchStoreData(store);
+
+      results[store] = await tx.inventory.upsert({
+        where: { storeId: store },
+        update: data,
+        create: { storeId: store, ...data },
+      });
+    }
+
+    return results;
+  });
+}`;

@@ -6,6 +6,7 @@ import {
 import { Alert } from '@repo/types/enums';
 import {
   ActionIcon,
+  Box,
   Center,
   Grid,
   GridCol,
@@ -57,17 +58,20 @@ export default function Modal({
 
   return (
     <Grid>
-      <ActionIcon
-        size={ICON_WRAPPER_SIZE}
-        onClick={props.close}
-        variant="light"
-        color="gray"
+      <Box
         pos={'absolute'}
-        top={'var(--mantine-spacing-xs)'}
-        right={'var(--mantine-spacing-xs)'}
+        top={'var(--mantine-spacing-xl)'}
+        right={'var(--mantine-spacing-xl)'}
       >
-        <IconX size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
-      </ActionIcon>
+        <ActionIcon
+          size={ICON_WRAPPER_SIZE}
+          onClick={props.close}
+          variant="light"
+          color="gray"
+        >
+          <IconX size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
+        </ActionIcon>
+      </Box>
 
       {variant && (
         <GridCol span={{ base: 12, xs: size == 'xl' ? 2 : 2.5 }}>
@@ -91,7 +95,7 @@ export default function Modal({
           xs: variant ? (size == 'xl' ? 10 : 9.5) : undefined,
         }}
       >
-        <Stack gap={'md'}>
+        <Stack gap={'xl'}>
           <Title
             order={1}
             fz={'xl'}

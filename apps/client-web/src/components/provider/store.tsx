@@ -25,9 +25,6 @@ export default function Store({
     sessionUser: props?.sessionUser || null,
     options: { clientOnly: true },
   });
-  // useUserRoleStore();
-  // useThemeStore()
-  // useAppshellStore();
   useLoadAppData({
     clientOnly: false,
     storesToLoad: { [STORE_NAME.CATEGORIES]: true, [STORE_NAME.POSTS]: true },

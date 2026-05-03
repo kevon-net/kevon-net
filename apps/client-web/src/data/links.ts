@@ -14,43 +14,27 @@
 
 import { cleanPaths } from '@repo/utilities/array';
 import { Link, NavLink } from '@repo/types/link';
-import { EMAILS, PHONES, SOCIALS, LOCATIONS } from '@repo/constants/app';
+import { EMAILS, SOCIALS, LOCATIONS } from '@repo/constants/app';
 
 export const links: NavLink[] = [
-  // {
-  //   link: '/#',
-  //   label: 'Home',
-  // },
+  {
+    link: '/',
+    label: 'Home',
+  },
+  {
+    link: '/projects',
+    label: 'Projects',
+  },
   {
     link: '/#about',
     label: 'About',
   },
   {
-    link: '/#services',
-    label: 'Services',
-  },
-  {
-    link: '/#skills',
-    label: 'Skills',
-  },
-  {
-    link: '/#experience',
-    label: 'Experience',
-  },
-  // {
-  //   link: '/#portfolio',
-  //   label: 'Portfolio',
-  // },
-  // {
-  //   link: '/#testimonials',
-  //   label: 'Testimonials',
-  // },
-  {
-    link: '/#blog',
+    link: '/blog',
     label: 'Blog',
   },
   {
-    link: '/#contact',
+    link: '/contact',
     label: 'Contact',
   },
 ];
@@ -58,11 +42,19 @@ export const links: NavLink[] = [
 export const contact: Link[] = [
   {
     link: `mailto:${EMAILS.CONTACT}`,
-    label: EMAILS.CONTACT || '',
+    label: 'Email',
   },
   {
-    link: `tel:${PHONES.MAIN}`,
-    label: `+${PHONES.MAIN}`,
+    link: SOCIALS.GH.LINK,
+    label: SOCIALS.GH.LABEL,
+  },
+  {
+    link: SOCIALS.LI.LINK,
+    label: SOCIALS.LI.LABEL,
+  },
+  {
+    link: `tel:${SOCIALS.GH.LINK}`,
+    label: `+${SOCIALS.GH.LABEL}`,
   },
   {
     link: LOCATIONS.MAIN.PIN,

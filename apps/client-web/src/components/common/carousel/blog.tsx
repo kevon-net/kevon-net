@@ -5,7 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import Fade from 'embla-carousel-fade';
 import classes from './blog.module.scss';
-import { Group } from '@mantine/core';
+import { Group, Loader, Stack, Text } from '@mantine/core';
 import { SECTION_SPACING } from '@repo/constants/sizes';
 import CardPost from '@repo/components/common/cards/post';
 import { PostGet } from '@repo/types/models/post';
@@ -52,9 +52,11 @@ export default function Blog({ props }: { props?: { posts?: PostGet[] } }) {
   }, [emblaApi, onSelect]);
 
   return resolvedPosts === undefined ? (
-    <>loading</>
+    <Loader />
   ) : !resolvedPosts ? (
-    <>no resolvedPosts found</>
+    <Stack c={'dimmed'}>
+      <Text>No posts found</Text>
+    </Stack>
   ) : (
     <div className={classes.embla}>
       <div className={classes.embla__viewport} ref={emblaRef}>

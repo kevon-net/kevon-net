@@ -20,7 +20,6 @@ export default function Cv({
       lineWidth={2}
       classNames={classes}
       active={props.active}
-      radius={0}
     >
       {props.list.map((t, i) => (
         <TimelineItem
@@ -34,13 +33,15 @@ export default function Cv({
               : undefined
           }
         >
-          <Text c="var(--mantine-color-dark-0)">{t.where}</Text>
+          <Text c="var(--mantine-color-dark-0)" mt={'xs'}>
+            {t.where}
+          </Text>
 
-          <Text fz="sm" mt={4}>
+          <Text fz="sm" mt={'xs'}>
             {t.when}
           </Text>
 
-          <Stack mt={'sm'} gap={'xs'}>
+          <Stack mt={'xs'} gap={'xs'}>
             {t.accomplishments.map((a, i) => (
               <Group key={i} gap={'xs'} wrap={'nowrap'} align={'start'}>
                 <IconCircleFilled

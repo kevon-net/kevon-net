@@ -10,13 +10,20 @@
 import {
   Anchor,
   Button,
+  Card,
   Container,
   createTheme,
   Divider,
+  Loader,
   MantineThemeOverride,
   Modal,
   Notification,
+  ScrollArea,
+  Select,
   Text,
+  Textarea,
+  TextInput,
+  Tooltip,
   virtualColor,
 } from '@mantine/core';
 import cx from 'clsx';
@@ -92,7 +99,7 @@ export const getAppTheme = (params?: AppThemeProps) => {
     primaryShade: { light: 6, dark: 6 },
 
     autoContrast: true,
-    luminanceThreshold: 0.3,
+    luminanceThreshold: 0.6,
 
     headings: {
       fontFamily: 'var(--font-monospace)',
@@ -107,12 +114,92 @@ export const getAppTheme = (params?: AppThemeProps) => {
     cursorType: 'pointer',
 
     components: {
-      Anchor: Anchor.extend({
-        defaultProps: { underline: 'never' },
+      // Anchor: Anchor.extend({
+      //   defaultProps: { underline: 'never' },
+      // }),
+
+      Loader: Loader.extend({
+        defaultProps: { type: 'bars', size: 'sm' },
+      }),
+
+      Card: Card.extend({
+        defaultProps: {
+          style: { borderColor: 'var(--mantine-color-default-border)' },
+        },
+      }),
+
+      Tooltip: Tooltip.extend({
+        defaultProps: { withArrow: true, transitionProps: { enterDelay: 250 } },
+      }),
+
+      TextInput: TextInput.extend({
+        defaultProps: {
+          styles: {
+            input: {
+              borderColor: 'var(--mantine-color-default-border)',
+              backgroundColor: 'var(--mantine-color-dark-9)',
+            },
+          },
+        },
+      }),
+
+      Textarea: Textarea.extend({
+        defaultProps: {
+          styles: {
+            input: {
+              borderColor: 'var(--mantine-color-default-border)',
+              backgroundColor: 'var(--mantine-color-dark-9)',
+            },
+          },
+        },
+      }),
+
+      Select: Select.extend({
+        defaultProps: {
+          styles: {
+            input: {
+              borderColor: 'var(--mantine-color-default-border)',
+              backgroundColor: 'var(--mantine-color-dark-9)',
+            },
+            dropdown: {
+              borderColor: 'var(--mantine-color-default-border)',
+              backgroundColor: 'var(--mantine-color-dark-9)',
+            },
+          },
+        },
+      }),
+
+      ScrollArea: ScrollArea.extend({
+        defaultProps: {
+          scrollbarSize: 8,
+          styles: {
+            scrollbar: {
+              backgroundColor:
+                'light-dark(var(--mantine-color-gray-light), var(--mantine-color-dark-light))',
+            },
+            thumb: { backgroundColor: 'var(--mantine-color-pri-6)' },
+          },
+        },
       }),
 
       Divider: Divider.extend({
         defaultProps: { color: 'var(--mantine-color-default-border)' },
+      }),
+
+      Modal: Modal.extend({
+        defaultProps: {
+          centered: true,
+          overlayProps: {
+            backgroundOpacity: 0.1,
+            blur: 4,
+          },
+          transitionProps: {
+            duration: 100,
+          },
+          styles: {
+            body: { padding: 'var(--mantine-spacing-xl)' },
+          },
+        },
       }),
 
       ...componentsWithStyles,
