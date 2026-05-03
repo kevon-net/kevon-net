@@ -87,7 +87,7 @@ export const getAppTheme = (params?: AppThemeProps) => {
 
     primaryColor: 'pri',
 
-    defaultRadius: 'sm',
+    defaultRadius: 'lg',
 
     primaryShade: { light: 6, dark: 6 },
 

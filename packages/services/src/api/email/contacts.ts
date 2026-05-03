@@ -39,13 +39,13 @@ export const emailContactAdd = async (
       throw new Error('API Service Error');
     }
 
-    if (notify) {
-      // send welcome email if new user
-      await emailSendOnboardNewsletter({
-        to: formData.email,
-        APP_NAME: formData.APP_NAME || '',
-      });
-    }
+    // if (notify) {
+    //   // send welcome email if new user
+    //   await emailSendOnboardNewsletter({
+    //     to: formData.email,
+    //     APP_NAME: formData.APP_NAME || '',
+    //   });
+    // }
 
     return contactCreate.data;
   } catch (error) {
