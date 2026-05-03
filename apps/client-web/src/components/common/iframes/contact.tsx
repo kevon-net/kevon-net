@@ -1,13 +1,13 @@
 import React from 'react';
 import { Box } from '@mantine/core';
-import { locations } from '@repo/constants/app';
+import { LOCATIONS } from '@repo/constants/app';
 
 export default function Contact({ props }: { props?: { src?: string } }) {
   return (
     <Box
       component="iframe"
-      src={props?.src || locations.main.pin}
-      title={locations.main.location}
+      src={props?.src || LOCATIONS.MAIN.PIN}
+      title={LOCATIONS.MAIN.LOCATION}
       style={{
         border: 0,
         minHeight: 400,

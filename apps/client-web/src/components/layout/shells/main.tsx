@@ -8,8 +8,8 @@ import {
   AppShellMain,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { images } from '@/assets/images';
-import UnderlayGlass from '@repo/components/wrapper/underlays/glass';
+import { images } from '@repo/constants/images';
+import UnderlayGlass from '@repo/components/wrappers/underlays/glass';
 import AsideMain from '../asides/main';
 import HeaderMain from '../headers/main';
 

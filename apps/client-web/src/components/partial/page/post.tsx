@@ -20,10 +20,8 @@ import {
 } from '@repo/constants/sizes';
 import { IconArrowRight } from '@tabler/icons-react';
 import CarouselBlog from '@/components/common/carousel/blog';
-import { PostRelations } from '@repo/types/models/post';
 import NextLink from '@repo/components/common/anchor/next-link';
-import { useStorePost } from '@/libraries/zustand/stores/post';
-import PartialLoadingContent from '../loading/content';
+import { useStorePost } from '@repo/libraries/zustand/stores/post';
 
 export default function Post({ props }: { props: { postId: string } }) {
   const { postId } = props;
@@ -62,9 +60,7 @@ export default function Post({ props }: { props: { postId: string } }) {
       </LayoutSection>
 
       {posts === undefined ? (
-        <LayoutSection id="loader" margined={SECTION_SPACING}>
-          <PartialLoadingContent />
-        </LayoutSection>
+        <>loading</>
       ) : !post ? null : (
         <>
           <LayoutSection id="media" containerized={false} pr={'0.5rem'}>
@@ -130,7 +126,7 @@ export default function Post({ props }: { props: { postId: string } }) {
                 <>no posts</>
               ) : (
                 <CarouselBlog
-                  posts={posts.filter((p) => p.id != postId) as PostRelations[]}
+                  props={{ posts: posts.filter((p) => p.id != postId) }}
                 />
               )}
             </Stack>

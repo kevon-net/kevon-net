@@ -22,10 +22,11 @@ import {
 import { IconArrowRight } from '@tabler/icons-react';
 import Link from 'next/link';
 import { linkify } from '@repo/utilities/url';
-import { PostRelations } from '@repo/types/models/post';
+import { PostGet } from '@repo/types/models/post';
 import NextLink from '../anchor/next-link';
+import { useStoreCategory } from '@repo/libraries/zustand/stores/category';
 
-export default function Post({ props }: { props: PostRelations }) {
+export default function Post({ props }: { props: PostGet }) {
   const link = `/blog/${linkify(props.title)}-${props.id}`;
 
   return (
@@ -86,8 +87,9 @@ export default function Post({ props }: { props: PostRelations }) {
   );
 }
 
-export function CategoryLink({ props }: { props: PostRelations }) {
-  const category = props.category;
+export function CategoryLink({ props }: { props: PostGet }) {
+  const { categories } = useStoreCategory();
+  const category = (categories || []).find((ci) => ci.id == props.category_id);
 
   return (
     <NextLink

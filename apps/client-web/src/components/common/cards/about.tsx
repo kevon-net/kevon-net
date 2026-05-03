@@ -1,5 +1,5 @@
 import React from 'react';
-import { documents } from '@/assets/documents';
+// import { documents } from '@/assets/documents';
 import { contact } from '@/data/links';
 import { Anchor, Card, Stack, Text, Title } from '@mantine/core';
 
@@ -31,12 +31,12 @@ export default function About() {
           <Anchor href={contact[1].link}>{contact[1].label}</Anchor>
         </Stack>
 
-        <Stack align="start" gap={5}>
+        {/* <Stack align="start" gap={5}>
           <Title order={3}>CV</Title>
           <Anchor href={documents.cv.light} download={'kevon-cv.pdf'}>
             Download CV
           </Anchor>
-        </Stack>
+        </Stack> */}
       </Stack>
     </Card>
   );

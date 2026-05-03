@@ -2,8 +2,8 @@
 
 import React from 'react';
 import ImageDefault from '@repo/components/common/images/default';
-import { images } from '@/assets/images';
-import { appName } from '@repo/constants/app';
+import { images } from '@repo/constants/images';
+import { APP_NAME } from '@repo/constants/app';
 import { Burger, Group } from '@mantine/core';
 import LayoutSection from '@repo/components/layout/section';
 import Link from 'next/link';
@@ -40,7 +40,7 @@ export default function Main({
         >
           <ImageDefault
             src={images.brand.icon.dark}
-            alt={appName}
+            alt={APP_NAME.WEB}
             height={40}
             width={24}
             fit="contain"

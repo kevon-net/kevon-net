@@ -7,16 +7,19 @@
 
 import { API_URL } from '@repo/constants/paths';
 import { HEADERS } from '@repo/constants/other';
-import { PostCreate, PostUpdate } from '@repo/types/models/post';
+import { PostCreate, PostRelations, PostUpdate } from '@repo/types/models/post';
 
 const baseRequestUrl = `${API_URL}/posts`;
 
-export const postsGet = async () => {
+export const postsGet = async (params?: { userId?: string }) => {
   try {
-    const request = new Request(baseRequestUrl, {
-      method: 'GET',
-      headers: HEADERS.WITHOUT_BODY,
-    });
+    const request = new Request(
+      `${baseRequestUrl}?userId=${params?.userId || ''}`,
+      {
+        method: 'GET',
+        headers: HEADERS.WITHOUT_BODY,
+      }
+    );
 
     const response = await fetch(request);
 
@@ -26,6 +29,43 @@ export const postsGet = async () => {
   } catch (error) {
     console.error('---> handler error - (get posts):', error);
     throw error;
+  }
+};
+
+let currentController: AbortController | null = null;
+
+export const postsUpdate = async (
+  posts: PostRelations[],
+  deletedIds?: string[]
+) => {
+  // Cancel previous request if still in-flight
+  if (currentController) currentController.abort();
+
+  // New controller for this request
+  currentController = new AbortController();
+
+  try {
+    const request = new Request(baseRequestUrl, {
+      method: 'PUT',
+      headers: HEADERS.WITH_BODY,
+      body: JSON.stringify({ posts, deletedIds }),
+    });
+
+    const response = await fetch(request);
+
+    if (!response.ok) {
+      throw new Error(`${response.status}: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+
+    return result;
+  } catch (error) {
+    console.error('---> handler error - (update posts):', error);
+    throw error;
+  } finally {
+    // Clear controller once done (important for GC)
+    currentController = null;
   }
 };
 

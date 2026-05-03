@@ -5,12 +5,18 @@
  * Do not modify unless you intend to backport changes to the template.
  */
 
-export type Link = { link: string; label: string };
-export type NavLink = Link & { subLinks: Link[] | null };
+/**
+ * @template-source next-template
+ * @template-sync auto
+ * @description This file originates from the base template repository.
+ * Do not modify unless you intend to backport changes to the template.
+ */
 
-import { emails, phones, socials, locations } from '@repo/constants/app';
+import { cleanPaths } from '@repo/utilities/array';
+import { Link, NavLink } from '@repo/types/link';
+import { EMAILS, PHONES, SOCIALS, LOCATIONS } from '@repo/constants/app';
 
-export const navbar: Link[] = [
+export const links: NavLink[] = [
   // {
   //   link: '/#',
   //   label: 'Home',
@@ -51,26 +57,51 @@ export const navbar: Link[] = [
 
 export const contact: Link[] = [
   {
-    link: `mailto:${emails.contact}`,
-    label: emails.contact || '',
+    link: `mailto:${EMAILS.CONTACT}`,
+    label: EMAILS.CONTACT || '',
   },
   {
-    link: `tel:${phones.main}`,
-    label: `+${phones.main}`,
+    link: `tel:${PHONES.MAIN}`,
+    label: `+${PHONES.MAIN}`,
   },
   {
-    link: locations.main.pin,
-    label: locations.main.location,
+    link: LOCATIONS.MAIN.PIN,
+    label: LOCATIONS.MAIN.LOCATION,
   },
 ];
 
 export const social: Link[] = [
   {
-    link: socials.github.link,
-    label: socials.github.platform,
+    link: SOCIALS.GH.LINK,
+    label: SOCIALS.GH.LABEL,
   },
   {
-    link: socials.linkedin.link,
-    label: socials.linkedin.platform,
+    link: SOCIALS.LI.LINK,
+    label: SOCIALS.LI.LABEL,
   },
 ];
+
+const mainLinks = links.map((l) => l.link);
+const subLinks: string[] = [];
+
+links.map((l) => {
+  if (l.subLinks) {
+    l.subLinks.map((sl) => {
+      subLinks.push(sl.link);
+    });
+  }
+});
+
+export const unprotectedRoutes = [
+  ...cleanPaths(
+    [
+      '/',
+      ...mainLinks,
+      ...subLinks,
+      // '/legal/terms',
+      // '/legal/policy',
+    ].filter((l) => !l.startsWith('/#'))
+  ),
+];
+
+export const sitemapRoutes = [...unprotectedRoutes].filter((l) => l != '/');

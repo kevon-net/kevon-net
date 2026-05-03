@@ -7,14 +7,13 @@ import { IconRefresh } from '@tabler/icons-react';
 export default function Error500({ reset }: { reset: () => void }) {
   return (
     <LayoutSection id={'error-500'}>
-      <Stack justify="center" mih={'75vh'}>
+      <Stack justify="center" mih={'100vh'}>
         <IntroSection
           props={{
             subTitle: `500`,
             title: 'Server Error',
             desc: `The page you are trying to open has triggered an error.`,
           }}
-          options={{ alignment: 'center', glitch: true }}
         />
 
         <Group justify="center" mt={'md'}>
@@ -28,7 +27,10 @@ export default function Error500({ reset }: { reset: () => void }) {
                 <IconRefresh size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
               }
               variant="light"
-              onClick={() => reset()}
+              onClick={() => {
+                // reset();
+                window.location.reload();
+              }}
             >
               Try Again
             </Button>

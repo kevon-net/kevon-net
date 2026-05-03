@@ -6,7 +6,7 @@ import { SECTION_SPACING } from '@repo/constants/sizes';
 import { Grid, GridCol, Group, Title } from '@mantine/core';
 import TimelineCv from '@/components/common/timelines/cv';
 import { timeline } from '@/data/timeline';
-import { images } from '@/assets/images';
+import { images } from '@repo/constants/images';
 
 export default function Education() {
   return (

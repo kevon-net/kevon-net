@@ -12,7 +12,7 @@ import {
   Link,
   Heading,
 } from '@react-email/components';
-import { appName } from '@repo/constants/app';
+import { COMPANY_NAME } from '@repo/constants/app';
 
 export const Email = ({
   props,
@@ -39,7 +39,7 @@ export const Email = ({
                     src={'https://kevon.net/images/brand/icon/light.png'}
                     width={40}
                     height={'auto'}
-                    alt={appName}
+                    alt={COMPANY_NAME}
                   />
                 </a>
 
@@ -65,7 +65,7 @@ export const Email = ({
                         textDecorationLine: 'underline',
                       }}
                     >
-                      {appName}
+                      {COMPANY_NAME}
                     </Link>
                     . All rights reserved.
                   </Text>

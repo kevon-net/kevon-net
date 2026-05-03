@@ -8,9 +8,14 @@ import classes from './blog.module.scss';
 import { Group } from '@mantine/core';
 import { SECTION_SPACING } from '@repo/constants/sizes';
 import CardPost from '@repo/components/common/cards/post';
-import { PostRelations } from '@repo/types/models/post';
+import { PostGet } from '@repo/types/models/post';
+import { useStorePost } from '@repo/libraries/zustand/stores/post';
 
-export default function Blog({ posts }: { posts: PostRelations[] }) {
+export default function Blog({ props }: { props?: { posts?: PostGet[] } }) {
+  const { posts } = useStorePost();
+
+  const resolvedPosts = props?.posts || posts;
+
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 5000 }),
     Fade(),
@@ -46,11 +51,15 @@ export default function Blog({ posts }: { posts: PostRelations[] }) {
     };
   }, [emblaApi, onSelect]);
 
-  return (
+  return resolvedPosts === undefined ? (
+    <>loading</>
+  ) : !resolvedPosts ? (
+    <>no resolvedPosts found</>
+  ) : (
     <div className={classes.embla}>
       <div className={classes.embla__viewport} ref={emblaRef}>
         <div className={classes.embla__container}>
-          {posts.map((p, i) => (
+          {resolvedPosts.map((p, i) => (
             <div key={i} className={classes.embla__slide}>
               <CardPost props={p} />
             </div>

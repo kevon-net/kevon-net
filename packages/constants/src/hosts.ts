@@ -13,3 +13,16 @@ export const crossOrigins = [
   'kevon.net', // production domain
   'pro.kevon.net', // production domain
 ];
+
+export const CROSS_ORIGINS = [
+  'localhost',
+  '127.0.0.1',
+  'kevon-web-server.vercel.app', // server vercel deployment
+  'api.kevon.net', // production domain
+  'kevon-web-client-web.vercel.app', // client vercel deployment
+  'kevon.net', // production domain
+  'kevon-web-client-pro.vercel.app', // client vercel deployment
+  'pro.kevon.net', // production domain
+  'kevon-web-client-blog.vercel.app', // client vercel deployment
+  'blog.kevon.net', // production domain
+];

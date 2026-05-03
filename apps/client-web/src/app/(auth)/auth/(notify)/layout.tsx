@@ -7,19 +7,19 @@
 
 import React from 'react';
 import { Center, Grid, GridCol, Stack } from '@mantine/core';
-import LayoutBody from '@repo/components/layout/body';
+import LayoutMain from '@repo/components/layout/main';
 import LayoutSection from '@repo/components/layout/section';
 import ImageDefault from '@repo/components/common/images/default';
-import { images } from '@/assets/images';
+import { images } from '@repo/constants/images';
 import { SECTION_SPACING } from '@repo/constants/sizes';
-import { appName } from '@repo/constants/app';
+import { COMPANY_NAME } from '@repo/constants/app';
 import { Metadata } from 'next';
 import AnchorNextLink from '@repo/components/common/anchor/next-link';
 
 export const metadata: Metadata = {
   title: {
     default: 'Notify',
-    template: `%s - Authentication - ${appName}`,
+    template: `%s - Authentication - ${COMPANY_NAME}`,
   },
 };
 
@@ -29,7 +29,7 @@ export default function LayoutNotify({
   children: React.ReactNode;
 }) {
   return (
-    <LayoutBody>
+    <>
       <Grid gutter={0} px={{ base: 'md', xs: 0 }}>
         <GridCol
           span={5.5}
@@ -45,11 +45,11 @@ export default function LayoutNotify({
             <Center h={'100vh'} px={{ xs: 32 }}>
               <AnchorNextLink href={'/'}>
                 <ImageDefault
-                  src={images.brand.icon.light}
-                  alt={appName}
-                  height={48}
-                  width={160}
-                  mode="grid"
+                  src={images.brand.icon.dark}
+                  alt={COMPANY_NAME}
+                  height={96}
+                  width={96}
+                  fit="contain"
                 />
               </AnchorNextLink>
             </Center>
@@ -70,6 +70,6 @@ export default function LayoutNotify({
           </LayoutSection>
         </GridCol>
       </Grid>
-    </LayoutBody>
+    </>
   );
 }
