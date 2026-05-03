@@ -3,7 +3,7 @@ import LayoutSection from '@repo/components/layout/section';
 import IntroSection from '@repo/components/layout/intros/section';
 import { SECTION_SPACING } from '@repo/constants/sizes';
 import { Anchor, Grid, GridCol, Stack, Text, Title } from '@mantine/core';
-import FormContact from '@/components/form/contact';
+import FormContact from '@repo/components/form/contact';
 import IframeContact from '@/components/common/iframes/contact';
 import { contact } from '@/data/links';
 

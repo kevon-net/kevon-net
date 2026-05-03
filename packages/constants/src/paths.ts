@@ -8,8 +8,8 @@
 const isProduction = process.env.NODE_ENV === 'production';
 const useRemoteServer = process.env.NEXT_PUBLIC_USE_REMOTE_SERVER === 'true';
 
-// Select client host
-const HOSTNAME_CLIENT_WEB = isProduction
+// Select WEB client host
+export const HOSTNAME_CLIENT_WEB = isProduction
   ? process.env.NEXT_PUBLIC_HOST_CLIENT_WEB_PROD
   : process.env.NEXT_PUBLIC_HOST_CLIENT_WEB_DEV;
 
@@ -20,17 +20,20 @@ const HOSTNAME_SERVER = isProduction
     ? process.env.NEXT_PUBLIC_HOST_SERVER_PROD
     : process.env.NEXT_PUBLIC_HOST_SERVER_DEV;
 
-const getUrlPrefix = (host: string | undefined) => {
+export const getUrlPrefix = (host: string | undefined) => {
   if (!host) return 'http://';
   return host.includes('localhost') ? 'http://' : 'https://';
 };
 
-export const BASE_URL_CLIENT = `${getUrlPrefix(HOSTNAME_CLIENT_WEB)}${HOSTNAME_CLIENT_WEB}`;
 export const BASE_URL_SERVER = `${getUrlPrefix(HOSTNAME_SERVER)}${HOSTNAME_SERVER}`;
 
 export const HOSTED_BASE_URL = {
   CLIENT_WEB: process.env.NEXT_PUBLIC_HOST_CLIENT_WEB_PROD || '',
   SERVER: process.env.NEXT_PUBLIC_HOST_SERVER_PROD || '',
+};
+
+export const PRODUCTION_BASE_URL_CLIENT_WEB = {
+  DEFAULT: `https://kevon.net`,
 };
 
 export const API_URL = `${BASE_URL_SERVER}/api`;
@@ -40,12 +43,16 @@ export const GEO_DATA_URL = {
 };
 
 export const AUTH_URLS = {
-  SIGN_IN: `${BASE_URL_CLIENT}/auth/sign-in`,
-  SIGN_UP: `${BASE_URL_CLIENT}/auth/sign-up`,
-  CHECK_EMAIL: `${BASE_URL_CLIENT}/auth/check-email`,
-  ERROR: `${BASE_URL_CLIENT}/auth/error`,
-  SIGN_OUT: `${BASE_URL_CLIENT}/auth/sign-out`,
+  SIGN_IN: `/auth/sign-in`,
+  SIGN_UP: `/auth/sign-up`,
+  CHECK_EMAIL: `/auth/check-email`,
+  ERROR: `/auth/error`,
+  SIGN_OUT: `/auth/sign-out`,
   REDIRECT: {
-    DEFAULT: '/app/home',
+    DEFAULT: '/app',
   },
+};
+
+export const BASE_URL_CLIENT = {
+  WEB: `${getUrlPrefix(HOSTNAME_CLIENT_WEB)}${HOSTNAME_CLIENT_WEB}`,
 };

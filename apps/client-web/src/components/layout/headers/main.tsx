@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Paper } from '@mantine/core';
-import UnderlayGlass from '@repo/components/wrapper/underlays/glass';
+import UnderlayGlass from '@repo/components/wrappers/underlays/glass';
 import NavbarMain from '../navbars/main';
 import { useMediaQuery } from '@mantine/hooks';
 

@@ -10,7 +10,7 @@
 import LayoutSection from '../section';
 import { Stack, Text, Title } from '@mantine/core';
 import { SECTION_SPACING } from '@repo/constants/sizes';
-import GlitchMain from '../../wrapper/glitch/main';
+import GlitchMain from '../../wrappers/glitch/main';
 
 interface SectionHeaderProps {
   props: {

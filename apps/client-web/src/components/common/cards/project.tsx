@@ -8,7 +8,7 @@ import classes from './project.module.scss';
 import { linkify } from '@repo/utilities/url';
 import { ProjectRelations } from '@repo/types/models/project';
 import { CategoryGet } from '@repo/types/models/category';
-import { useStoreCategory } from '@/libraries/zustand/stores/category';
+import { useStoreCategory } from '@repo/libraries/zustand/stores/category';
 import NextLink from '@repo/components/common/anchor/next-link';
 
 export default function Project({ project }: { project: ProjectRelations }) {

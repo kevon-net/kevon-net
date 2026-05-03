@@ -13,7 +13,7 @@ import {
   Title,
 } from '@mantine/core';
 import ImageDefault from '@repo/components/common/images/default';
-import { images } from '@/assets/images';
+import { images } from '@repo/constants/images';
 import IntroSection from '@repo/components/layout/intros/section';
 import CardAbout from '@/components/common/cards/about';
 

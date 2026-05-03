@@ -13,28 +13,28 @@ import '@mantine/notifications/styles.css';
 import '../styles/globals.scss';
 
 import type { Metadata } from 'next';
-import { Kanit, Tomorrow } from 'next/font/google';
+import { Space_Grotesk, Space_Mono } from 'next/font/google';
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 import ProviderMantine from '@repo/components/provider/mantine';
-import { appName, companyOneLiner } from '@repo/constants/app';
+import { APP_DESC, APP_NAME } from '@repo/constants/app';
 import { DEFAULT_COLOR_SCHEME } from '@repo/constants/other';
-import { mantine } from '@/assets/styles';
+import { mantine } from '@/data/styles';
 
-const kanitSans = Kanit({
-  variable: '--font-kanit-sans',
+const fontBody = Space_Grotesk({
+  variable: '--font-body',
   subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  weight: ['300', '400', '500', '600', '700'],
 });
 
-const tomorrowSans = Tomorrow({
-  variable: '--font-tomorrow-sans',
+const fontMono = Space_Mono({
+  variable: '--font-monospace',
   subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {
-  title: `${appName} - API Engine`,
-  description: companyOneLiner,
+  title: `${APP_NAME.WEB} - API Engine`,
+  description: APP_DESC.SERVER,
 };
 
 export default async function RootLayout({
@@ -51,14 +51,14 @@ export default async function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content={companyOneLiner} />
+        <meta name="description" content={APP_DESC.SERVER} />
 
-        <title>{appName}</title>
+        <title>{APP_NAME.SERVER}</title>
 
         <ColorSchemeScript defaultColorScheme={DEFAULT_COLOR_SCHEME} />
       </head>
 
-      <body className={`${kanitSans.variable} ${tomorrowSans.variable}`}>
+      <body className={`${fontBody.variable} ${fontMono.variable}`}>
         <ProviderMantine
           appThemeProps={{ styleSheets: { ...mantine } }}
           options={{ withNotifications: true }}

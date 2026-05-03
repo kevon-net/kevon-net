@@ -6,28 +6,23 @@
  */
 
 import LayoutPage from '@repo/components/layout/page';
-import LayoutBody from '@repo/components/layout/body';
-import LayoutSection from '@repo/components/layout/section';
-import { Center } from '@mantine/core';
+import LayoutMain from '@repo/components/layout/main';
+import PartialPageHome from '@/components/partial/page/home';
 
 export default function Home() {
   return (
     <HomeLayout>
-      <LayoutSection id="home">
-        <Center mih={'100vh'}>
-          <p>home page</p>
-        </Center>
-      </LayoutSection>
+      <PartialPageHome />
     </HomeLayout>
   );
 }
 
 async function HomeLayout({ children }: { children: React.ReactNode }) {
   return (
-    <LayoutBody>
+    <LayoutMain>
       <LayoutPage>
         <main>{children}</main>
       </LayoutPage>
-    </LayoutBody>
+    </LayoutMain>
   );
 }

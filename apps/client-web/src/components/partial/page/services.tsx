@@ -1,6 +1,6 @@
 import React from 'react';
 import { Divider, Stack, Text, Title } from '@mantine/core';
-import { images } from '@/assets/images';
+import { images } from '@repo/constants/images';
 import LayoutSection from '@repo/components/layout/section';
 import ImageDefault from '@repo/components/common/images/default';
 import IntroSection from '@repo/components/layout/intros/section';

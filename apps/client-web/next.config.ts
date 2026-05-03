@@ -46,7 +46,23 @@ const nextConfig: NextConfig = {
     additionalData: `@use "${path.join(process.cwd(), '_mantine').replace(/\\/g, '/')}" as mantine;`,
   },
 
-  output: 'export',
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'x-google-site-verification',
+            value: 'x-google-site-verification-code',
+          },
+          {
+            key: 'x-bing-site-verification',
+            value: 'x-bing-site-verification-code',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

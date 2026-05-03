@@ -65,11 +65,24 @@ export const getAppTheme = (params?: AppThemeProps) => {
     activeClassName: 'active',
 
     colors: {
-      pri: virtualColor({
-        name: 'pri',
-        light: 'blue',
-        dark: 'cyan',
-      }),
+      pri: [
+        '#e1f8ff',
+        '#cbedff',
+        '#9ad7ff',
+        '#64c1ff',
+        '#3aaefe',
+        '#20a2fe',
+        '#099cff',
+        '#0088e4',
+        '#0079cd',
+        '#0068b6',
+      ],
+
+      // pri: virtualColor({
+      //   name: 'pri',
+      //   light: 'blue',
+      //   dark: 'cyan',
+      // }),
     },
 
     primaryColor: 'pri',
@@ -78,11 +91,11 @@ export const getAppTheme = (params?: AppThemeProps) => {
 
     primaryShade: { light: 6, dark: 6 },
 
-    // autoContrast: true,
-    // luminanceThreshold: 0.3,
+    autoContrast: true,
+    luminanceThreshold: 0.3,
 
     headings: {
-      fontFamily: 'var(--font-kanit-sans)',
+      fontFamily: 'var(--font-monospace)',
     },
 
     defaultGradient: {
@@ -94,23 +107,12 @@ export const getAppTheme = (params?: AppThemeProps) => {
     cursorType: 'pointer',
 
     components: {
-      Button: Button.extend({
-        defaultProps: { tt: 'uppercase', fz: 'xs', lts: 2, fw: '500' },
+      Anchor: Anchor.extend({
+        defaultProps: { underline: 'never' },
       }),
 
       Divider: Divider.extend({
-        defaultProps: { color: 'var(--mantine-color-gray-light)' },
-      }),
-
-      Modal: Modal.extend({
-        defaultProps: {
-          transitionProps: { transition: 'fade' },
-          overlayProps: { backgroundOpacity: 0.5, blur: 4 },
-        },
-      }),
-
-      Text: Text.extend({
-        defaultProps: { fw: '300' },
+        defaultProps: { color: 'var(--mantine-color-default-border)' },
       }),
 
       ...componentsWithStyles,

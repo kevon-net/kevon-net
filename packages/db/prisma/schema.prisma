@@ -39,6 +39,7 @@ enum Status {
 enum SyncStatus {
   PENDING
   SYNCED
+  SYNCED_CLIENT
   SAVED
   ERROR
   DELETED
@@ -48,12 +49,14 @@ enum SyncStatus {
 
 model Profile {
   id         String  @id
+  email      String
   user_name  String?
   first_name String?
   last_name  String?
   bio        String?
   avatar     String?
   phone      String?
+  customized Boolean @default(false)
   role       Role    @default(USER)
 
   created_at DateTime @default(now())
@@ -62,6 +65,7 @@ model Profile {
   posts    Post[]
   comments Comment[]
 
+  @@unique([email])
   @@map("profiles")
 }
 

@@ -12,7 +12,7 @@ import LayoutSection from '../section';
 import { usePathname } from 'next/navigation';
 import { Group, Stack, Text, Title } from '@mantine/core';
 import { crumbify } from '@repo/utilities/url';
-import GlitchMain from '../../wrapper/glitch/main';
+import GlitchMain from '../../wrappers/glitch/main';
 import NextLink from '../../common/anchor/next-link';
 
 interface PageHeaderProps {

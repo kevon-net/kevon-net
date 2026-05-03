@@ -14,7 +14,7 @@ import {
   ConvertCSSVariablesInput,
 } from '@mantine/core';
 import { linkify } from '@repo/utilities/url';
-import { appName } from '@repo/constants/app';
+import { COMPANY_NAME } from '@repo/constants/app';
 import { Notifications } from '@mantine/notifications';
 import { DEFAULT_COLOR_SCHEME } from '@repo/constants/other';
 import { getAppTheme, AppThemeProps } from '@repo/constants/theme';
@@ -37,7 +37,7 @@ export default function Mantine({
     <MantineProvider
       theme={getAppTheme(appThemeProps)}
       cssVariablesResolver={getAppResolver({ cssVars: appResolverProps })}
-      classNamesPrefix={linkify(appName)}
+      classNamesPrefix={linkify(COMPANY_NAME)}
       defaultColorScheme={colorScheme || DEFAULT_COLOR_SCHEME}
     >
       {children}

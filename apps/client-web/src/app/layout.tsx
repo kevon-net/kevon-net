@@ -14,32 +14,32 @@ import '@mantine/notifications/styles.css';
 import '../styles/globals.scss';
 
 import type { Metadata } from 'next';
-import { Kanit, Tomorrow } from 'next/font/google';
+import { Space_Grotesk, Space_Mono } from 'next/font/google';
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 import ProviderMantine from '@repo/components/provider/mantine';
 import ProviderStore from '@/components/provider/store';
 import ShellMain from '@/components/layout/shells/main';
-import { appName, companyOneLiner } from '@repo/constants/app';
+import { APP_DESC, APP_NAME } from '@repo/constants/app';
 import { DEFAULT_COLOR_SCHEME } from '@repo/constants/other';
 import { isProduction } from '@repo/utilities/misc';
+import { mantine } from '@/data/styles';
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { mantine } from '@/assets/styles';
 
-const kanitSans = Kanit({
-  variable: '--font-kanit-sans',
+const fontBody = Space_Grotesk({
+  variable: '--font-body',
   subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  weight: ['300', '400', '500', '600', '700'],
 });
 
-const tomorrowSans = Tomorrow({
-  variable: '--font-tomorrow-sans',
+const fontMono = Space_Mono({
+  variable: '--font-monospace',
   subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {
-  title: `${appName} - Web Development Solutions`,
-  description: companyOneLiner,
+  title: `${APP_NAME.WEB} - Web Development Solutions`,
+  description: APP_DESC.WEB,
 };
 
 export default async function RootLayout({
@@ -58,14 +58,14 @@ export default async function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content={companyOneLiner} />
+        <meta name="description" content={APP_DESC.WEB} />
 
-        <title>{appName}</title>
+        <title>{APP_NAME.WEB}</title>
 
         <ColorSchemeScript defaultColorScheme={DEFAULT_COLOR_SCHEME} />
       </head>
 
-      <body className={`${kanitSans.variable} ${tomorrowSans.variable}`}>
+      <body className={`${fontBody.variable} ${fontMono.variable}`}>
         <ProviderMantine
           options={{ withNotifications: true }}
           appThemeProps={{ styleSheets: { ...mantine } }}

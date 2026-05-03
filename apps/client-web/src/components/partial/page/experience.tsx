@@ -6,7 +6,7 @@ import IntroSection from '@repo/components/layout/intros/section';
 import ImageDefault from '@repo/components/common/images/default';
 import { SECTION_SPACING } from '@repo/constants/sizes';
 import { timeline } from '@/data/timeline';
-import { images } from '@/assets/images';
+import { images } from '@repo/constants/images';
 
 export default function Experience() {
   return (

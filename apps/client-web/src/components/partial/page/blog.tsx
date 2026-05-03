@@ -1,17 +1,13 @@
 'use client';
 
 import React from 'react';
-import { useStorePost } from '@/libraries/zustand/stores/post';
 import LayoutSection from '@repo/components/layout/section';
 import { SECTION_SPACING } from '@repo/constants/sizes';
 import IntroSection from '@repo/components/layout/intros/section';
 import { Text, Title } from '@mantine/core';
 import CarouselBlog from '@/components/common/carousel/blog';
-import PartialLoadingContent from '../loading/content';
 
 export default function Blog() {
-  const { posts } = useStorePost();
-
   return (
     <LayoutSection id={'blog'} py={{ base: SECTION_SPACING * 2 }}>
       <IntroSection
@@ -35,11 +31,7 @@ export default function Blog() {
         }}
       />
 
-      {posts === undefined ? (
-        <PartialLoadingContent />
-      ) : !posts ? null : (
-        <CarouselBlog posts={posts} />
-      )}
+      <CarouselBlog />
     </LayoutSection>
   );
 }
