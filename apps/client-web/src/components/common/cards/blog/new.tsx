@@ -27,12 +27,7 @@ export default function New({ post }: { post: PostRelations }) {
     <Card className={classes.card} withBorder bg={'transparent'}>
       <Grid gutter={0}>
         <GridCol span={{ base: 12, sm: 6 }}>
-          <AnchorNextLink
-            underline="hover"
-            inherit
-            href={path}
-            pos={'relative'}
-          >
+          <AnchorNextLink inherit href={path} pos={'relative'}>
             <ImageDefault
               src={post.image}
               alt={post.title}
@@ -61,12 +56,7 @@ export default function New({ post }: { post: PostRelations }) {
               </Badge>
 
               <Title order={3} fz={28} lh={{ md: 1 }} className={classes.title}>
-                <AnchorNextLink
-                  underline="hover"
-                  inherit
-                  href={path}
-                  c={'inherit'}
-                >
+                <AnchorNextLink inherit href={path} c={'inherit'}>
                   {post.title}
                 </AnchorNextLink>
               </Title>

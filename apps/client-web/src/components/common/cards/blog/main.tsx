@@ -30,12 +30,7 @@ export default function Main({ post }: { post: PostRelations }) {
             overflow: 'hidden',
           }}
         >
-          <AnchorNextLink
-            underline="hover"
-            inherit
-            href={path}
-            pos={'relative'}
-          >
+          <AnchorNextLink inherit href={path} pos={'relative'}>
             <ImageDefault
               src={processUrl(post.image, HOSTED_BASE_URL.CLIENT_WEB)}
               alt={post.title}
@@ -54,12 +49,7 @@ export default function Main({ post }: { post: PostRelations }) {
                 className={classes.title}
                 lineClamp={1}
               >
-                <AnchorNextLink
-                  underline="hover"
-                  inherit
-                  href={path}
-                  c={'inherit'}
-                >
+                <AnchorNextLink inherit href={path} c={'inherit'}>
                   {post.title}
                 </AnchorNextLink>
               </Title>

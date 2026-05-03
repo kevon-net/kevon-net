@@ -4,51 +4,64 @@ import React from 'react';
 import ImageDefault from '@repo/components/common/images/default';
 import { images } from '@repo/constants/images';
 import { APP_NAME } from '@repo/constants/app';
-import { Burger, Group } from '@mantine/core';
+import { Button, Divider, Group, Text } from '@mantine/core';
 import LayoutSection from '@repo/components/layout/section';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useWindowScroll } from '@mantine/hooks';
+import NextLink from '@repo/components/common/anchor/next-link';
+import { links } from '@/data/links';
 
-export default function Main({
-  opened,
-  toggle,
-  containerized,
-}: {
-  opened: boolean;
-  toggle: () => void;
-  containerized?: boolean;
-}) {
+export default function Main() {
   const pathname = usePathname();
   const [scroll, scrollTo] = useWindowScroll();
 
   return (
-    <LayoutSection
-      id="navbar-main"
-      w={{ base: '100%', md: 'fit-content' }}
-      py={{ base: '1.5rem', md: '1rem', xl: '2.5rem' }}
-      containerized={containerized}
-    >
-      <Group h="100%" justify="space-between">
-        <Link
-          href={'/'}
-          onClick={(e) => {
-            if (pathname != '/') return;
-            e.preventDefault();
-            if (scroll.y > 0) scrollTo({ y: 0 });
-          }}
-        >
-          <ImageDefault
-            src={images.brand.icon.dark}
-            alt={APP_NAME.WEB}
-            height={40}
-            width={24}
-            fit="contain"
-          />
-        </Link>
+    <>
+      <LayoutSection id="navbar-main" py={{ base: '1.5rem' }}>
+        <Group h="100%" justify="space-between">
+          <div>
+            <NextLink
+              href={'/'}
+              onClick={(e) => {
+                if (pathname == '/') {
+                  e.preventDefault();
+                  if (scroll.y > 0) scrollTo({ y: 0 });
+                }
+              }}
+            >
+              <ImageDefault
+                src={images.brand.icon.light}
+                alt={APP_NAME.WEB}
+                height={40}
+                width={24}
+                fit="contain"
+              />
+            </NextLink>
+          </div>
 
-        <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="md" />
-      </Group>
-    </LayoutSection>
+          <Group gap={'xl'}>
+            <Group>
+              {links.map((li) => (
+                <Text key={li.label} inherit>
+                  [{' '}
+                  <NextLink href={li.link} fz={'lg'}>
+                    {li.label}
+                  </NextLink>{' '}
+                  ]
+                </Text>
+              ))}
+            </Group>
+
+            <Group>
+              <NextLink href="/contact">
+                <Button>Let&apos;s Talk</Button>
+              </NextLink>
+            </Group>
+          </Group>
+        </Group>
+      </LayoutSection>
+
+      <Divider />
+    </>
   );
 }

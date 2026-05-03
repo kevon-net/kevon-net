@@ -6,6 +6,7 @@ import {
   Button,
   Grid,
   GridCol,
+  Group,
   Select,
   SimpleGrid,
   Text,
@@ -40,26 +41,13 @@ export default function Contact({
       <Grid>
         <GridCol span={{ base: 12, md: options?.modal ? 6 : undefined }}>
           <Grid>
-            <GridCol
-              span={{ base: 12, xs: 6, md: options?.modal ? 12 : undefined }}
-            >
+            <GridCol span={12}>
               <TextInput
                 required
                 label={options?.modal ? undefined : 'Name'}
                 aria-label={options?.modal ? 'Name' : undefined}
                 placeholder={`Your Name${options?.modal ? ' *' : ''}`}
                 {...form.getInputProps('name')}
-              />
-            </GridCol>
-
-            <GridCol
-              span={{ base: 12, xs: 6, md: options?.modal ? 12 : undefined }}
-            >
-              <TextInput
-                label={options?.modal ? undefined : 'Phone'}
-                aria-label={options?.modal ? 'Phone' : undefined}
-                placeholder="Your Phone"
-                {...form.getInputProps('phone')}
               />
             </GridCol>
 
@@ -79,26 +67,6 @@ export default function Contact({
         <GridCol span={{ base: 12, md: options?.modal ? 6 : undefined }}>
           <Grid>
             <GridCol span={12}>
-              <Select
-                required
-                label={options?.modal ? undefined : 'Inquiry'}
-                aria-label={options?.modal ? 'Inquiry' : undefined}
-                placeholder={
-                  options?.modal ? 'Inquiry *' : 'What are you inquiring about?'
-                }
-                {...form.getInputProps('subject')}
-                data={[
-                  { label: 'What are you inquiring about?', value: '' },
-                  { label: 'Technical Support', value: 'Technical Support' },
-                  { label: 'Sales Support', value: 'Sales Support' },
-                  { label: 'Bug Report', value: 'Bug Report' },
-                ]}
-                checkIconPosition={'right'}
-                allowDeselect={false}
-              />
-            </GridCol>
-
-            <GridCol span={12}>
               <Textarea
                 required
                 label={options?.modal ? undefined : 'Message'}
@@ -107,43 +75,26 @@ export default function Contact({
                   options?.modal ? 'Message *' : 'Write your message here...'
                 }
                 autosize
-                minRows={2}
-                styles={{ input: { height: '100%' } }}
-                maxRows={15}
-                resize="vertical"
+                minRows={3}
+                maxRows={5}
                 {...form.getInputProps('message')}
               />
-            </GridCol>
-
-            <GridCol span={12}>
-              <Text fz={'sm'} c={'dimmed'}>
-                By submitting this form, I agree to the{' '}
-                <AnchorNextLink href="#pp" inherit fw={500}>
-                  privacy policy
-                </AnchorNextLink>
-                .
-              </Text>
             </GridCol>
           </Grid>
         </GridCol>
 
         <GridCol span={12}>
-          <SimpleGrid cols={{ base: 1, xs: 2 }}>
-            <Button
-              variant="light"
-              fullWidth
-              type="reset"
-              onClick={() => form.reset()}
-              disabled={submitted}
-              visibleFrom={options?.modal ? 'xs' : undefined}
-            >
-              Clear
-            </Button>
-
-            <Button fullWidth type="submit" loading={submitted}>
+          <Group justify="end">
+            <Button type="submit" loading={submitted}>
               {submitted ? 'Sending' : 'Send'}
             </Button>
-          </SimpleGrid>
+          </Group>
+        </GridCol>
+
+        <GridCol span={12}>
+          <Box c={'dimmed'} fz={'sm'}>
+            <Text inherit>Typically responds within 24 hours.</Text>
+          </Box>
         </GridCol>
       </Grid>
     </Box>

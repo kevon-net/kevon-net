@@ -61,20 +61,23 @@ a {
 
 /* Width and height of the scrollbar */
 ::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
+  width: 4px;
+  height: 4px;
 }
 
 /* Track (the background of the scrollbar) */
 ::-webkit-scrollbar-track {
-  background: var(--mantine-color-dark-8);
+  background: light-dark(
+    var(--mantine-color-gray-light),
+    var(--mantine-color-dark-light)
+  );
   border-radius: 0px;
 }
 
 /* Thumb (the draggable part) */
 ::-webkit-scrollbar-thumb {
   background: var(--mantine-color-pri-6);
-  border-radius: 0px;
+  border-radius: var(--mantine-radius-lg);
   border: 0px solid transparent;
 }
 
@@ -123,4 +126,28 @@ p {
 
 .code-inner {
   overflow-x: auto;
+}
+
+// shiki
+
+/* Fix for right-side padding in scrollable code blocks */
+.shiki-container {
+  pre {
+    // padding: 1rem; /* Adjust to your 'lg' spacing */
+    margin: 0;
+    width: fit-content;
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+
+  code {
+    display: block;
+    width: fit-content;
+    min-width: 100%;
+    /* This ensures the background and padding extend
+       to the end of the longest line */
+    padding: 1.5rem;
+    padding-right: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
 }

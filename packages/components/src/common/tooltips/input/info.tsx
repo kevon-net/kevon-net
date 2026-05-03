@@ -10,11 +10,11 @@ export default function Info({
 } & Omit<TooltipProps, 'children' | 'label'>) {
   return (
     <Tooltip
-      label={props?.label || 'We will not share your email'}
+      label={props?.label || 'Your email remains private'}
       position="top-end"
       withArrow
       transitionProps={{ transition: 'pop-bottom-right' }}
-      arrowOffset={8}
+      arrowOffset={16}
       {...restProps}
     >
       <Center style={{ cursor: 'help' }}>

@@ -18,7 +18,6 @@ import { Space_Grotesk, Space_Mono } from 'next/font/google';
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 import ProviderMantine from '@repo/components/provider/mantine';
 import ProviderStore from '@/components/provider/store';
-import ShellMain from '@/components/layout/shells/main';
 import { APP_DESC, APP_NAME } from '@repo/constants/app';
 import { DEFAULT_COLOR_SCHEME } from '@repo/constants/other';
 import { isProduction } from '@repo/utilities/misc';
@@ -70,9 +69,7 @@ export default async function RootLayout({
           options={{ withNotifications: true }}
           appThemeProps={{ styleSheets: { ...mantine } }}
         >
-          <ProviderStore>
-            <ShellMain>{children}</ShellMain>
-          </ProviderStore>
+          <ProviderStore>{children}</ProviderStore>
         </ProviderMantine>
 
         {isProduction() && gaMeasurementId && (

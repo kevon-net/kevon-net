@@ -1,3 +1,5 @@
+'use client';
+
 import React, { startTransition, useEffect, useState } from 'react';
 import {
   ActionIcon,
@@ -56,7 +58,6 @@ export default function Theme() {
           <Text inherit>Switch to {capitalizeWord(buttonProps.label)}</Text>
         </Stack>
       }
-      position="right"
     >
       <Group>
         <ActionIcon

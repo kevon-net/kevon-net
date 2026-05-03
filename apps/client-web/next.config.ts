@@ -63,6 +63,8 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  serverExternalPackages: ['shiki'],
 };
 
 export default nextConfig;

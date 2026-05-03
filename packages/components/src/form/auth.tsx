@@ -260,7 +260,6 @@ export default function Auth({
             inherit
             fw={500}
             href={AUTH_URLS.SIGN_UP}
-            underline="hover"
             onClick={() => {
               setCookieClient(COOKIE_NAME.AUTH.EMAIL, '', {
                 expiryInSeconds: 10,
@@ -277,7 +276,6 @@ export default function Auth({
             inherit
             fw={500}
             href={AUTH_URLS.SIGN_IN}
-            underline="hover"
             onClick={() => {
               setCookieClient(COOKIE_NAME.AUTH.EMAIL, '', {
                 expiryInSeconds: 10,

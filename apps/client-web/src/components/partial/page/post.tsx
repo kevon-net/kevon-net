@@ -6,9 +6,12 @@ import LayoutSection from '@repo/components/layout/section';
 import ImageDefault from '@repo/components/common/images/default';
 import {
   Button,
+  Divider,
   Group,
+  Loader,
   Skeleton,
   Stack,
+  Text,
   ThemeIcon,
   Title,
 } from '@mantine/core';
@@ -22,6 +25,7 @@ import { IconArrowRight } from '@tabler/icons-react';
 import CarouselBlog from '@/components/common/carousel/blog';
 import NextLink from '@repo/components/common/anchor/next-link';
 import { useStorePost } from '@repo/libraries/zustand/stores/post';
+import IntroSection from '@repo/components/layout/intros/section';
 
 export default function Post({ props }: { props: { postId: string } }) {
   const { postId } = props;
@@ -39,8 +43,7 @@ export default function Post({ props }: { props: { postId: string } }) {
           props={{
             title:
               posts === undefined ? (
-                <Stack gap={'xs'} mih={92}>
-                  <Skeleton h={32} w={'70%'} />
+                <Stack gap={'xs'} mih={45.9}>
                   <Skeleton h={32} w={'40%'} />
                 </Stack>
               ) : !post ? null : (
@@ -48,11 +51,29 @@ export default function Post({ props }: { props: { postId: string } }) {
                   order={2}
                   fw={500}
                   fz={'var(--mantine-h1-font-size)'}
-                  maw={{ md: '80%', lg: '70%' }}
-                  mih={92}
+                  maw={{ md: '40%', lg: '70%' }}
                 >
                   {post.title}
                 </Title>
+              ),
+            desc:
+              posts === undefined ? (
+                <Stack gap={'xs'} mih={49.6}>
+                  <Skeleton h={16} w={'50%'} />
+                  <Skeleton h={16} w={'40%'} />
+                </Stack>
+              ) : !post ? null : (
+                <Text
+                  maw={{
+                    xs: '66%',
+                    sm: '50%',
+                    md: '66%',
+                    lg: '50%',
+                    xl: '33%',
+                  }}
+                >
+                  {post?.excerpt}
+                </Text>
               ),
           }}
           options={{ alignment: 'start' }}
@@ -60,8 +81,16 @@ export default function Post({ props }: { props: { postId: string } }) {
       </LayoutSection>
 
       {posts === undefined ? (
-        <>loading</>
-      ) : !post ? null : (
+        <Loader />
+      ) : !posts ? (
+        <Stack c={'dimmed'}>
+          <Text>No posts found</Text>
+        </Stack>
+      ) : !post ? (
+        <Stack c={'dimmed'}>
+          <Text>No post found</Text>
+        </Stack>
+      ) : (
         <>
           <LayoutSection id="media" containerized={false} pr={'0.5rem'}>
             <ImageDefault
@@ -71,68 +100,63 @@ export default function Post({ props }: { props: { postId: string } }) {
                 base: 280,
                 xs: 360,
                 sm: 480,
-                md: 400,
-                lg: 480,
-                xl: 520,
+                md: 560,
+                lg: 720,
               }}
               width={'100%'}
               mode="wide"
-              style={{
-                borderTopRightRadius: 'var(--mantine-radius-sm)',
-                borderBottomRightRadius: 'var(--mantine-radius-sm)',
-              }}
             />
           </LayoutSection>
 
-          <LayoutSection id="content" margined={SECTION_SPACING}>
+          <LayoutSection id="content" margined={SECTION_SPACING * 2}>
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
-          </LayoutSection>
-
-          <LayoutSection id="similar" mt={SECTION_SPACING} pb={SECTION_SPACING}>
-            <Stack gap={SECTION_SPACING}>
-              <Group justify="space-between">
-                <Title order={2} fz={'var(--mantine-h1-font-size)'} lh={1}>
-                  Similar Publications:
-                </Title>
-
-                <NextLink href={'/blog'}>
-                  <Button
-                    size="md"
-                    color="gray"
-                    variant="light"
-                    radius={'xl'}
-                    rightSection={
-                      <ThemeIcon
-                        size={ICON_WRAPPER_SIZE}
-                        color={'gray'}
-                        variant={'light'}
-                        radius={'xl'}
-                      >
-                        <IconArrowRight
-                          size={ICON_SIZE}
-                          stroke={ICON_STROKE_WIDTH}
-                        />
-                      </ThemeIcon>
-                    }
-                  >
-                    View All
-                  </Button>
-                </NextLink>
-              </Group>
-
-              {posts === undefined ? (
-                <>loading...</>
-              ) : !posts ? (
-                <>no posts</>
-              ) : (
-                <CarouselBlog
-                  props={{ posts: posts.filter((p) => p.id != postId) }}
-                />
-              )}
-            </Stack>
           </LayoutSection>
         </>
       )}
+
+      <Divider />
+
+      <LayoutSection
+        id="similar"
+        mt={SECTION_SPACING * 2}
+        pb={SECTION_SPACING * 2}
+      >
+        <Group justify="space-between" align="start">
+          <IntroSection
+            options={{ alignment: 'start', spacing: true }}
+            props={{
+              title: (
+                <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
+                  Similar Publications:
+                </Title>
+              ),
+            }}
+          />
+
+          <NextLink href={'/blog'}>
+            <Button
+              size="md"
+              color="gray"
+              variant="light"
+              radius={'xl'}
+              rightSection={
+                <ThemeIcon
+                  size={ICON_WRAPPER_SIZE}
+                  color={'gray'}
+                  variant={'light'}
+                  radius={'xl'}
+                >
+                  <IconArrowRight size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
+                </ThemeIcon>
+              }
+            >
+              View All
+            </Button>
+          </NextLink>
+        </Group>
+
+        <CarouselBlog props={{ posts: posts?.filter((p) => p.id != postId) }} />
+      </LayoutSection>
     </>
   );
 }

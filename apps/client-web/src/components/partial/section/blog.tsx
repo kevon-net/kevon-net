@@ -4,15 +4,10 @@ import React from 'react';
 import LayoutSection from '@repo/components/layout/section';
 import { SECTION_SPACING } from '@repo/constants/sizes';
 import IntroSection from '@repo/components/layout/intros/section';
-import { Box, Grid, GridCol, Loader, Stack, Text, Title } from '@mantine/core';
-import { useStorePost } from '@repo/libraries/zustand/stores/post';
-import CardPost from '@repo/components/common/cards/post';
-import { sortArray } from '@repo/utilities/array';
-import { Order } from '@repo/types/enums';
+import { Text, Title } from '@mantine/core';
+import CarouselBlog from '@/components/common/carousel/blog';
 
 export default function Blog() {
-  const { posts } = useStorePost();
-
   return (
     <LayoutSection id={'blog'} py={{ base: SECTION_SPACING * 2 }}>
       <IntroSection
@@ -34,25 +29,7 @@ export default function Blog() {
         }}
       />
 
-      <Box mih={'50vh'}>
-        {posts === undefined ? (
-          <Loader />
-        ) : !posts ? (
-          <Stack c={'dimmed'}>
-            <Text>No posts found</Text>
-          </Stack>
-        ) : (
-          <Grid gutter={'xl'}>
-            {sortArray(posts, (i) => i.created_at, Order.DESCENDING).map(
-              (pi) => (
-                <GridCol key={pi.id} span={{ base: 12, sm: 6 }}>
-                  <CardPost props={pi} />
-                </GridCol>
-              )
-            )}
-          </Grid>
-        )}
-      </Box>
+      <CarouselBlog />
     </LayoutSection>
   );
 }

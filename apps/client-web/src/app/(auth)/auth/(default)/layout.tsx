@@ -50,7 +50,7 @@ export default function LayoutDefault({
               <Group justify="center">
                 <AnchorNextLink href={'/'}>
                   <ImageDefault
-                    src={images.brand.icon.dark}
+                    src={images.brand.icon.light}
                     alt={COMPANY_NAME}
                     height={48}
                     width={48}
