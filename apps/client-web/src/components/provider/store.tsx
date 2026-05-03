@@ -10,6 +10,7 @@
 import React from 'react';
 import { useSessionStore, useLoadAppData } from '@repo/hooks/store';
 import { User } from '@supabase/supabase-js';
+import { STORE_NAME } from '@repo/constants/names';
 
 export default function Store({
   props,
@@ -27,7 +28,10 @@ export default function Store({
   // useUserRoleStore();
   // useThemeStore()
   // useAppshellStore();
-  useLoadAppData({ clientOnly: true, storesToLoad: {} });
+  useLoadAppData({
+    clientOnly: false,
+    storesToLoad: { [STORE_NAME.CATEGORIES]: true, [STORE_NAME.POSTS]: true },
+  });
 
   return <div>{children}</div>;
 }

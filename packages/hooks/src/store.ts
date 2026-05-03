@@ -209,12 +209,12 @@ type LoadStoreConfig<TItems = any, THookReturn = any> = {
 };
 
 export const LOAD_STORES: Record<string, LoadStoreConfig> = {
-  categories: {
+  [STORE_NAME.CATEGORIES]: {
     dataStore: STORE_NAME.CATEGORIES,
     useStoreHook: useStoreCategory,
     setState: (store, items) => store.setCategories(items),
   },
-  posts: {
+  [STORE_NAME.POSTS]: {
     dataStore: STORE_NAME.POSTS,
     useStoreHook: useStorePost,
     setState: (store, items) => store.setPosts(items),
@@ -230,8 +230,8 @@ export const useLoadAppData = (options: {
   const session = useStoreSession((s) => s.session);
 
   const stores = {
-    categories: useStoreCategory(),
-    posts: useStorePost(),
+    [STORE_NAME.CATEGORIES]: useStoreCategory(),
+    [STORE_NAME.POSTS]: useStorePost(),
   };
 
   useEffect(() => {

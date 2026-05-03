@@ -12,7 +12,7 @@ import { linkify } from '@repo/utilities/url';
 
 export const config: DBConfig = {
   name: linkify(COMPANY_NAME),
-  version: 2,
+  version: 1,
   stores: [
     {
       name: STORE_NAME.CATEGORIES,
