@@ -29,7 +29,7 @@ export default async function Portfolio() {
             </Title>
           ),
           desc: (
-            <Text maw={{ xs: '66%', sm: '50%', md: '66%', lg: '50%' }}>
+            <Text maw={{ xs: '66%', md: '50%' }}>
               A selection of recent{' '}
               <Text component="span" inherit c={'pri'}>
                 projects showcasing my work

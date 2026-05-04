@@ -5,6 +5,7 @@ import IntroPage from '@repo/components/layout/intros/page';
 import LayoutSection from '@repo/components/layout/section';
 import ImageDefault from '@repo/components/common/images/default';
 import {
+  Box,
   Button,
   Divider,
   Group,
@@ -26,6 +27,7 @@ import CarouselBlog from '@/components/common/carousel/blog';
 import NextLink from '@repo/components/common/anchor/next-link';
 import { useStorePost } from '@repo/libraries/zustand/stores/post';
 import IntroSection from '@repo/components/layout/intros/section';
+import ParserHtml from '@repo/components/parsers/html';
 
 export default function Post({ props }: { props: { postId: string } }) {
   const { postId } = props;
@@ -51,7 +53,7 @@ export default function Post({ props }: { props: { postId: string } }) {
                   order={2}
                   fw={500}
                   fz={'var(--mantine-h1-font-size)'}
-                  maw={{ md: '40%', lg: '70%' }}
+                  maw={{ xs: '66%', md: '60%' }}
                 >
                   {post.title}
                 </Title>
@@ -63,56 +65,54 @@ export default function Post({ props }: { props: { postId: string } }) {
                   <Skeleton h={16} w={'40%'} />
                 </Stack>
               ) : !post ? null : (
-                <Text
-                  maw={{
-                    xs: '66%',
-                    sm: '50%',
-                    md: '66%',
-                    lg: '50%',
-                    xl: '33%',
-                  }}
-                >
-                  {post?.excerpt}
-                </Text>
+                <Text maw={{ xs: '66%', md: '70%' }}>{post?.excerpt}</Text>
               ),
           }}
           options={{ alignment: 'start' }}
         />
       </LayoutSection>
 
-      {posts === undefined ? (
-        <Loader />
-      ) : !posts ? (
-        <Stack c={'dimmed'}>
-          <Text>No posts found</Text>
-        </Stack>
-      ) : !post ? (
-        <Stack c={'dimmed'}>
-          <Text>No post found</Text>
-        </Stack>
-      ) : (
-        <>
-          <LayoutSection id="media" containerized={false} pr={'0.5rem'}>
-            <ImageDefault
-              src={post.image}
-              alt={post.title}
-              height={{
-                base: 280,
-                xs: 360,
-                sm: 480,
-                md: 560,
-                lg: 720,
-              }}
-              width={'100%'}
-              mode="wide"
-            />
+      <LayoutSection
+        id="content-body"
+        containerized={false}
+        margined={SECTION_SPACING * 2}
+      >
+        {posts === undefined ? (
+          <LayoutSection id="loader" mih={'100vh'}>
+            <Loader />
           </LayoutSection>
+        ) : !post ? (
+          <LayoutSection id="404">
+            <Stack c={'dimmed'}>
+              <Text>No post found</Text>
+            </Stack>
+          </LayoutSection>
+        ) : (
+          <>
+            <LayoutSection id="media" containerized={false}>
+              <ImageDefault
+                src={post.image}
+                alt={post.title}
+                height={{
+                  base: 280,
+                  xs: 360,
+                  sm: 480,
+                  md: 560,
+                  lg: 720,
+                }}
+                width={'100%'}
+                mode="wide"
+              />
+            </LayoutSection>
 
-          <LayoutSection id="content" margined={SECTION_SPACING * 2}>
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
-          </LayoutSection>
-        </>
-      )}
+            <LayoutSection id="content" mt={SECTION_SPACING * 2}>
+              <Box maw={{ md: '80%', xl: '70%' }}>
+                <ParserHtml props={{ html: post.content }} />
+              </Box>
+            </LayoutSection>
+          </>
+        )}
+      </LayoutSection>
 
       <Divider />
 

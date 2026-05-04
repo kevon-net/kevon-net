@@ -1,5 +1,5 @@
-import { Box, Group, Paper, ScrollArea, Text } from '@mantine/core';
 import React from 'react';
+import { Box, Group, Paper, ScrollArea, Text } from '@mantine/core';
 import { highlight } from '@repo/libraries/shiki';
 
 export default async function CodeSnippet({

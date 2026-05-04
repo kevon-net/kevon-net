@@ -137,7 +137,8 @@ export const getAppTheme = (params?: AppThemeProps) => {
           styles: {
             input: {
               borderColor: 'var(--mantine-color-default-border)',
-              backgroundColor: 'var(--mantine-color-dark-9)',
+              backgroundColor:
+                'light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-9))',
             },
           },
         },
@@ -148,7 +149,8 @@ export const getAppTheme = (params?: AppThemeProps) => {
           styles: {
             input: {
               borderColor: 'var(--mantine-color-default-border)',
-              backgroundColor: 'var(--mantine-color-dark-9)',
+              backgroundColor:
+                'light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-9))',
             },
           },
         },
@@ -159,11 +161,13 @@ export const getAppTheme = (params?: AppThemeProps) => {
           styles: {
             input: {
               borderColor: 'var(--mantine-color-default-border)',
-              backgroundColor: 'var(--mantine-color-dark-9)',
+              backgroundColor:
+                'light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-9))',
             },
             dropdown: {
               borderColor: 'var(--mantine-color-default-border)',
-              backgroundColor: 'var(--mantine-color-dark-9)',
+              backgroundColor:
+                'light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-9))',
             },
           },
         },
