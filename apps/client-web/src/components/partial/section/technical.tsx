@@ -51,7 +51,7 @@ export default function Technical() {
               </Title>
             ),
             desc: (
-              <Text maw={{ xs: '66%', sm: '50%', md: '66%', lg: '50%' }}>
+              <Text maw={{ xs: '66%', md: '50%' }}>
                 I focus on building production-ready systems with an emphasis on{' '}
                 <Text component="span" inherit c={'pri'}>
                   performance, scalability, and maintainability
@@ -84,7 +84,7 @@ export default function Technical() {
               </Title>
             ),
             desc: (
-              <Text maw={{ xs: '66%', sm: '50%', md: '66%', lg: '50%' }}>
+              <Text maw={{ xs: '66%', md: '50%' }}>
                 A curated set of technologies I use to build{' '}
                 <Text component="span" inherit c={'pri'}>
                   scalable, maintainable, and high-performance

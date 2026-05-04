@@ -17,7 +17,7 @@ export default function Contact() {
             </Title>
           ),
           desc: (
-            <Text maw={{ xs: '66%', sm: '50%', md: '66%', lg: '50%' }}>
+            <Text maw={{ xs: '66%', md: '50%' }}>
               Open to{' '}
               <Text component="span" inherit c={'pri'}>
                 Full-time roles, Remote work, and Freelance projects

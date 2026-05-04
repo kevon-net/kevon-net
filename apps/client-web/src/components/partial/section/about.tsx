@@ -39,7 +39,7 @@ export default function About() {
               </Title>
             ),
             desc: (
-              <Text maw={{ xs: '66%', sm: '50%', md: '66%', lg: '50%' }}>
+              <Text maw={{ xs: '66%', md: '50%' }}>
                 I’m a full-stack developer specializing in building{' '}
                 <Text component="span" inherit c={'pri'}>
                   scalable, high-performance web applications

@@ -19,7 +19,7 @@ export default function Blog() {
             </Title>
           ),
           desc: (
-            <Text maw={{ xs: '66%', sm: '50%', md: '66%', lg: '50%' }}>
+            <Text maw={{ xs: '66%', md: '50%' }}>
               <Text component="span" inherit c={'pri'}>
                 Thoughts, tips, and insights
               </Text>{' '}

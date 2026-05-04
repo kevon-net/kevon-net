@@ -53,12 +53,14 @@ export default function Post({ props }: { props: PostGet }) {
           </Group>
 
           <NextLink href={link}>
-            <Title order={3} lineClamp={1}>
+            <Title order={3} lineClamp={2} mih={61.6}>
               {props.title}
             </Title>
           </NextLink>
 
-          <Text lineClamp={1}>{props.excerpt}</Text>
+          <Text lineClamp={4} mih={99.2}>
+            {props.excerpt}
+          </Text>
         </Stack>
 
         <Group>
