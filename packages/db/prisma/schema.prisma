@@ -127,22 +127,23 @@ model Comment {
 }
 
 model Project {
-  id           String  @id @default(uuid())
-  cover        String
-  title        String  @unique
-  desc         String
-  client       String
-  content      String
-  preview_link String?
-  repo_link    String?
+  id          String   @id @default(uuid())
+  image       String
+  title       String
+  description String
+  highlight   String
+  tech        String[]
+  content     String
+  live_link   String?
+  repo_link   String?
 
   status Status @default(DRAFT)
 
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?
 
-  category    Category? @relation(fields: [category_id], references: [id], onDelete: Cascade)
-  category_id String?   @map("category_id")
-
+  @@unique([title])
   @@map(name: "projects")
 }

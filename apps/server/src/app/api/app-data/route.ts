@@ -41,6 +41,11 @@ export async function GET(request: NextRequest) {
           // where: { profile_id: userId },
           orderBy: { created_at: 'desc' },
         }),
+      [STORE_NAME.PROJECTS]: () =>
+        prisma.project.findMany({
+          // where: { profile_id: userId },
+          orderBy: { created_at: 'desc' },
+        }),
     };
 
     // 3. Filter the map to only include requested stores
@@ -77,11 +82,13 @@ export async function GET(request: NextRequest) {
 const PRISMA_MODEL_MAP: Record<string, any> = {
   [STORE_NAME.CATEGORIES]: prisma.category,
   [STORE_NAME.POSTS]: prisma.post,
+  [STORE_NAME.PROJECTS]: prisma.project,
 };
 
 const SYNC_PRIORITY: Record<string, number> = {
   [STORE_NAME.CATEGORIES]: 1,
   [STORE_NAME.POSTS]: 2,
+  [STORE_NAME.PROJECTS]: 3,
 };
 
 export async function POST(request: NextRequest) {

@@ -27,7 +27,11 @@ export default function Store({
   });
   useLoadAppData({
     clientOnly: false,
-    storesToLoad: { [STORE_NAME.CATEGORIES]: true, [STORE_NAME.POSTS]: true },
+    storesToLoad: {
+      [STORE_NAME.CATEGORIES]: true,
+      [STORE_NAME.POSTS]: true,
+      [STORE_NAME.PROJECTS]: true,
+    },
   });
 
   return <div>{children}</div>;

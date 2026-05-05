@@ -4,17 +4,13 @@ import React, { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import Fade from 'embla-carousel-fade';
-import classes from './portfolio.module.scss';
-import { Group } from '@mantine/core';
+import classes from './projects.module.scss';
+import { Group, Loader, Stack, Text } from '@mantine/core';
 import { SECTION_SPACING } from '@repo/constants/sizes';
 import CardProject from '../cards/project';
-import { ProjectRelations } from '@repo/types/models/project';
+import { ProjectGet } from '@repo/types/models/project';
 
-export default function Portfolio({
-  projects,
-}: {
-  projects: ProjectRelations[];
-}) {
+export default function Projects({ projects }: { projects?: ProjectGet[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 5000 }),
     Fade(),
@@ -50,7 +46,13 @@ export default function Portfolio({
     };
   }, [emblaApi, onSelect]);
 
-  return (
+  return projects === undefined ? (
+    <Loader />
+  ) : !projects ? (
+    <Stack c={'dimmed'}>
+      <Text>No projects found</Text>
+    </Stack>
+  ) : (
     <div className={classes.embla}>
       <div className={classes.embla__viewport} ref={emblaRef}>
         <div className={classes.embla__container}>

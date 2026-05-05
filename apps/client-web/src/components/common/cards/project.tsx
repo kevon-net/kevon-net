@@ -1,90 +1,137 @@
 'use client';
 
 import React from 'react';
-import { Card, Group, Stack, Text, Title } from '@mantine/core';
-import ImageDefault from '@repo/components/common/images/default';
+import {
+  Anchor,
+  BackgroundImage,
+  Badge,
+  Box,
+  Button,
+  Card,
+  Divider,
+  Flex,
+  Group,
+  Overlay,
+  Paper,
+  Stack,
+  Text,
+  Title,
+} from '@mantine/core';
 import { getRegionalDate } from '@repo/utilities/date-time';
-import classes from './project.module.scss';
 import { linkify } from '@repo/utilities/url';
-import { ProjectRelations } from '@repo/types/models/project';
-import { CategoryGet } from '@repo/types/models/category';
-import { useStoreCategory } from '@repo/libraries/zustand/stores/category';
+import { ProjectGet } from '@repo/types/models/project';
 import NextLink from '@repo/components/common/anchor/next-link';
+import { IconArrowRight, IconExternalLink } from '@tabler/icons-react';
+import {
+  ICON_SIZE,
+  ICON_STROKE_WIDTH,
+  SECTION_SPACING,
+} from '@repo/constants/sizes';
+import WrapperUnderlayBlur from '@repo/components/wrappers/underlays/blur';
 
-export default function Project({ project }: { project: ProjectRelations }) {
+export default function Project({ project }: { project: ProjectGet }) {
   const link = `/projects/${linkify(project.title)}-${project.id}`;
 
   return (
-    <Card
-      padding={0}
-      h={'100%'}
-      bg={'transparent'}
-      radius={0}
-      className={classes.card}
-    >
-      <Stack>
-        <NextLink href={link} className={classes.imageWrapper} pos="relative">
-          <ImageDefault
-            src={project.cover}
-            alt={project.title}
-            height={{ base: 280, xs: 360, sm: 480, md: 400, lg: 480, xl: 520 }}
-            className={classes.image}
-            width={'100%'}
-            mode="grid"
-          />
+    <Card h={'100%'} bg={'transparent'} padding={0} withBorder>
+      {/* <BackgroundImage pos={'relative'} src={project.image} c={'var(--mantine-color-white)'}> */}
+      {/* <WrapperUnderlayBlur props={{ blur: 16 }}> */}
+      {/* <Overlay backgroundOpacity={0.2} style={{ zIndex: 0 }} /> */}
 
-          {/* <Box className={classes.overlay} p={'md'}>
-            <Flex
-              gap={'xs'}
-              direction={{ base: 'column', xs: 'row', xl: 'column' }}
-              align={'end'}
-              justify={'end'}
-              h={'100%'}
-            >
-              {project.technologies.map((t, i) => (
-                <Text
-                  key={i}
-                  inherit
-                  fz={'sm'}
-                  fw={500}
-                  tt={'uppercase'}
-                  lts={2}
-                  ta={'end'}
-                >
-                  {t}
-                </Text>
-              ))}
-            </Flex>
-          </Box> */}
-        </NextLink>
-
-        <Stack mt={'xl'} gap={'lg'} align="start">
-          <Group fz={'sm'} fw={500} tt={'uppercase'} lts={2}>
-            <CategoryLink project={project} />
-            <Text inherit>{getRegionalDate(project.created_at).date}</Text>
-          </Group>
-
+      <Stack
+        p={{ base: 'md', xs: 'xl' }}
+        style={{ position: 'relative', zIndex: 1 }}
+      >
+        <Group>
           <NextLink href={link} pos="relative">
             <Title order={3}>{project.title}</Title>
           </NextLink>
+        </Group>
 
-          <Text lineClamp={3}>{project.desc}</Text>
-        </Stack>
+        <Box mih={50}>
+          <Text inherit>{project.description}</Text>
+        </Box>
+
+        <Divider
+          // color="var(--mantine-color-white)"
+          // opacity={0.3}
+          my={'sm'}
+        />
+
+        <Text inherit>{project.highlight}</Text>
+
+        <Divider
+          // color="var(--mantine-color-white)"
+          // opacity={0.3}
+          my={'sm'}
+        />
+
+        <Group gap={'xs'} maw={{ md: '50%', xl: '70%' }} mih={62} align="start">
+          {project.tech.map((t, i) => (
+            <Badge
+              key={i}
+              variant="light"
+              // color="var(--mantine-color-white)"
+              tt={'none'}
+              size="lg"
+              // style={{ boxShadow: 'var(--mantine-shadow-xs)' }}
+            >
+              {t}
+            </Badge>
+          ))}
+        </Group>
+
+        <Group mt={{ md: SECTION_SPACING }}>
+          <NextLink href={`/projects/${linkify(project.title)}-${project.id}`}>
+            <Button
+              // color="white"
+              // variant="light"
+              rightSection={
+                <IconArrowRight size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
+              }
+            >
+              View Case Study
+            </Button>
+          </NextLink>
+        </Group>
       </Stack>
+      {/* </WrapperUnderlayBlur> */}
+      {/* </BackgroundImage> */}
     </Card>
   );
 }
 
-export function CategoryLink({ project }: { project: ProjectRelations }) {
-  const { categories } = useStoreCategory();
+{
+  /* <Group mt={{ md: SECTION_SPACING }}>
+              <Anchor href={project.live_link || ''} target="_blank">
+                <Button
+                  // size="xs"
+                  // color="dark"
+                  rightSection={
+                    <IconExternalLink
+                      size={ICON_SIZE}
+                      stroke={ICON_STROKE_WIDTH}
+                    />
+                  }
+                >
+                  View Project
+                </Button>
+              </Anchor>
 
-  const category = (categories as CategoryGet[] | undefined)?.find(
-    (c) => c.id == project.category_id
-  );
-
-  return (
-    <NextLink href={`/projects/categories/${category?.id}`}>
-      {category?.title}
-    </NextLink>
-  );
+              <Anchor href={project.repo_link || ''} target="_blank">
+                <Button
+                  // size="xs"
+                  color="white"
+                  variant="outline"
+                  rightSection={
+                    <IconExternalLink
+                      size={ICON_SIZE}
+                      stroke={ICON_STROKE_WIDTH}
+                    />
+                  }
+                >
+                  View Source Code
+                </Button>
+              </Anchor>
+            </Group> */
 }
