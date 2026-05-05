@@ -26,7 +26,7 @@ export default function Contact() {
       <Card
         withBorder
         bg={'var(--mantine-color-body)'}
-        maw={{ xs: '75%', md: '80%', xl: '70%' }}
+        maw={{ xs: '75%', md: '85%', lg: '75%' }}
         mx={'auto'}
         py={SECTION_SPACING * 2}
       >

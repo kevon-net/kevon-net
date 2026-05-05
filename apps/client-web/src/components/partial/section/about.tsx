@@ -83,7 +83,7 @@ export default function About() {
                   }
                   withBorder
                   fz={'sm'}
-                  p={{ base: 'md', md: 'xl' }}
+                  p={{ base: 'md', xs: 'xl' }}
                 >
                   <Stack gap={'xl'}>
                     <Group>
@@ -131,7 +131,7 @@ export default function About() {
             </GridCol>
 
             <GridCol span={{ base: 12, md: 5 }}>
-              <Box pl={{ md: 'xl' }}>
+              <Box pl={{ lg: 'xl' }} mt={{ base: 'xl', md: 0 }}>
                 <TimelineCv
                   props={{
                     list: timeline.work,
@@ -143,18 +143,18 @@ export default function About() {
           </Grid>
 
           <Flex
-            direction={{ base: 'column', xs: 'row' }}
-            align={{ base: 'stretch', xs: 'center' }}
-            justify={{ xs: 'space-between' }}
+            direction={{ base: 'column', md: 'row' }}
+            align={{ base: 'stretch', md: 'center' }}
+            justify={{ md: 'space-between' }}
             wrap="nowrap"
           >
             {stats.map((s, i) => (
               <React.Fragment key={i}>
                 {stats.indexOf(s) > 0 && (
-                  <Divider orientation="vertical" visibleFrom="xs" />
+                  <Divider orientation="vertical" visibleFrom="md" />
                 )}
                 {stats.indexOf(s) > 0 && (
-                  <Divider orientation="horizontal" hiddenFrom="xs" my={'xl'} />
+                  <Divider orientation="horizontal" hiddenFrom="md" my={'xl'} />
                 )}
 
                 <Stack
@@ -162,7 +162,7 @@ export default function About() {
                   ta={'center'}
                   align="center"
                   gap={'xs'}
-                  w={`${100 / stats.length}%`}
+                  w={{ md: `${100 / stats.length}%` }}
                 >
                   <Text
                     inherit

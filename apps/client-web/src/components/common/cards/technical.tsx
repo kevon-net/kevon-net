@@ -28,7 +28,7 @@ export default function Technical({
       bg={'transparent'}
       withBorder
       padding={0}
-      p={{ base: 'md', md: 'xl' }}
+      p={{ base: 'md', xs: 'xl' }}
     >
       <Stack>
         <div>
