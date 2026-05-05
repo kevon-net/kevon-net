@@ -12,13 +12,13 @@ export const dynamic = 'force-static';
 export async function GET() {
   const today = new Date().toISOString().split('T')[0];
 
-  const { items: posts }: { items: PostRelations[] } = await postsGet();
-  const postRoutes = posts.map((p) => `/blog/${linkify(p.title)}-${p.id}`);
+  // const { items: posts }: { items: PostRelations[] } = await postsGet();
+  // const postRoutes = posts.map((p) => `/blog/${linkify(p.title)}-${p.id}`);
 
   const staticRoutes = [
     '', // homepage
     ...sitemapRoutes,
-    ...postRoutes,
+    // ...postRoutes,
   ].map((route) => ({
     loc: `${PRODUCTION_BASE_URL_CLIENT_WEB.DEFAULT}${route}`,
     lastmod: today,
