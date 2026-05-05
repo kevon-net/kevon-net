@@ -13,7 +13,7 @@ import LayoutHeroHome from '@/components/layout/heros/home';
 import PartialSectionContact from '@/components/partial/section/contact';
 import PartialSectionTechnical from '@/components/partial/section/technical';
 import PartialSectionAbout from '@/components/partial/section/about';
-// import PartialPagePortfolio from '@/components/partial/page/portfolio';
+import PartialSectionProjects from '@/components/partial/section/projects';
 // import PartialPageBlog from '@/components/partial/page/blog';
 import NavbarMain from '@/components/layout/navbars/main';
 import FooterMain from '@/components/layout/footers/main';
@@ -25,15 +25,15 @@ export default function Home() {
 
       <Divider />
 
+      <PartialSectionProjects />
+
+      <Divider />
+
       <PartialSectionTechnical />
 
       <Divider />
 
       <PartialSectionAbout />
-
-      {/* <Divider /> */}
-
-      {/* <PartialPagePortfolio /> */}
 
       {/* <Divider /> */}
 
