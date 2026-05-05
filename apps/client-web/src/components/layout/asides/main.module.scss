@@ -1,9 +1,0 @@
-.link {
-  transition: 0.25s all ease;
-  font-weight: 500;
-  padding-left: 0px;
-
-  @include mantine.hover {
-    padding-left: 4px;
-  }
-}
