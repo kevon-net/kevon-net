@@ -33,7 +33,7 @@ export default function Cv({
               : undefined
           }
         >
-          <Text c="var(--mantine-color-dark-0)" mt={'xs'}>
+          <Text c="dimmed" mt={'xs'}>
             {t.where}
           </Text>
 

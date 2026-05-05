@@ -16,9 +16,11 @@ export default function Main() {
         <Stack align="center" ta={'center'} gap={SECTION_SPACING}>
           <Group gap={'xl'}>
             {links.map((li) => (
-              <NextLink key={li.label} href={li.link}>
-                [{li.label}]
-              </NextLink>
+              <Text key={li.label} component={'span'} inherit c={'dimmed'}>
+                {'</'}
+                <NextLink href={li.link}>{li.label}</NextLink>
+                {'>'}
+              </Text>
             ))}
           </Group>
 
