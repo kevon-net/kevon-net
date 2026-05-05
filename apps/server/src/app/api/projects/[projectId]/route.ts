@@ -20,13 +20,6 @@ export async function GET(
 
     const projectRecord = await prisma.project.findUnique({
       where: { id: projectId },
-
-      include: {
-        _count: { select: { comments: true } },
-
-        category: true,
-        profile: true,
-      },
     });
 
     return NextResponse.json(
