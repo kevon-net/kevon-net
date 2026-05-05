@@ -19,7 +19,7 @@ export const MONTH = DAY * 30;
 export const FONT_SIZE = {
   TITLE_PAGE: {
     base: 'var(--mantine-h1-font-size)',
-    md: '1rem',
+    md: '1.5rem',
     lg: '2rem',
   },
 };

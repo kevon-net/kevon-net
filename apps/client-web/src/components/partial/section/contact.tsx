@@ -26,9 +26,9 @@ export default function Contact() {
       <Card
         withBorder
         bg={'var(--mantine-color-body)'}
-        maw={{ xs: '66%', md: '50%' }}
+        maw={{ xs: '75%', md: '80%', xl: '70%' }}
         mx={'auto'}
-        py={SECTION_SPACING}
+        py={SECTION_SPACING * 2}
       >
         <Stack align="center" ta="center" gap={SECTION_SPACING}>
           <Stack>

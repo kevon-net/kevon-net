@@ -43,11 +43,11 @@ export default function Main() {
             <Group>
               {links.map((li) => (
                 <Text key={li.label} inherit>
-                  [{' '}
+                  {'</'}
                   <NextLink href={li.link} fz={'lg'}>
                     {li.label}
                   </NextLink>{' '}
-                  ]
+                  {'>'}
                 </Text>
               ))}
             </Group>
