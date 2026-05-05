@@ -7,7 +7,10 @@ export default async function CodeSnippet({
 }: {
   props: { content: string; options?: { height: string } };
 }) {
-  const html = await highlight(props.content, 'ts');
+  const html = await highlight(props.content, {
+    defaultLang: 'ts',
+    isRawCode: true,
+  });
 
   return (
     <Paper
