@@ -14,6 +14,7 @@ import {
   Container,
   createTheme,
   Divider,
+  Drawer,
   Loader,
   MantineThemeOverride,
   Modal,
@@ -132,6 +133,22 @@ export const getAppTheme = (params?: AppThemeProps) => {
         defaultProps: { withArrow: true, transitionProps: { enterDelay: 250 } },
       }),
 
+      Divider: Divider.extend({
+        defaultProps: { color: 'var(--mantine-color-default-border)' },
+      }),
+
+      Drawer: Drawer.extend({
+        defaultProps: {
+          transitionProps: {
+            duration: 250,
+          },
+          overlayProps: {
+            backgroundOpacity: 0.4,
+            blur: 4,
+          },
+        },
+      }),
+
       TextInput: TextInput.extend({
         defaultProps: {
           styles: {
@@ -184,10 +201,6 @@ export const getAppTheme = (params?: AppThemeProps) => {
             thumb: { backgroundColor: 'var(--mantine-color-pri-6)' },
           },
         },
-      }),
-
-      Divider: Divider.extend({
-        defaultProps: { color: 'var(--mantine-color-default-border)' },
       }),
 
       Modal: Modal.extend({

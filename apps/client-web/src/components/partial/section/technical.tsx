@@ -63,7 +63,7 @@ export default function Technical() {
           }}
         />
 
-        <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="xl">
+        <SimpleGrid cols={{ base: 1, md: 2, lg: 3 }} spacing="xl">
           {technicalData.map((section) => (
             <CardTechnical key={section.title} props={section} />
           ))}
@@ -95,7 +95,7 @@ export default function Technical() {
           }}
         />
 
-        <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
+        <SimpleGrid cols={{ base: 1, md: 2, lg: 3 }} spacing="lg">
           <TechBlock
             title="Frontend"
             items={tech.frontend}
@@ -216,7 +216,7 @@ function TechBlock({
   icon: React.ReactNode;
 }) {
   return (
-    <Card withBorder p="lg" bg={'transparent'}>
+    <Card withBorder p={{ base: 'md', xs: 'xl' }} bg={'transparent'}>
       <Stack gap="xl">
         <Stack gap={'sm'}>
           <Group gap="xs">

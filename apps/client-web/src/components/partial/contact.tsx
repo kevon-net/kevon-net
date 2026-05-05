@@ -20,7 +20,7 @@ import CardGithub from '../common/cards/github';
 export default function Contact() {
   return (
     <Grid gutter={'xl'}>
-      <GridCol span={{ base: 12, md: 6.5 }}>
+      <GridCol span={{ base: 12, sm: 6.5 }}>
         <Card
           bg={'transparent'}
           withBorder
@@ -31,14 +31,14 @@ export default function Contact() {
         </Card>
       </GridCol>
 
-      <GridCol span={{ base: 12, md: 5.5 }}>
-        <Stack>
+      <GridCol span={{ base: 12, sm: 5.5 }}>
+        <Stack mt={{ base: 'xl', sm: 0 }}>
           <Box>
             <Text inherit>Prefer direct contact?</Text>
           </Box>
 
           <Anchor inherit href={contact[1].link} target="_blank" maw={320}>
-            <CardGithub props={{ link: contact[1].link, label: 'kevon-net' }} />
+            <CardGithub props={{ label: 'kevon-net' }} />
           </Anchor>
 
           <Anchor inherit href={contact[2].link} target="_blank" maw={320}>
@@ -71,7 +71,7 @@ export default function Contact() {
           </Anchor>
 
           <Box c={'dimmed'} fz={'sm'}>
-            <Text inherit>
+            <Text inherit visibleFrom="md">
               <span>Open to: </span>Full-time roles · Remote work · Freelance
               projects
             </Text>

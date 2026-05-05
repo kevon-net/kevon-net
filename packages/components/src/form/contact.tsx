@@ -92,7 +92,7 @@ export default function Contact({
         </GridCol>
 
         <GridCol span={12}>
-          <Box c={'dimmed'} fz={'sm'}>
+          <Box c={'dimmed'} fz={'sm'} mt={'md'}>
             <Text inherit>Typically responds within 24 hours.</Text>
           </Box>
         </GridCol>

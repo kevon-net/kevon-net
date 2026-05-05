@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <LayoutSection id={'hero-home'}>
       <Grid align="center">
-        <GridCol span={{ base: 12, lg: 6 }}>
+        <GridCol span={{ base: 12, md: 6, lg: 6 }}>
           <Stack
             justify="center"
             gap={SECTION_SPACING}
@@ -42,7 +42,7 @@ export default function Home() {
               <Badge variant="outline">Open to opportunities</Badge>
             </Group>
 
-            <Stack w={{ base: '100%', md: '80%' }}>
+            <Stack w={{ base: '100%', xs: '80%', md: '80%' }}>
               <Title order={1} fz={FONT_SIZE.TITLE_PAGE}>
                 Full-Stack Developer Building{' '}
                 <Text component="span" inherit c={'pri'}>
@@ -72,16 +72,12 @@ export default function Home() {
             </Group>
 
             <Group gap={'xs'}>
-              <a href={'#technical'}>
+              <a href={'#projects'}>
                 <Button
                   variant="transparent"
                   pl={0}
                   leftSection={
-                    <ThemeIcon
-                      size={ICON_WRAPPER_SIZE}
-                      variant="light"
-                      color="dark"
-                    >
+                    <ThemeIcon size={ICON_WRAPPER_SIZE} variant="light">
                       <IconArrowDown
                         size={ICON_SIZE}
                         stroke={ICON_STROKE_WIDTH}
@@ -96,7 +92,7 @@ export default function Home() {
           </Stack>
         </GridCol>
 
-        <GridCol span={{ base: 12, lg: 6 }}>
+        <GridCol span={{ base: 12, md: 6, lg: 6 }} visibleFrom="md">
           <CardCodeSnippet
             props={{ content: code, options: { height: '60vh' } }}
           />

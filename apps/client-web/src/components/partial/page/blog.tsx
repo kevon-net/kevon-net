@@ -45,7 +45,7 @@ export default function Blog() {
           <Grid gutter={'xl'}>
             {sortArray(posts, (i) => i.created_at, Order.DESCENDING).map(
               (pi) => (
-                <GridCol key={pi.id} span={{ base: 12, sm: 6 }}>
+                <GridCol key={pi.id} span={{ base: 12, md: 6 }}>
                   <CardPost props={pi} />
                 </GridCol>
               )

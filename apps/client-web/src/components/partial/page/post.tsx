@@ -53,7 +53,7 @@ export default function Post({ props }: { props: { postId: string } }) {
                   order={2}
                   fw={500}
                   fz={'var(--mantine-h1-font-size)'}
-                  maw={{ xs: '66%', md: '60%' }}
+                  maw={{ xs: '70%', sm: '80%', md: '60%' }}
                 >
                   {post.title}
                 </Title>
@@ -65,7 +65,9 @@ export default function Post({ props }: { props: { postId: string } }) {
                   <Skeleton h={16} w={'40%'} />
                 </Stack>
               ) : !post ? null : (
-                <Text maw={{ xs: '66%', md: '70%' }}>{post?.excerpt}</Text>
+                <Text maw={{ xs: '80%', sm: '90%', md: '70%' }}>
+                  {post?.excerpt}
+                </Text>
               ),
           }}
           options={{ alignment: 'start' }}
@@ -133,7 +135,7 @@ export default function Post({ props }: { props: { postId: string } }) {
             }}
           />
 
-          <NextLink href={'/blog'}>
+          <NextLink href={'/blog'} visibleFrom="xs">
             <Button
               size="md"
               color="gray"
