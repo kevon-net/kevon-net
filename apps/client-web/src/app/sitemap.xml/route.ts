@@ -1,6 +1,5 @@
 // app/sitemap.xml/route.ts
 import { NextResponse } from 'next/server';
-import { HOSTED_BASE_URL } from '@repo/constants/paths';
 import { PRODUCTION_BASE_URL_CLIENT_WEB } from '@repo/constants/paths';
 import { sitemapRoutes } from '@/data/links';
 import { PostRelations } from '@repo/types/models/post';
@@ -8,17 +7,18 @@ import { postsGet } from '@repo/handlers/requests/database/posts';
 import { linkify } from '@repo/utilities/url';
 
 export const dynamic = 'force-static';
+export const revalidate = 604800; // Revalidate at most every week (in seconds)
 
 export async function GET() {
   const today = new Date().toISOString().split('T')[0];
 
-  // const { items: posts }: { items: PostRelations[] } = await postsGet();
-  // const postRoutes = posts.map((p) => `/blog/${linkify(p.title)}-${p.id}`);
+  const { items: posts }: { items: PostRelations[] } = await postsGet();
+  const postRoutes = posts.map((p) => `/blog/${linkify(p.title)}-${p.id}`);
 
   const staticRoutes = [
     '', // homepage
     ...sitemapRoutes,
-    // ...postRoutes,
+    ...postRoutes,
   ].map((route) => ({
     loc: `${PRODUCTION_BASE_URL_CLIENT_WEB.DEFAULT}${route}`,
     lastmod: today,

@@ -7,13 +7,15 @@ import { ProjectGet } from '@repo/types/models/project';
 import { projectsGet } from '@repo/handlers/requests/database/projects';
 // import { sampleProjects as projects } from '@/data/sample/projects';
 
-// export async function generateStaticParams() {
-//   const { items: projects }: { items: ProjectGet[] } = await projectsGet();
+export const revalidate = 3600; // Revalidate at most every hour (in seconds)
 
-//   return projects.map((project) => ({
-//     'projectTitle-projectId': `${linkify(project.title)}-${project.id}`,
-//   }));
-// }
+export async function generateStaticParams() {
+  const { items: projects }: { items: ProjectGet[] } = await projectsGet();
+
+  return projects.map((project) => ({
+    'projectTitle-projectId': `${linkify(project.title)}-${project.id}`,
+  }));
+}
 
 export default async function Project({
   params,

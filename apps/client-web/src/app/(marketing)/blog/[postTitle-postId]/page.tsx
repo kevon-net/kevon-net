@@ -7,13 +7,15 @@ import { PostRelations } from '@repo/types/models/post';
 import { postsGet } from '@repo/handlers/requests/database/posts';
 // import { samplePosts as posts } from '@/data/sample/posts';
 
-// export async function generateStaticParams() {
-//   const { items: posts }: { items: PostRelations[] } = await postsGet();
+export const revalidate = 3600; // Revalidate at most every hour (in seconds)
 
-//   return posts.map((post) => ({
-//     'postTitle-postId': `${linkify(post.title)}-${post.id}`,
-//   }));
-// }
+export async function generateStaticParams() {
+  const { items: posts }: { items: PostRelations[] } = await postsGet();
+
+  return posts.map((post) => ({
+    'postTitle-postId': `${linkify(post.title)}-${post.id}`,
+  }));
+}
 
 export default async function Post({
   params,
