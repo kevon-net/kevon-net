@@ -45,6 +45,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import { User } from '@supabase/supabase-js';
 import { API_URL } from '@repo/constants/paths';
 import { useStorePost } from '@repo/libraries/zustand/stores/post';
+import { useStoreProject } from '@repo/libraries/zustand/stores/project';
 
 export const useSessionStore = (params?: {
   sessionUser: User | null;
@@ -219,6 +220,11 @@ export const LOAD_STORES: Record<string, LoadStoreConfig> = {
     useStoreHook: useStorePost,
     setState: (store, items) => store.setPosts(items),
   },
+  [STORE_NAME.PROJECTS]: {
+    dataStore: STORE_NAME.PROJECTS,
+    useStoreHook: useStoreProject,
+    setState: (store, items) => store.setProjects(items),
+  },
 } as const;
 
 type LoadStoreKey = keyof typeof LOAD_STORES;
@@ -232,6 +238,7 @@ export const useLoadAppData = (options: {
   const stores = {
     [STORE_NAME.CATEGORIES]: useStoreCategory(),
     [STORE_NAME.POSTS]: useStorePost(),
+    [STORE_NAME.PROJECTS]: useStoreProject(),
   };
 
   useEffect(() => {
