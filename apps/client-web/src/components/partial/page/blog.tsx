@@ -9,9 +9,11 @@ import { useStorePost } from '@repo/libraries/zustand/stores/post';
 import CardPost from '@repo/components/common/cards/post';
 import { sortArray } from '@repo/utilities/array';
 import { Order } from '@repo/types/enums';
+import { Status } from '@repo/types/models/enums';
 
 export default function Blog() {
   const { posts } = useStorePost();
+  const postsPublished = posts?.filter((pi) => pi.status == Status.PUBLISHED);
 
   return (
     <LayoutSection id={'blog'} py={{ base: SECTION_SPACING * 2 }}>
@@ -37,19 +39,21 @@ export default function Blog() {
       <Box mih={'50vh'}>
         {posts === undefined ? (
           <Loader />
-        ) : !posts ? (
+        ) : !postsPublished?.length ? (
           <Stack c={'dimmed'}>
             <Text>No posts found</Text>
           </Stack>
         ) : (
           <Grid gutter={'xl'}>
-            {sortArray(posts, (i) => i.created_at, Order.DESCENDING).map(
-              (pi) => (
-                <GridCol key={pi.id} span={{ base: 12, md: 6 }}>
-                  <CardPost props={pi} />
-                </GridCol>
-              )
-            )}
+            {sortArray(
+              postsPublished,
+              (i) => i.created_at,
+              Order.DESCENDING
+            ).map((pi) => (
+              <GridCol key={pi.id} span={{ base: 12, md: 6 }}>
+                <CardPost props={pi} />
+              </GridCol>
+            ))}
           </Grid>
         )}
       </Box>

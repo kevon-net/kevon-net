@@ -1,11 +1,16 @@
 import React from 'react';
 import LayoutSection from '@repo/components/layout/section';
-import { SECTION_SPACING } from '@repo/constants/sizes';
+import {
+  ICON_SIZE,
+  ICON_STROKE_WIDTH,
+  SECTION_SPACING,
+} from '@repo/constants/sizes';
 import { Anchor, Divider, Flex, Group, Stack, Text } from '@mantine/core';
 import { links } from '@/data/links';
 import NextLink from '@repo/components/common/anchor/next-link';
 import { EMAILS, SOCIALS } from '@repo/constants/app';
 import IndicatorTheme from '@repo/components/common/indicators/theme';
+import { IconExternalLink } from '@tabler/icons-react';
 
 export default function Main() {
   return (
@@ -50,10 +55,18 @@ export default function Main() {
             >
               <Anchor inherit href={SOCIALS.GH.LINK} target="_blank">
                 {SOCIALS.GH.LABEL}
+                <IconExternalLink
+                  size={ICON_SIZE - 6}
+                  stroke={ICON_STROKE_WIDTH}
+                />
               </Anchor>
               <span>·</span>
               <Anchor inherit href={SOCIALS.LI.LINK} target="_blank">
                 {SOCIALS.LI.LABEL}
+                <IconExternalLink
+                  size={ICON_SIZE - 6}
+                  stroke={ICON_STROKE_WIDTH}
+                />
               </Anchor>
               <span>·</span>
               <Anchor inherit href={`mailto:${EMAILS.CONTACT}`}>
@@ -64,12 +77,12 @@ export default function Main() {
 
           <Stack>
             <Text inherit>
-              &copy; {new Date().getFullYear()} Kevon. All rights reserved.
+              &copy; {new Date().getFullYear()} - All rights reserved.
             </Text>
 
-            <Group justify="center">
+            {/* <Group justify="center">
               <IndicatorTheme />
-            </Group>
+            </Group> */}
           </Stack>
         </Stack>
       </LayoutSection>

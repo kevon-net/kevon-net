@@ -28,11 +28,13 @@ import NextLink from '@repo/components/common/anchor/next-link';
 import { useStorePost } from '@repo/libraries/zustand/stores/post';
 import IntroSection from '@repo/components/layout/intros/section';
 import ParserHtml from '@repo/components/parsers/html';
+import { Status } from '@repo/types/models/enums';
 
 export default function Post({ props }: { props: { postId: string } }) {
   const { postId } = props;
   const { posts } = useStorePost();
-  const post = posts?.find((p) => p.id == postId);
+  const postsPublished = posts?.filter((pi) => pi.status == Status.PUBLISHED);
+  const post = postsPublished?.find((p) => p.id == postId);
 
   return (
     <>
@@ -157,7 +159,9 @@ export default function Post({ props }: { props: { postId: string } }) {
           </NextLink>
         </Group>
 
-        <CarouselBlog props={{ posts: posts?.filter((p) => p.id != postId) }} />
+        <CarouselBlog
+          props={{ posts: postsPublished?.filter((p) => p.id != postId) }}
+        />
       </LayoutSection>
     </>
   );

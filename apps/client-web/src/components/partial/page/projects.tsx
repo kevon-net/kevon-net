@@ -1,31 +1,19 @@
 'use client';
 
 import React from 'react';
-import {
-  Box,
-  Button,
-  Grid,
-  GridCol,
-  Group,
-  Loader,
-  Stack,
-  Text,
-  Title,
-} from '@mantine/core';
+import { Box, Grid, GridCol, Loader, Stack, Text, Title } from '@mantine/core';
 import LayoutSection from '@repo/components/layout/section';
 import IntroSection from '@repo/components/layout/intros/section';
-import {
-  ICON_SIZE,
-  ICON_STROKE_WIDTH,
-  SECTION_SPACING,
-} from '@repo/constants/sizes';
+import { SECTION_SPACING } from '@repo/constants/sizes';
 import { useStoreProject } from '@repo/libraries/zustand/stores/project';
 import CardProject from '@/components/common/cards/project';
-import NextLink from '@repo/components/common/anchor/next-link';
-import { IconArrowRight } from '@tabler/icons-react';
+import { Status } from '@repo/types/models/enums';
 
 export default function Projects() {
   const projects = useStoreProject((s) => s.projects);
+  const projectsPublished = projects?.filter(
+    (pi) => pi.status == Status.PUBLISHED
+  );
 
   return (
     <LayoutSection id={'projects'} py={{ base: SECTION_SPACING * 2 }}>
@@ -52,13 +40,13 @@ export default function Projects() {
       <Box mih={'50vh'}>
         {projects === undefined ? (
           <Loader />
-        ) : !projects?.length ? (
+        ) : !projectsPublished?.length ? (
           <Stack c={'dimmed'}>
             <Text>No projects found</Text>
           </Stack>
         ) : (
           <Grid gutter={'xl'}>
-            {projects.map(
+            {projectsPublished.map(
               (pi, i) =>
                 i < 3 && (
                   <GridCol key={pi.id} span={{ base: 12, md: 6 }}>

@@ -52,7 +52,7 @@ export default function About() {
 
         <Stack gap={SECTION_SPACING * 2}>
           <Grid gutter={'xl'}>
-            <GridCol span={{ base: 12, md: 7 }}>
+            <GridCol span={{ base: 12, md: 9 }}>
               <Stack
                 gap={SECTION_SPACING}
                 pos={'sticky'}
@@ -130,7 +130,7 @@ export default function About() {
               </Stack>
             </GridCol>
 
-            <GridCol span={{ base: 12, md: 5 }}>
+            {/* <GridCol span={{ base: 12, md: 5 }}>
               <Box pl={{ lg: 'xl' }} mt={{ base: 'xl', md: 0 }}>
                 <TimelineCv
                   props={{
@@ -139,7 +139,7 @@ export default function About() {
                   }}
                 />
               </Box>
-            </GridCol>
+            </GridCol> */}
           </Grid>
 
           <Flex
