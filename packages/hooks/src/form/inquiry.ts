@@ -13,6 +13,8 @@ import { contactAdd } from '@repo/handlers/requests/contact';
 import { formValuesInitialInquiry, FormValuesInquiry } from '@repo/types/form';
 import { useFormBase } from '../form';
 import { COMPANY_NAME } from '@repo/constants/app';
+import { useNotification } from '../notification';
+import { Variant } from '@repo/types/enums';
 
 type UseFormEmailInquiryOptions = {
   saveEmailContact?: boolean;
@@ -23,6 +25,8 @@ export const useFormEmailInquiry = (
   initialValues?: Partial<FormValuesInquiry>,
   options?: UseFormEmailInquiryOptions
 ) => {
+  const { showNotification } = useNotification();
+
   const { form, submitted, handleSubmit, reset, validate } =
     useFormBase<FormValuesInquiry>(
       {
@@ -33,11 +37,6 @@ export const useFormEmailInquiry = (
       {
         name: hasLength({ min: 2, max: 24 }, 'Between 2 and 24 characters'),
         email: (value) => validators.email(value.trim()),
-        subject: hasLength(
-          { min: 2, max: 255 },
-          'Between 2 and 255 characters'
-        ),
-        phone: hasLength({ min: 7, max: 15 }, 'Between 7 and 15 characters'),
         message: hasLength(
           { min: 3, max: 2048 },
           'Between 3 and 2048 characters'
@@ -45,7 +44,8 @@ export const useFormEmailInquiry = (
       },
       {
         close: options?.close,
-        resetOnSuccess: true,
+        resetOnSuccess: false,
+        hideSuccessNotification: true,
 
         onSubmit: async (rawValues) => {
           const values = normalizeFormValues(rawValues);
@@ -67,6 +67,14 @@ export const useFormEmailInquiry = (
             const addContact = await contactAdd(values);
             if (!addContact.ok) console.error('Failed to add email contact');
           }
+
+          showNotification({
+            variant: Variant.SUCCESS,
+            title: 'Message Sent',
+            desc: 'Typically responds within 24 hours',
+          });
+
+          form.setValues({ name: '', email: '', subject: '', message: '' });
 
           return { response, result };
         },
@@ -91,7 +99,7 @@ const normalizeFormValues = (v: FormValuesInquiry): FormValuesInquiry => ({
   ...v,
   name: capitalizeWords(v.name.trim()),
   email: v.email.trim().toLowerCase(),
-  subject: v.subject.trim(),
-  phone: v.phone.trim(),
+  subject: (v.subject || 'New Inquiry').trim(),
+  phone: (v.phone || '').trim(),
   message: v.message.trim(),
 });
