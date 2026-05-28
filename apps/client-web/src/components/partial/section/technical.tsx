@@ -8,29 +8,22 @@ import {
 import {
   Badge,
   Card,
-  Divider,
   Group,
   SimpleGrid,
   Stack,
   Text,
   Title,
 } from '@mantine/core';
-import { services } from '@/data/services';
 import CardTechnical from '@/components/common/cards/technical';
 import IntroSection from '@repo/components/layout/intros/section';
 import {
-  Icon,
-  IconBrain,
-  IconBrandGit,
-  IconBrandMantine,
+  IconAppWindow,
   IconBrandNextjs,
-  IconBrandNodejs,
-  IconBrandPrisma,
-  IconBrandTypescript,
-  IconBrandVercel,
+  IconBrandSpeedtest,
+  IconCodeAi,
   IconDatabase,
-  IconPuzzle,
-  IconSettings,
+  IconServer2,
+  IconSettingsAi,
   IconTool,
 } from '@tabler/icons-react';
 
@@ -56,14 +49,15 @@ export default function Technical() {
                 <Text component="span" inherit c={'pri'}>
                   performance, scalability, and maintainability
                 </Text>
-                . Below are some of the key engineering principles and patterns
-                I apply in my work.
+                , applying modern engineering patterns to solve real-world
+                problems efficiently. Below are some of the key engineering
+                principles and patterns I apply in my work.
               </Text>
             ),
           }}
         />
 
-        <SimpleGrid cols={{ base: 1, md: 2, lg: 3 }} spacing="xl">
+        <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl">
           {technicalData.map((section) => (
             <CardTechnical key={section.title} props={section} />
           ))}
@@ -95,23 +89,35 @@ export default function Technical() {
           }}
         />
 
-        <SimpleGrid cols={{ base: 1, md: 2, lg: 3 }} spacing="lg">
+        <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
           <TechBlock
             title="Frontend"
-            items={tech.frontend}
+            desc={tech.frontend.desc}
+            items={tech.frontend.list}
             icon={
               <IconBrandNextjs size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
             }
           />
+
           <TechBlock
             title="Backend"
-            items={tech.backend}
+            desc={tech.backend.desc}
+            items={tech.backend.list}
             icon={<IconDatabase size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />}
           />
+
           <TechBlock
             title="Tooling"
-            items={tech.tooling}
-            icon={<IconTool size={18} />}
+            desc={tech.tooling.desc}
+            items={tech.tooling.list}
+            icon={<IconTool size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />}
+          />
+
+          <TechBlock
+            title="Intelligent Systems"
+            desc={tech.intelligence.desc}
+            items={tech.intelligence.list}
+            icon={<IconCodeAi size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />}
           />
         </SimpleGrid>
       </LayoutSection>
@@ -121,7 +127,7 @@ export default function Technical() {
 
 const technicalData = [
   {
-    icon: IconSettings,
+    icon: IconBrandSpeedtest,
     title: 'Performance & Optimization',
     points: [
       'Reduced unnecessary re-renders through optimized component structure and memoization strategies',
@@ -131,7 +137,7 @@ const technicalData = [
     ],
   },
   {
-    icon: IconBrain,
+    icon: IconServer2,
     title: 'Backend & System Design',
     points: [
       'Optimized database operations using transactional workflows and query batching',
@@ -141,7 +147,7 @@ const technicalData = [
     ],
   },
   {
-    icon: IconPuzzle,
+    icon: IconAppWindow,
     title: 'Frontend Engineering',
     points: [
       'Built scalable UI systems using component-driven architecture',
@@ -150,69 +156,109 @@ const technicalData = [
       'Focused on clean abstractions for maintainability',
     ],
   },
+  {
+    icon: IconSettingsAi,
+    title: 'Intelligent Systems (AI Integration)',
+    points: [
+      'Integrated LLM APIs into structured workflows',
+      'Designed fallback and retry mechanisms for AI responses',
+      'Optimized request batching and caching to reduce cost',
+    ],
+  },
 ];
 
 const tech = {
-  frontend: [
-    {
-      icon: IconBrandNextjs,
-      label: 'Next.js',
-      detail: 'App Router, SSR, routing',
-    },
-    {
-      icon: IconBrandTypescript,
-      label: 'TypeScript',
-      detail: 'type-safe architecture',
-    },
-    {
-      icon: IconBrandMantine,
-      label: 'Mantine',
-      detail: 'UI systems & components',
-    },
-  ],
-  backend: [
-    {
-      icon: IconBrandNodejs,
-      label: 'Node.js',
-      detail: 'API design & services',
-    },
-    {
-      icon: IconDatabase,
-      label: 'PostgreSQL',
-      detail: 'relational data modeling',
-    },
-    {
-      icon: IconBrandPrisma,
-      label: 'Prisma',
-      detail: 'transactions, batching',
-    },
-  ],
-  tooling: [
-    {
-      icon: IconBrandGit,
-      label: 'Git / GitHub',
-      detail: 'version control & workflows',
-    },
-    {
-      icon: IconBrandVercel,
-      label: 'Vercel',
-      detail: 'deployment & edge delivery',
-    },
-    {
-      icon: IconBrandNodejs,
-      label: 'ESLint / Prettier',
-      detail: 'code quality & consistency',
-    },
-  ],
+  frontend: {
+    desc: 'Building scalable UI and performant user experiences',
+    list: [
+      {
+        label: 'Next.js',
+        detail: 'App Router, SSR, routing',
+      },
+      {
+        label: 'TypeScript',
+        detail: 'type-safe architecture',
+      },
+      {
+        label: 'Mantine',
+        detail: 'UI systems & components',
+      },
+    ],
+  },
+  backend: {
+    desc: 'Designing reliable systems with strong data integrity',
+    list: [
+      {
+        label: 'Node.js',
+        detail: 'API design & services',
+      },
+      {
+        label: 'PostgreSQL',
+        detail: 'relational data modeling',
+      },
+      {
+        label: 'Prisma',
+        detail: 'transactions, batching',
+      },
+    ],
+  },
+  tooling: {
+    desc: 'Ensuring efficient workflows and consistent code quality',
+    list: [
+      {
+        label: 'Git / GitHub',
+        detail: 'version control & workflows',
+      },
+      {
+        label: 'Vercel',
+        detail: 'deployment & edge delivery',
+      },
+      {
+        label: 'ESLint / Prettier',
+        detail: 'code quality & consistency',
+      },
+    ],
+  },
+  intelligence: {
+    desc: 'Designing structured AI integrations within scalable applications',
+    list: [
+      {
+        label: 'LLM APIs',
+        detail: 'structured prompting, response handling',
+      },
+      {
+        label: 'Caching & batching strategies',
+        detail: 'cost and latency optimization',
+      },
+      // {
+      //   label: 'Fallback & retry mechanisms',
+      //   detail: 'Handling unreliable outputs',
+      // },
+      // {
+      //   label: 'Context management',
+      //   detail: 'Prompt + data shaping',
+      // },
+      {
+        label: 'Streaming responses',
+        detail: 'UX optimization',
+      },
+      {
+        label: 'Workflow integration',
+        detail: 'AI within user-driven and backend processes',
+      },
+    ],
+  },
 };
 
 function TechBlock({
   title,
+  desc,
   items,
   icon,
 }: {
   title: string;
-  items: { icon: Icon; label: string; detail: string }[];
+  desc: string;
+  items: { label: string; detail: string }[];
   icon: React.ReactNode;
 }) {
   return (
@@ -227,12 +273,7 @@ function TechBlock({
           </Group>
 
           <Text size="sm" c="dimmed">
-            {title === 'Frontend' &&
-              'Building scalable UI and performant user experiences'}
-            {title === 'Backend' &&
-              'Designing reliable systems with strong data integrity'}
-            {title === 'Tooling' &&
-              'Ensuring efficient workflows and consistent code quality'}
+            {desc}
           </Text>
         </Stack>
 
@@ -247,7 +288,9 @@ function TechBlock({
               //   <item.icon size={ICON_SIZE - 2} stroke={ICON_STROKE_WIDTH} />
               // }
               variant={
-                item.label === 'Next.js' || item.label === 'PostgreSQL'
+                item.label === 'Next.js' ||
+                item.label === 'PostgreSQL' ||
+                item.label === 'Workflow integration'
                   ? 'filled'
                   : 'light'
               }

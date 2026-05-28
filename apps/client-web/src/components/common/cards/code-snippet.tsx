@@ -1,3 +1,5 @@
+'use server';
+
 import React from 'react';
 import { Box, Group, Paper, ScrollArea, Text } from '@mantine/core';
 import { highlight } from '@repo/libraries/shiki';
@@ -5,7 +7,7 @@ import { highlight } from '@repo/libraries/shiki';
 export default async function CodeSnippet({
   props,
 }: {
-  props: { content: string; options?: { height: string } };
+  props: { desc: string; content: string; options?: { height: string } };
 }) {
   const html = await highlight(props.content, {
     defaultLang: 'ts',
@@ -53,7 +55,7 @@ export default async function CodeSnippet({
 
         {/* Header */}
         <Text size="sm" c="dimmed">
-          Example: Optimized Data Sync Logic
+          {props.desc}
         </Text>
       </Box>
 

@@ -25,6 +25,7 @@ import {
 } from '@repo/constants/sizes';
 import { IconArrowDown } from '@tabler/icons-react';
 import NextLink from '@repo/components/common/anchor/next-link';
+import CarouselSnippets from '@/components/common/carousel/snippets';
 import CardCodeSnippet from '@/components/common/cards/code-snippet';
 
 export default function Home() {
@@ -54,7 +55,8 @@ export default function Home() {
                 <Text>
                   I design and build high-performance web systems using Next.js,
                   TypeScript, and modern backend architecture—focused on
-                  performance, scalability, and clean code.
+                  performance, scalability, and clean code, with thoughtful
+                  integration of modern tools where they add real value.
                 </Text>
               </Group>
             </Stack>
@@ -93,8 +95,35 @@ export default function Home() {
         </GridCol>
 
         <GridCol span={{ base: 12, md: 6, lg: 6 }} visibleFrom="md">
-          <CardCodeSnippet
-            props={{ content: code, options: { height: '60vh' } }}
+          <CarouselSnippets
+            snippets={[
+              <CardCodeSnippet
+                key={codes[0].desc}
+                props={{
+                  desc: codes[0].desc,
+                  content: codes[0].code,
+                  options: { height: '40vh' },
+                }}
+              />,
+
+              <CardCodeSnippet
+                key={codes[1].desc}
+                props={{
+                  desc: codes[1].desc,
+                  content: codes[1].code,
+                  options: { height: '40vh' },
+                }}
+              />,
+
+              <CardCodeSnippet
+                key={codes[2].desc}
+                props={{
+                  desc: codes[2].desc,
+                  content: codes[2].code,
+                  options: { height: '40vh' },
+                }}
+              />,
+            ]}
           />
         </GridCol>
       </Grid>
@@ -102,33 +131,88 @@ export default function Home() {
   );
 }
 
-const code = `type StoreKey = string;
+// const code = `
+// export async function syncStores(stores: StoreKey[]): Promise<SyncResult> {
+//   const orderedStores = [...stores].sort(
+//     (a, b) => (SYNC_PRIORITY[a] ?? 99) - (SYNC_PRIORITY[b] ?? 99)
+//   );
 
-type InventoryInput = {
-  quantity: number;
-  updatedAt: Date;
-};
+//   return prisma.$transaction(async (tx) => {
+//     const results: SyncResult = {};
 
-type SyncResult = Record<StoreKey, unknown>;
+//     for (const store of orderedStores) {
+//       const data: InventoryInput = await fetchStoreData(store);
 
-export async function syncStores(stores: StoreKey[]): Promise<SyncResult> {
-  const orderedStores = [...stores].sort(
-    (a, b) => (SYNC_PRIORITY[a] ?? 99) - (SYNC_PRIORITY[b] ?? 99)
-  );
+//       results[store] = await tx.inventory.upsert({
+//         where: { storeId: store },
+//         update: data,
+//         create: { storeId: store, ...data },
+//       });
+//     }
 
-  return prisma.$transaction(async (tx) => {
-    const results: SyncResult = {};
+//     return results;
+//   });
+// }
+//   `;
 
-    for (const store of orderedStores) {
-      const data: InventoryInput = await fetchStoreData(store);
+// const code = `
+// const syncStore = async (store: StoreKey, tx: Prisma.TransactionClient) => {
+//   const data = await fetchStoreData(store);
 
-      results[store] = await tx.inventory.upsert({
-        where: { storeId: store },
-        update: data,
-        create: { storeId: store, ...data },
-      });
-    }
+//   return tx.inventory.upsert({
+//     where: { storeId: store },
+//     update: data,
+//     create: { storeId: store, ...data },
+//   });
+// };
 
-    return results;
+// await prisma.$transaction((tx) =>
+//   Promise.all(prioritize(stores).map((store) => syncStore(store, tx)))
+// );
+//   `;
+
+const codes = [
+  {
+    desc: 'Transactional Data Sync (Multi-Source Inventory)',
+    code: `
+await prisma.$transaction(async (tx) => {
+  for (const store of prioritize(stores)) {
+    const data = await fetchStoreData(store);
+
+    await tx.inventory.upsert({
+      where: { storeId: store },
+      update: data,
+      create: { storeId: store, ...data },
+    });
+  }
+});
+`,
+  },
+
+  {
+    desc: 'Cached Fetch with Revalidation',
+    code: `
+const getProduct = cache(async (id: string) => {
+  return prisma.product.findUnique({ where: { id } });
+});
+
+export async function getProductCached(id: string) {
+  return revalidateTag(\`product-\${id}\`, () => getProduct(id));
+}
+    `,
+  },
+
+  {
+    desc: 'Composable Service Pattern',
+    code: `
+const createOrder = (deps: Dependencies) => async (input: CreateOrderInput) => {
+  const user = await deps.getUser(input.userId);
+  const items = await deps.getItems(input.itemIds);
+
+  return deps.db.order.create({
+    data: buildOrder(user, items),
   });
-}`;
+};
+    `,
+  },
+];

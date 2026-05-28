@@ -44,7 +44,8 @@ export default function About() {
                 <Text component="span" inherit c={'pri'}>
                   scalable, high-performance web applications
                 </Text>{' '}
-                using Next.js, TypeScript, and PostgreSQL.
+                using Next.js, TypeScript, and PostgreSQL, with a focus on clean
+                architecture and long-term maintainability.
               </Text>
             ),
           }}
