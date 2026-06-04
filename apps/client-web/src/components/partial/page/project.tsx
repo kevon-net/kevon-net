@@ -38,11 +38,18 @@ import { useStoreProject } from '@repo/libraries/zustand/stores/project';
 import IntroSection from '@repo/components/layout/intros/section';
 import ParserHtml from '@repo/components/parsers/html';
 import CardGithub from '@/components/common/cards/github';
+import { Status } from '@repo/types/models/enums';
 
 export default function Project({ props }: { props: { projectId: string } }) {
   const { projectId } = props;
   const { projects } = useStoreProject();
-  const project = projects?.find((p) => p.id == projectId);
+
+  const projectsPublished = projects?.filter(
+    (p) => p.status == Status.PUBLISHED
+  );
+  const project = projectsPublished?.find((p) => p.id == projectId);
+
+  const projectsOther = projectsPublished?.filter((p) => p.id != projectId);
 
   return (
     <>
@@ -209,51 +216,54 @@ export default function Project({ props }: { props: { projectId: string } }) {
         )}
       </LayoutSection>
 
-      <Divider />
+      <Box display={(projectsOther || []).length > 0 ? undefined : 'none'}>
+        <Divider />
 
-      <LayoutSection
-        id="similar"
-        mt={SECTION_SPACING * 2}
-        pb={SECTION_SPACING * 2}
-      >
-        <Group justify="space-between" align="start">
-          <IntroSection
-            options={{ alignment: 'start', spacing: true }}
-            props={{
-              title: (
-                <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
-                  Other Works:
-                </Title>
-              ),
-            }}
-          />
+        <LayoutSection
+          id="similar"
+          mt={SECTION_SPACING * 2}
+          pb={SECTION_SPACING * 2}
+        >
+          <Group justify="space-between" align="start">
+            <IntroSection
+              options={{ alignment: 'start', spacing: true }}
+              props={{
+                title: (
+                  <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
+                    Other Works:
+                  </Title>
+                ),
+              }}
+            />
 
-          <NextLink href={'/projects'}>
-            <Button
-              size="md"
-              color="gray"
-              variant="light"
-              radius={'xl'}
-              rightSection={
-                <ThemeIcon
-                  size={ICON_WRAPPER_SIZE}
-                  color={'gray'}
-                  variant={'light'}
-                  radius={'xl'}
-                >
-                  <IconArrowRight size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
-                </ThemeIcon>
-              }
-            >
-              View All
-            </Button>
-          </NextLink>
-        </Group>
+            <NextLink href={'/projects'}>
+              <Button
+                size="md"
+                color="gray"
+                variant="light"
+                radius={'xl'}
+                rightSection={
+                  <ThemeIcon
+                    size={ICON_WRAPPER_SIZE}
+                    color={'gray'}
+                    variant={'light'}
+                    radius={'xl'}
+                  >
+                    <IconArrowRight
+                      size={ICON_SIZE}
+                      stroke={ICON_STROKE_WIDTH}
+                    />
+                  </ThemeIcon>
+                }
+              >
+                View All
+              </Button>
+            </NextLink>
+          </Group>
 
-        <CarouselProjects
-          projects={projects?.filter((p) => p.id != projectId)}
-        />
-      </LayoutSection>
+          <CarouselProjects projects={projectsOther} />
+        </LayoutSection>
+      </Box>
     </>
   );
 }

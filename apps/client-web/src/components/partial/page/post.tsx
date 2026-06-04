@@ -35,6 +35,7 @@ export default function Post({ props }: { props: { postId: string } }) {
   const { posts } = useStorePost();
   const postsPublished = posts?.filter((pi) => pi.status == Status.PUBLISHED);
   const post = postsPublished?.find((p) => p.id == postId);
+  const postsOther = postsPublished?.filter((p) => p.id != postId);
 
   return (
     <>
@@ -118,51 +119,54 @@ export default function Post({ props }: { props: { postId: string } }) {
         )}
       </LayoutSection>
 
-      <Divider />
+      <Box display={(postsOther || []).length > 0 ? undefined : 'none'}>
+        <Divider />
 
-      <LayoutSection
-        id="similar"
-        mt={SECTION_SPACING * 2}
-        pb={SECTION_SPACING * 2}
-      >
-        <Group justify="space-between" align="start">
-          <IntroSection
-            options={{ alignment: 'start', spacing: true }}
-            props={{
-              title: (
-                <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
-                  Similar Publications:
-                </Title>
-              ),
-            }}
-          />
+        <LayoutSection
+          id="similar"
+          mt={SECTION_SPACING * 2}
+          pb={SECTION_SPACING * 2}
+        >
+          <Group justify="space-between" align="start">
+            <IntroSection
+              options={{ alignment: 'start', spacing: true }}
+              props={{
+                title: (
+                  <Title order={2} fw={500} fz={'var(--mantine-h1-font-size)'}>
+                    Similar Publications:
+                  </Title>
+                ),
+              }}
+            />
 
-          <NextLink href={'/blog'} visibleFrom="xs">
-            <Button
-              size="md"
-              color="gray"
-              variant="light"
-              radius={'xl'}
-              rightSection={
-                <ThemeIcon
-                  size={ICON_WRAPPER_SIZE}
-                  color={'gray'}
-                  variant={'light'}
-                  radius={'xl'}
-                >
-                  <IconArrowRight size={ICON_SIZE} stroke={ICON_STROKE_WIDTH} />
-                </ThemeIcon>
-              }
-            >
-              View All
-            </Button>
-          </NextLink>
-        </Group>
+            <NextLink href={'/blog'} visibleFrom="xs">
+              <Button
+                size="md"
+                color="gray"
+                variant="light"
+                radius={'xl'}
+                rightSection={
+                  <ThemeIcon
+                    size={ICON_WRAPPER_SIZE}
+                    color={'gray'}
+                    variant={'light'}
+                    radius={'xl'}
+                  >
+                    <IconArrowRight
+                      size={ICON_SIZE}
+                      stroke={ICON_STROKE_WIDTH}
+                    />
+                  </ThemeIcon>
+                }
+              >
+                View All
+              </Button>
+            </NextLink>
+          </Group>
 
-        <CarouselBlog
-          props={{ posts: postsPublished?.filter((p) => p.id != postId) }}
-        />
-      </LayoutSection>
+          <CarouselBlog props={{ posts: postsOther }} />
+        </LayoutSection>
+      </Box>
     </>
   );
 }
