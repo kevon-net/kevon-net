@@ -271,6 +271,12 @@ function CardLive() {
 
           <Title order={3} fz={'xl'}>
             Demo
+            <sup>
+              <IconExternalLink
+                size={ICON_SIZE - 4}
+                stroke={ICON_STROKE_WIDTH}
+              />
+            </sup>
           </Title>
         </Group>
       </Stack>

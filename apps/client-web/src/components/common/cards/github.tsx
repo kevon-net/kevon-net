@@ -16,6 +16,14 @@ export default function Github({ props }: { props?: { label?: string } }) {
 
           <Title order={3} fz={'xl'}>
             GitHub
+            {!props?.label && (
+              <sup>
+                <IconExternalLink
+                  size={ICON_SIZE - 4}
+                  stroke={ICON_STROKE_WIDTH}
+                />
+              </sup>
+            )}
           </Title>
         </Group>
 
