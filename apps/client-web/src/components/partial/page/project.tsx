@@ -5,6 +5,7 @@ import IntroPage from '@repo/components/layout/intros/page';
 import LayoutSection from '@repo/components/layout/section';
 import ImageDefault from '@repo/components/common/images/default';
 import {
+  Anchor,
   Badge,
   Box,
   Button,
@@ -186,21 +187,23 @@ export default function Project({ props }: { props: { projectId: string } }) {
 
                               <Group grow>
                                 {project.repo_link && (
-                                  <NextLink
+                                  <Anchor
                                     href={project.repo_link}
                                     underline="never"
+                                    target="_blank"
                                   >
                                     <CardGithub />
-                                  </NextLink>
+                                  </Anchor>
                                 )}
 
                                 {project.live_link && (
-                                  <NextLink
+                                  <Anchor
                                     href={project.live_link}
                                     underline="never"
+                                    target="_blank"
                                   >
                                     <CardLive />
-                                  </NextLink>
+                                  </Anchor>
                                 )}
                               </Group>
                             </Stack>
