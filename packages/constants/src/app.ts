@@ -38,7 +38,7 @@ export const SOCIALS = {
   },
   LI: {
     LABEL: `LinkedIn`,
-    LINK: 'https://www.linkedin.com/in/kevon-kibochi',
+    LINK: 'https://www.linkedin.com/in/kevon-net',
   },
 };
 

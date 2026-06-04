@@ -60,7 +60,7 @@ export default function Contact() {
                 </Group>
 
                 <Text component="span" inherit>
-                  {'in/kevon-kibochi'}
+                  {'in/kevon-net'}
                   <IconExternalLink
                     size={ICON_SIZE - 4}
                     stroke={ICON_STROKE_WIDTH}
