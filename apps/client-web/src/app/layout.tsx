@@ -37,7 +37,7 @@ const fontMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${APP_NAME.WEB} - Web Development Solutions`,
+  title: `${APP_NAME.WEB} - Full-Stack Developer Building Fast, Scalable Web Applications`,
   description: APP_DESC.WEB,
 };
 
