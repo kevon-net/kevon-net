@@ -7,6 +7,18 @@ export const images = {
       light: `${baseUrl}/brand/icon/light.png`,
       dark: `${baseUrl}/brand/icon/dark.png`,
     },
+    logo: {
+      meta: {
+        square: {
+          light: `${baseUrl}/brand/logo/meta/meta-square-light.png`,
+          dark: `${baseUrl}/brand/logo/meta/meta-square-dark.png`,
+        },
+        landscape: {
+          light: `${baseUrl}/brand/logo/meta/meta-landscape-light.png`,
+          dark: `${baseUrl}/brand/logo/meta/meta-landscape-dark.png`,
+        },
+      },
+    },
   },
 
   me: `${baseUrl}/me.png`,

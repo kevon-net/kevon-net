@@ -48,6 +48,6 @@ export const APP_NAME = {
 };
 
 export const APP_DESC = {
-  WEB: 'Innovative software developer passionate about crafting elegant solutions to complex problems, with a strong commitment to excellence and forward-thinking design.',
+  WEB: 'Full-stack web developer building fast, scalable, user-centered applications with Next.js, React, TypeScript, PostgreSQL, and modern cloud tools.',
   SERVER: 'API server resource for kevon.net',
 };

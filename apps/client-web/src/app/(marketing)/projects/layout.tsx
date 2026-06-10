@@ -8,7 +8,12 @@ export type typeParams = Promise<{
 }>;
 
 export const metadata: Metadata = {
-  title: { default: 'Projects', template: `%s - Projects - ${APP_NAME.WEB}` },
+  title: {
+    default: 'Projects',
+    template: `%s | ${APP_NAME.WEB}`,
+  },
+  description:
+    'A collection of full-stack applications, SaaS products, developer tools, and technical experiments built by Kevon.',
 };
 
 export default function LayoutProject({

@@ -23,6 +23,7 @@ import { DEFAULT_COLOR_SCHEME } from '@repo/constants/other';
 import { isProduction } from '@repo/utilities/misc';
 import { mantine } from '@/data/styles';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { images } from '@repo/constants/images';
 
 const fontBody = Space_Grotesk({
   variable: '--font-body',
@@ -36,9 +37,44 @@ const fontMono = Space_Mono({
   weight: ['400', '700'],
 });
 
+const metaTitle = `${APP_NAME.WEB} - Full-Stack Developer Building Fast, Scalable Web Applications`;
+
 export const metadata: Metadata = {
-  title: `${APP_NAME.WEB} - Full-Stack Developer Building Fast, Scalable Web Applications`,
+  title: { default: metaTitle, template: `%s | ${APP_NAME.WEB}` },
   description: APP_DESC.WEB,
+
+  alternates: {
+    canonical: 'https://kevon.net',
+  },
+
+  openGraph: {
+    title: metaTitle,
+    description: APP_DESC.WEB,
+    url: 'https://kevon.net',
+    siteName: APP_NAME.WEB,
+    images: [
+      {
+        url: images.brand.logo.meta.landscape.dark,
+        width: 1200,
+        height: 630,
+        alt: `Kevon's Portfolio`,
+      },
+      {
+        url: images.brand.logo.meta.square.dark,
+        width: 1200,
+        height: 1200,
+        alt: `Kevon's Portfolio`,
+      },
+    ],
+    type: 'website',
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: metaTitle,
+    description: APP_DESC.WEB,
+    images: [images.brand.logo.meta.landscape.dark],
+  },
 };
 
 export default async function RootLayout({

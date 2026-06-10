@@ -8,7 +8,12 @@ export type typeParams = Promise<{
 }>;
 
 export const metadata: Metadata = {
-  title: { default: 'Blog', template: `%s - Blog - ${APP_NAME.WEB}` },
+  title: {
+    default: 'Blog',
+    template: `%s | ${APP_NAME.WEB}`,
+  },
+  description:
+    'Articles, tutorials, and insights on web development, software engineering, Next.js, React, TypeScript, and modern technologies.',
 };
 
 export default function LayoutBlog({
