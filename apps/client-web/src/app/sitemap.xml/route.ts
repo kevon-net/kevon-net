@@ -2,9 +2,12 @@
 import { NextResponse } from 'next/server';
 import { PRODUCTION_BASE_URL_CLIENT_WEB } from '@repo/constants/paths';
 import { sitemapRoutes } from '@/data/links';
-import { PostRelations } from '@repo/types/models/post';
+import { PostGet } from '@repo/types/models/post';
+import { ProjectGet } from '@repo/types/models/project';
 import { postsGet } from '@repo/handlers/requests/database/posts';
+import { projectsGet } from '@repo/handlers/requests/database/projects';
 import { linkify } from '@repo/utilities/url';
+import { Status } from '@repo/types/models/enums';
 
 export const dynamic = 'force-static';
 export const revalidate = 604800; // Revalidate at most every week (in seconds)
@@ -12,13 +15,21 @@ export const revalidate = 604800; // Revalidate at most every week (in seconds)
 export async function GET() {
   const today = new Date().toISOString().split('T')[0];
 
-  const { items: posts }: { items: PostRelations[] } = await postsGet();
-  const postRoutes = posts.map((p) => `/blog/${linkify(p.title)}-${p.id}`);
+  const { items: posts }: { items: PostGet[] } = await postsGet();
+  const postRoutes = posts
+    .filter((pi) => pi.status == Status.PUBLISHED)
+    .map((p) => `/blog/${linkify(p.title)}-${p.id}`);
+
+  const { items: projects }: { items: ProjectGet[] } = await projectsGet();
+  const projectRoutes = projects
+    .filter((pi) => pi.status == Status.PUBLISHED)
+    .map((p) => `/projects/${linkify(p.title)}-${p.id}`);
 
   const staticRoutes = [
     '', // homepage
     ...sitemapRoutes,
     ...postRoutes,
+    ...projectRoutes,
   ].map((route) => ({
     loc: `${PRODUCTION_BASE_URL_CLIENT_WEB.DEFAULT}${route}`,
     lastmod: today,
