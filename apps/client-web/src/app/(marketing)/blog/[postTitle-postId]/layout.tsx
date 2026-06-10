@@ -7,6 +7,8 @@ import { postsGet } from '@repo/handlers/requests/database/posts';
 // import { samplePosts as posts } from '@/data/sample/posts';
 import { extractUuidFromParam } from '@repo/utilities/url';
 
+const authorName = 'Kevon Kibochi';
+
 export const generateMetadata = async ({
   params,
 }: {
@@ -28,6 +30,7 @@ export const generateMetadata = async ({
   return {
     title: post.title,
     description: post.excerpt,
+    authors: [{ name: authorName }],
 
     alternates: {
       canonical: `https://kevon.net/blog/${paramValues}`,
@@ -37,6 +40,9 @@ export const generateMetadata = async ({
       title: post.title,
       description: post.excerpt,
       type: 'article',
+      publishedTime: post.created_at.toISOString(),
+      modifiedTime: post.updated_at.toISOString(),
+      authors: [authorName], // or array of URLs/names
       images: [
         {
           url: post.image,

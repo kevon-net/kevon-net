@@ -6,6 +6,8 @@ import { ProjectGet } from '@repo/types/models/project';
 import { projectsGet } from '@repo/handlers/requests/database/projects';
 import { extractUuidFromParam } from '@repo/utilities/url';
 
+const authorName = 'Kevon Kibochi';
+
 export const generateMetadata = async ({
   params,
 }: {
@@ -29,6 +31,7 @@ export const generateMetadata = async ({
   return {
     title: project.title,
     description: project.description,
+    authors: [{ name: authorName }],
 
     alternates: {
       canonical: `https://kevon.net/projects/${paramValues}`,
@@ -38,6 +41,9 @@ export const generateMetadata = async ({
       title: project.title,
       description: project.description,
       type: 'article',
+      publishedTime: project.created_at.toISOString(),
+      modifiedTime: project.updated_at.toISOString(),
+      authors: [authorName], // or array of URLs/names
       images: [
         {
           url: project.image,
