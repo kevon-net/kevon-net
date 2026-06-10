@@ -32,9 +32,23 @@ const fontMono = Space_Mono({
   weight: ['400', '700'],
 });
 
+const metaTitle = `${APP_NAME.WEB} - API Engine`;
+
 export const metadata: Metadata = {
-  title: `${APP_NAME.WEB} - API Engine`,
+  title: { default: metaTitle, template: `%s | ${APP_NAME.WEB}` },
   description: APP_DESC.SERVER,
+
+  alternates: {
+    canonical: 'https://kevon.net',
+  },
+
+  openGraph: {
+    title: metaTitle,
+    description: APP_DESC.SERVER,
+    url: 'https://kevon.net',
+    siteName: APP_NAME.WEB,
+    type: 'website',
+  },
 };
 
 export default async function RootLayout({
