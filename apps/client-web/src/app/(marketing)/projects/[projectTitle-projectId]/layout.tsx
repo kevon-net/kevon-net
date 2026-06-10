@@ -31,7 +31,7 @@ export const generateMetadata = async ({
     description: project.description,
 
     alternates: {
-      canonical: `https://kevon.net/blog/${paramValues}`,
+      canonical: `https://kevon.net/projects/${paramValues}`,
     },
 
     openGraph: {
