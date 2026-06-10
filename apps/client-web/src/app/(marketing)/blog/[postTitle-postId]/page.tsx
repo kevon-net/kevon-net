@@ -5,6 +5,7 @@ import { typeParams } from '../layout';
 import { extractUuidFromParam, linkify } from '@repo/utilities/url';
 import { PostRelations } from '@repo/types/models/post';
 import { postsGet } from '@repo/handlers/requests/database/posts';
+import { Status } from '@repo/types/models/enums';
 // import { samplePosts as posts } from '@/data/sample/posts';
 
 export const revalidate = 3600; // Revalidate at most every hour (in seconds)
@@ -12,9 +13,11 @@ export const revalidate = 3600; // Revalidate at most every hour (in seconds)
 export async function generateStaticParams() {
   const { items: posts }: { items: PostRelations[] } = await postsGet();
 
-  return posts.map((post) => ({
-    'postTitle-postId': `${linkify(post.title)}-${post.id}`,
-  }));
+  return posts
+    .filter((pi) => pi.status == Status.PUBLISHED)
+    .map((post) => ({
+      'postTitle-postId': `${linkify(post.title)}-${post.id}`,
+    }));
 }
 
 export default async function Post({

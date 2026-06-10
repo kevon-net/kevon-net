@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import { ProjectGet } from '@repo/types/models/project';
 import { projectsGet } from '@repo/handlers/requests/database/projects';
 import { extractUuidFromParam } from '@repo/utilities/url';
+import { Status } from '@repo/types/models/enums';
 
 const authorName = 'Kevon Kibochi';
 
@@ -17,9 +18,11 @@ export const generateMetadata = async ({
   const projectId = extractUuidFromParam(paramValues);
 
   const { items: projects }: { items: ProjectGet[] } = await projectsGet();
-  const project = ((projects || []) as ProjectGet[]).find(
-    (p) => p.id == projectId
-  );
+  const project = (
+    (projects || []).filter(
+      (pi) => pi.status == Status.PUBLISHED
+    ) as ProjectGet[]
+  ).find((p) => p.id == projectId);
 
   if (!project) {
     return {
@@ -41,8 +44,8 @@ export const generateMetadata = async ({
       title: project.title,
       description: project.description,
       type: 'article',
-      publishedTime: project.created_at.toISOString(),
-      modifiedTime: project.updated_at.toISOString(),
+      publishedTime: new Date(project.created_at).toISOString(),
+      modifiedTime: new Date(project.updated_at).toISOString(),
       authors: [authorName], // or array of URLs/names
       images: [
         {

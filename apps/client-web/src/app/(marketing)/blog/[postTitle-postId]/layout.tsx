@@ -6,6 +6,7 @@ import { PostRelations } from '@repo/types/models/post';
 import { postsGet } from '@repo/handlers/requests/database/posts';
 // import { samplePosts as posts } from '@/data/sample/posts';
 import { extractUuidFromParam } from '@repo/utilities/url';
+import { Status } from '@repo/types/models/enums';
 
 const authorName = 'Kevon Kibochi';
 
@@ -18,7 +19,11 @@ export const generateMetadata = async ({
   const postId = extractUuidFromParam(paramValues);
 
   const { items: posts }: { items: PostRelations[] } = await postsGet();
-  const post = ((posts || []) as PostRelations[]).find((p) => p.id == postId);
+  const post = (
+    (posts || []).filter(
+      (pi) => pi.status == Status.PUBLISHED
+    ) as PostRelations[]
+  ).find((p) => p.id == postId);
 
   if (!post) {
     return {
@@ -40,8 +45,8 @@ export const generateMetadata = async ({
       title: post.title,
       description: post.excerpt,
       type: 'article',
-      publishedTime: post.created_at.toISOString(),
-      modifiedTime: post.updated_at.toISOString(),
+      publishedTime: new Date(post.created_at).toISOString(),
+      modifiedTime: new Date(post.updated_at).toISOString(),
       authors: [authorName], // or array of URLs/names
       images: [
         {

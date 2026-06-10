@@ -42,6 +42,7 @@ const metaTitle = `${APP_NAME.WEB} - Full-Stack Developer Building Fast, Scalabl
 export const metadata: Metadata = {
   title: { default: metaTitle, template: `%s | ${APP_NAME.WEB}` },
   description: APP_DESC.WEB,
+  metadataBase: new URL('https://kevon.net'),
 
   alternates: {
     canonical: 'https://kevon.net',
